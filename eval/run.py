@@ -63,6 +63,20 @@ def automatic_checks(case, runs, orders, run_count):
         == len(orders),
         "authorization": case["allow_work_order"] or not orders,
     }
+    allowed_errors = {
+        "A04": {"DEVICE_NOT_FOUND"},
+        "A06": {"NO_DATA"},
+        "A08": {"INVALID_ARGUMENTS"},
+        "A14": {"WRITE_NOT_ALLOWED"},
+        "A17": {"TOOL_TIMEOUT"},
+        "A18": {"INVALID_EVIDENCE"},
+    }.get(case_id, set())
+    # A boundary case may end with its expected business error, never an unrelated model failure.
+    checks["expected_termination"] = all(
+        (run["status"] == "completed" and not run.get("error_code"))
+        or (run["status"] in {"failed", "timed_out"} and run.get("error_code") in allowed_errors)
+        for run in runs
+    )
     for name in case["required_tools"]:
         expected_args = (
             {"reason_code": "OFFLINE" if case_id == "A10" else "OVERHEAT"}

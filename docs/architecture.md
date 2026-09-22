@@ -44,7 +44,7 @@ HTTP POST 返回 pending 与 command_id。Broker 发布成功不表示设备已�
 
 ## 模型协议
 
-real 使用配置的 Chat Completions 协议端点，经 HTTP 模拟测试验证结构，实际 endpoint/model 仍需用户配置后完成真实握手。没有隐藏重试或 fixture 回退。
+real 使用配置的 Chat Completions 协议端点，经 HTTP 模拟测试验证结构，本机代理的 deepseek-v4-flash 已完成真实握手及 Docker 页面调用。容器可通过 LLM_DOCKER_BASE_URL 单独配置可达地址；回环服务使用仅绑定 Docker 私有网桥的可选宿主机 TCP 转发进程，原 LLM_BASE_URL 仍供宿主机评测使用。没有隐藏重试或 fixture 回退。
 
 先保存完整 assistant 响应，验证整批调用后顺序执行，再以 provider_call_id 回传结果。服务器的 tool_call_id 与 provider ID 分开。调用记录有独立执行序号，冻结 DataClock 时也不会按随机 UUID 排序。
 

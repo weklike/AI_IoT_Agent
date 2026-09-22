@@ -481,7 +481,7 @@ query_context.allow_work_order=false；seeded_evidence 在本 run 中预置合�
 - [x] 固定工具 JSON Schema、系统提示和错误码；定义 fixture provider 的正常、未知工具、错误参数、超时、持续调用五种响应序列。
 - [x] 对 AC-21—AC-28 编写业务可观察的测试；用真实临时数据库和工具服务执行，只有模型响应被替换。
 - [x] 实现允许名单、严格参数校验、六次模型请求/八次工具/90 秒总预算，工具顺序执行并保留成功和失败记录；覆盖四工具各占一轮再最终回答的串行路径，不能只测并行合并路径。
-- [ ] 实现真实模型适配器，使用服务端配置的 endpoint/model/key；适配器的 endpoint 必须支持项目使用的工具协议。
+- [x] 实现真实模型适配器，使用服务端配置的 endpoint/model/key；适配器的 endpoint 必须支持项目使用的工具协议。
 - [x] 在真实模型配置缺失、HTTP 401/429、20 秒请求超时的情况下，返回明确失败，不切换模式；测试 assistant tool_calls 与 tool 结果 ID 的配对、空回复、重复协议 ID 和畸形响应。
 - [x] 执行 `uv run pytest tests/unit/test_agent.py tests/integration/test_agent_workflow.py -q`，完成 AC-21—AC-28 并提交。
 
@@ -570,6 +570,8 @@ AGENT_MAX_MODEL_REQUESTS=6
 AGENT_MAX_TOOL_CALLS=8
 LLM_MODE=fixture
 LLM_BASE_URL=
+# 可选：容器访问宿主机回环模型服务的单独地址
+LLM_DOCKER_BASE_URL=
 LLM_MODEL=
 LLM_API_KEY=
 ```

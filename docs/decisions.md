@@ -38,3 +38,16 @@
 - 历史 API 的 gap_before 表示相邻真实样本间隔超过 1.5 个配置采样周期（容忍半周期抖动）；前端断开曲线，仅用 null 标记绘图空窗，不插入业务样本、不影响统计。
 - Docker 将锁定依赖安装层放在源码 COPY 之前，并使用 uv 构建缓存。PyPI 超时的两次构建均保留日志。测试环境可显式指定 CHARGE_TEST_DEPENDENCY_IMAGE，只有 uv.lock 与 pyproject.toml 字节完全相同时才复用其依赖，然后复制当前源码并离线 uv sync；测试卷和实例仍全新。此选项不更改正式 Compose 的镜像来源。
 - 最终证据审计发现旧 hold.mjs 的 Playwright 默认信号处理先关闭浏览器，导致 SIGTERM 收尾截图失败。60 分钟期间的完整采样/观察 JSON 已保存，但旧 browser-final.png 不存在；该失败日志保留。关闭 Playwright 自带的 SIGTERM/SIGINT 处理，由脚本先保存截图再关闭，验收入口检查浏览器退出码。新 cold-start-capture 已实际保存截图并正常退出；不补造旧窗口的结束截图。
+
+
+## 2026-09-22 / 接通用户配置的真实模型
+
+- 用户已在忽略提交的 .env 提供模型地址/名称/密钥；仅检测非空及合法性，不回显密钥。原模式仍 fixture，真实 smoke 通过后切换为 real。
+- 实测本机代理 `deepseek-v4-flash` 支持项目的 Chat Completions 工具协议；两次模型请求经过实际 get_device_status 并完成回答。Docker 页面查询也 completed，无工单授权和副作用。
+- 原本机 127.0.0.1:8317 在 WSL 可访问，但 Docker 无法通过宿主机接口访问，且同号端口绑定冲突。采用独立 18317 端口、仅绑定当前 Docker 私有网桥的 TCP 转发；不改用户代理/global 设置，不改变四个 Compose 服务或 Agent 工具。
+- 增加可选 LLM_DOCKER_BASE_URL，仅影响后端容器的模型地址；默认空值沿用 LLM_BASE_URL。宿主机评测仍连接原回环服务。桥接不加载 .env，不打印或解析 HTTP 内容。
+- 先写字节透传、半关闭、拒绝公共/通配地址与退出测试。Python 3.12 的 Server.wait_closed 等待现有连接，初版退出花费 60 秒；加入 2 秒退出断言复现后，改为先取消本进程连接任务再等待服务器关闭，5 项测试在 0.12 秒完成。原失败保留。
+- 真实 smoke 和网页单次成功仅解除接入阻塞；不据此填写 60 例成功率或人工评审结果。
+
+- 真实端点出现重复超时后，在 12/60 时停止本轮采样进行单变量诊断，保留所有原始案例与其余 48 个 NOT_RUN。关闭思考模式的参数据 [DeepSeek 官方说明](https://api-docs.deepseek.com/guides/thinking_mode/) 验证，3 次中 2 次仍超时，未作为应用修复或改变生产参数。
+- 实际失败揭示自动评测缺陷：A04 等边界用例不能仅凭工单数为零就通过。新检查要求 completed，或该案例明确允许的业务错误；MODEL_TIMEOUT、协议/网络故障不能冒充拒绝非法请求。已先复现再修复，原失败案例不重写，另存 SHA 关联的重算结果。

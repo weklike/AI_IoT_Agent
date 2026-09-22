@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 9 等待真实模型配置与人工复核；G1/G2 已通过，G3 BLOCKED
+- 当前任务：Task 9 真实评测遇模型端点超时；配置已接通，演示保持 real
 - 当前分支/提交：develop；实现提交 75c3c33，验收截图修复 2d066f1；后续提交仅更新文档与证据
-- 更新时间：2026-09-22T17:36:10+08:00
+- 更新时间：2026-09-22T18:04:49+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -13,10 +13,10 @@
 | Task 3 遥测 | DONE | 双唯一约束、严格输入、顺序、新鲜度、重启 unknown |
 | Task 4 查询与控制 | DONE | API、完整历史统计、窗口限制、匹配回执及超时 |
 | Task 5 工单与幂等 | DONE | 授权、同 run 证据、20 会话并发、原子结果与提交边界 |
-| Task 6 Agent | BLOCKED | fixture 与协议/预算实现完成；真实 endpoint/model/key 缺失 |
+| Task 6 Agent | DONE | fixture 协议/预算、deepseek-v4-flash 真实工具往返及 Docker 网页查询通过 |
 | Task 7 前端 | DONE | 三页面、14 项 E2E、曲线空窗/窗口切换、离线 16.799s 与恢复 1.353s 均通过 |
 | Task 8 部署与性能 | DONE | core 后端 153 项 + 最新定向回归；resilience 30 项；60 分钟接收率 100%；最新 API P95 404.300ms |
-| Task 9 真实评测与交付 | BLOCKED | 20 案例入口、人工汇总与材料已实现；真实 60 次评测及人工复核未完成 |
+| Task 9 真实评测与交付 | BLOCKED | 当前端点 12 个案例中 8 个模型超时；本轮停止，48 个 NOT_RUN；需要稳定端点后重新完整评测及人工复核 |
 
 ## 本次变更
 - 从仅有方案的目录初始化现有项目，按九任务顺序实现；没有创建平行项目或修改全局配置。
@@ -53,15 +53,15 @@
 
 ## 未完成与阻塞
 - 初轮 API 性能失败已经修复；原 FAIL 保留，新样本见 api-projection。PyPI 两次构建超时已使用相同锁文件镜像依赖缓存恢复，未改变业务依赖。
-- real 需要本地配置 LLM_BASE_URL、LLM_MODEL、LLM_API_KEY 和 LLM_MODE=real。不要将凭据放进命令参数或评测证据；没有经验证 endpoint/model，不能声明 real 可用。
+- 模型配置已完成并通过真实工具往返/网页查询；当前端点响应不稳定，多次超过固定 20 秒上限。没有回退 fixture，没有提高验收时限。
 - 真实人工语义结论尚无，不能填写 reviewer 或宣布 G3。
 - 基线引用的 `AI_IoT_Agent_方案审阅与修改说明.md` 缺失；两份实际业务合同完整，未补造该文档。
 - 系统 Python 不作为项目解释器；实际使用 uv 管理 Python 3.12.13、Node 24.13.0、Chromium、Docker Compose 5.1.1；完整环境见证据。
 
 ## 下一步
 - 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理；本次按用户要求启动了常驻演示服务（见下方运行记录）。
-- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 PASS；AC-36/37 BLOCKED，AC-38/40 PENDING_REVIEW，未声明完整作品交付。
-- 本地真实模型配置就绪后先 `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-01`；成功再执行完整 60 次与真人复核。
+- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 工程证据沿用；AC-36 FAIL（本轮未完成且有超时），AC-37 NOT_RUN（没有完整 60 例），AC-38/40 PENDING_REVIEW，未声明完整作品交付。
+- 换用稳定端点后，以新目录先执行真实 smoke，再执行完整 60 次及真人复核；保留本轮 12 个原始案例与剩余 NOT_RUN，不覆盖失败。
 
 - 真人完成 60 例语义/关键错误复核并填写 eval/manual-review.json 后运行 summarize；按 docs/demo.md 完成个人 3—5 分钟演示，确认能解释代码和简历数字。不得由开发 Agent 冒充真人完成。
 
@@ -80,3 +80,24 @@
 | `xdg-open http://127.0.0.1:8080` | 3 | BLOCKED | 此 WSL 环境无桌面浏览器启动器；网页服务与 headless Chromium 检查正常，可从宿主机点击 URL |
 
 - 下一步：用户确定模型服务，在本地 .env 填入模型配置，再验证真实工具调用往返；现有 fixture 演示继续运行。
+
+
+## 真实模型配置接入与恢复验证
+
+- 用户已保存三个模型配置项；已将本地模式设为 real，并新增仅作用于容器的 LLM_DOCKER_BASE_URL。密钥未进入代码、命令参数或证据。
+- 当前演示仍为 http://127.0.0.1:8080；浏览器刷新后显示 real。Docker 通过私有网桥的宿主机转发进程访问原回环模型代理；启动/关闭方式见 README。
+
+| 命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-20260922T094112Z` | 0 | PASS | 两轮真实模型请求，get_device_status，22.388s；只判定工具往返 |
+| `uv run pytest tests/unit/test_model_bridge.py -q`（修复前退出断言） | 1 | FAIL | model-bridge-shutdown-red.log；先 wait_closed 导致等待 idle 超时 |
+| `uv run pytest tests/unit/test_bootstrap.py tests/unit/test_model_bridge.py -q` | 0 | PASS | real-config-regression.xml；10 passed / 0.61s |
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --wait --wait-timeout 60 backend` | 0 | PASS | 后端重新读取配置，health=real，DB/MQTT ready |
+| Playwright 提交真实只读设备查询 | 0 | PASS | real-ui-20260922/；实际工具 succeeded、run completed，无浏览器错误 |
+
+- 本轮正式评测命令同上：执行到 12/60 时因反复 20 秒模型请求超时停止做参数诊断，进程收到 SIGINT 后退出 130；保留 12 个案例、manifest 中逐项列出 48 个 NOT_RUN。不是完整验收通过。
+- 经修正的程序检查：4 个符合自动条件、8 个 MODEL_TIMEOUT；人工语义结论仍未填写。原 A04 检查过宽导致两次模型超时被标为 automatic_pass，原始文件保留；`automatic-recheck.json` 关联原文件摘要并记录严格重算。
+- 单变量 `thinking.type=disabled` 诊断 3 次：2 次 ReadTimeout、1 次 2.129s 成功且 reasoning_tokens=0。仍不足以解决端点不稳定，因此没有将此参数加入生产请求或修改用户选择的模型。
+- `uv run pytest tests/unit/test_eval_summary.py tests/unit/test_bootstrap.py tests/unit/test_model_bridge.py -q` 退出 0，17 passed；证据 real-integration-regression.xml。provider 协议回归另 12 passed，real-provider-regression.xml。
+- `uv run python eval/run.py --summarize artifacts/acceptance/real-model-20260922T095120Z --review-file eval/manual-review.json` 退出 1，正确报告缺少完整 60 次案例。
+- 已向用户说明端点时延问题，等待是否更换模型/服务地址的偏好；当前网页、三设备和真实模式继续运行。

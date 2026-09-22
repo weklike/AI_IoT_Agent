@@ -98,3 +98,31 @@ def test_automatic_checker_rejects_wrong_device_and_unfinished_run():
     assert all(EVAL.automatic_checks(case, [run], [], 1).values())
     run["status"] = "failed"
     assert not all(EVAL.automatic_checks(case, [run], [], 1).values())
+
+
+def test_model_timeout_never_passes_boundary_case_checks():
+    for case_id in ["A04", "A06", "A08", "A14", "A18", "A19", "A20"]:
+        case = {
+            "case_id": case_id,
+            "required_tools": [],
+            "expected_orders": 0,
+            "allow_work_order": False,
+        }
+        run = {
+            "run_id": "test-run",
+            "tool_calls": [],
+            "status": "timed_out",
+            "error_code": "MODEL_TIMEOUT",
+        }
+        assert not all(EVAL.automatic_checks(case, [run], [], 1).values()), case_id
+
+
+def test_expected_unknown_device_error_remains_an_allowed_boundary():
+    case = {"case_id": "A04", "required_tools": [], "expected_orders": 0, "allow_work_order": False}
+    run = {
+        "run_id": "test-run",
+        "tool_calls": [],
+        "status": "failed",
+        "error_code": "DEVICE_NOT_FOUND",
+    }
+    assert all(EVAL.automatic_checks(case, [run], [], 1).values())
