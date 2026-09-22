@@ -1,0 +1,41 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_restart_interrupts_pending_runs_preserves_order_and_history _______
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-21/test_restart_interrupts_pendin0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    async def test_restart_interrupts_pending_runs_preserves_order_and_history(tmp_path, fixed_now):
+        settings = Settings(_env_file=None, app_env='test', mqtt_enabled=False,
+                            database_url=f'sqlite+aiosqlite:///{tmp_path}/recover.db')
+        db = Database(settings)
+        clock = FixedClock(fixed_now)
+        await db.initialize(clock)
+        run_id, call_id, order_id, command_id = [str(uuid4()) for _ in range(4)]
+        async with db.sessions.begin() as session:
+            session.add(AgentRun(run_id=run_id, request_id=str(uuid4()), request_hash='x', question='x',
+                                 allow_work_order=True, status='running', created_at=fixed_now))
+            await session.flush()
+            session.add(WorkOrder(order_id=order_id, device_id='CHG-002', reason_code='OVERHEAT', status='OPEN',
+                                  evidence_json={'test':True}, created_from_run_id=run_id, created_at=fixed_now))
+            session.add(ToolCall(tool_call_id=call_id, provider_call_id='p1', run_id=run_id, tool_name='create_work_order',
+                                 args_json={}, status='succeeded', started_at=fixed_now, result_json={'ok':True,'data':{'order_id':order_id}}))
+            session.add(ScenarioCommandRow(command_id=command_id, device_id='CHG-002', scenario='normal', status='pending', requested_at=fixed_now))
+        await db.close()
+        db = Database(settings)
+        await db.initialize(clock)
+        try:
+            async with db.sessions() as session:
+                assert (await session.get(AgentRun,run_id)).status == 'interrupted'
+                assert (await session.get(WorkOrder,order_id)).order_id == order_id
+                assert (await session.get(ToolCall,call_id)).status == 'succeeded'
+>               assert (await session.get(ScenarioCommandRow,command_id)).status == 'timed_out'
+E               AssertionError: assert 'pending' == 'timed_out'
+E                 
+E                 - timed_out
+E                 + pending
+
+tests/integration/test_recovery.py:37: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_recovery.py::test_restart_interrupts_pending_runs_preserves_order_and_history
+1 failed in 0.55s

@@ -1,0 +1,20 @@
+         62322 function calls (56603 primitive calls) in 0.015 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.015    0.015 /home/syzygy/AI_IoT_Agent/backend/app/api.py:18(json_data)
+   5720/1    0.008    0.000    0.015    0.015 /home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/fastapi/encoders.py:129(jsonable_encoder)
+    35828    0.003    0.000    0.003    0.000 {built-in method builtins.isinstance}
+     5419    0.002    0.000    0.002    0.000 /home/syzygy/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/dataclasses.py:1301(is_dataclass)
+     5720    0.001    0.000    0.001    0.000 {method 'items' of 'dict' objects}
+      301    0.000    0.000    0.001    0.000 /home/syzygy/AI_IoT_Agent/backend/app/api.py:20(<lambda>)
+     5419    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+      301    0.000    0.000    0.000    0.000 {method 'isoformat' of 'datetime.datetime' objects}
+     2709    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+      301    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+      301    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+      301    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

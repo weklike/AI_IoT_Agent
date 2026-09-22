@@ -1,0 +1,195 @@
+
+> charge-ops-frontend@0.1.0 test:e2e
+> uv run python ../scripts/e2e.py
+
+ Network charge-smoke-502436a12c7d_default Creating 
+ Network charge-smoke-502436a12c7d_default Created 
+ Volume charge-smoke-502436a12c7d_backend_data Creating 
+ Volume charge-smoke-502436a12c7d_backend_data Created 
+ Container charge-smoke-502436a12c7d-mqtt-1 Creating 
+ Container charge-smoke-502436a12c7d-mqtt-1 Created 
+ Container charge-smoke-502436a12c7d-backend-1 Creating 
+ Container charge-smoke-502436a12c7d-simulator-1 Creating 
+ Container charge-smoke-502436a12c7d-backend-1 Created 
+ Container charge-smoke-502436a12c7d-frontend-1 Creating 
+ Container charge-smoke-502436a12c7d-simulator-1 Created 
+ Container charge-smoke-502436a12c7d-frontend-1 Created 
+ Container charge-smoke-502436a12c7d-mqtt-1 Starting 
+ Container charge-smoke-502436a12c7d-mqtt-1 Started 
+ Container charge-smoke-502436a12c7d-mqtt-1 Waiting 
+ Container charge-smoke-502436a12c7d-mqtt-1 Waiting 
+ Container charge-smoke-502436a12c7d-mqtt-1 Healthy 
+ Container charge-smoke-502436a12c7d-simulator-1 Starting 
+ Container charge-smoke-502436a12c7d-mqtt-1 Healthy 
+ Container charge-smoke-502436a12c7d-backend-1 Starting 
+ Container charge-smoke-502436a12c7d-simulator-1 Started 
+ Container charge-smoke-502436a12c7d-backend-1 Started 
+ Container charge-smoke-502436a12c7d-backend-1 Waiting 
+ Container charge-smoke-502436a12c7d-backend-1 Healthy 
+ Container charge-smoke-502436a12c7d-frontend-1 Starting 
+ Container charge-smoke-502436a12c7d-frontend-1 Started 
+ Container charge-smoke-502436a12c7d-simulator-1 Waiting 
+ Container charge-smoke-502436a12c7d-frontend-1 Waiting 
+ Container charge-smoke-502436a12c7d-mqtt-1 Waiting 
+ Container charge-smoke-502436a12c7d-backend-1 Waiting 
+ Container charge-smoke-502436a12c7d-frontend-1 Healthy 
+ Container charge-smoke-502436a12c7d-simulator-1 Healthy 
+ Container charge-smoke-502436a12c7d-mqtt-1 Healthy 
+ Container charge-smoke-502436a12c7d-backend-1 Healthy 
+
+Running 10 tests using 1 worker
+
+(node:117756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:117756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/agent.spec.ts:3:1 › 查询不建单，刷新恢复服务器轨迹 (2.6s)
+  ✓   2 e2e/agent.spec.ts:17:1 › 授权建单后重复查询只显示真实工单 (5.4s)
+  ✓   3 e2e/agent.spec.ts:30:1 › 响应丢失后重试使用原 request_id，终态停止轮询 (3.0s)
+  ✓   4 e2e/agent.spec.ts:57:1 › 未知设备任务显示失败及真实错误轨迹 (2.3s)
+  ✓   5 e2e/devices.spec.ts:3:1 › 三设备与真实场景切换、离线恢复 (21.1s)
+  ✓   6 e2e/devices.spec.ts:21:3 › 布局与截图 1280 (927ms)
+  ✓   7 e2e/devices.spec.ts:21:3 › 布局与截图 1920 (1.0s)
+  ✓   8 e2e/devices.spec.ts:38:1 › 未知设备和服务断开可见 (424ms)
+  ✓   9 e2e/devices.spec.ts:46:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.1s)
+  ✓  10 e2e/devices.spec.ts:72:1 › 离开详情时未完成的场景请求不能重启旧轮询 (2.1s)
+
+  10 passed (45.9s)
+ Container charge-smoke-502436a12c7d-simulator-1 Stopping 
+ Container charge-smoke-502436a12c7d-frontend-1 Stopping 
+ Container charge-smoke-502436a12c7d-simulator-1 Stopped 
+ Container charge-smoke-502436a12c7d-simulator-1 Removing 
+ Container charge-smoke-502436a12c7d-simulator-1 Removed 
+ Container charge-smoke-502436a12c7d-frontend-1 Stopped 
+ Container charge-smoke-502436a12c7d-frontend-1 Removing 
+ Container charge-smoke-502436a12c7d-frontend-1 Removed 
+ Container charge-smoke-502436a12c7d-backend-1 Stopping 
+ Container charge-smoke-502436a12c7d-backend-1 Stopped 
+ Container charge-smoke-502436a12c7d-backend-1 Removing 
+ Container charge-smoke-502436a12c7d-backend-1 Removed 
+ Container charge-smoke-502436a12c7d-mqtt-1 Stopping 
+ Container charge-smoke-502436a12c7d-mqtt-1 Stopped 
+ Container charge-smoke-502436a12c7d-mqtt-1 Removing 
+ Container charge-smoke-502436a12c7d-mqtt-1 Removed 
+ Volume charge-smoke-502436a12c7d_backend_data Removing 
+ Network charge-smoke-502436a12c7d_default Removing 
+ Volume charge-smoke-502436a12c7d_backend_data Removed 
+ Network charge-smoke-502436a12c7d_default Removed 
+ Network charge-smoke-43bcb7b19112_default Creating 
+ Network charge-smoke-43bcb7b19112_default Created 
+ Volume charge-smoke-43bcb7b19112_backend_data Creating 
+ Volume charge-smoke-43bcb7b19112_backend_data Created 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Creating 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Created 
+ Container charge-smoke-43bcb7b19112-backend-1 Creating 
+ Container charge-smoke-43bcb7b19112-backend-1 Created 
+ Container charge-smoke-43bcb7b19112-frontend-1 Creating 
+ Container charge-smoke-43bcb7b19112-frontend-1 Created 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Starting 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Started 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Waiting 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Healthy 
+ Container charge-smoke-43bcb7b19112-backend-1 Starting 
+ Container charge-smoke-43bcb7b19112-backend-1 Started 
+ Container charge-smoke-43bcb7b19112-backend-1 Waiting 
+ Container charge-smoke-43bcb7b19112-backend-1 Healthy 
+ Container charge-smoke-43bcb7b19112-frontend-1 Starting 
+ Container charge-smoke-43bcb7b19112-frontend-1 Started 
+ Container charge-smoke-43bcb7b19112-frontend-1 Waiting 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Waiting 
+ Container charge-smoke-43bcb7b19112-backend-1 Waiting 
+ Container charge-smoke-43bcb7b19112-frontend-1 Healthy 
+ Container charge-smoke-43bcb7b19112-backend-1 Healthy 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Healthy 
+
+Running 1 test using 1 worker
+
+(node:120676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:120676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/empty.spec.ts:2:1 › @empty 空库显示未知状态与空历史 (2.6s)
+
+  1 passed (4.0s)
+ Container charge-smoke-43bcb7b19112-frontend-1 Stopping 
+ Container charge-smoke-43bcb7b19112-frontend-1 Stopped 
+ Container charge-smoke-43bcb7b19112-frontend-1 Removing 
+ Container charge-smoke-43bcb7b19112-frontend-1 Removed 
+ Container charge-smoke-43bcb7b19112-backend-1 Stopping 
+ Container charge-smoke-43bcb7b19112-backend-1 Stopped 
+ Container charge-smoke-43bcb7b19112-backend-1 Removing 
+ Container charge-smoke-43bcb7b19112-backend-1 Removed 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Stopping 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Stopped 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Removing 
+ Container charge-smoke-43bcb7b19112-mqtt-1 Removed 
+ Volume charge-smoke-43bcb7b19112_backend_data Removing 
+ Network charge-smoke-43bcb7b19112_default Removing 
+ Volume charge-smoke-43bcb7b19112_backend_data Removed 
+ Network charge-smoke-43bcb7b19112_default Removed 
+ Network charge-smoke-b904e08821f3_default Creating 
+ Network charge-smoke-b904e08821f3_default Created 
+ Volume charge-smoke-b904e08821f3_backend_data Creating 
+ Volume charge-smoke-b904e08821f3_backend_data Created 
+ Container charge-smoke-b904e08821f3-mqtt-1 Creating 
+ Container charge-smoke-b904e08821f3-mqtt-1 Created 
+ Container charge-smoke-b904e08821f3-simulator-1 Creating 
+ Container charge-smoke-b904e08821f3-backend-1 Creating 
+ Container charge-smoke-b904e08821f3-simulator-1 Created 
+ Container charge-smoke-b904e08821f3-backend-1 Created 
+ Container charge-smoke-b904e08821f3-frontend-1 Creating 
+ Container charge-smoke-b904e08821f3-frontend-1 Created 
+ Container charge-smoke-b904e08821f3-mqtt-1 Starting 
+ Container charge-smoke-b904e08821f3-mqtt-1 Started 
+ Container charge-smoke-b904e08821f3-mqtt-1 Waiting 
+ Container charge-smoke-b904e08821f3-mqtt-1 Waiting 
+ Container charge-smoke-b904e08821f3-mqtt-1 Healthy 
+ Container charge-smoke-b904e08821f3-simulator-1 Starting 
+ Container charge-smoke-b904e08821f3-mqtt-1 Healthy 
+ Container charge-smoke-b904e08821f3-backend-1 Starting 
+ Container charge-smoke-b904e08821f3-simulator-1 Started 
+ Container charge-smoke-b904e08821f3-backend-1 Started 
+ Container charge-smoke-b904e08821f3-backend-1 Waiting 
+ Container charge-smoke-b904e08821f3-backend-1 Healthy 
+ Container charge-smoke-b904e08821f3-frontend-1 Starting 
+ Container charge-smoke-b904e08821f3-frontend-1 Started 
+ Container charge-smoke-b904e08821f3-simulator-1 Waiting 
+ Container charge-smoke-b904e08821f3-frontend-1 Waiting 
+ Container charge-smoke-b904e08821f3-mqtt-1 Waiting 
+ Container charge-smoke-b904e08821f3-backend-1 Waiting 
+ Container charge-smoke-b904e08821f3-simulator-1 Healthy 
+ Container charge-smoke-b904e08821f3-mqtt-1 Healthy 
+ Container charge-smoke-b904e08821f3-frontend-1 Healthy 
+ Container charge-smoke-b904e08821f3-backend-1 Healthy 
+
+Running 3 tests using 1 worker
+
+(node:122032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:122032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/failures.spec.ts:3:3 › @failure 工具超时显示终态 (5.5s)
+  ✓  2 e2e/failures.spec.ts:3:3 › @failure 模型超时显示终态 (21.3s)
+  ✓  3 e2e/failures.spec.ts:19:1 › @failure 未授权建单只显示提示 (2.4s)
+
+  3 passed (30.6s)
+ Container charge-smoke-b904e08821f3-frontend-1 Stopping 
+ Container charge-smoke-b904e08821f3-simulator-1 Stopping 
+ Container charge-smoke-b904e08821f3-frontend-1 Stopped 
+ Container charge-smoke-b904e08821f3-frontend-1 Removing 
+ Container charge-smoke-b904e08821f3-frontend-1 Removed 
+ Container charge-smoke-b904e08821f3-backend-1 Stopping 
+ Container charge-smoke-b904e08821f3-simulator-1 Stopped 
+ Container charge-smoke-b904e08821f3-simulator-1 Removing 
+ Container charge-smoke-b904e08821f3-simulator-1 Removed 
+ Container charge-smoke-b904e08821f3-backend-1 Stopped 
+ Container charge-smoke-b904e08821f3-backend-1 Removing 
+ Container charge-smoke-b904e08821f3-backend-1 Removed 
+ Container charge-smoke-b904e08821f3-mqtt-1 Stopping 
+ Container charge-smoke-b904e08821f3-mqtt-1 Stopped 
+ Container charge-smoke-b904e08821f3-mqtt-1 Removing 
+ Container charge-smoke-b904e08821f3-mqtt-1 Removed 
+ Volume charge-smoke-b904e08821f3_backend_data Removing 
+ Network charge-smoke-b904e08821f3_default Removing 
+ Volume charge-smoke-b904e08821f3_backend_data Removed 
+ Network charge-smoke-b904e08821f3_default Removed 

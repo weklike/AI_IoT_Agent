@@ -2,7 +2,7 @@
 
 三台独立 MQTT 软件设备、FastAPI 单体、SQLite 七表、Vue 三页，以及一个通过四个函数工具查询设备和创建检修工单的业务 Agent。
 
-已实现设备链路、场景回执、历史查询、工单证据与幂等、Agent 预算和三页交互。默认 `fixture` 为确定性模型替身，不能作为真实模型效果。实际阶段与验证结果见 [PROGRESS](docs/PROGRESS.md)；真实端点配置、人工评审与完整交付状态以证据为准。
+已实现设备链路、场景回执、历史查询、工单证据与幂等、Agent 预算和三页交互。默认 `fixture` 为确定性模型替身，不能作为真实模型效果。当前 G1/G2 工程验收通过，G3 因真实模型配置和人工复核未完成而阻塞。详细状态见 [PROGRESS](docs/PROGRESS.md) 和 [AC 证据索引](artifacts/acceptance/results.json)。
 
 ![设备总览](artifacts/acceptance/e2e/20260922T084330Z/normal/devices-布局与截图-1280/devices-1280.png)
 

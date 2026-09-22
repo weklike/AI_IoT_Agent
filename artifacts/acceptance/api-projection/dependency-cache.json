@@ -1,0 +1,5 @@
+{
+  "image": "charge-ops-backend:test-80da8a4f4e090d64",
+  "uv_lock_and_pyproject": "exact_match",
+  "install": "uv sync --offline --locked --no-dev"
+}

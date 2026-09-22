@@ -1,0 +1,39 @@
+{
+  "unchanged": [
+    "backend/__init__.py",
+    "backend/app/config.py",
+    "backend/app/clocks.py",
+    "backend/app/contracts.py",
+    "backend/app/main.py",
+    "backend/app/errors.py",
+    "backend/app/__init__.py",
+    "backend/app/agent/scheduler.py",
+    "backend/app/agent/fixture_provider.py",
+    "backend/app/agent/prompts.py",
+    "backend/app/agent/__init__.py",
+    "backend/app/telemetry/ingest.py",
+    "backend/app/telemetry/__init__.py",
+    "backend/app/mqtt/client.py",
+    "backend/app/mqtt/__init__.py",
+    "simulator/main.py",
+    "simulator/scenarios.py",
+    "simulator/__init__.py",
+    "knowledge/overheat.md",
+    "knowledge/offline.md"
+  ],
+  "changed": [
+    "backend/app/models.py",
+    "backend/app/work_orders.py",
+    "backend/app/simulator_control.py",
+    "backend/app/api.py",
+    "backend/app/db.py",
+    "backend/app/agent/tools.py",
+    "backend/app/agent/runner.py",
+    "backend/app/agent/provider.py",
+    "backend/app/telemetry/queries.py"
+  ],
+  "reuse_scope": "60-minute MQTT/ingestion stability, ingestion latency, overview visibility only. New query performance measured independently.",
+  "new_query_evidence": "artifacts/acceptance/api-projection/api-load.json",
+  "review": "Changed Agent/work-order/tool trace code is outside this no-model steady run; db changes only restart recovery; telemetry ORM history projection and API encoding covered by fresh query/E2E measurements. Ingest, MQTT, simulator, DataClock and thresholds unchanged.",
+  "browser_capture_note": "Original steady run observations were saved, but exit screenshot failed after SIGTERM due to Playwright signal handling. Original browser.log retained; no original final screenshot claimed. Fixed harness verified in cold-start-capture (normal exit and real screenshot). No production UI/ingestion change."
+}

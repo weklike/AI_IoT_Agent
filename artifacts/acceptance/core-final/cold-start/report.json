@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "checks": {
+    "health": true,
+    "three_devices": true,
+    "page": true,
+    "within_120_seconds": true
+  },
+  "cold_start_seconds": 12.741627879004227,
+  "health": {
+    "data": {
+      "db": "ready",
+      "mqtt": "ready",
+      "llm_mode": "fixture"
+    },
+    "request_id": "eba5be52-a9f2-4232-a5bb-84f8b7ace4fb"
+  },
+  "devices": {
+    "data": [
+      {
+        "device_id": "CHG-001",
+        "name": "充电桩 CHG-001",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.753524,
+        "sample_ts": "2026-09-22T07:56:02.792971Z",
+        "message_id": "085776d0-742a-5a0a-9e51-5ecaf1008494",
+        "temperature_c": 36.37,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T07:56:02.814287Z"
+      },
+      {
+        "device_id": "CHG-002",
+        "name": "充电桩 CHG-002",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.757392,
+        "sample_ts": "2026-09-22T07:56:02.793768Z",
+        "message_id": "4608572f-dd80-536d-a430-ae9836dd5ccb",
+        "temperature_c": 39.86,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T07:56:02.814693Z"
+      },
+      {
+        "device_id": "CHG-003",
+        "name": "充电桩 CHG-003",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.759789,
+        "sample_ts": "2026-09-22T07:56:02.794159Z",
+        "message_id": "2a10ce2a-0ced-5c6b-9b76-0a105353ab1b",
+        "temperature_c": 36.92,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T07:56:02.815262Z"
+      }
+    ],
+    "request_id": "51f04439-9f40-41fc-9555-8600456188a8"
+  },
+  "project": "charge-smoke-b14559f4cc4f"
+}

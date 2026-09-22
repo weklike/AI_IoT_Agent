@@ -1,0 +1,126 @@
+ Network charge-smoke-489c508797e2_default Creating 
+ Network charge-smoke-489c508797e2_default Created 
+ Volume charge-smoke-489c508797e2_backend_data Creating 
+ Volume charge-smoke-489c508797e2_backend_data Created 
+ Container charge-smoke-489c508797e2-mqtt-1 Creating 
+ Container charge-smoke-489c508797e2-mqtt-1 Created 
+ Container charge-smoke-489c508797e2-backend-1 Creating 
+ Container charge-smoke-489c508797e2-simulator-1 Creating 
+ Container charge-smoke-489c508797e2-backend-1 Created 
+ Container charge-smoke-489c508797e2-frontend-1 Creating 
+ Container charge-smoke-489c508797e2-simulator-1 Created 
+ Container charge-smoke-489c508797e2-frontend-1 Created 
+ Container charge-smoke-489c508797e2-mqtt-1 Starting 
+ Container charge-smoke-489c508797e2-mqtt-1 Started 
+ Container charge-smoke-489c508797e2-mqtt-1 Waiting 
+ Container charge-smoke-489c508797e2-mqtt-1 Waiting 
+ Container charge-smoke-489c508797e2-mqtt-1 Healthy 
+ Container charge-smoke-489c508797e2-simulator-1 Starting 
+ Container charge-smoke-489c508797e2-mqtt-1 Healthy 
+ Container charge-smoke-489c508797e2-backend-1 Starting 
+ Container charge-smoke-489c508797e2-backend-1 Started 
+ Container charge-smoke-489c508797e2-backend-1 Waiting 
+ Container charge-smoke-489c508797e2-simulator-1 Started 
+ Container charge-smoke-489c508797e2-backend-1 Healthy 
+ Container charge-smoke-489c508797e2-frontend-1 Starting 
+ Container charge-smoke-489c508797e2-frontend-1 Started 
+ Container charge-smoke-489c508797e2-simulator-1 Waiting 
+ Container charge-smoke-489c508797e2-frontend-1 Waiting 
+ Container charge-smoke-489c508797e2-mqtt-1 Waiting 
+ Container charge-smoke-489c508797e2-backend-1 Waiting 
+ Container charge-smoke-489c508797e2-simulator-1 Healthy 
+ Container charge-smoke-489c508797e2-mqtt-1 Healthy 
+ Container charge-smoke-489c508797e2-frontend-1 Healthy 
+ Container charge-smoke-489c508797e2-backend-1 Healthy 
+ Container charge-smoke-489c508797e2-frontend-1 Stopping 
+ Container charge-smoke-489c508797e2-simulator-1 Stopping 
+ Container charge-smoke-489c508797e2-simulator-1 Stopped 
+ Container charge-smoke-489c508797e2-simulator-1 Removing 
+ Container charge-smoke-489c508797e2-simulator-1 Removed 
+ Container charge-smoke-489c508797e2-frontend-1 Stopped 
+ Container charge-smoke-489c508797e2-frontend-1 Removing 
+ Container charge-smoke-489c508797e2-frontend-1 Removed 
+ Container charge-smoke-489c508797e2-backend-1 Stopping 
+ Container charge-smoke-489c508797e2-backend-1 Stopped 
+ Container charge-smoke-489c508797e2-backend-1 Removing 
+ Container charge-smoke-489c508797e2-backend-1 Removed 
+ Container charge-smoke-489c508797e2-mqtt-1 Stopping 
+ Container charge-smoke-489c508797e2-mqtt-1 Stopped 
+ Container charge-smoke-489c508797e2-mqtt-1 Removing 
+ Container charge-smoke-489c508797e2-mqtt-1 Removed 
+ Network charge-smoke-489c508797e2_default Removing 
+ Volume charge-smoke-489c508797e2_backend_data Removing 
+ Volume charge-smoke-489c508797e2_backend_data Removed 
+ Network charge-smoke-489c508797e2_default Removed 
+{
+  "status": "PASS",
+  "checks": {
+    "health": true,
+    "three_devices": true,
+    "page": true,
+    "within_120_seconds": true
+  },
+  "cold_start_seconds": 10.66085674399801,
+  "health": {
+    "data": {
+      "db": "ready",
+      "mqtt": "ready",
+      "llm_mode": "fixture"
+    },
+    "request_id": "014c0765-11e2-494e-bde2-711fab29cbab"
+  },
+  "devices": {
+    "data": [
+      {
+        "device_id": "CHG-001",
+        "name": "\u5145\u7535\u6869 CHG-001",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.792422,
+        "sample_ts": "2026-09-22T08:56:49.080786Z",
+        "message_id": "928295b8-d15c-5512-9275-050558c0f034",
+        "temperature_c": 36.1,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T08:56:49.081858Z"
+      },
+      {
+        "device_id": "CHG-002",
+        "name": "\u5145\u7535\u6869 CHG-002",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.796537,
+        "sample_ts": "2026-09-22T08:56:49.081214Z",
+        "message_id": "cc13561e-2b0d-5093-894a-22ff92eb7362",
+        "temperature_c": 35.5,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T08:56:49.082137Z"
+      },
+      {
+        "device_id": "CHG-003",
+        "name": "\u5145\u7535\u6869 CHG-003",
+        "connection_state": "online",
+        "health_state": "normal",
+        "data_fresh": true,
+        "data_age_seconds": 1.798929,
+        "sample_ts": "2026-09-22T08:56:49.081472Z",
+        "message_id": "7c983917-c5f5-54b2-93ff-503868fb9218",
+        "temperature_c": 37.51,
+        "voltage_v": 400.0,
+        "current_a": 50.0,
+        "power_kw": 20.0,
+        "operating_state": "charging",
+        "last_live_received_at": "2026-09-22T08:56:49.082006Z"
+      }
+    ],
+    "request_id": "8aeeb7ee-c097-434c-8d8b-e74ea3879fac"
+  },
+  "project": "charge-smoke-489c508797e2"
+}

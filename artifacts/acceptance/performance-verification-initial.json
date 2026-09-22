@@ -1,0 +1,106 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "60_minute_window": true,
+    "reception_ratio": true,
+    "telemetry_samples": true,
+    "telemetry_p95": true,
+    "api_samples": true,
+    "api_p95": false,
+    "api_errors": true,
+    "browser_visible": true,
+    "browser_errors": true,
+    "backend_errors": true,
+    "cold_start": true
+  },
+  "visible_samples": [
+    {
+      "message_id": "dee1c19f-b18f-5d8d-b55f-ed4d3dcbb1d3",
+      "latency_ms": 378.64799999999997
+    },
+    {
+      "message_id": "6a05b1b2-759f-54e1-a790-afa67577ad38",
+      "latency_ms": 343.14099999999996
+    },
+    {
+      "message_id": "9dd9f98d-a687-5c80-b7fd-6b74baac186d",
+      "latency_ms": 362.789
+    },
+    {
+      "message_id": "84e6c70d-891f-53ef-b73e-b977a496afa3",
+      "latency_ms": 373.844
+    },
+    {
+      "message_id": "1682a0d2-9407-57ba-9845-9e9ddecf3fa6",
+      "latency_ms": 388.55600000000004
+    },
+    {
+      "message_id": "f050347a-dab7-556d-b1ec-22625e9400ad",
+      "latency_ms": 359.46299999999997
+    },
+    {
+      "message_id": "39874d98-fb31-5268-a82c-bca82eab533b",
+      "latency_ms": 472.082
+    },
+    {
+      "message_id": "89a24e8a-5e29-5657-84e4-b6e9b4835713",
+      "latency_ms": 455.483
+    },
+    {
+      "message_id": "9c7b24f6-2a8d-53de-941c-ad6adedac8ce",
+      "latency_ms": 440.577
+    },
+    {
+      "message_id": "16c339c6-ffb3-5138-99d9-8f25e8610a91",
+      "latency_ms": 493.827
+    },
+    {
+      "message_id": "ea280d35-9e3c-5185-b85e-44fcb1b9097f",
+      "latency_ms": 475.111
+    },
+    {
+      "message_id": "4d6c7171-bb5b-5653-a63d-0fabe2ef6586",
+      "latency_ms": 484.18899999999996
+    },
+    {
+      "message_id": "5bc020cd-f188-5d3a-a004-06d4778a701a",
+      "latency_ms": 483.524
+    },
+    {
+      "message_id": "9d5e6432-7a0b-5154-b85e-2e6dad191fa4",
+      "latency_ms": 473.22700000000003
+    },
+    {
+      "message_id": "ad6beb8d-2f00-5265-bb54-cfd1b09dab2e",
+      "latency_ms": 462.551
+    },
+    {
+      "message_id": "8c18da10-db06-57ac-9dd4-b0dbc6614a1e",
+      "latency_ms": 486.164
+    },
+    {
+      "message_id": "c6c364cb-3d1d-5cbe-9fe3-e3db3db7a977",
+      "latency_ms": 477.21000000000004
+    },
+    {
+      "message_id": "9befed58-69e8-52fe-ba01-c066af372f55",
+      "latency_ms": 466.66999999999996
+    },
+    {
+      "message_id": "d12044b7-9b15-55e7-9e04-2d3aa12ca739",
+      "latency_ms": 486.084
+    },
+    {
+      "message_id": "80592038-ddea-52a1-a1cb-5ff95e513801",
+      "latency_ms": 462.779
+    }
+  ],
+  "telemetry_p95_ms": 79.497,
+  "api_p95_ms": 650.1635339955101,
+  "reception_ratio": 1.0,
+  "source_sha256": {
+    "measurements.json": "c8ef0a2e6d86e1dbe9e0f36b384f3907b2341e9a4f3eab3ea670efbebf593d8d",
+    "browser-observed.json": "0d12e358706c4fcae3178b53366f1354d1feb60bf018e4915df70503d727d987",
+    "steady-window.log": "37a3ab3d755003e21b4a2aa46b95330d1c789f04bc40741e1b9cb072b05ee3a6"
+  }
+}

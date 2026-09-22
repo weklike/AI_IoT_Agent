@@ -1,0 +1,8 @@
+{
+  "data": {
+    "db": "ready",
+    "mqtt": "ready",
+    "llm_mode": "fixture"
+  },
+  "request_id": "45b08d6f-9d32-420d-9b5f-f94f3025dd33"
+}

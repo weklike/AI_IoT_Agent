@@ -1,0 +1,28 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_frozen_data_clock_keeps_execution_order _________________
+
+harness = (<fastapi.applications.FastAPI object at 0x716c46c8bf80>, <backend.app.agent.fixture_provider.ScriptedProvider object at 0x716c46c33890>, <function harness.<locals>.run at 0x716c46cc98a0>, <httpx.AsyncClient object at 0x716c46cf3d10>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x716c46c893d0>
+
+    async def test_frozen_data_clock_keeps_execution_order(harness, monkeypatch):
+        from uuid import UUID
+        from backend.app.agent import runner as runner_module
+        app, provider, run, client = harness
+        ids=iter([UUID(int=3),UUID(int=2),UUID(int=1)])
+        monkeypatch.setattr(runner_module,'uuid4',lambda:next(ids))
+        provider.responses=[call('get_device_status',{'device_id':'CHG-002'}),
+                            call('get_device_history',{'device_id':'CHG-002','window_minutes':10}),
+                            call('get_fault_guide',{'reason_code':'OVERHEAT'}),
+                            {'role':'assistant','content':'done'}]
+        result=await run()
+>       assert [row['tool_name'] for row in result['tool_calls']]==['get_device_status','get_device_history','get_fault_guide']
+E       AssertionError: assert ['get_fault_g...evice_status'] == ['get_device_..._fault_guide']
+E         
+E         At index 0 diff: 'get_fault_guide' != 'get_device_status'
+E         Use -v to get more diff
+
+tests/integration/test_agent_workflow.py:300: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_agent_workflow.py::test_frozen_data_clock_keeps_execution_order
+1 failed, 18 deselected in 0.70s

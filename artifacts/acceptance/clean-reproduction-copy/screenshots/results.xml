@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="2.037713">
+<testsuite name="devices.spec.ts" timestamp="2026-09-22T08:53:54.350Z" hostname="" tests="1" failures="0" skipped="0" time="0.632" errors="0">
+<testcase name="未知设备和服务断开可见" classname="devices.spec.ts" time="0.632">
+</testcase>
+</testsuite>
+</testsuites>

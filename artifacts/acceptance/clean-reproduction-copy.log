@@ -1,0 +1,61 @@
+{
+  "source_commit": "75c3c3364705f656b0ed7d0bfe3dacb8098dee50",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--local",
+        "--no-hardlinks",
+        "<source>",
+        "<temporary checkout>"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "ci",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "owned four-service stack + health/three devices + disconnected/unknown E2E screenshots",
+      "exit_code": 0
+    }
+  ],
+  "status": "PASS",
+  "scope": "Clean local checkout, locked offline dependency cache, independent Compose volume/ports; no credentials copied."
+}

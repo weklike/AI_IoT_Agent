@@ -1,0 +1,127 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_expired_command_does_not_remain_pending_after_db_busy __________
+
+control = <backend.app.simulator_control.ScenarioControl object at 0x79eaf952ed20>
+
+    async def test_expired_command_does_not_remain_pending_after_db_busy(control):
+        from sqlalchemy import text
+        control.settings.scenario_ack_timeout_seconds=.1
+        command=await control.create('CHG-002','normal')
+        async with control.db.engine.connect() as locked:
+            await locked.execute(text('BEGIN IMMEDIATE'))
+            await asyncio.sleep(1.25)
+            await locked.rollback()
+>       assert (await control.get(command['command_id']))['status']=='timed_out'
+E       AssertionError: assert 'pending' == 'timed_out'
+E         
+E         - timed_out
+E         + pending
+
+tests/integration/test_scenario_control.py:167: AssertionError
+------------------------------ Captured log call -------------------------------
+ERROR    asyncio:base_events.py:1833 Task exception was never retrieved
+future: <Task finished name='scenario-ca345b10-2157-488a-b543-2ea10e238bc2' coro=<ScenarioControl._expire() done, defined at /home/syzygy/AI_IoT_Agent/backend/app/simulator_control.py:66> exception=OperationalError('(sqlite3.OperationalError) database is locked')>
+Traceback (most recent call last):
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 213, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 373, in _handle_exception
+    raise error
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 195, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/core.py", line 160, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/core.py", line 63, in _connection_worker_thread
+    result = function()
+             ^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/syzygy/AI_IoT_Agent/backend/app/simulator_control.py", line 71, in _expire
+    await session.execute(
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1676, in orm_execute_statement
+    return super().orm_execute_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 213, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 373, in _handle_exception
+    raise error
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 195, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/core.py", line 160, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/syzygy/AI_IoT_Agent/.venv/lib/python3.12/site-packages/aiosqlite/core.py", line 63, in _connection_worker_thread
+    result = function()
+             ^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: UPDATE scenario_commands SET status=?, error=? WHERE scenario_commands.command_id = ? AND scenario_commands.status = ?]
+[parameters: ('timed_out', 'SCENARIO_ACK_TIMEOUT', 'ca345b10-2157-488a-b543-2ea10e238bc2', 'pending')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+=========================== short test summary info ============================
+FAILED tests/integration/test_scenario_control.py::test_expired_command_does_not_remain_pending_after_db_busy
+1 failed, 4 deselected in 1.79s

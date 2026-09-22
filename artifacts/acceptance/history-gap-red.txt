@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_history_exposes_gap_without_inventing_samples ______________
+
+app_client = (<fastapi.applications.FastAPI object at 0x7d0038882450>, <httpx.AsyncClient object at 0x7d00389c0ef0>)
+valid_payload = {'schema_version': 1, 'device_id': 'CHG-002', 'message_id': 'bb7ce354-0569-4bcb-82de-233380fbba31', 'boot_id': 'ee456e0c-cd91-4fe0-83f1-a63dfc076f6a', ...}
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    async def test_history_exposes_gap_without_inventing_samples(app_client,valid_payload,fixed_now):
+        app,client=app_client
+        for seq,offset in [(1,-20),(2,-18),(3,0)]:
+            sample=TelemetryMessage.model_validate({**valid_payload,'message_id':str(uuid4()),'seq':seq,
+                'ts':fixed_now+timedelta(seconds=offset)})
+            await app.state.store.ingest(sample,sample.ts)
+        response=await client.get('/api/devices/CHG-002/telemetry',params={
+            'from':(fixed_now-timedelta(minutes=10)).isoformat(),'to':fixed_now.isoformat()})
+        points=response.json()['data']
+        assert len(points)==3
+>       assert [point['gap_before'] for point in points]==[False,False,True]
+                ^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gap_before'
+
+tests/integration/test_api.py:127: KeyError
+=========================== short test summary info ============================
+FAILED tests/integration/test_api.py::test_history_exposes_gap_without_inventing_samples
+1 failed, 7 deselected in 0.60s

@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 8 已验证，Task 9 干净目录复现与证据归档；真实模型部分阻塞
-- 当前分支/提交：develop，最近提交 972c16d；前端、验收/评测入口、文档与边界修复待提交
-- 更新时间：2026-09-22 16:53 +08:00
+- 当前任务：Task 9 等待真实模型配置与人工复核；G1/G2 已通过，G3 BLOCKED
+- 当前分支/提交：develop；实现提交 75c3c33，验收截图修复 2d066f1；后续提交仅更新文档与证据
+- 更新时间：2026-09-22 17:00 +08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -42,11 +42,14 @@
 
 | `uv run python scripts/query_performance.py --output artifacts/acceptance/api-projection`（同锁依赖缓存） | 0 | PASS | 5403 条，50/10/1000，P95 404.300ms，零错误 |
 | `uv run pytest tests/integration/test_api.py tests/integration/test_work_orders.py -q` | 0 | PASS | history-projection.xml；20 passed |
-| API/Agent/幂等定向测试 | 0 | PASS | api-serialization-fixed.xml；35 passed；服务层另 24 passed |
+| `uv run pytest tests/integration/test_api.py tests/integration/test_agent_workflow.py tests/integration/test_run_idempotency.py -q` | 0 | PASS | api-serialization-fixed.xml；35 passed；服务层另 24 passed |
 | `npm --prefix frontend run test:e2e`（新曲线/窗口/时限） | 0 | PASS | e2e/20260922T084330Z；14 项；e2e-timing-evidence 精确时限 JSON |
 | `uv run python scripts/acceptance.py --suite performance --reuse-performance artifacts/acceptance/performance-20260922 --query-evidence artifacts/acceptance/api-projection --output artifacts/acceptance/performance-final` | 0 | PASS | performance-final/report.json；沿用范围与变更见 performance-compatibility.json |
 | `uv run python scripts/acceptance.py --suite resilience --reuse-performance artifacts/acceptance/performance-20260922 --query-evidence artifacts/acceptance/api-projection --output artifacts/acceptance/resilience-final` | 0 | PASS | 30 passed / 174.32s；resilience-final/report.json |
 | `uv run ruff check backend simulator tests scripts eval` / `ruff format --check ...` | 0 | PASS | 61 文件；无 lint/格式错误 |
+
+| 干净临时 checkout：`uv sync --locked --offline`、`npm --prefix frontend ci --offline`、typecheck/build、隔离四服务启动与错误截图 | 0 | PASS | clean-reproduction-copy/report.json；初次跨文件系统硬链接失败保留，改用 --no-hardlinks |
+| `cold_start()` 独立四服务及浏览器截图复验 | 0 | PASS | cold-start-capture/report.json；10.661s，browser-final.png；旧信号收尾截图错误见 decisions |
 
 ## 未完成与阻塞
 - 初轮 API 性能失败已经修复；原 FAIL 保留，新样本见 api-projection。PyPI 两次构建超时已使用相同锁文件镜像依赖缓存恢复，未改变业务依赖。
@@ -56,5 +59,8 @@
 - 系统 Python 不作为项目解释器；实际使用 uv 管理 Python 3.12.13、Node 24.13.0、Chromium、Docker Compose 5.1.1；完整环境见证据。
 
 ## 下一步
-- 在干净临时 checkout 按 README 复现，更新 AC-01—AC-40 索引与源码摘要，提交本次实现。
+- 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理，演示服务未常驻启动。启动命令见 README。
+- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 PASS；AC-36/37 BLOCKED，AC-38/40 PENDING_REVIEW，未声明完整作品交付。
 - 本地真实模型配置就绪后先 `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-01`；成功再执行完整 60 次与真人复核。
+
+- 真人完成 60 例语义/关键错误复核并填写 eval/manual-review.json 后运行 summarize；按 docs/demo.md 完成个人 3—5 分钟演示，确认能解释代码和简历数字。不得由开发 Agent 冒充真人完成。

@@ -1,0 +1,542 @@
+[
+  {
+    "minute": 1,
+    "loadavg": [
+      0.2666015625,
+      0.2236328125,
+      0.17333984375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 16.6MB\",\"CPUPerc\":\"12.78%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.59%\",\"MemUsage\":\"70.18MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"78.8kB / 65.5kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.27%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.14MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"9.18kB / 53.8kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.61%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.438MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"62.9kB / 55.8kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.43MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"81.9kB / 703kB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 2,
+    "loadavg": [
+      0.3798828125,
+      0.24609375,
+      0.18408203125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 19MB\",\"CPUPerc\":\"1.12%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.60%\",\"MemUsage\":\"72.05MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"148kB / 126kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"16.1kB / 98.3kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.48%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.438MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"116kB / 104kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.426MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"156kB / 779kB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 3,
+    "loadavg": [
+      0.21484375,
+      0.22802734375,
+      0.17919921875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 21.6MB\",\"CPUPerc\":\"13.08%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.45MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"221kB / 187kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.25%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"23.4kB / 146kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.53%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.438MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"169kB / 152kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.426MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"227kB / 852kB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 4,
+    "loadavg": [
+      0.21337890625,
+      0.216796875,
+      0.17919921875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 24.3MB\",\"CPUPerc\":\"0.16%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.54MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"289kB / 246kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"30.5kB / 192kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.09%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"222kB / 201kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.43MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"304kB / 930kB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 5,
+    "loadavg": [
+      1.21533203125,
+      0.4853515625,
+      0.27392578125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 27.1MB\",\"CPUPerc\":\"11.33%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.54MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"362kB / 307kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.20%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"37.6kB / 238kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.07%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"275kB / 249kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.426MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"375kB / 1MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 6,
+    "loadavg": [
+      2.5830078125,
+      0.95751953125,
+      0.447265625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 29.9MB\",\"CPUPerc\":\"9.84%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.57MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"432kB / 368kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.17%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"44.5kB / 283kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"326kB / 296kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.473MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"450kB / 1.08MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 7,
+    "loadavg": [
+      1.236328125,
+      0.87158203125,
+      0.45068359375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 32.8MB\",\"CPUPerc\":\"10.55%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.57MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"503kB / 429kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.01%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"51.7kB / 329kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"379kB / 345kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.52MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"522kB / 1.15MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 8,
+    "loadavg": [
+      0.59619140625,
+      0.74365234375,
+      0.43310546875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 35.7MB\",\"CPUPerc\":\"9.36%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.61MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"574kB / 491kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.29%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"58.8kB / 375kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"432kB / 393kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"598kB / 1.23MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 9,
+    "loadavg": [
+      0.4873046875,
+      0.68310546875,
+      0.43212890625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 38.6MB\",\"CPUPerc\":\"2.18%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.6MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"644kB / 550kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"65.9kB / 421kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"485kB / 441kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.52MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"670kB / 1.3MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 10,
+    "loadavg": [
+      0.787109375,
+      0.7275390625,
+      0.46337890625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 41.5MB\",\"CPUPerc\":\"0.14%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.63MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"715kB / 611kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.01%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"73kB / 467kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.46%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.469MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"538kB / 490kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"744kB / 1.38MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 11,
+    "loadavg": [
+      0.6171875,
+      0.685546875,
+      0.46240234375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 44.2MB\",\"CPUPerc\":\"1.21%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.63MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"786kB / 672kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.01%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"80.1kB / 513kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.20%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"591kB / 538kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"816kB / 1.45MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 12,
+    "loadavg": [
+      1.2763671875,
+      0.86474609375,
+      0.5390625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 47.1MB\",\"CPUPerc\":\"1.32%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.66MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"857kB / 733kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"87.2kB / 559kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.441MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"644kB / 587kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"893kB / 1.53MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 13,
+    "loadavg": [
+      0.8896484375,
+      0.82958984375,
+      0.54833984375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 50.1MB\",\"CPUPerc\":\"13.46%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.68MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"927kB / 792kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"94.4kB / 605kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.09%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"697kB / 635kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"965kB / 1.61MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 14,
+    "loadavg": [
+      0.66455078125,
+      0.79345703125,
+      0.55224609375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 52.8MB\",\"CPUPerc\":\"0.15%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.68MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"998kB / 853kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"101kB / 651kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.59%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"750kB / 683kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.04MB / 1.68MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 15,
+    "loadavg": [
+      0.509765625,
+      0.75830078125,
+      0.55517578125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 55.8MB\",\"CPUPerc\":\"1.12%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.72MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.07MB / 914kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"109kB / 697kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.23%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"803kB / 732kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.11MB / 1.76MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 16,
+    "loadavg": [
+      0.25341796875,
+      0.63427734375,
+      0.5244140625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 58.5MB\",\"CPUPerc\":\"1.17%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.72MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.14MB / 975kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.22%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"116kB / 743kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"856kB / 780kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.19MB / 1.83MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 17,
+    "loadavg": [
+      0.27392578125,
+      0.56396484375,
+      0.50634765625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 61.4MB\",\"CPUPerc\":\"2.58%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.74MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.21MB / 1.04MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.28%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"123kB / 789kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"910kB / 828kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.26MB / 1.91MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 18,
+    "loadavg": [
+      0.7275390625,
+      0.591796875,
+      0.51513671875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 64.3MB\",\"CPUPerc\":\"2.51%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.75MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.28MB / 1.1MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.21%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"130kB / 835kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"962kB / 877kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.33MB / 1.98MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 19,
+    "loadavg": [
+      1.36279296875,
+      0.81396484375,
+      0.59765625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 67.3MB\",\"CPUPerc\":\"2.69%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.77MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.35MB / 1.16MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.23%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"137kB / 881kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.02MB / 925kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.41MB / 2.06MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 20,
+    "loadavg": [
+      1.32080078125,
+      0.896484375,
+      0.64013671875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 69.9MB\",\"CPUPerc\":\"3.65%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.77MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.42MB / 1.22MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.36%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"144kB / 927kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.07MB / 973kB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.48MB / 2.13MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 21,
+    "loadavg": [
+      0.74169921875,
+      0.81982421875,
+      0.62890625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 73MB\",\"CPUPerc\":\"3.36%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.8MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.49MB / 1.28MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"151kB / 971kB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.445MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.12MB / 1.02MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.07%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.56MB / 2.21MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 22,
+    "loadavg": [
+      0.302734375,
+      0.68212890625,
+      0.59375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 75.8MB\",\"CPUPerc\":\"12.24%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.81MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.56MB / 1.34MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.22%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"158kB / 1.02MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.07%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.17MB / 1.07MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.63MB / 2.28MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 23,
+    "loadavg": [
+      0.390625,
+      0.63330078125,
+      0.5810546875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 78.6MB\",\"CPUPerc\":\"2.36%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.82MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.64MB / 1.4MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"165kB / 1.06MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"3.43%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.23MB / 1.12MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.7MB / 2.36MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 24,
+    "loadavg": [
+      0.1416015625,
+      0.51513671875,
+      0.54052734375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 81.6MB\",\"CPUPerc\":\"3.46%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.85MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.71MB / 1.46MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.19%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"173kB / 1.11MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.55%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.477MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.28MB / 1.17MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.77MB / 2.43MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 25,
+    "loadavg": [
+      0.21337890625,
+      0.46533203125,
+      0.5224609375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 84.4MB\",\"CPUPerc\":\"3.11%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.86MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.78MB / 1.52MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.18%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"180kB / 1.16MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.50%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.33MB / 1.21MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.85MB / 2.51MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 26,
+    "loadavg": [
+      0.34423828125,
+      0.44287109375,
+      0.509765625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 87.3MB\",\"CPUPerc\":\"2.38%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.87MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.85MB / 1.58MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.28%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"187kB / 1.2MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.60%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.39MB / 1.26MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"1.92MB / 2.58MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 27,
+    "loadavg": [
+      0.482421875,
+      0.4541015625,
+      0.50830078125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 90MB\",\"CPUPerc\":\"11.84%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.88MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.92MB / 1.64MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.24%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"194kB / 1.25MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.51%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.44MB / 1.31MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2MB / 2.66MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 28,
+    "loadavg": [
+      0.43310546875,
+      0.4462890625,
+      0.50146484375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 93MB\",\"CPUPerc\":\"14.09%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.91MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"1.99MB / 1.7MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.22%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"201kB / 1.29MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.39%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.02%\",\"MemUsage\":\"2.777MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.49MB / 1.36MB\",\"PIDs\":\"7\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.07MB / 2.73MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 29,
+    "loadavg": [
+      0.15673828125,
+      0.36279296875,
+      0.46630859375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 95.8MB\",\"CPUPerc\":\"13.29%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.9MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.06MB / 1.76MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"208kB / 1.34MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.449MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.54MB / 1.41MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.14MB / 2.81MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 30,
+    "loadavg": [
+      0.62109375,
+      0.43798828125,
+      0.4814453125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 98.7MB\",\"CPUPerc\":\"9.67%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.93MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.13MB / 1.82MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"215kB / 1.39MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.6MB / 1.45MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.22MB / 2.89MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 31,
+    "loadavg": [
+      0.47216796875,
+      0.44384765625,
+      0.48046875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 102MB\",\"CPUPerc\":\"10.11%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.94MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.2MB / 1.88MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"222kB / 1.43MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.65MB / 1.5MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.29MB / 2.96MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 32,
+    "loadavg": [
+      0.4521484375,
+      0.4267578125,
+      0.46875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 104MB\",\"CPUPerc\":\"9.89%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.96MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.27MB / 1.94MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"229kB / 1.48MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.7MB / 1.55MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.36MB / 3.04MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 33,
+    "loadavg": [
+      0.6376953125,
+      0.486328125,
+      0.48583984375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 107MB\",\"CPUPerc\":\"11.26%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.98MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.34MB / 2.01MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"236kB / 1.52MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.76MB / 1.6MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.44MB / 3.11MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 34,
+    "loadavg": [
+      0.39111328125,
+      0.44140625,
+      0.46728515625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 110MB\",\"CPUPerc\":\"10.97%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"72.99MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.41MB / 2.07MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.23%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"244kB / 1.57MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.81MB / 1.65MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.51MB / 3.19MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 35,
+    "loadavg": [
+      0.42138671875,
+      0.44873046875,
+      0.46630859375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 113MB\",\"CPUPerc\":\"6.74%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.01MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.48MB / 2.13MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"251kB / 1.62MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.86MB / 1.7MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.58MB / 3.26MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 36,
+    "loadavg": [
+      0.15234375,
+      0.36474609375,
+      0.4345703125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 116MB\",\"CPUPerc\":\"0.15%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.02MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.55MB / 2.19MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.29%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"258kB / 1.66MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.52%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.91MB / 1.74MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.66MB / 3.34MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 37,
+    "loadavg": [
+      0.228515625,
+      0.34326171875,
+      0.4228515625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 119MB\",\"CPUPerc\":\"1.20%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.04MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.62MB / 2.25MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.01%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"265kB / 1.71MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.45%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.48MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"1.97MB / 1.79MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.73MB / 3.41MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 38,
+    "loadavg": [
+      0.27392578125,
+      0.33935546875,
+      0.41650390625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 122MB\",\"CPUPerc\":\"1.23%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.07MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.7MB / 2.31MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"272kB / 1.75MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.07%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.453MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.02MB / 1.84MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.81MB / 3.49MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 39,
+    "loadavg": [
+      0.521484375,
+      0.3984375,
+      0.4326171875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 125MB\",\"CPUPerc\":\"0.17%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.06MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.77MB / 2.37MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"279kB / 1.8MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.63%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.473MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.07MB / 1.89MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.88MB / 3.56MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 40,
+    "loadavg": [
+      0.328125,
+      0.36865234375,
+      0.42041015625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 128MB\",\"CPUPerc\":\"13.01%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.09MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.84MB / 2.43MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"286kB / 1.85MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.57%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.469MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.13MB / 1.94MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"2.95MB / 3.64MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 41,
+    "loadavg": [
+      0.1181640625,
+      0.298828125,
+      0.39111328125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 130MB\",\"CPUPerc\":\"2.57%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.1MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.91MB / 2.49MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.14MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"293kB / 1.89MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.18MB / 1.99MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.02MB / 3.71MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 42,
+    "loadavg": [
+      0.28271484375,
+      0.29248046875,
+      0.37841796875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 133MB\",\"CPUPerc\":\"3.35%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.12MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"2.98MB / 2.55MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.24%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"301kB / 1.94MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.09%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.23MB / 2.04MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.1MB / 3.79MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 43,
+    "loadavg": [
+      0.572265625,
+      0.3759765625,
+      0.39990234375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 136MB\",\"CPUPerc\":\"2.40%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.12MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.05MB / 2.61MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.25%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.14MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"308kB / 1.98MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.29MB / 2.08MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.17MB / 3.86MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 44,
+    "loadavg": [
+      0.2080078125,
+      0.30517578125,
+      0.37060546875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 139MB\",\"CPUPerc\":\"5.61%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.65%\",\"MemUsage\":\"77.41MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.12MB / 2.67MB\",\"PIDs\":\"5\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.28%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"315kB / 2.03MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.09%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.34MB / 2.13MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.24MB / 3.94MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 45,
+    "loadavg": [
+      0.07421875,
+      0.2470703125,
+      0.345703125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 142MB\",\"CPUPerc\":\"13.04%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.17MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.19MB / 2.73MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.21%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"322kB / 2.08MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.08%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.39MB / 2.18MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.777MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.32MB / 4.01MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 46,
+    "loadavg": [
+      0.06689453125,
+      0.21435546875,
+      0.328125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 145MB\",\"CPUPerc\":\"13.21%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.2MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.26MB / 2.79MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"329kB / 2.12MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.07%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.457MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.45MB / 2.23MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.39MB / 4.09MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 47,
+    "loadavg": [
+      0.22900390625,
+      0.234375,
+      0.32763671875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 148MB\",\"CPUPerc\":\"12.81%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.2MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.33MB / 2.85MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"336kB / 2.17MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.65%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.5MB / 2.28MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.46MB / 4.16MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 48,
+    "loadavg": [
+      0.6328125,
+      0.31884765625,
+      0.3486328125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 151MB\",\"CPUPerc\":\"12.36%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.21MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.4MB / 2.91MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"343kB / 2.22MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.71%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.488MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.55MB / 2.33MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.54MB / 4.24MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 49,
+    "loadavg": [
+      0.33203125,
+      0.30126953125,
+      0.34228515625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 154MB\",\"CPUPerc\":\"12.75%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.23MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.48MB / 2.97MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.21%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.13MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"350kB / 2.26MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.43%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.6MB / 2.37MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.61MB / 4.32MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 50,
+    "loadavg": [
+      0.84375,
+      0.4453125,
+      0.388671875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 157MB\",\"CPUPerc\":\"14.48%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.23MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.55MB / 3.03MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.22%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.14MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"357kB / 2.31MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.41%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.66MB / 2.42MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.69MB / 4.39MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 51,
+    "loadavg": [
+      0.77783203125,
+      0.5009765625,
+      0.4111328125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 160MB\",\"CPUPerc\":\"29.46%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.25MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.62MB / 3.1MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.29%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.14MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"365kB / 2.35MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"3.26%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.465MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.71MB / 2.47MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.76MB / 4.47MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 52,
+    "loadavg": [
+      1.12744140625,
+      0.615234375,
+      0.4541015625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 163MB\",\"CPUPerc\":\"10.05%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.68%\",\"MemUsage\":\"81.08MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.69MB / 3.15MB\",\"PIDs\":\"5\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.15%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.15MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"372kB / 2.4MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.80%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.76MB / 2.52MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.84MB / 4.54MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 53,
+    "loadavg": [
+      0.83203125,
+      0.64794921875,
+      0.4755859375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 166MB\",\"CPUPerc\":\"11.20%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.43MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.76MB / 3.22MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.18%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.16MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"379kB / 2.45MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.19%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.82MB / 2.57MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.91MB / 4.62MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 54,
+    "loadavg": [
+      0.40966796875,
+      0.5576171875,
+      0.45263671875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 169MB\",\"CPUPerc\":\"11.55%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.3MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.83MB / 3.28MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.21%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.17MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"386kB / 2.49MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.87MB / 2.61MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"3.98MB / 4.69MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 55,
+    "loadavg": [
+      0.29443359375,
+      0.4990234375,
+      0.439453125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 172MB\",\"CPUPerc\":\"11.19%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.34MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.9MB / 3.34MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.18MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"393kB / 2.54MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.461MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.92MB / 2.66MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.06MB / 4.77MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 56,
+    "loadavg": [
+      0.5517578125,
+      0.56689453125,
+      0.46728515625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 175MB\",\"CPUPerc\":\"5.90%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.68%\",\"MemUsage\":\"81.02MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"3.97MB / 3.4MB\",\"PIDs\":\"5\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.18MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"400kB / 2.58MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.465MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"2.97MB / 2.71MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.13MB / 4.84MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 57,
+    "loadavg": [
+      0.7841796875,
+      0.630859375,
+      0.49365234375
+    ],
+    "stats": "{\"BlockIO\":\"0B / 178MB\",\"CPUPerc\":\"2.46%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.64%\",\"MemUsage\":\"76.18MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"4.04MB / 3.46MB\",\"PIDs\":\"11\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.02%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.19MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"407kB / 2.63MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.465MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"3.03MB / 2.76MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.2MB / 4.92MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 58,
+    "loadavg": [
+      0.46484375,
+      0.57275390625,
+      0.48046875
+    ],
+    "stats": "{\"BlockIO\":\"0B / 181MB\",\"CPUPerc\":\"9.52%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.70%\",\"MemUsage\":\"83.62MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"4.11MB / 3.52MB\",\"PIDs\":\"5\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.19MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"414kB / 2.68MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.04%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.465MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"3.08MB / 2.81MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.28MB / 4.99MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 59,
+    "loadavg": [
+      0.36279296875,
+      0.51513671875,
+      0.462890625
+    ],
+    "stats": "{\"BlockIO\":\"0B / 183MB\",\"CPUPerc\":\"9.59%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.39MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"4.18MB / 3.58MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.26%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.2MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"421kB / 2.72MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"0.06%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.465MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"3.13MB / 2.86MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.00%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.523MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.35MB / 5.07MB\",\"PIDs\":\"5\"}\n"
+  },
+  {
+    "minute": 60,
+    "loadavg": [
+      0.4755859375,
+      0.53759765625,
+      0.47314453125
+    ],
+    "stats": "{\"BlockIO\":\"0B / 187MB\",\"CPUPerc\":\"9.25%\",\"Container\":\"charge-smoke-7a238e37712b-backend-1\",\"ID\":\"6967e2c7e107\",\"MemPerc\":\"0.61%\",\"MemUsage\":\"73.44MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-backend-1\",\"NetIO\":\"4.25MB / 3.64MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 3.1MB\",\"CPUPerc\":\"0.03%\",\"Container\":\"charge-smoke-7a238e37712b-simulator-1\",\"ID\":\"c18f3439e83b\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"29.21MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-simulator-1\",\"NetIO\":\"428kB / 2.77MB\",\"PIDs\":\"4\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"2.53%\",\"Container\":\"charge-smoke-7a238e37712b-mqtt-1\",\"ID\":\"27e713190364\",\"MemPerc\":\"0.01%\",\"MemUsage\":\"1.473MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-mqtt-1\",\"NetIO\":\"3.19MB / 2.91MB\",\"PIDs\":\"1\"}\n{\"BlockIO\":\"0B / 8.19kB\",\"CPUPerc\":\"0.05%\",\"Container\":\"charge-smoke-7a238e37712b-frontend-1\",\"ID\":\"9faa840afa0d\",\"MemPerc\":\"0.04%\",\"MemUsage\":\"4.527MiB / 11.68GiB\",\"Name\":\"charge-smoke-7a238e37712b-frontend-1\",\"NetIO\":\"4.42MB / 5.15MB\",\"PIDs\":\"5\"}\n"
+  }
+]

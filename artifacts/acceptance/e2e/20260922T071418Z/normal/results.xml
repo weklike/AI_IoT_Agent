@@ -1,0 +1,24 @@
+<testsuites id="" name="" tests="9" failures="0" skipped="0" errors="0" time="42.143265">
+<testsuite name="agent.spec.ts" timestamp="2026-09-22T07:15:05.658Z" hostname="" tests="4" failures="0" skipped="0" time="13.274" errors="0">
+<testcase name="查询不建单，刷新恢复服务器轨迹" classname="agent.spec.ts" time="2.535">
+</testcase>
+<testcase name="授权建单后重复查询只显示真实工单" classname="agent.spec.ts" time="5.428">
+</testcase>
+<testcase name="响应丢失后重试使用原 request_id，终态停止轮询" classname="agent.spec.ts" time="2.984">
+</testcase>
+<testcase name="未知设备任务显示失败及真实错误轨迹" classname="agent.spec.ts" time="2.327">
+</testcase>
+</testsuite>
+<testsuite name="devices.spec.ts" timestamp="2026-09-22T07:15:05.658Z" hostname="" tests="5" failures="0" skipped="0" time="27.351" errors="0">
+<testcase name="三设备与真实场景切换、离线恢复" classname="devices.spec.ts" time="21.06">
+</testcase>
+<testcase name="布局与截图 1280" classname="devices.spec.ts" time="0.407">
+</testcase>
+<testcase name="布局与截图 1920" classname="devices.spec.ts" time="0.454">
+</testcase>
+<testcase name="未知设备和服务断开可见" classname="devices.spec.ts" time="0.43">
+</testcase>
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,135 @@
+Cloning into '/tmp/charge-clean-ou6hhl65/repo'...
+done.
+Using CPython 3.12.13
+Creating virtual environment at: .venv
+Resolved 31 packages in 1ms
+   Building charge-ops-agent @ file:///tmp/charge-clean-ou6hhl65/repo
+      Built charge-ops-agent @ file:///tmp/charge-clean-ou6hhl65/repo
+Prepared 1 package in 684ms
+warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 30 packages in 187ms
+ + aiosqlite==0.22.1
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + certifi==2026.7.22
+ + charge-ops-agent==0.1.0 (from file:///tmp/charge-clean-ou6hhl65/repo)
+ + click==8.5.0
+ + fastapi==0.141.1
+ + greenlet==3.5.6
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + iniconfig==2.3.0
+ + packaging==26.3
+ + paho-mqtt==2.1.0
+ + pluggy==1.6.0
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pydantic-settings==2.15.0
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0
+ + python-dotenv==1.2.3
+ + ruff==0.16.8
+ + sqlalchemy==2.0.54
+ + starlette==1.6.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + uvicorn==0.53.0
+
+added 59 packages, and audited 60 packages in 3s
+
+8 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> charge-ops-frontend@0.1.0 typecheck
+> vue-tsc --noEmit
+
+
+> charge-ops-frontend@0.1.0 build
+> vue-tsc --noEmit && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 627 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.36 kB │ gzip:   0.29 kB
+dist/assets/index-BhESzEtw.css   10.86 kB │ gzip:   3.17 kB
+dist/assets/index-4qqdFDcD.js   609.10 kB │ gzip: 214.51 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.58s
+ Network charge-smoke-a124d4bf34db_default Creating 
+ Network charge-smoke-a124d4bf34db_default Created 
+ Volume charge-smoke-a124d4bf34db_backend_data Creating 
+ Volume charge-smoke-a124d4bf34db_backend_data Created 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Creating 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Created 
+ Container charge-smoke-a124d4bf34db-simulator-1 Creating 
+ Container charge-smoke-a124d4bf34db-backend-1 Creating 
+ Container charge-smoke-a124d4bf34db-backend-1 Created 
+ Container charge-smoke-a124d4bf34db-frontend-1 Creating 
+ Container charge-smoke-a124d4bf34db-simulator-1 Created 
+ Container charge-smoke-a124d4bf34db-frontend-1 Created 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Starting 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Started 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Waiting 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Waiting 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Healthy 
+ Container charge-smoke-a124d4bf34db-backend-1 Starting 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Healthy 
+ Container charge-smoke-a124d4bf34db-simulator-1 Starting 
+ Container charge-smoke-a124d4bf34db-backend-1 Started 
+ Container charge-smoke-a124d4bf34db-backend-1 Waiting 
+ Container charge-smoke-a124d4bf34db-simulator-1 Started 
+ Container charge-smoke-a124d4bf34db-backend-1 Healthy 
+ Container charge-smoke-a124d4bf34db-frontend-1 Starting 
+ Container charge-smoke-a124d4bf34db-frontend-1 Started 
+ Container charge-smoke-a124d4bf34db-frontend-1 Waiting 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Waiting 
+ Container charge-smoke-a124d4bf34db-backend-1 Waiting 
+ Container charge-smoke-a124d4bf34db-simulator-1 Waiting 
+ Container charge-smoke-a124d4bf34db-backend-1 Healthy 
+ Container charge-smoke-a124d4bf34db-simulator-1 Healthy 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Healthy 
+ Container charge-smoke-a124d4bf34db-frontend-1 Healthy 
+
+Running 1 test using 1 worker
+
+(node:144131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:144131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (632ms)
+
+  1 passed (2.0s)
+ Container charge-smoke-a124d4bf34db-frontend-1 Stopping 
+ Container charge-smoke-a124d4bf34db-simulator-1 Stopping 
+ Container charge-smoke-a124d4bf34db-simulator-1 Stopped 
+ Container charge-smoke-a124d4bf34db-simulator-1 Removing 
+ Container charge-smoke-a124d4bf34db-simulator-1 Removed 
+ Container charge-smoke-a124d4bf34db-frontend-1 Stopped 
+ Container charge-smoke-a124d4bf34db-frontend-1 Removing 
+ Container charge-smoke-a124d4bf34db-frontend-1 Removed 
+ Container charge-smoke-a124d4bf34db-backend-1 Stopping 
+ Container charge-smoke-a124d4bf34db-backend-1 Stopped 
+ Container charge-smoke-a124d4bf34db-backend-1 Removing 
+ Container charge-smoke-a124d4bf34db-backend-1 Removed 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Stopping 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Stopped 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Removing 
+ Container charge-smoke-a124d4bf34db-mqtt-1 Removed 
+ Volume charge-smoke-a124d4bf34db_backend_data Removing 
+ Network charge-smoke-a124d4bf34db_default Removing 
+ Volume charge-smoke-a124d4bf34db_backend_data Removed 
+ Network charge-smoke-a124d4bf34db_default Removed 

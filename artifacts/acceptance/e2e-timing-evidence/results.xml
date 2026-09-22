@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="28.274695">
+<testsuite name="devices.spec.ts" timestamp="2026-09-22T08:46:43.524Z" hostname="" tests="1" failures="0" skipped="0" time="26.864" errors="0">
+<testcase name="三设备与真实场景切换、离线恢复" classname="devices.spec.ts" time="26.864">
+</testcase>
+</testsuite>
+</testsuites>
