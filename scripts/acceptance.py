@@ -231,7 +231,9 @@ def stability(output):
             finally:
                 if browser.poll() is None:
                     browser.send_signal(signal.SIGTERM)
-                    browser.wait(timeout=20)
+                browser_code = browser.wait(timeout=20)
+                if browser_code:
+                    raise RuntimeError("Browser capture failed; see browser.log")
     return 0 if report["status"] == "PASS" else 1
 
 
@@ -322,7 +324,9 @@ def cold_start(output):
             finally:
                 if browser.poll() is None:
                     browser.send_signal(signal.SIGTERM)
-                    browser.wait(timeout=20)
+                browser_code = browser.wait(timeout=20)
+                if browser_code:
+                    raise RuntimeError("Browser capture failed; see browser.log")
         checks = {
             "health": health.status_code == 200
             and health.json()["data"]["db"] == "ready"

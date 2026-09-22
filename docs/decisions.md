@@ -37,3 +37,4 @@
 - `performance-final/report.json` 分别引用原稳态和新 API 样本；`performance-compatibility.json` 对比实际运行镜像源文件摘要。沿用范围限于未改变的 MQTT/模拟器/入库链路、总览可见与稳定性；新的历史查询和图表由定向测试、压测及 E2E 重新验证。
 - 历史 API 的 gap_before 表示相邻真实样本间隔超过 1.5 个配置采样周期（容忍半周期抖动）；前端断开曲线，仅用 null 标记绘图空窗，不插入业务样本、不影响统计。
 - Docker 将锁定依赖安装层放在源码 COPY 之前，并使用 uv 构建缓存。PyPI 超时的两次构建均保留日志。测试环境可显式指定 CHARGE_TEST_DEPENDENCY_IMAGE，只有 uv.lock 与 pyproject.toml 字节完全相同时才复用其依赖，然后复制当前源码并离线 uv sync；测试卷和实例仍全新。此选项不更改正式 Compose 的镜像来源。
+- 最终证据审计发现旧 hold.mjs 的 Playwright 默认信号处理先关闭浏览器，导致 SIGTERM 收尾截图失败。60 分钟期间的完整采样/观察 JSON 已保存，但旧 browser-final.png 不存在；该失败日志保留。关闭 Playwright 自带的 SIGTERM/SIGINT 处理，由脚本先保存截图再关闭，验收入口检查浏览器退出码。新 cold-start-capture 已实际保存截图并正常退出；不补造旧窗口的结束截图。

@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test'
 import fs from 'node:fs'
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({ headless: true, handleSIGTERM: false, handleSIGINT: false })
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 } })
 const observed = new Map(), errors = []
 page.on('pageerror', error => errors.push(error.message))
