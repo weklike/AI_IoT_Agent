@@ -1,16 +1,16 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 2 三设备模拟器和可控异常
-- 当前分支/提交：develop；Task 1 即将本地提交，Task 2 新文件尚未提交
+- 当前任务：Task 3 可靠入库和在线判定
+- 当前分支/提交：develop；Task 1 提交 25792a2；Task 2 已验证待提交，Task 3 测试未提交
 - 更新时间：2026-09-22T14:19:50.008162+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
 |---|---|---|
 | Task 1 骨架与契约 | DONE | 54 项单元测试、2 项真实 Broker 健康测试、Compose 三服务 smoke；AC-01 未完成 |
-| Task 2 模拟器 | IN_PROGRESS | 5 项单元测试通过；真实 Broker 连续 60 秒测试运行中 |
-| Task 3 遥测 | NOT_STARTED | 待 Task 2 |
+| Task 2 模拟器 | DONE | 5 项单元 + 69 秒真实 Broker 集成通过；三设备 60 秒采样、控制和重启 |
+| Task 3 遥测 | IN_PROGRESS | 已写入去重、冲突、顺序、新鲜度测试；实现前缺模块失败 |
 | Task 4 查询与控制 | NOT_STARTED | 待 Task 3 |
 | Task 5 工单与幂等 | NOT_STARTED | 待 Task 4 |
 | Task 6 Agent | NOT_STARTED | 待 Task 5 |
@@ -42,3 +42,5 @@
 
 ## 下一步
 - 等待 Task 2 真实 Broker 测试；随后实现 Task 3 去重、顺序、新鲜度和 MQTT 消费。
+
+- Task 2 验证：`uv run pytest tests/integration/test_simulator_mqtt.py -q` 退出 0，1 passed / 69.06s；证据 task2/mqtt.xml 与 mqtt-samples.json。AC-03/04/11 的模拟器部分通过，数据库与页面部分未覆盖。

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="69.057" timestamp="2026-09-22T14:18:57.772953+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_simulator_mqtt" name="test_three_clients_60_seconds_and_control" time="68.949" /></testsuite></testsuites>

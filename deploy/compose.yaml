@@ -31,6 +31,17 @@ services:
       interval: 2s
       timeout: 3s
       retries: 30
+  simulator:
+    build:
+      context: ..
+      dockerfile: deploy/backend.Dockerfile
+    command: ["/app/.venv/bin/python", "-m", "simulator.main"]
+    environment:
+      MQTT_HOST: mqtt
+      MQTT_PORT: 1883
+      MQTT_TOPIC_PREFIX: ${MQTT_TOPIC_PREFIX:-charge/v1}
+    depends_on:
+      mqtt: {condition: service_healthy}
   frontend:
     build:
       context: ..

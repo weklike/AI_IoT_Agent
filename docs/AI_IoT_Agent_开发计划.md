@@ -388,11 +388,11 @@ def test_non_finite_temperature_is_rejected(valid_payload):
 
 **Interfaces：** 消费三类 MQTT 主题及 TelemetryMessage；产出 `generate_sample(device_id, boot_id, seq, scenario, now)` 和 `apply_scenario(command)`。每个设备有独立 MQTT client_id。
 
-- [ ] 为 normal、overheat、offline、新 boot_id 和重复 command_id 编写确定性测试。
-- [ ] 执行 `uv run pytest tests/unit/test_simulator.py -q`，确认场景行为缺失时失败。
-- [ ] 实现 2 秒周期、固定 seed、三个设备任务和控制订阅；offline 只暂停遥测。
-- [ ] 启动真实测试 Broker，订阅三设备数据；确认过温命令只有收到匹配回执才算 applied。
-- [ ] 执行 `uv run pytest tests/integration/test_simulator_mqtt.py -q`，保存 MQTT 采样证据，完成 AC-03、AC-04、AC-11 的基础部分并提交。
+- [x] 为 normal、overheat、offline、新 boot_id 和重复 command_id 编写确定性测试。
+- [x] 执行 `uv run pytest tests/unit/test_simulator.py -q`，确认场景行为缺失时失败。
+- [x] 实现 2 秒周期、固定 seed、三个设备任务和控制订阅；offline 只暂停遥测。
+- [x] 启动真实测试 Broker，订阅三设备数据；确认过温命令只有收到匹配回执才算 applied。
+- [x] 执行 `uv run pytest tests/integration/test_simulator_mqtt.py -q`，保存 MQTT 采样证据，完成 AC-03、AC-04、AC-11 的基础部分并提交。
 
 ```python
 def test_overheat_sample_exceeds_demo_threshold(fixed_now):
