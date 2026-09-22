@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "model": "gemini-3.8-flash-high",
+  "case_executions": 1,
+  "model_requests": 2,
+  "total_seconds": 6.373229000004358,
+  "run_status": "completed",
+  "error_code": null,
+  "tools": [
+    {
+      "name": "get_device_status",
+      "status": "succeeded"
+    }
+  ],
+  "scope": "One isolated host-side real tool-call round trip with latest .env. No 60-case evaluation, additional model probes, UI queries, or retries. Running demo backend configuration was not reloaded.",
+  "configuration_adjustment": "Added /v1 to the existing host loopback API base URL; model and key unchanged.",
+  "evidence_sha256": "f90abe7a773bdc9220fe72ab37b829dc6314213906c7bb0857270771d6934f63",
+  "credentials_in_evidence": false
+}
