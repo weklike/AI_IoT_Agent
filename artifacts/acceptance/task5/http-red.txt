@@ -1,0 +1,23 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+______________________ test_http_concurrency_and_retries _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-11/test_http_concurrency_and_retr0')
+
+    async def test_http_concurrency_and_retries(tmp_path):
+        import httpx
+        from backend.app.main import create_app
+    
+        gate = asyncio.Event()
+        accepted = []
+        async def execute(run_id):
+            accepted.append(run_id)
+            await gate.wait()
+>       app = create_app(Settings(_env_file=None, app_env='test', mqtt_enabled=False,
+                                 database_url=f'sqlite+aiosqlite:///{tmp_path}/http.db'), run_executor=execute)
+E       TypeError: create_app() got an unexpected keyword argument 'run_executor'
+
+tests/integration/test_run_idempotency.py:57: TypeError
+=========================== short test summary info ============================
+FAILED tests/integration/test_run_idempotency.py::test_http_concurrency_and_retries
+1 failed, 1 passed in 0.55s

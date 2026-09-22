@@ -11,6 +11,7 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException
 
+from backend.app.agent.scheduler import RunScheduler
 from backend.app.api import router
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
@@ -22,13 +23,16 @@ from backend.app.simulator_control import ScenarioControl
 from backend.app.telemetry.ingest import TelemetryStore
 
 
-def create_app(settings: Settings | None = None, *, clock: DataClock | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None, *, clock: DataClock | None = None, run_executor=None
+) -> FastAPI:
     settings = settings or Settings()
     clock = clock or DataClock()
     db = Database(settings)
     mqtt = MQTTConnection(settings, clock)
     store = TelemetryStore(db, settings, clock)
     control = ScenarioControl(db, settings, clock, mqtt)
+    scheduler = RunScheduler(db, clock, run_executor) if run_executor is not None else None
 
     async def consume():
         while True:
@@ -59,6 +63,8 @@ def create_app(settings: Settings | None = None, *, clock: DataClock | None = No
                 await mqtt.start()
             yield
         finally:
+            if scheduler:
+                await scheduler.close()
             if settings.mqtt_enabled:
                 await mqtt.close()
             if hasattr(app.state, "consumer"):
@@ -78,6 +84,7 @@ def create_app(settings: Settings | None = None, *, clock: DataClock | None = No
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
     app.state.control = control
+    app.state.scheduler = scheduler
     app.include_router(router)
 
     @app.middleware("http")

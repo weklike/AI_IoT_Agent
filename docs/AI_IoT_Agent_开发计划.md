@@ -454,11 +454,11 @@ async def test_reverse_history_range_is_rejected(client):
 
 **Interfaces：** 消费工具记录、ToolContext；产出 `create_work_order`、`reserve_run(request)` 和工单查询 API。`reserve_run` 返回新建或已存在的 run_id，内容冲突抛 Conflict。
 
-- [ ] 编写同 request_id 同内容、不同内容、并发双击、跨 run 同故障和证据不属于本设备的测试。
-- [ ] 建立 `agent_runs.request_id` 唯一约束及 OPEN 工单部分唯一索引。
-- [ ] 在数据库事务内检查授权和证据；唯一约束冲突后读取原记录返回 created=false。
-- [ ] 对工单服务层发起 20 个并发请求，使用独立 session、不同 tool_call_id 和合法本 run 证据，最终只有一张 OPEN 工单；这是服务层测试，不绕过 HTTP 的单 Agent 限制去同时运行 20 个 Agent。另用两个不同 request_id 同时请求 API，验证只能接受一个新 run。
-- [ ] 执行 `uv run pytest tests/integration/test_work_orders.py tests/integration/test_run_idempotency.py -q`，完成 AC-16—AC-20 的服务/调度部分并提交，真实工具执行链在任务 6 再集成验证。
+- [x] 编写同 request_id 同内容、不同内容、并发双击、跨 run 同故障和证据不属于本设备的测试。
+- [x] 建立 `agent_runs.request_id` 唯一约束及 OPEN 工单部分唯一索引。
+- [x] 在数据库事务内检查授权和证据；唯一约束冲突后读取原记录返回 created=false。
+- [x] 对工单服务层发起 20 个并发请求，使用独立 session、不同 tool_call_id 和合法本 run 证据，最终只有一张 OPEN 工单；这是服务层测试，不绕过 HTTP 的单 Agent 限制去同时运行 20 个 Agent。另用两个不同 request_id 同时请求 API，验证只能接受一个新 run。
+- [x] 执行 `uv run pytest tests/integration/test_work_orders.py tests/integration/test_run_idempotency.py -q`，完成 AC-16—AC-20 的服务/调度部分并提交，真实工具执行链在任务 6 再集成验证。
 
 ```python
 async def test_query_only_context_cannot_write(work_order_service, query_context, seeded_evidence):

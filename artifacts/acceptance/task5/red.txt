@@ -1,0 +1,27 @@
+
+==================================== ERRORS ====================================
+____________ ERROR collecting tests/integration/test_work_orders.py ____________
+ImportError while importing test module '/home/syzygy/AI_IoT_Agent/tests/integration/test_work_orders.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_work_orders.py:12: in <module>
+    from backend.app.work_orders import WorkOrderService
+E   ModuleNotFoundError: No module named 'backend.app.work_orders'
+__________ ERROR collecting tests/integration/test_run_idempotency.py __________
+ImportError while importing test module '/home/syzygy/AI_IoT_Agent/tests/integration/test_run_idempotency.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_run_idempotency.py:6: in <module>
+    from backend.app.agent.scheduler import RunScheduler
+E   ModuleNotFoundError: No module named 'backend.app.agent'
+=========================== short test summary info ============================
+ERROR tests/integration/test_work_orders.py
+ERROR tests/integration/test_run_idempotency.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 0.52s

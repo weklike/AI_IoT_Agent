@@ -1,7 +1,7 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 5 工单与请求幂等
+- 当前任务：Task 6 单 Agent、四工具与模型模式
 - 当前分支/提交：develop；Task 1 提交 25792a2；Task 2 已验证待提交，Task 3 测试未提交
 - 更新时间：2026-09-22T14:19:50.008162+08:00
 
@@ -12,8 +12,8 @@
 | Task 2 模拟器 | DONE | 5 项单元 + 69 秒真实 Broker 集成通过；三设备 60 秒采样、控制和重启 |
 | Task 3 遥测 | DONE | 12 项存储行为 + 2 项真实 Broker 测试通过；页面子项未完成 |
 | Task 4 查询与控制 | DONE | API、统计、5000 行限制、回执超时及真实场景链路通过 |
-| Task 5 工单与幂等 | IN_PROGRESS | 服务层/调度器失败测试已保存 |
-| Task 6 Agent | NOT_STARTED | 待 Task 5 |
+| Task 5 工单与幂等 | DONE | 12 项服务/HTTP 幂等测试通过；模型执行链在 Task 6 集成 |
+| Task 6 Agent | IN_PROGRESS | 四工具/模型循环开发；真实配置尚未提供 |
 | Task 7 前端 | NOT_STARTED | 待 Task 6 |
 | Task 8 部署与性能 | NOT_STARTED | 待 Task 7 |
 | Task 9 真实评测与交付 | NOT_STARTED | 待 Task 8 |
@@ -49,3 +49,6 @@
 - 下一步：实现 Task 4 历史窗口/统计、异步场景命令状态、超时与晚到回执；首条验证为 `uv run pytest tests/integration/test_api.py tests/integration/test_scenario_control.py -q`。
 
 - Task 4：API/控制定向测试 10 passed；真实场景测试 4 passed / 25.04s。证据 task4/api.xml、control.xml、openapi.json。首轮测试 UUID 类型赋值警告已修正。全回归结果见 backend-task4.xml。
+
+- Task 5：`uv run pytest tests/integration/test_work_orders.py tests/integration/test_run_idempotency.py -q` 退出 0，12 passed / 2.23s；证据 task5/extended.xml。工单与当前调用结果同事务；20 个独立会话、HTTP 接收并发、回滚、证据与授权检查通过。
+- Task 1—4 全回归：87 passed / 118.75s，退出 0，无警告，backend-task4.xml。

@@ -69,3 +69,16 @@ class ScenarioCommand(Contract):
 class ScenarioAck(ScenarioCommand):
     applied_at: AwareDatetime
     status: Literal["applied", "rejected"]
+
+
+class RunRequest(Contract):
+    request_id: UUID
+    question: Annotated[str, Field(min_length=1, max_length=2000, strict=True)]
+    allow_work_order: Annotated[bool, Field(strict=True)] = False
+
+    @field_validator("question")
+    @classmethod
+    def nonblank_question(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("Question must not be blank")
+        return value
