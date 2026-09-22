@@ -3,7 +3,7 @@
 - 业务基线：v1.1
 - 当前任务：Task 9 等待真实模型配置与人工复核；G1/G2 已通过，G3 BLOCKED
 - 当前分支/提交：develop；实现提交 75c3c33，验收截图修复 2d066f1；后续提交仅更新文档与证据
-- 更新时间：2026-09-22 17:00 +08:00
+- 更新时间：2026-09-22T17:36:10+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -59,8 +59,24 @@
 - 系统 Python 不作为项目解释器；实际使用 uv 管理 Python 3.12.13、Node 24.13.0、Chromium、Docker Compose 5.1.1；完整环境见证据。
 
 ## 下一步
-- 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理，演示服务未常驻启动。启动命令见 README。
+- 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理；本次按用户要求启动了常驻演示服务（见下方运行记录）。
 - AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 PASS；AC-36/37 BLOCKED，AC-38/40 PENDING_REVIEW，未声明完整作品交付。
 - 本地真实模型配置就绪后先 `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-01`；成功再执行完整 60 次与真人复核。
 
 - 真人完成 60 例语义/关键错误复核并填写 eval/manual-review.json 后运行 summarize；按 docs/demo.md 完成个人 3—5 分钟演示，确认能解释代码和简历数字。不得由开发 Agent 冒充真人完成。
+
+
+## 2026-09-22 17:35 / 启动界面
+
+- 按用户要求启动本机四服务，Compose 项目 `deploy`，数据卷 `deploy_backend_data` 保留运行；网页 http://127.0.0.1:8080，端口均只绑定 127.0.0.1。
+- 核对源码摘要后，将当前已验收缓存镜像 `test-0dd90077e597f20f` 标记为本地演示镜像；使用正常 create_app/模拟器入口，没有加载测试失败替身、预置评测数据或修改 .env。
+- 仅检查配置是否存在：本地 .env 与当前进程中 LLM_BASE_URL、LLM_MODEL、LLM_API_KEY 都为空，LLM_MODE=fixture。没有打印任何密钥值。真实接入仍需指定服务及本地凭据。
+
+| 实际命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --wait --wait-timeout 120` | 0 | PASS | 四服务 running；backend/mqtt healthy |
+| `curl --silent --show-error http://127.0.0.1:8080/api/health` | 0 | PASS | DB/MQTT ready，llm_mode=fixture |
+| Node Playwright 访问 /devices、/devices/CHG-002、/agent 并截图 | 0 | PASS | artifacts/acceptance/demo-start-20260922/report.json；三设备在线且数据新鲜，无脚本错误或横向溢出 |
+| `xdg-open http://127.0.0.1:8080` | 3 | BLOCKED | 此 WSL 环境无桌面浏览器启动器；网页服务与 headless Chromium 检查正常，可从宿主机点击 URL |
+
+- 下一步：用户确定模型服务，在本地 .env 填入模型配置，再验证真实工具调用往返；现有 fixture 演示继续运行。
