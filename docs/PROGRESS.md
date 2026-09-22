@@ -1,0 +1,44 @@
+# 开发进度
+
+- 业务基线：v1.1
+- 当前任务：Task 2 三设备模拟器和可控异常
+- 当前分支/提交：develop；Task 1 即将本地提交，Task 2 新文件尚未提交
+- 更新时间：2026-09-22T14:19:50.008162+08:00
+
+## 任务状态
+| 任务 | 状态 | 证据或剩余事项 |
+|---|---|---|
+| Task 1 骨架与契约 | DONE | 54 项单元测试、2 项真实 Broker 健康测试、Compose 三服务 smoke；AC-01 未完成 |
+| Task 2 模拟器 | IN_PROGRESS | 5 项单元测试通过；真实 Broker 连续 60 秒测试运行中 |
+| Task 3 遥测 | NOT_STARTED | 待 Task 2 |
+| Task 4 查询与控制 | NOT_STARTED | 待 Task 3 |
+| Task 5 工单与幂等 | NOT_STARTED | 待 Task 4 |
+| Task 6 Agent | NOT_STARTED | 待 Task 5 |
+| Task 7 前端 | NOT_STARTED | 待 Task 6 |
+| Task 8 部署与性能 | NOT_STARTED | 待 Task 7 |
+| Task 9 真实评测与交付 | NOT_STARTED | 待 Task 8 |
+
+## 本次变更
+- 创建 Python/Vue 包、严格遥测合同、统一配置、七表 SQLite、双时钟、健康接口、真实 MQTT 连接、依赖锁及隔离测试资源。
+- 模拟器场景与三客户端正在实现。
+
+## 实际验证
+| 命令 | 退出码 | 结果 | 证据路径/对应 AC 子项 |
+|---|---|---|---|
+| `uv python find 3.12` | 2 | BLOCKED | 初始未安装；后续 uv sync 已准备 3.12.13 |
+| `uv sync` | 0 | PASS | uv.lock |
+| `uv run pytest tests/unit/test_contracts.py tests/unit/test_bootstrap.py -q` | 2 | FAIL | task1/red.txt；实现前模块不存在 |
+| 同上 + `--junitxml=artifacts/acceptance/task1/unit.xml` | 0 | PASS | 54 passed；AC-08 输入契约部分、DB 基础 |
+| `uv run pytest tests/integration/test_health_mqtt.py -q` | 0 | PASS | task1/mqtt.xml；2 passed |
+| `npm --prefix frontend run typecheck` / `run build` | 0 | PASS | 骨架首页 |
+| 隔离 `tests.support.resources.stack()` + HTTP 健康/首页检查 | 0 | PASS | task1/smoke.json；仅骨架 smoke |
+| `npm --prefix frontend audit`（更新 ECharts 后） | 0 | PASS | 0 vulnerabilities |
+| `uv run pytest tests/unit/test_simulator.py -q` | 0 | PASS | task2/unit.xml；5 passed；实现前缺模块失败保存在 task2/red.txt |
+
+## 未完成与阻塞
+- 系统 Python 3.13.5，不用于本项目；uv 0.11.3、Node 24.13.0、npm 11.6.2、Docker Compose 5.1.1 / Engine 29.4.0 可用。
+- Chromium 1208 缓存存在，尚未实际启动验证。
+- 两份基线引用的 `AI_IoT_Agent_方案审阅与修改说明.md` 不存在；实施合同本身完整，暂不阻塞开发。
+
+## 下一步
+- 等待 Task 2 真实 Broker 测试；随后实现 Task 3 去重、顺序、新鲜度和 MQTT 消费。

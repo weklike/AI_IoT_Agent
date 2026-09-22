@@ -1,0 +1,42 @@
+services:
+  mqtt:
+    image: eclipse-mosquitto:2.0.22
+    ports: ["127.0.0.1:${MQTT_PUBLISH_PORT:-1883}:1883"]
+    volumes: ["./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"]
+    healthcheck:
+      test: ["CMD", "mosquitto_pub", "-h", "127.0.0.1", "-t", "health", "-m", "ready"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+  backend:
+    build:
+      context: ..
+      dockerfile: deploy/backend.Dockerfile
+    environment:
+      APP_ENV: local
+      DATABASE_URL: sqlite+aiosqlite:////data/charge_ops.db
+      MQTT_HOST: mqtt
+      MQTT_PORT: 1883
+      MQTT_TOPIC_PREFIX: ${MQTT_TOPIC_PREFIX:-charge/v1}
+      LLM_MODE: ${LLM_MODE:-fixture}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+    ports: ["127.0.0.1:${BACKEND_PUBLISH_PORT:-8000}:8000"]
+    volumes: ["backend_data:/data"]
+    depends_on:
+      mqtt: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "/app/.venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=2)"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  frontend:
+    build:
+      context: ..
+      dockerfile: deploy/frontend.Dockerfile
+    ports: ["127.0.0.1:${FRONTEND_PUBLISH_PORT:-8080}:80"]
+    depends_on:
+      backend: {condition: service_healthy}
+volumes:
+  backend_data:
