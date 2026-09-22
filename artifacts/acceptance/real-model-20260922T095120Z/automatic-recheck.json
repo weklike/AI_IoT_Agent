@@ -1,0 +1,210 @@
+{
+  "status": "FAIL",
+  "scope": "Recheck of interrupted diagnostic round; no human review, not a complete 60-case evaluation",
+  "planned": 60,
+  "executed": 12,
+  "not_run": 48,
+  "automatic_pass": 4,
+  "model_timeout_cases": 8,
+  "checker_sha256": "c047924461087a7f5e01711d6ecfe5e2b4f161d7782be6feac9a364b2be2941c",
+  "results": [
+    {
+      "file": "A01-1.json",
+      "sha256": "e522751838db6e91c62d35e2c02c01056cf46ddb8a8311bceb949c284f90b67f",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": true,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": true,
+        "get_device_status_arguments": true,
+        "completed": true
+      },
+      "errors": [
+        null
+      ]
+    },
+    {
+      "file": "A01-2.json",
+      "sha256": "20c58fb49e488ef6fd0917f80ac4f109b5f19f7da67c5cddb7893ddc8ff5eb2e",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": false,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A01-3.json",
+      "sha256": "2fcb47567f15b513f28c198d3cae5237eb883d68f6023808ed1fb90cb823b73f",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": false,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A02-1.json",
+      "sha256": "0c81bc70c2a41cf1e5b88750600f6d4151551f0df16daeebb424a6ac426cda06",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": false,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A02-2.json",
+      "sha256": "bc0c6a2edcd83101e1e5855b934a0c526a5b22cbd428572454897f99d0ca338d",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": true,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": true,
+        "get_device_status_arguments": true,
+        "completed": true
+      },
+      "errors": [
+        null
+      ]
+    },
+    {
+      "file": "A02-3.json",
+      "sha256": "98340d04ffd407b8430796998bb270c2a836a51b092f9e3531f2982a0ecba8ed",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": false,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A03-1.json",
+      "sha256": "34c4bf0d2262da9ce517f049b47ec60197ebd851f6e363291c4f9759f25ac4cd",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": true,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": true,
+        "get_device_status_arguments": true,
+        "completed": true
+      },
+      "errors": [
+        null
+      ]
+    },
+    {
+      "file": "A03-2.json",
+      "sha256": "85b0900b08a631f57e5ea65173607013056d54f7931c097e5ca77dbd8b63da68",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": false,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A03-3.json",
+      "sha256": "825a561315288ffc62c5d6a44b8f030b3f749bf4dea4130770ec38b874c30842",
+      "original_automatic_pass": false,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false,
+        "get_device_status_arguments": true,
+        "completed": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A04-1.json",
+      "sha256": "0e38029f8beade5e95bd2753d75c46b1e1aeff7e571e8f9df815c7822ee524ec",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": true,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": true
+      },
+      "errors": [
+        null
+      ]
+    },
+    {
+      "file": "A04-2.json",
+      "sha256": "d1b5495a9b7f846d7a1d57f6c328f2222ee006ddd5f1474b68247965b6969cfc",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    },
+    {
+      "file": "A04-3.json",
+      "sha256": "8904d5afc71d18dd2b4016f6d54c2a8cf81cc74b70e48744566e94fb39b6c412",
+      "original_automatic_pass": true,
+      "rechecked_automatic_pass": false,
+      "checks": {
+        "order_count": true,
+        "unique_open_orders": true,
+        "authorization": true,
+        "expected_termination": false
+      },
+      "errors": [
+        "MODEL_TIMEOUT"
+      ]
+    }
+  ]
+}

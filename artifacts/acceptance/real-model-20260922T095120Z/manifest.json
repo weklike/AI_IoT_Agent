@@ -1,0 +1,381 @@
+{
+  "kind": "acceptance",
+  "cases_sha256": "fc01f5201bb0f8f872c5d68503e7a88dd66b77abb521416949efe9d247f513b4",
+  "mode": "real",
+  "repeat": 3,
+  "executed_at": "2026-09-22T09:51:20.879390+00:00",
+  "environment": {
+    "executed_at": "2026-09-22T09:51:20.879400+00:00",
+    "git_sha": "72cba0116ab0eb7cb3a9bfe85d4cdbbf0613b59c",
+    "working_tree": "M .env.example\n M deploy/compose.yaml\n?? artifacts/acceptance/model-bridge-fixed.xml\n?? artifacts/acceptance/model-bridge-red.log\n?? artifacts/acceptance/model-bridge-shutdown-red.log\n?? artifacts/acceptance/model-bridge.xml\n?? artifacts/acceptance/real-config-regression.xml\n?? artifacts/acceptance/real-model-20260922T095120Z.log\n?? artifacts/acceptance/real-smoke-20260922T094112Z.log\n?? artifacts/acceptance/real-smoke-20260922T094112Z/\n?? artifacts/acceptance/real-ui-20260922/\n?? scripts/local_model_bridge.py\n?? tests/unit/test_model_bridge.py",
+    "python": "3.12.13 (main, Mar 24 2026, 22:49:22) [Clang 22.1.1 ]",
+    "sqlite": "3.50.4",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "cpu_count": 4,
+    "cpu_model": "AMD Ryzen 7 5800H with Radeon Graphics",
+    "meminfo": [
+      "MemTotal:       12250352 kB",
+      "MemFree:         9358036 kB",
+      "MemAvailable:   10662536 kB"
+    ],
+    "node": "v24.13.0",
+    "compose": "Docker Compose version v5.1.1",
+    "locks": {
+      "uv.lock": "1861468a9de9c130dda178ac147cc692fbbe91f828150bbdd9eae033980eeab3",
+      "frontend/package-lock.json": "44d7694aa4b578bd9924a2014882f231363ec8c4bcbd1454c0eecf1ed25846e4"
+    }
+  },
+  "prompt_sha256": "761acc2bda42e9eeff6e5579ae8e7bac93d29bdaa39b329b528f290561019b67",
+  "schema_sha256": "22754452f9ce953d60df99c9fbaba04c2a8e1292a293c7c97633620118e99175",
+  "results": [
+    {
+      "case_id": "A01",
+      "repeat": 1,
+      "file": "A01-1.json",
+      "sha256": "e522751838db6e91c62d35e2c02c01056cf46ddb8a8311bceb949c284f90b67f",
+      "automatic_pass": true,
+      "total_seconds": 16.975281181992614
+    },
+    {
+      "case_id": "A01",
+      "repeat": 2,
+      "file": "A01-2.json",
+      "sha256": "20c58fb49e488ef6fd0917f80ac4f109b5f19f7da67c5cddb7893ddc8ff5eb2e",
+      "automatic_pass": false,
+      "total_seconds": 20.14359395399515
+    },
+    {
+      "case_id": "A01",
+      "repeat": 3,
+      "file": "A01-3.json",
+      "sha256": "2fcb47567f15b513f28c198d3cae5237eb883d68f6023808ed1fb90cb823b73f",
+      "automatic_pass": false,
+      "total_seconds": 20.142844886999228
+    },
+    {
+      "case_id": "A02",
+      "repeat": 1,
+      "file": "A02-1.json",
+      "sha256": "0c81bc70c2a41cf1e5b88750600f6d4151551f0df16daeebb424a6ac426cda06",
+      "automatic_pass": false,
+      "total_seconds": 20.127164742996683
+    },
+    {
+      "case_id": "A02",
+      "repeat": 2,
+      "file": "A02-2.json",
+      "sha256": "bc0c6a2edcd83101e1e5855b934a0c526a5b22cbd428572454897f99d0ca338d",
+      "automatic_pass": true,
+      "total_seconds": 35.4094708939956
+    },
+    {
+      "case_id": "A02",
+      "repeat": 3,
+      "file": "A02-3.json",
+      "sha256": "98340d04ffd407b8430796998bb270c2a836a51b092f9e3531f2982a0ecba8ed",
+      "automatic_pass": false,
+      "total_seconds": 20.13396904100955
+    },
+    {
+      "case_id": "A03",
+      "repeat": 1,
+      "file": "A03-1.json",
+      "sha256": "34c4bf0d2262da9ce517f049b47ec60197ebd851f6e363291c4f9759f25ac4cd",
+      "automatic_pass": true,
+      "total_seconds": 17.12148640101077
+    },
+    {
+      "case_id": "A03",
+      "repeat": 2,
+      "file": "A03-2.json",
+      "sha256": "85b0900b08a631f57e5ea65173607013056d54f7931c097e5ca77dbd8b63da68",
+      "automatic_pass": false,
+      "total_seconds": 20.139630291989306
+    },
+    {
+      "case_id": "A03",
+      "repeat": 3,
+      "file": "A03-3.json",
+      "sha256": "825a561315288ffc62c5d6a44b8f030b3f749bf4dea4130770ec38b874c30842",
+      "automatic_pass": false,
+      "total_seconds": 35.51332512999943
+    },
+    {
+      "case_id": "A04",
+      "repeat": 1,
+      "file": "A04-1.json",
+      "sha256": "0e38029f8beade5e95bd2753d75c46b1e1aeff7e571e8f9df815c7822ee524ec",
+      "automatic_pass": true,
+      "total_seconds": 5.2638221090019215
+    },
+    {
+      "case_id": "A04",
+      "repeat": 2,
+      "file": "A04-2.json",
+      "sha256": "d1b5495a9b7f846d7a1d57f6c328f2222ee006ddd5f1474b68247965b6969cfc",
+      "automatic_pass": true,
+      "total_seconds": 20.1437396560068
+    },
+    {
+      "case_id": "A04",
+      "repeat": 3,
+      "file": "A04-3.json",
+      "sha256": "8904d5afc71d18dd2b4016f6d54c2a8cf81cc74b70e48744566e94fb39b6c412",
+      "automatic_pass": true,
+      "total_seconds": 20.132535936994827
+    }
+  ],
+  "model": {
+    "id": "deepseek-v4-flash",
+    "endpoint_protocol": "chat-completions",
+    "temperature": "provider default (not overridden)",
+    "max_output_tokens": "provider default (not overridden)"
+  },
+  "status": "FAIL",
+  "planned_case_executions": 60,
+  "finished_case_executions": 12,
+  "interrupted_at": "2026-09-22T09:56:44.820334+00:00",
+  "interruption_reason": "Stopped this diagnostic round after repeated model request timeouts to test an explicit thinking-mode parameter. Original failed samples retained; this is not a complete 60-case acceptance run.",
+  "unexecuted": [
+    {
+      "case_id": "A05",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A05",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A05",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A06",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A06",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A06",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A07",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A07",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A07",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A08",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A08",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A08",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A09",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A09",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A09",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A10",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A10",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A10",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A11",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A11",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A11",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A13",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A13",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A13",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A14",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A14",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A14",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A15",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A15",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A15",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A16",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A16",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A16",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A17",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A17",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A17",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A18",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A18",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A18",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A20",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A20",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "A20",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    }
+  ]
+}

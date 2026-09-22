@@ -1,0 +1,21 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_model_timeout_never_passes_boundary_case_checks _____________
+
+    def test_model_timeout_never_passes_boundary_case_checks():
+        for case_id in ['A04', 'A06', 'A08', 'A14', 'A18', 'A19', 'A20']:
+            case = {'case_id': case_id, 'required_tools': [], 'expected_orders': 0, 'allow_work_order': False}
+            run = {'run_id': 'test-run', 'tool_calls': [], 'status': 'timed_out', 'error_code': 'MODEL_TIMEOUT'}
+>           assert not all(EVAL.automatic_checks(case, [run], [], 1).values()), case_id
+E           AssertionError: A04
+E           assert not True
+E            +  where True = all(dict_values([True, True, True]))
+E            +    where dict_values([True, True, True]) = <built-in method values of dict object at 0x75a7a5476480>()
+E            +      where <built-in method values of dict object at 0x75a7a5476480> = {'order_count': True, 'unique_open_orders': True, 'authorization': True}.values
+E            +        where {'order_count': True, 'unique_open_orders': True, 'authorization': True} = <function automatic_checks at 0x75a7a545b740>({'case_id': 'A04', 'required_tools': [], 'expected_orders': 0, 'allow_work_order': False}, [{'run_id': 'test-run', 'tool_calls': [], 'status': 'timed_out', 'error_code': 'MODEL_TIMEOUT'}], [], 1)
+E            +          where <function automatic_checks at 0x75a7a545b740> = EVAL.automatic_checks
+
+tests/unit/test_eval_summary.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_eval_summary.py::test_model_timeout_never_passes_boundary_case_checks
+1 failed, 1 passed, 5 deselected in 0.52s

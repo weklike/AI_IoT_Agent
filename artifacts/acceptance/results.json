@@ -6,10 +6,10 @@
   "gates": {
     "G1": "PASS",
     "G2": "PASS",
-    "G3": "BLOCKED"
+    "G3": "FAIL"
   },
-  "scope": "G1/G2 deterministic engineering acceptance. Real model, human review and personal delivery are incomplete. Each original failed or blocked run is retained.",
-  "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json.",
+  "scope": "G1/G2 deterministic engineering acceptance retained. Real endpoint now connected; real evaluation incomplete and failing latency checks. Human review/personal delivery remain incomplete.",
+  "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json. Current additions are a host-only TCP bridge, optional Docker model address and stricter evaluation termination checks; Agent business code, UI, telemetry and dependency locks unchanged.",
   "results": {
     "AC-01": {
       "status": "PASS",
@@ -420,18 +420,19 @@
       "scope": "60-minute reception/stability component passes; original combined report remains FAIL because of superseded API measurement."
     },
     "AC-36": {
-      "status": "BLOCKED",
+      "status": "FAIL",
       "evidence": [
-        "real-model-initial/manifest.json"
+        "real-model-20260922T095120Z/manifest.json",
+        "real-model-20260922T095120Z/automatic-recheck.json"
       ],
-      "reason": "Missing local real endpoint/model/key. Zero real cases executed; fixture is not a substitute."
+      "reason": "Stopped unstable endpoint diagnostic round after 12/60 cases: 8 model timeouts, 4 pass stricter automatic checks; 48 NOT_RUN. No human success rate."
     },
     "AC-37": {
-      "status": "BLOCKED",
+      "status": "NOT_RUN",
       "evidence": [
-        "real-model-initial/manifest.json"
+        "real-model-20260922T095120Z/manifest.json"
       ],
-      "reason": "Missing local real endpoint/model/key. Zero real cases executed; fixture is not a substitute."
+      "reason": "Only 12 cases have timing/usage metrics; required complete 60-case latency/timeout report absent."
     },
     "AC-38": {
       "status": "PENDING_REVIEW",
@@ -451,5 +452,16 @@
       "evidence": [],
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
-  }
+  },
+  "updated_at": "2026-09-22T18:04:49+08:00",
+  "real_connection": {
+    "status": "PASS",
+    "model": "deepseek-v4-flash",
+    "evidence": [
+      "real-smoke-20260922T094112Z/manifest.json",
+      "real-ui-20260922/report.json"
+    ],
+    "scope": "protocol round trip and one real browser query only"
+  },
+  "connection_source_manifest": "real-connection-source.json"
 }
