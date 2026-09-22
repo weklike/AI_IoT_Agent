@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 7 执行结果 Markdown 渲染修复完成并更新网页；Task 9 完整模型验收仍未通过
-- 当前分支/提交：develop；本次开发基线 62ce324；新增前端渲染组件/依赖/展示测试及证据，后端未改
-- 更新时间：2026-09-22T19:46:43+08:00
+- 当前任务：仓库 clean 已完成；清理可再生缓存/构建产物/过期临时文件，业务与验收状态不变
+- 当前分支/提交：develop；本次清理基线 072bc8a；只更新进度记录，未修改源码或历史证据
+- 更新时间：2026-09-22T19:53:09+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -190,3 +190,18 @@
 
 - 本轮证据：artifacts/acceptance/markdown-20260922T113519Z；README 已说明刷新即可对已有回答应用新排版。
 - 本次只改展示层；后端、prompt、Schema、工具及预算摘要未变，不重跑完整真实评测与 60 分钟性能。旧结果保留且不改变模型成功率结论；新模型完整语义验收仍需后续完成。
+
+## 仓库 clean
+
+- 清理前工作区无未提交修改。按仓库内白名单清理 .pytest_cache、.ruff_cache、业务/测试源码下的 __pycache__、frontend/dist、frontend/node_modules/.vite、生成的 egg-info，以及之前排查留下的 4 个过期临时文件。未使用 git clean/reset 或 Docker prune。
+- 删除 120 个文件，文件大小合计 12,518,580 字节（约 11.94 MiB）；du 显示仓库从约 281M 降至 269M。
+- 清理前后 705 个 Git 跟踪文件 SHA256 一致；.env、依赖锁、运行中模型转发的 PID/元数据保持一致。保留 .venv、node_modules、运行数据、全部成功/失败验收证据及 Git 历史；没有停止或重建演示容器。
+
+| 实际检查 | 退出码 | 结果 |
+|---|---|---|
+| Python 白名单清理与逐文件/配置摘要校验 | 0 | PASS；所有选定缓存/临时文件删除，跟踪文件未变 |
+| GET `/`、`/api/health` | 0 | PASS；均 HTTP 200，DB/MQTT ready、real |
+| `PYTHONDONTWRITEBYTECODE=1 uv run --no-sync python -B` 导入 backend/simulator/tests.support 并查询安装元数据 | 0 | PASS；依赖环境可用，项目版本 0.1.0 |
+| `git status --short`、`git diff --exit-code`（更新本条进度前） | 0 | PASS；工作区干净 |
+
+- 仅清理可再生产物，没有业务改动，因此未重跑会再次生成缓存的整套测试。下次前端构建执行 `npm --prefix frontend run build`；开发与测试缓存按需自动重建。
