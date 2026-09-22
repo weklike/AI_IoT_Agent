@@ -425,7 +425,17 @@
         "real-model-20260922T095120Z/manifest.json",
         "real-model-20260922T095120Z/automatic-recheck.json"
       ],
-      "reason": "Stopped unstable endpoint diagnostic round after 12/60 cases: 8 model timeouts, 4 pass stricter automatic checks; 48 NOT_RUN. No human success rate."
+      "reason": "Stopped unstable endpoint diagnostic round after 12/60 cases: 8 model timeouts, 4 pass stricter automatic checks; 48 NOT_RUN. No human success rate.",
+      "latest_attempt": {
+        "status": "FAIL",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "evidence": [
+          "real-smoke-nvidia-20260922T102833Z/manifest.json",
+          "real-smoke-nvidia-20260922T102833Z/A01-1.json",
+          "real-smoke-nvidia-20260922T102833Z/container-check.json"
+        ],
+        "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+      }
     },
     "AC-37": {
       "status": "NOT_RUN",
@@ -453,8 +463,19 @@
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
   },
-  "updated_at": "2026-09-22T18:04:49+08:00",
+  "updated_at": "2026-09-22T18:31:53+08:00",
   "real_connection": {
+    "status": "FAIL",
+    "model": "deepseek-ai/deepseek-v4.1-flash",
+    "evidence": [
+      "real-smoke-nvidia-20260922T102833Z/manifest.json",
+      "real-smoke-nvidia-20260922T102833Z/A01-1.json",
+      "real-smoke-nvidia-20260922T102833Z/container-check.json"
+    ],
+    "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+  },
+  "connection_source_manifest": "real-connection-source.json",
+  "previous_real_connection": {
     "status": "PASS",
     "model": "deepseek-v4-flash",
     "evidence": [
@@ -462,6 +483,5 @@
       "real-ui-20260922/report.json"
     ],
     "scope": "protocol round trip and one real browser query only"
-  },
-  "connection_source_manifest": "real-connection-source.json"
+  }
 }

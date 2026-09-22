@@ -51,3 +51,10 @@
 
 - 真实端点出现重复超时后，在 12/60 时停止本轮采样进行单变量诊断，保留所有原始案例与其余 48 个 NOT_RUN。关闭思考模式的参数据 [DeepSeek 官方说明](https://api-docs.deepseek.com/guides/thinking_mode/) 验证，3 次中 2 次仍超时，未作为应用修复或改变生产参数。
 - 实际失败揭示自动评测缺陷：A04 等边界用例不能仅凭工单数为零就通过。新检查要求 completed，或该案例明确允许的业务错误；MODEL_TIMEOUT、协议/网络故障不能冒充拒绝非法请求。已先复现再修复，原失败案例不重写，另存 SHA 关联的重算结果。
+
+
+## NVIDIA 配置重试
+
+- 用户更新 .env 到 NVIDIA deepseek-ai/deepseek-v4.1-flash。按 [NVIDIA 官方接口说明](https://docs.api.nvidia.com/nim/re/reference/llm-apis) 补上基地址 /v1；模型列表 HTTP 200 且包含配置名称，宿主机与容器均验证。
+- 当前配置无需本机代理桥接，已仅停止本项目先前创建的转发进程，并重建后端加载用户最新配置。
+- 新 smoke 在第一次模型请求后成功执行真实状态工具，第二次请求超过 20 秒。保留单独 FAIL 目录；未启动 60 例，不提高时限、不选择其他模型替用户重试。

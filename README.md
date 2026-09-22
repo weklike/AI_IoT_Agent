@@ -73,7 +73,7 @@ uv run python scripts/acceptance.py --suite resilience --output "artifacts/accep
 
 只在本机 `.env` 配置 `LLM_BASE_URL`（Chat Completions 的 `/v1` 基地址）、`LLM_MODEL`、`LLM_API_KEY`。运行真实演示再将 `LLM_MODE` 改为 `real` 并重建后端。密钥只给后端，不填写在命令行、聊天、前端构建或证据中。
 
-真实适配器没有隐藏重试和 fixture 回退。本机代理的 `deepseek-v4-flash` 已通过真实工具调用往返及 Docker 页面查询验证；这不代表任意兼容端点都可用，也不替代完整 60 次效果评测。缺配置会明确报错。独立评测使用相同 create_app、真实 API/工具和每例临时库，在 lifespan 启动后加载固定夹具，只冻结数据时钟。
+真实适配器没有隐藏重试和 fixture 回退。此前本机代理的 `deepseek-v4-flash` 通过过真实工具调用往返及 Docker 页面查询验证。当前配置为 NVIDIA `deepseek-ai/deepseek-v4.1-flash`，新 smoke 的工具调用成功，但最终回答请求超过 20 秒，尚未完成该端点的完整验证；这不代表任意兼容端点都可用，也不替代完整 60 次效果评测。缺配置会明确报错。独立评测使用相同 create_app、真实 API/工具和每例临时库，在 lifespan 启动后加载固定夹具，只冻结数据时钟。
 
 ```bash
 ACCEPTANCE_STAMP=$(date -u +%Y%m%dT%H%M%SZ)
@@ -93,7 +93,7 @@ uv run python scripts/local_model_bridge.py --listen-host "$MODEL_BRIDGE_IP" --l
 
 本地 `.env` 中保留原 `LLM_BASE_URL` 给宿主机评测使用，另将 `LLM_DOCKER_BASE_URL` 设为 `http://<上面的网桥 IP>:18317/v1`，并设置 `LLM_MODE=real`。随后运行 `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --wait backend` 重新加载配置。桥接不读取密钥、不记录传输内容，只连接固定的本机回环端口；不要使用 0.0.0.0 监听。Ctrl+C 可关闭前台桥接；关闭后真实模型请求会明确失败，设备采集继续运行。
 
-本次后台桥接的 PID/日志位于忽略提交的 `data/local-model-bridge.pid` 和 `data/local-model-bridge.log`。WSL 或主机重启后需重新启动；Compose 网络重建后应重新确认网桥 IP。以后换成可直接访问的服务商 API 时，清空 `LLM_DOCKER_BASE_URL`，让容器使用 `LLM_BASE_URL`。
+先前后台桥接的 PID/日志位于忽略提交的 `data/local-model-bridge.pid` 和 `data/local-model-bridge.log`。当前 NVIDIA 直连配置已停止该桥接。若以后再次使用回环代理，WSL 或主机重启后需重新启动；Compose 网络重建后应重新确认网桥 IP。以后换成可直接访问的服务商 API 时，清空 `LLM_DOCKER_BASE_URL`，让容器使用 `LLM_BASE_URL`。
 
 20 个案例各执行 3 次，包含案例内部的幂等前置步骤。机器检查工具参数、证据与数据库结果；人工逐例检查答案语义和关键错误。运行后输出 review-template.json，复制到 eval/manual-review.json 后逐项填写实际 reviewer、reviewed_at、success 和 critical_errors，保持 evidence_sha256 与原始证据一致。没有真实人工评审时保持 PENDING_REVIEW，不自动填写 reviewer。若提示词、模型、Schema 或工单逻辑改变，应为最终版本重新完整评测。
 

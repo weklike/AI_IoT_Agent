@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 9 真实评测遇模型端点超时；配置已接通，演示保持 real
+- 当前任务：Task 9 NVIDIA 新配置重试仍在最终回答阶段超时；演示已加载新模型，保持 real
 - 当前分支/提交：develop；本次接入与评测修复 37a6309，证据 a2fd749；早期核心实现 75c3c33/2d066f1
-- 更新时间：2026-09-22T18:07:08+08:00
+- 更新时间：2026-09-22T18:31:53+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -16,7 +16,7 @@
 | Task 6 Agent | DONE | fixture 协议/预算、deepseek-v4-flash 真实工具往返及 Docker 网页查询通过 |
 | Task 7 前端 | DONE | 三页面、14 项 E2E、曲线空窗/窗口切换、离线 16.799s 与恢复 1.353s 均通过 |
 | Task 8 部署与性能 | DONE | core 后端 153 项 + 最新定向回归；resilience 30 项；60 分钟接收率 100%；最新 API P95 404.300ms |
-| Task 9 真实评测与交付 | BLOCKED | 当前端点 12 个案例中 8 个模型超时；本轮停止，48 个 NOT_RUN；需要稳定端点后重新完整评测及人工复核 |
+| Task 9 真实评测与交付 | BLOCKED | NVIDIA 新配置 smoke：状态工具成功、最终回答请求超过 20s；未启动新一轮 60 例。旧端点 12/60 记录保留 |
 
 ## 本次变更
 - 从仅有方案的目录初始化现有项目，按九任务顺序实现；没有创建平行项目或修改全局配置。
@@ -101,3 +101,20 @@
 - `uv run pytest tests/unit/test_eval_summary.py tests/unit/test_bootstrap.py tests/unit/test_model_bridge.py -q` 退出 0，17 passed；证据 real-integration-regression.xml。provider 协议回归另 12 passed，real-provider-regression.xml。
 - `uv run python eval/run.py --summarize artifacts/acceptance/real-model-20260922T095120Z --review-file eval/manual-review.json` 退出 1，正确报告缺少完整 60 次案例。
 - 已向用户说明端点时延问题，等待是否更换模型/服务地址的偏好；当前网页、三设备和真实模式继续运行。
+
+
+## 更新 .env 后重试 NVIDIA 配置
+
+- 用户切换为 NVIDIA 的 deepseek-ai/deepseek-v4.1-flash。原基地址缺少 /v1，按官方 Chat Completions 路径补全为 https://integrate.api.nvidia.com/v1；其余凭据不回显、不提交。
+- 用户已清空 Docker 专用覆盖地址；已重新创建后端读取新模式/模型/地址/密钥，逐项比较确认与本地配置一致。当前直接访问 NVIDIA；关闭了本项目先前创建的 TCP 桥接进程，没有停止用户本机代理。
+- 本轮真实 smoke 总耗时 36.880s：第一次模型请求 16.681s 后给出 get_device_status 调用，实际工具成功；第二次请求在 20.021s 触发 MODEL_TIMEOUT，run=timed_out。
+- 20/3/90 秒预算、6 次模型/8 次工具上限保持不变，无隐藏重试或 fixture 回退。新一轮完整 60 例未启动，不把单工具成功算作完整回答通过。
+
+| 实际命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-nvidia-20260922T102833Z` | 1 | FAIL | manifest.json、A01-1.json；最终回答请求 MODEL_TIMEOUT |
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --wait --wait-timeout 60 backend` | 0 | PASS | 后端 healthy，已匹配新配置 |
+| 宿主机及容器读取 /v1/models（不打印认证头） | 0 | PASS | HTTP 200，配置模型存在；container-check.json |
+| `curl --silent --show-error http://127.0.0.1:8080/api/health` | 0 | PASS | DB/MQTT ready、real |
+
+- 下一步：在既定 20 秒单次上限内获得完整工具往返成功，再使用新证据目录执行 60 例；若修改时限合同需单独记录范围变化，不能把放宽后的结果当成原合同通过。
