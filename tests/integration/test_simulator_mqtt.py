@@ -1,5 +1,6 @@
 import asyncio
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -102,7 +103,9 @@ async def test_three_clients_60_seconds_and_control():
                     4,
                 )
                 assert first["seq"] == 1
-            Path("artifacts/acceptance/task2/mqtt-samples.json").write_text(
+            Path(
+                f"artifacts/acceptance/task2/mqtt-samples-{datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ')}.json"
+            ).write_text(
                 json.dumps(
                     {
                         "normal_window_seconds": 60,

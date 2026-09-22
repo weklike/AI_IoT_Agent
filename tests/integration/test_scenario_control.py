@@ -154,3 +154,29 @@ async def test_real_api_scenarios_and_offline_recovery(tmp_path):
                     assert (await status())["health_state"] == "normal"
             finally:
                 await device.close()
+
+
+async def test_expired_command_does_not_remain_pending_after_db_busy(control):
+    from sqlalchemy import text
+
+    control.settings.scenario_ack_timeout_seconds = 0.1
+    command = await control.create("CHG-002", "normal")
+    async with control.db.engine.connect() as locked:
+        await locked.execute(text("BEGIN IMMEDIATE"))
+        await asyncio.sleep(1.25)
+        await locked.rollback()
+    assert (await control.get(command["command_id"]))["status"] == "timed_out"
+
+
+async def test_default_five_second_ack_deadline(control):
+    import time
+
+    control.settings.scenario_ack_timeout_seconds = 5
+    started = time.monotonic()
+    command = await control.create("CHG-002", "normal")
+    await asyncio.sleep(4.85)
+    assert (await control.get(command["command_id"]))["status"] == "pending"
+    async with asyncio.timeout(0.65):
+        while (await control.get(command["command_id"]))["status"] == "pending":
+            await asyncio.sleep(0.02)
+    assert 5 <= time.monotonic() - started < 5.5

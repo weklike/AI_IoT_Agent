@@ -9,6 +9,8 @@ services:
       timeout: 2s
       retries: 10
   backend:
+    image: ${BACKEND_IMAGE:-charge-ops-backend:local}
+    pull_policy: never
     build:
       context: ..
       dockerfile: deploy/backend.Dockerfile
@@ -18,6 +20,18 @@ services:
       MQTT_HOST: mqtt
       MQTT_PORT: 1883
       MQTT_TOPIC_PREFIX: ${MQTT_TOPIC_PREFIX:-charge/v1}
+      TELEMETRY_INTERVAL_SECONDS: ${TELEMETRY_INTERVAL_SECONDS:-2}
+      FRESH_SAMPLE_MAX_AGE_SECONDS: ${FRESH_SAMPLE_MAX_AGE_SECONDS:-10}
+      OFFLINE_TIMEOUT_SECONDS: ${OFFLINE_TIMEOUT_SECONDS:-15}
+      OVERHEAT_THRESHOLD_C: ${OVERHEAT_THRESHOLD_C:-60}
+      SCENARIO_ACK_TIMEOUT_SECONDS: ${SCENARIO_ACK_TIMEOUT_SECONDS:-5}
+      DB_BUSY_TIMEOUT_MS: ${DB_BUSY_TIMEOUT_MS:-1000}
+      AGENT_MODEL_TIMEOUT_SECONDS: ${AGENT_MODEL_TIMEOUT_SECONDS:-20}
+      AGENT_TOOL_TIMEOUT_SECONDS: ${AGENT_TOOL_TIMEOUT_SECONDS:-3}
+      AGENT_TOTAL_TIMEOUT_SECONDS: ${AGENT_TOTAL_TIMEOUT_SECONDS:-90}
+      AGENT_CLEANUP_TIMEOUT_SECONDS: ${AGENT_CLEANUP_TIMEOUT_SECONDS:-5}
+      AGENT_MAX_MODEL_REQUESTS: ${AGENT_MAX_MODEL_REQUESTS:-6}
+      AGENT_MAX_TOOL_CALLS: ${AGENT_MAX_TOOL_CALLS:-8}
       LLM_MODE: ${LLM_MODE:-fixture}
       LLM_BASE_URL: ${LLM_BASE_URL:-}
       LLM_MODEL: ${LLM_MODEL:-}
@@ -32,6 +46,8 @@ services:
       timeout: 3s
       retries: 30
   simulator:
+    image: ${BACKEND_IMAGE:-charge-ops-backend:local}
+    pull_policy: never
     build:
       context: ..
       dockerfile: deploy/backend.Dockerfile
@@ -39,10 +55,13 @@ services:
     environment:
       MQTT_HOST: mqtt
       MQTT_PORT: 1883
+      TELEMETRY_INTERVAL_SECONDS: ${TELEMETRY_INTERVAL_SECONDS:-2}
       MQTT_TOPIC_PREFIX: ${MQTT_TOPIC_PREFIX:-charge/v1}
     depends_on:
       mqtt: {condition: service_healthy}
   frontend:
+    image: ${FRONTEND_IMAGE:-charge-ops-frontend:local}
+    pull_policy: never
     build:
       context: ..
       dockerfile: deploy/frontend.Dockerfile

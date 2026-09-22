@@ -117,3 +117,8 @@ def test_schema_cannot_accept_server_context():
     )
     assert set(write["parameters"]["properties"]) == {"device_id", "reason_code"}
     assert write["parameters"]["additionalProperties"] is False
+
+
+def test_valid_final_response_allows_empty_tool_list():
+    response = {"role": "assistant", "content": "查询完成", "tool_calls": []}
+    assert validate_message(response) == response

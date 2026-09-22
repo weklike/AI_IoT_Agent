@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import NamedTuple
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -53,9 +54,20 @@ async def device_status(
     }
 
 
+class HistorySample(NamedTuple):
+    message_id: str
+    device_id: str
+    ts: datetime
+    temperature_c: float
+    voltage_v: float
+    current_a: float
+    power_kw: float
+    operating_state: str
+
+
 async def history_rows(
     session: AsyncSession, device_id: str, start: datetime, end: datetime
-) -> list[Telemetry]:
+) -> list[HistorySample]:
     from sqlalchemy import select
 
     if (
@@ -67,10 +79,20 @@ async def history_rows(
         raise DomainError("INVALID_ARGUMENTS", "历史区间必须带时区、正序且不超过 24 小时")
     if await session.get(Device, device_id) is None:
         raise DomainError("DEVICE_NOT_FOUND", "设备不存在", 404)
+    # Read only the fields used by history/API statistics; avoid hundreds of tracked ORM objects.
     rows = list(
         (
-            await session.scalars(
-                select(Telemetry)
+            await session.execute(
+                select(
+                    Telemetry.message_id,
+                    Telemetry.device_id,
+                    Telemetry.ts,
+                    Telemetry.temperature_c,
+                    Telemetry.voltage_v,
+                    Telemetry.current_a,
+                    Telemetry.power_kw,
+                    Telemetry.operating_state,
+                )
                 .where(
                     Telemetry.device_id == device_id,
                     Telemetry.ts >= start,
@@ -83,10 +105,10 @@ async def history_rows(
     )
     if len(rows) > 5000:
         raise DomainError("HISTORY_LIMIT_EXCEEDED", "历史超过 5000 行，请缩小时间区间")
-    return rows
+    return [HistorySample(*row) for row in rows]
 
 
-def sample_dict(row: Telemetry) -> dict:
+def sample_dict(row: Telemetry | HistorySample) -> dict:
     return {
         "message_id": row.message_id,
         "device_id": row.device_id,
@@ -99,7 +121,7 @@ def sample_dict(row: Telemetry) -> dict:
     }
 
 
-def summarize(rows: list[Telemetry], start: datetime, end: datetime, threshold: float) -> dict:
+def summarize(rows: list[HistorySample], start: datetime, end: datetime, threshold: float) -> dict:
     if not rows:
         raise DomainError("NO_DATA", "该时间区间没有样本")
     temperatures = [row.temperature_c for row in rows]

@@ -109,3 +109,76 @@ async def test_broker_restart_resubscribes_and_preserves_history(tmp_path):
                     assert await session.scalar(select(func.count()).select_from(Telemetry)) >= 2
             finally:
                 await device.close()
+
+
+async def test_real_retained_invalid_inputs_then_valid_sample(tmp_path, fixed_now, valid_payload):
+    from datetime import timedelta
+
+    from tests.support.clock import FixedClock
+
+    with broker() as (port, prefix):
+        probe = MQTTProbe(port, prefix)
+        await probe.start()
+        topic = f"{prefix}/devices/CHG-002/telemetry"
+        published = probe.client.publish(topic, json.dumps(valid_payload), qos=1, retain=True)
+        await asyncio.to_thread(published.wait_for_publish, 3)
+        app = create_app(
+            Settings(
+                _env_file=None,
+                app_env="test",
+                mqtt_port=port,
+                mqtt_topic_prefix=prefix,
+                database_url=f"sqlite+aiosqlite:///{tmp_path}/invalid.db",
+            ),
+            clock=FixedClock(fixed_now),
+        )
+        try:
+            async with app.router.lifespan_context(app):
+                async with asyncio.timeout(6):
+                    while True:
+                        async with app.state.db.sessions() as session:
+                            retained = await session.scalar(
+                                select(func.count())
+                                .select_from(DiagnosticEvent)
+                                .where(DiagnosticEvent.event_type == "retained")
+                            )
+                        if retained:
+                            break
+                        await asyncio.sleep(0.02)
+                assert (await app.state.store.device_status("CHG-002"))[
+                    "connection_state"
+                ] == "unknown"
+                invalid = [b"{", b"{}", b"x" * 8193]
+                for field, value in [
+                    ("temperature_c", "71"),
+                    ("temperature_c", True),
+                    ("temperature_c", float("nan")),
+                    ("temperature_c", 121),
+                    ("ts", (fixed_now + timedelta(seconds=6)).isoformat()),
+                    ("ts", (fixed_now - timedelta(seconds=86401)).isoformat()),
+                    ("device_id", "CHG-999"),
+                    ("schema_version", 2),
+                    ("extra", 1),
+                ]:
+                    invalid.append(json.dumps({**valid_payload, field: value}).encode())
+                for payload in invalid:
+                    probe.client.publish(topic, payload, qos=1)
+                probe.client.publish(
+                    f"{prefix}/devices/CHG-001/telemetry", json.dumps(valid_payload), qos=1
+                )
+                probe.client.publish(topic, json.dumps(valid_payload), qos=1, retain=False)
+                async with asyncio.timeout(6):
+                    while (await app.state.store.device_status("CHG-002"))[
+                        "connection_state"
+                    ] != "online":
+                        await asyncio.sleep(0.02)
+                async with app.state.db.sessions() as session:
+                    assert await session.scalar(select(func.count()).select_from(Telemetry)) == 1
+                    rejected = await session.scalar(
+                        select(func.count())
+                        .select_from(DiagnosticEvent)
+                        .where(DiagnosticEvent.event_type == "rejected")
+                    )
+                    assert rejected == len(invalid) + 1
+        finally:
+            await probe.close()

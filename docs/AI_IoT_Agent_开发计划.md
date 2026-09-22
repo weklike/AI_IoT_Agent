@@ -478,12 +478,12 @@ query_context.allow_work_order=false；seeded_evidence 在本 run 中预置合�
 
 **Interfaces：** 消费四个工具服务；产出 `AgentRunner.run(run_id)`、`Provider.complete(messages,tools,timeout_s)`、`ToolExecutor.execute(call,context,timeout_s)`；调用记录以 ToolCallResult 结构传递。
 
-- [ ] 固定工具 JSON Schema、系统提示和错误码；定义 fixture provider 的正常、未知工具、错误参数、超时、持续调用五种响应序列。
-- [ ] 对 AC-21—AC-28 编写业务可观察的测试；用真实临时数据库和工具服务执行，只有模型响应被替换。
-- [ ] 实现允许名单、严格参数校验、六次模型请求/八次工具/90 秒总预算，工具顺序执行并保留成功和失败记录；覆盖四工具各占一轮再最终回答的串行路径，不能只测并行合并路径。
+- [x] 固定工具 JSON Schema、系统提示和错误码；定义 fixture provider 的正常、未知工具、错误参数、超时、持续调用五种响应序列。
+- [x] 对 AC-21—AC-28 编写业务可观察的测试；用真实临时数据库和工具服务执行，只有模型响应被替换。
+- [x] 实现允许名单、严格参数校验、六次模型请求/八次工具/90 秒总预算，工具顺序执行并保留成功和失败记录；覆盖四工具各占一轮再最终回答的串行路径，不能只测并行合并路径。
 - [ ] 实现真实模型适配器，使用服务端配置的 endpoint/model/key；适配器的 endpoint 必须支持项目使用的工具协议。
-- [ ] 在真实模型配置缺失、HTTP 401/429、20 秒请求超时的情况下，返回明确失败，不切换模式；测试 assistant tool_calls 与 tool 结果 ID 的配对、空回复、重复协议 ID 和畸形响应。
-- [ ] 执行 `uv run pytest tests/unit/test_agent.py tests/integration/test_agent_workflow.py -q`，完成 AC-21—AC-28 并提交。
+- [x] 在真实模型配置缺失、HTTP 401/429、20 秒请求超时的情况下，返回明确失败，不切换模式；测试 assistant tool_calls 与 tool 结果 ID 的配对、空回复、重复协议 ID 和畸形响应。
+- [x] 执行 `uv run pytest tests/unit/test_agent.py tests/integration/test_agent_workflow.py -q`，完成 AC-21—AC-28 并提交。
 
 ```python
 async def test_unknown_tool_is_never_executed(agent_harness):
@@ -501,11 +501,11 @@ agent_harness 封装临时库、固定时钟、真实工具执行器和 fixture 
 
 **Interfaces：** 消费 OpenAPI 合同；网页提交 Agent 请求时生成 request_id，并在网络重试/刷新时恢复已有 run_id。
 
-- [ ] 先写端到端场景：正常设备、过温、离线等待、空历史、Agent 成功、超时、重复提交。
-- [ ] 实现总览和详情；曲线使用后端返回的采样时间，设备连接与健康状态分开展示。
-- [ ] 实现 Agent 对话页、写入复选框和工具轨迹；记录只读取服务器 API，不用前端模拟最终回复。
-- [ ] 轮询统一放在 polling.ts；组件卸载、请求完成、run 进入终态时停止对应轮询。
-- [ ] 执行 `npm --prefix frontend run typecheck`、`npm --prefix frontend run build`、`npm --prefix frontend run test:e2e`，完成 AC-29—AC-32 并提交。
+- [x] 先写端到端场景：正常设备、过温、离线等待、空历史、Agent 成功、超时、重复提交。
+- [x] 实现总览和详情；曲线使用后端返回的采样时间，设备连接与健康状态分开展示。
+- [x] 实现 Agent 对话页、写入复选框和工具轨迹；记录只读取服务器 API，不用前端模拟最终回复。
+- [x] 轮询统一放在 polling.ts；组件卸载、请求完成、run 进入终态时停止对应轮询。
+- [x] 执行 `npm --prefix frontend run typecheck`、`npm --prefix frontend run build`、`npm --prefix frontend run test:e2e`，完成 AC-29—AC-32 并提交。
 
 ```typescript
 test('查询设备不会生成工单', async ({ page }) => {
@@ -526,11 +526,11 @@ test:e2e 默认使用真实应用和 fixture provider；真实模型验收另由
 
 **Interfaces：** 产出验收入口 `uv run python scripts/acceptance.py --suite core|resilience|performance --output PATH`，生成按 AC 编号组织的 JSON 与文本报告。依赖不满足时明确报错并返回非零，不跳过后伪装通过。
 
-- [ ] 完成四服务 Compose、健康检查和数据库卷；开发用热重载配置不得进入验收配置。
-- [ ] 配置 MQTT 自动重连退避为 1—4 秒，重连成功后重新订阅；验证 Broker 启动晚于后端、Broker 重启、后端重启、模拟器重启四条恢复路径。
-- [ ] 运行 60 分钟正常负载，记录每台设备唯一消息数、延迟和错误；实际中断期间的数据缺口单独标记。
-- [ ] 按验收规则测本地 API P95 和数据入库延迟；真实模型响应时间单独记录。
-- [ ] 执行三个 suite，完成 AC-33—AC-35；保存资源环境、锁文件摘要和日志后提交。
+- [x] 完成四服务 Compose、健康检查和数据库卷；开发用热重载配置不得进入验收配置。
+- [x] 配置 MQTT 自动重连退避为 1—4 秒，重连成功后重新订阅；验证 Broker 启动晚于后端、Broker 重启、后端重启、模拟器重启四条恢复路径。
+- [x] 运行 60 分钟正常负载，记录每台设备唯一消息数、延迟和错误；实际中断期间的数据缺口单独标记。
+- [x] 按验收规则测本地 API P95 和数据入库延迟；真实模型响应时间单独记录。
+- [x] 执行三个 suite，完成 AC-33—AC-35；保存资源环境、锁文件摘要和日志后提交。
 
 ### Task 9：真实模型评测、演示与求职交付
 
@@ -538,11 +538,11 @@ test:e2e 默认使用真实应用和 fixture provider；真实模型验收另由
 
 **Interfaces：** 产出 `uv run python eval/run.py --mode real --repeat 3 --output PATH`、`uv run python eval/run.py --summarize PATH --review-file eval/manual-review.json` 和 `uv run python scripts/seed_demo.py --profile demo`。汇总命令只读取原始证据与人工评审，不重新请求模型。评测使用独立临时数据目录，不重置开发库；demo seed 只初始化空库，不隐式删除已有数据。
 
-- [ ] 将验收文件 A01—A20 原样落为案例，固定时钟、数据、期待工具、期待数据库副作用和答案依据。
+- [x] 将验收文件 A01—A20 原样落为案例，固定时钟、数据、期待工具、期待数据库副作用和答案依据。
 - [ ] 真实模式每例重复 3 次，共 60 次案例执行；每次独立 reset，幂等案例内部按规则保留上下文。一例可包含多次 HTTP 请求或 Agent run，不能将案例数写成模型 API 请求数。保存全部失败样本。
 - [ ] 按明确评分表检查工具轨迹、引用和工单，不只依赖另一个大模型给分。程序自动检查可判断项，人工逐例复核语义项；人工结果落入 eval/manual-review.json，缺少评审时返回 PENDING_REVIEW 而不是 PASS。
 - [ ] 确认整体至少 54/60 成功、每类至少 9/12、关键错误为 0；未达到则修复并对最终版本重新完整评测。
-- [ ] 完成 3—5 分钟演示视频或录屏脚本、架构图、设计取舍、已知限制和个人贡献说明。
+- [x] 完成 3—5 分钟演示视频或录屏脚本、架构图、设计取舍、已知限制和个人贡献说明。
 - [ ] 汇总 AC-01—AC-40 状态；通过后再将真实数字写进简历。完成 AC-36—AC-40 并提交。
 
 ## 9. 环境变量与配置

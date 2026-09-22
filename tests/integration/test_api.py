@@ -112,3 +112,28 @@ async def test_history_5001_rows_rejected(app_client, valid_payload, fixed_now):
     )
     assert response.status_code == 422
     assert response.json()["error"]["code"] == "HISTORY_LIMIT_EXCEEDED"
+
+
+async def test_history_exposes_gap_without_inventing_samples(app_client, valid_payload, fixed_now):
+    app, client = app_client
+    for seq, offset in [(1, -20), (2, -18), (3, 0)]:
+        sample = TelemetryMessage.model_validate(
+            {
+                **valid_payload,
+                "message_id": str(uuid4()),
+                "seq": seq,
+                "ts": fixed_now + timedelta(seconds=offset),
+            }
+        )
+        await app.state.store.ingest(sample, sample.ts)
+    response = await client.get(
+        "/api/devices/CHG-002/telemetry",
+        params={
+            "from": (fixed_now - timedelta(minutes=10)).isoformat(),
+            "to": fixed_now.isoformat(),
+        },
+    )
+    points = response.json()["data"]
+    assert len(points) == 3
+    assert [point["gap_before"] for point in points] == [False, False, True]
+    assert (await app.state.store.history("CHG-002", 10))["sample_count"] == 3

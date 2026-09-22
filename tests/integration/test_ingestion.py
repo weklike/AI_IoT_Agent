@@ -126,3 +126,16 @@ async def test_empty_values_are_null(store):
     status = await store.device_status("CHG-001")
     assert status["connection_state"] == "unknown"
     assert all(status[key] is None for key in ["temperature_c", "sample_ts", "data_age_seconds"])
+
+
+@pytest.mark.parametrize("offset", [-1, 0])
+async def test_old_but_fresh_on_arrival_cannot_extend_live_time(store, valid_payload, offset):
+    sample = TelemetryMessage.model_validate(valid_payload)
+    await store.ingest(sample, store.clock.now())
+    store.clock.advance(2)
+    old = sample.model_copy(
+        update={"message_id": uuid4(), "seq": 18, "ts": sample.ts + timedelta(seconds=offset)}
+    )
+    await store.ingest(old, store.clock.now())
+    store.clock.advance(13.001)
+    assert (await store.device_status("CHG-002"))["connection_state"] == "offline"

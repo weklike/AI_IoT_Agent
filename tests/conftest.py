@@ -23,3 +23,13 @@ def valid_payload(fixed_now):
         "power_kw": 20.0,
         "operating_state": "charging",
     }
+
+
+@pytest.fixture(autouse=True)
+def isolate_project_environment(monkeypatch):
+    # Tests pass their own settings; a developer's exported real-model configuration
+    # must not turn a fixture test into an external API request.
+    from backend.app.config import Settings
+
+    for field in Settings.model_fields:
+        monkeypatch.delenv(field.upper(), raising=False)

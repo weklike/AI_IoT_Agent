@@ -102,7 +102,9 @@ class ToolExecutor:
             return await self.orders.create(**args, context=context)
         raise DomainError("UNKNOWN_TOOL", "工具未注册")
 
-    async def execute(self, call: dict, args: dict, context: ToolContext) -> dict:
+    async def execute(
+        self, call: dict, args: dict, context: ToolContext, *, ordinal: int = 0
+    ) -> dict:
         name = call["function"]["name"]
         start = time.monotonic()
         async with self.db.sessions.begin() as session:
@@ -110,6 +112,7 @@ class ToolExecutor:
                 ToolCall(
                     tool_call_id=str(context.tool_call_id),
                     provider_call_id=call["id"],
+                    ordinal=ordinal,
                     run_id=str(context.run_id),
                     tool_name=name,
                     args_json=args,

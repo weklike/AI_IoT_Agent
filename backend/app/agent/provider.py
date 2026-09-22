@@ -18,7 +18,7 @@ def validate_message(message: dict) -> dict:
     content = message.get("content")
     if content is not None and not isinstance(content, str):
         raise DomainError("MODEL_PROTOCOL_ERROR", "模型正文类型无效")
-    if calls is not None and (not isinstance(calls, list) or not calls):
+    if calls is not None and not isinstance(calls, list):
         raise DomainError("MODEL_PROTOCOL_ERROR", "模型工具调用结构无效")
     if calls:
         for call in calls:

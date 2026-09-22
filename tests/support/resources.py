@@ -1,5 +1,6 @@
 """Owned Compose resources; never reuse or clear a developer instance."""
 
+import hashlib
 import json
 import os
 import socket
@@ -76,7 +77,7 @@ def broker():
 
 
 @contextmanager
-def stack():
+def stack(output: Path | None = None, *, simulator: bool = True, failures: bool = False):
     project = f"charge-smoke-{uuid4().hex[:12]}"
     env = os.environ.copy()
     ports = dict(
@@ -92,16 +93,157 @@ def stack():
         LLM_API_KEY="",
         MQTT_TOPIC_PREFIX=f"charge-test/{project}/v1",
     )
+    sources = sorted(
+        [
+            p
+            for directory in (
+                "backend",
+                "simulator",
+                "knowledge",
+                "tests/support",
+                "deploy",
+                "frontend/src",
+            )
+            for p in (ROOT / directory).rglob("*")
+            if p.is_file() and "__pycache__" not in p.parts
+        ]
+        + [
+            ROOT / p
+            for p in (
+                "pyproject.toml",
+                "uv.lock",
+                "frontend/package.json",
+                "frontend/package-lock.json",
+                "frontend/vite.config.ts",
+                "frontend/tsconfig.json",
+                "frontend/index.html",
+            )
+        ]
+    )
+    digest = hashlib.sha256(
+        b"".join(str(p.relative_to(ROOT)).encode() + p.read_bytes() for p in sources)
+    ).hexdigest()[:16]
+    env.update(
+        BACKEND_IMAGE=f"charge-ops-backend:test-{digest}",
+        FRONTEND_IMAGE=f"charge-ops-frontend:test-{digest}",
+    )
     command = ["docker", "compose", "-p", project, "-f", str(ROOT / "deploy/compose.yaml")]
+    override = None
+    if failures:
+        override = tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False)
+        json.dump(
+            {
+                "services": {
+                    "backend": {
+                        "environment": {"APP_ENV": "test"},
+                        "command": [
+                            "/app/.venv/bin/uvicorn",
+                            "tests.support.failure_app:create_test_app",
+                            "--factory",
+                            "--host",
+                            "0.0.0.0",
+                            "--port",
+                            "8000",
+                            "--workers",
+                            "1",
+                        ],
+                    }
+                }
+            },
+            override,
+        )
+        override.close()
+        command += ["-f", override.name]
     try:
+        import time
+
+        available = all(
+            subprocess.run(["docker", "image", "inspect", env[key]], capture_output=True).returncode
+            == 0
+            for key in ("BACKEND_IMAGE", "FRONTEND_IMAGE")
+        )
+        if not available:
+            dependency_image = os.environ.get("CHARGE_TEST_DEPENDENCY_IMAGE")
+            if dependency_image:
+                # Explicit offline fallback: only reuse an image with exactly the same package contract.
+                for filename in ("uv.lock", "pyproject.toml"):
+                    copied = subprocess.run(
+                        [
+                            "docker",
+                            "run",
+                            "--rm",
+                            "--entrypoint",
+                            "cat",
+                            dependency_image,
+                            "/app/" + filename,
+                        ],
+                        check=True,
+                        capture_output=True,
+                        timeout=30,
+                    )
+                    if copied.stdout != (ROOT / filename).read_bytes():
+                        raise RuntimeError("Cached dependency image does not match " + filename)
+                with tempfile.NamedTemporaryFile(mode="w", suffix=".Dockerfile") as dockerfile:
+                    dockerfile.write(
+                        "FROM " + dependency_image + "\n"
+                        "COPY backend backend\nCOPY simulator simulator\nCOPY knowledge knowledge\n"
+                        "COPY tests/support tests/support\n"
+                        "RUN uv sync --offline --locked --no-dev\n"
+                    )
+                    dockerfile.flush()
+                    subprocess.run(
+                        [
+                            "docker",
+                            "build",
+                            "-f",
+                            dockerfile.name,
+                            "-t",
+                            env["BACKEND_IMAGE"],
+                            str(ROOT),
+                        ],
+                        check=True,
+                        timeout=180,
+                    )
+                subprocess.run(command + ["build", "frontend"], check=True, env=env, timeout=600)
+                if output:
+                    output.mkdir(parents=True, exist_ok=True)
+                    (output / "dependency-cache.json").write_text(
+                        json.dumps(
+                            {
+                                "image": dependency_image,
+                                "uv_lock_and_pyproject": "exact_match",
+                                "install": "uv sync --offline --locked --no-dev",
+                            },
+                            indent=2,
+                        )
+                    )
+            else:
+                subprocess.run(command + ["build"], check=True, env=env, timeout=600)
+        started = time.monotonic()
         subprocess.run(
-            command + ["up", "-d", "--build", "--wait", "--wait-timeout", "120"],
+            command
+            + ["up", "-d", "--wait", "--wait-timeout", "120"]
+            + ([] if simulator else ["mqtt", "backend", "frontend"]),
             check=True,
             env=env,
-            timeout=600,
+            timeout=150,
         )
+        ports["PROJECT"] = project
+        ports["STARTUP_SECONDS"] = str(time.monotonic() - started)
         yield ports
     finally:
+        if output:
+            output.mkdir(parents=True, exist_ok=True)
+            log = subprocess.run(
+                command + ["logs", "--no-color", "--timestamps"],
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            (output / "compose.log").write_text(log.stdout + log.stderr)
         subprocess.run(
             command + ["down", "-v", "--remove-orphans"], check=True, env=env, timeout=60
         )
+        if override:
+            Path(override.name).unlink(missing_ok=True)

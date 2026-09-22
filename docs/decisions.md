@@ -19,3 +19,21 @@
 - 真实适配器使用 Chat Completions 函数工具协议，经 [官方函数调用文档](https://developers.openai.com/api/docs/guides/function-calling) 核对 assistant 在前、tool_call_id 配对规则。当前只有模拟 HTTP 协议测试，尚无经过真实调用验证的 endpoint/model。
 - fixture 是明确标记的确定性演示脚本，只替换模型响应；其数值与工单号来自真实工具。real 失败不切换模式。
 - 字体优先本地中文字体和等宽数字；深色导航、浅色面板、文字状态。无额外 UI 框架、外部字体或图像依赖。
+
+## 稳定性审查修正
+
+- 固定 DataClock 会让多个工具 started_at 相同，因此增加 ToolCall.ordinal 保存执行顺序；不使用随机 UUID 的字典序代替时间顺序。
+- 模型响应持久化也消耗业务总预算；保存后再次检查 deadline，不能在已过期时返回 completed。
+- 模型失败/超时同样记录耗时；正常最终响应允许空 tool_calls 列表，但空正文仍为协议错误。
+- 未授权或非法工具在执行前拒绝，同时保存服务器失败轨迹；不会进入业务服务。
+- 场景超时更新若遇 SQLite busy，记录具名任务错误，不留下未检索异常。后续显式命令查询可持久化已经过期的状态，不通过隐藏循环重试写入。
+- 场景 POST 尚未返回时离开详情页，取消请求并阻止后续响应重启旧轮询。
+- 测试镜像以源码摘要命名并复用只读构建产物，每次容器/卷/端口/前缀仍独立；避免重复测试因不必要的镜像元数据网络请求被阻塞。
+
+## Task 8 性能与证据沿用
+
+- 60 分钟稳态窗口保存 5391 个 PUBACK ID，全部在 DB 中匹配；遥测提交 P95=79.497ms。原 API 1000 请求 P95=650.164ms，保留 FAIL，不覆盖。
+- 5403 条三设备整小时预置数据复现 P95=624.129ms。profile 显示递归 JSON 编码与逐条 ORM 实例化为可消除开销。使用已有 Pydantic 序列化及仅查询历史所需字段的 NamedTuple，最新同规格 P95=404.300ms，零错误；不缩短窗口、不截断统计、不放宽阈值。
+- `performance-final/report.json` 分别引用原稳态和新 API 样本；`performance-compatibility.json` 对比实际运行镜像源文件摘要。沿用范围限于未改变的 MQTT/模拟器/入库链路、总览可见与稳定性；新的历史查询和图表由定向测试、压测及 E2E 重新验证。
+- 历史 API 的 gap_before 表示相邻真实样本间隔超过 1.5 个配置采样周期（容忍半周期抖动）；前端断开曲线，仅用 null 标记绘图空窗，不插入业务样本、不影响统计。
+- Docker 将锁定依赖安装层放在源码 COPY 之前，并使用 uv 构建缓存。PyPI 超时的两次构建均保留日志。测试环境可显式指定 CHARGE_TEST_DEPENDENCY_IMAGE，只有 uv.lock 与 pyproject.toml 字节完全相同时才复用其依赖，然后复制当前源码并离线 uv sync；测试卷和实例仍全新。此选项不更改正式 Compose 的镜像来源。

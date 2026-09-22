@@ -210,3 +210,34 @@ async def test_historical_hot_sample_and_index(services, valid_payload):
                     created_at=store.clock.now(),
                 )
             )
+
+
+async def test_reused_order_retains_this_calls_selected_evidence(services, valid_payload):
+    store, orders = services
+    first = await seed_hot_run(store, valid_payload)
+    second = await seed_hot_run(store, valid_payload)
+    await orders.create("CHG-002", "OVERHEAT", context=first)
+    result = await orders.create("CHG-002", "OVERHEAT", context=second)
+    assert result["data"]["created"] is False
+    assert result["data"]["evidence"]["run_id"] == str(second.run_id)
+    async with store.db.sessions() as session:
+        saved = await session.get(ToolCall, str(second.tool_call_id))
+        assert saved.result_json["data"]["evidence"] == result["data"]["evidence"]
+
+
+async def test_sqlite_busy_timeout_is_explicit_and_bounded(services, valid_payload):
+    import time
+
+    from sqlalchemy import text
+
+    store, orders = services
+    context = await seed_hot_run(store, valid_payload)
+    async with store.db.engine.connect() as locked:
+        await locked.execute(text("BEGIN IMMEDIATE"))
+        started = time.monotonic()
+        with pytest.raises(DomainError) as error:
+            await orders.create("CHG-002", "OVERHEAT", context=context)
+        elapsed = time.monotonic() - started
+        assert error.value.code == "DATABASE_BUSY"
+        assert 0.95 <= elapsed < 1.5
+        await locked.rollback()

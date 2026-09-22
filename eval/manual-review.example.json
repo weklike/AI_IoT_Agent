@@ -1,0 +1,12 @@
+[
+  {
+    "case_id": "A01",
+    "repeat": 1,
+    "evidence_sha256": null,
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": "仅为字段示例。请使用实际评测输出的 review-template.json 完成全部60项人工评审。"
+  }
+]

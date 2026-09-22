@@ -99,6 +99,7 @@ class ToolCall(Base):
     __tablename__ = "tool_calls"
     tool_call_id: Mapped[str] = mapped_column(String, primary_key=True)
     provider_call_id: Mapped[str]
+    ordinal: Mapped[int] = mapped_column(default=0)
     run_id: Mapped[str] = mapped_column(ForeignKey("agent_runs.run_id"), index=True)
     tool_name: Mapped[str]
     args_json: Mapped[dict[str, Any]] = mapped_column(JSON)

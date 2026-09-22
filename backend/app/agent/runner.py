@@ -119,6 +119,8 @@ class AgentRunner:
                 await self._save(
                     run_id, messages_json=json_data(messages), model_metrics_json=metrics
                 )
+                if time.monotonic() >= deadline:
+                    raise DomainError("AGENT_TIMEOUT", "整轮执行超时")
                 calls = response.get("tool_calls") or []
                 if not calls:
                     answer, status = response["content"], "completed"
@@ -130,7 +132,41 @@ class AgentRunner:
                 seen.update(call["id"] for call in calls)
                 if count + len(calls) > self.settings.agent_max_tool_calls:
                     raise DomainError("BUDGET_EXCEEDED", "工具调用预算已耗尽")
-                parsed = [validate_call(call, allowed) for call in calls]
+                parsed = []
+                for candidate in calls:
+                    try:
+                        parsed.append(validate_call(candidate, allowed))
+                    except DomainError as rejected:
+                        identifier = str(uuid4())
+                        try:
+                            rejected_args = json.loads(candidate["function"]["arguments"])
+                        except ValueError:
+                            rejected_args = {
+                                "unparsed_arguments": candidate["function"]["arguments"]
+                            }
+                        result = {
+                            "tool_call_id": identifier,
+                            "ok": False,
+                            "data": None,
+                            "error": {"code": rejected.code, "message": rejected.message},
+                        }
+                        async with self.db.sessions.begin() as session:
+                            session.add(
+                                ToolCall(
+                                    tool_call_id=identifier,
+                                    provider_call_id=candidate["id"],
+                                    ordinal=count + 1,
+                                    run_id=run_id,
+                                    tool_name=candidate["function"]["name"],
+                                    args_json=rejected_args,
+                                    result_json=result,
+                                    status="failed",
+                                    started_at=self.clock.now(),
+                                    duration_ms=0,
+                                    error_code=rejected.code,
+                                )
+                            )
+                        raise
                 for call, args in zip(calls, parsed):
                     remaining = deadline - time.monotonic()
                     if remaining <= 0:
@@ -139,7 +175,7 @@ class AgentRunner:
                         run_id=run_id, tool_call_id=uuid4(), allow_work_order=allowed
                     )
                     task = asyncio.create_task(
-                        self.executor.execute(call, args, context),
+                        self.executor.execute(call, args, context, ordinal=count + 1),
                         name=f"tool-{context.tool_call_id}",
                     )
                     count += 1

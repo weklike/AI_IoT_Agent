@@ -1,10 +1,9 @@
-from datetime import datetime
 from typing import Annotated
 
 from fastapi import APIRouter, Query, Request
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import AwareDatetime
+from pydantic_core import to_jsonable_python
 from sqlalchemy import select
 
 from backend.app.contracts import DEVICE_IDS, Contract, RunRequest, Scenario
@@ -16,9 +15,7 @@ router = APIRouter(prefix="/api")
 
 
 def json_data(value):
-    return jsonable_encoder(
-        value, custom_encoder={datetime: lambda dt: dt.isoformat().replace("+00:00", "Z")}
-    )
+    return to_jsonable_python(value)
 
 
 def success(request: Request, data, status: int = 200):
@@ -50,7 +47,18 @@ async def telemetry(
 ):
     async with request.app.state.db.sessions() as session:
         rows = await history_rows(session, device_id, start, end)
-        return success(request, [sample_dict(row) for row in rows])
+        points = []
+        previous_ts = None
+        interval = request.app.state.settings.telemetry_interval_seconds
+        for row in rows:
+            point = sample_dict(row)
+            # Half an interval tolerates timer jitter; a missing expected sample breaks the line.
+            point["gap_before"] = (
+                previous_ts is not None and (row.ts - previous_ts).total_seconds() > interval * 1.5
+            )
+            points.append(point)
+            previous_ts = row.ts
+        return success(request, points)
 
 
 class ScenarioRequest(Contract):
@@ -90,7 +98,7 @@ async def get_run(request: Request, run_id: str):
             await session.scalars(
                 select(ToolCall)
                 .where(ToolCall.run_id == run_id)
-                .order_by(ToolCall.started_at, ToolCall.tool_call_id)
+                .order_by(ToolCall.ordinal, ToolCall.started_at, ToolCall.tool_call_id)
             )
         ).all()
         data = {

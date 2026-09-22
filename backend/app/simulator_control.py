@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import time
 from typing import Protocol
 from uuid import UUID, uuid4
@@ -60,8 +61,17 @@ class ScenarioControl:
                 raise DomainError("MQTT_UNAVAILABLE", "命令发布未获确认", 503)
             task = asyncio.create_task(self._expire(key), name=f"scenario-{key}")
             self.tasks.add(task)
-            task.add_done_callback(self.tasks.discard)
+            task.add_done_callback(self._task_done)
         return {"command_id": key, "status": "pending"}
+
+    def _task_done(self, task: asyncio.Task):
+        self.tasks.discard(task)
+        if not task.cancelled() and task.exception() is not None:
+            logging.getLogger(__name__).error(
+                "SCENARIO_TIMER_FAILED task=%s error_type=%s",
+                task.get_name(),
+                type(task.exception()).__name__,
+            )
 
     async def _expire(self, key: str):
         try:
@@ -99,10 +109,16 @@ class ScenarioControl:
                     row.ack_at = ack.applied_at
 
     async def get(self, command_id: str | UUID) -> dict:
-        async with self.db.sessions() as session:
+        async with self.lock, self.db.sessions.begin() as session:
             row = await session.get(ScenarioCommandRow, str(command_id))
             if row is None:
                 raise DomainError("COMMAND_NOT_FOUND", "场景命令不存在", 404)
+            deadline = self.deadlines.get(str(command_id))
+            if row.status == "pending" and deadline is not None and time.monotonic() >= deadline:
+                # A timer may have hit the bounded SQLite busy timeout. A later explicit read
+                # can persist the overdue terminal state; there is no hidden retry loop.
+                row.status = "timed_out"
+                row.error = "SCENARIO_ACK_TIMEOUT"
             return {
                 field: getattr(row, field)
                 for field in (

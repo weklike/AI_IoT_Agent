@@ -151,6 +151,7 @@ class WorkOrderService:
                         "data": {
                             "order_id": existing.order_id,
                             "created": created,
+                            "evidence": evidence,
                             "device_id": device_id,
                             "reason_code": reason_code,
                         },

@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import DEVICE_IDS
-from backend.app.models import AgentRun, Base, Device
+from backend.app.models import AgentRun, Base, Device, ScenarioCommandRow, ToolCall
 
 
 class Database:
@@ -43,6 +43,16 @@ class Database:
                     .on_conflict_do_nothing(index_elements=["device_id"])
                 )
             await session.execute(update(Device).values(last_live_received_at=None))
+            await session.execute(
+                update(ScenarioCommandRow)
+                .where(ScenarioCommandRow.status == "pending")
+                .values(status="timed_out", error="PROCESS_RESTARTED_RESULT_UNCONFIRMED")
+            )
+            await session.execute(
+                update(ToolCall)
+                .where(ToolCall.status == "running")
+                .values(status="failed", error_code="PROCESS_RESTARTED")
+            )
             await session.execute(
                 update(AgentRun)
                 .where(AgentRun.status.in_(["queued", "running"]))

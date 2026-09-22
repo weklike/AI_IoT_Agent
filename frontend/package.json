@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "typecheck": "vue-tsc --noEmit",
-    "build": "vue-tsc --noEmit && vite build"
+    "build": "vue-tsc --noEmit && vite build",
+    "test:e2e": "uv run python ../scripts/e2e.py"
   },
   "dependencies": {
     "echarts": "^6.1.0",
