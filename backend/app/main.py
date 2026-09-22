@@ -1,3 +1,5 @@
+import asyncio
+import logging
 from contextlib import asynccontextmanager
 from uuid import uuid4
 
@@ -12,29 +14,53 @@ from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.db import Database
 from backend.app.mqtt.client import MQTTConnection
+from backend.app.telemetry.ingest import TelemetryStore
 
 
 def create_app(settings: Settings | None = None, *, clock: DataClock | None = None) -> FastAPI:
     settings = settings or Settings()
     clock = clock or DataClock()
     db = Database(settings)
-    mqtt = MQTTConnection(settings)
+    mqtt = MQTTConnection(settings, clock)
+    store = TelemetryStore(db, settings, clock)
+
+    async def consume():
+        while True:
+            topic, payload, received_at, retained = await mqtt.queue.get()
+            try:
+                if topic.endswith("/telemetry"):
+                    await store.receive(payload, topic, received_at, retained)
+            except SQLAlchemyError:
+                logging.getLogger(__name__).exception("TELEMETRY_DATABASE_ERROR topic=%s", topic)
+            finally:
+                mqtt.queue.task_done()
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         try:
             await db.initialize(clock)
+            app.state.consumer = asyncio.create_task(consume(), name="mqtt-consumer")
             if settings.mqtt_enabled:
                 await mqtt.start()
             yield
         finally:
             if settings.mqtt_enabled:
                 await mqtt.close()
+            if hasattr(app.state, "consumer"):
+                try:
+                    await asyncio.wait_for(
+                        mqtt.queue.join(), settings.agent_cleanup_timeout_seconds
+                    )
+                except TimeoutError:
+                    logging.getLogger(__name__).error("MQTT_DRAIN_TIMEOUT")
+                app.state.consumer.cancel()
+                await asyncio.gather(app.state.consumer, return_exceptions=True)
             await db.close()
 
     app = FastAPI(title="Charge Operations Agent", lifespan=lifespan)
     app.state.settings, app.state.clock = settings, clock
     app.state.db, app.state.mqtt = db, mqtt
+    app.state.store = store
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):

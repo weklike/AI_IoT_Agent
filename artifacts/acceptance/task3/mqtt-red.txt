@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_mqtt_to_database_reject_then_accept ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-4/test_mqtt_to_database_reject_t0')
+
+    async def test_mqtt_to_database_reject_then_accept(tmp_path):
+        with broker() as (port, prefix):
+            app = create_app(Settings(_env_file=None, app_env='test', mqtt_port=port,
+                                     mqtt_topic_prefix=prefix, database_url=f'sqlite+aiosqlite:///{tmp_path}/test.db'))
+            probe = MQTTProbe(port, prefix)
+            async with app.router.lifespan_context(app):
+                await probe.start()
+                device = DeviceClient('CHG-002', app.state.settings)
+                try:
+                    async with asyncio.timeout(10):
+>                       while not app.state.mqtt.subscribed:
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+E                       AttributeError: 'MQTTConnection' object has no attribute 'subscribed'
+
+tests/integration/test_mqtt_ingestion.py:24: AttributeError
+=========================== short test summary info ============================
+FAILED tests/integration/test_mqtt_ingestion.py::test_mqtt_to_database_reject_then_accept
+1 failed in 4.77s

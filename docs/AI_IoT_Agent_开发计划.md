@@ -409,11 +409,11 @@ def test_overheat_sample_exceeds_demo_threshold(fixed_now):
 
 **Interfaces：** 消费 `TelemetryMessage` 和 Broker 消息；产出 `ingest(message, received_at, retained=False)`，结果为 accepted/duplicate/rejected/conflict；产出 `device_status(device_id, now)`。
 
-- [ ] 为重复 10 次、唯一键冲突、乱序、retained、旧数据回放和 10/15 秒边界编写测试。
-- [ ] 执行 `uv run pytest tests/integration/test_ingestion.py tests/unit/test_freshness.py -q` 确认失败点。
-- [ ] 实现数据库两个唯一约束、索引、事务和快照更新；写明拒收/冲突原因。
-- [ ] 以固定时钟实现数据年龄与在线状态；后端启动时清空在线新鲜度记录，保留历史。
-- [ ] 在真实 Broker 上验证订阅重连和持久化；完成 AC-05—AC-10 的后端部分并提交，涉及页面显示的子项留到任务 7。
+- [x] 为重复 10 次、唯一键冲突、乱序、retained、旧数据回放和 10/15 秒边界编写测试。
+- [x] 执行 `uv run pytest tests/integration/test_ingestion.py tests/unit/test_freshness.py -q` 确认失败点。
+- [x] 实现数据库两个唯一约束、索引、事务和快照更新；写明拒收/冲突原因。
+- [x] 以固定时钟实现数据年龄与在线状态；后端启动时清空在线新鲜度记录，保留历史。
+- [x] 在真实 Broker 上验证订阅重连和持久化；完成 AC-05—AC-10 的后端部分并提交，涉及页面显示的子项留到任务 7。
 
 ```python
 async def test_duplicate_does_not_keep_device_online(store, clock, sample):

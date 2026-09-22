@@ -22,9 +22,11 @@ class MQTTProbe:
         self.loop.call_soon_threadsafe(self.ready.set)
 
     def on_message(self, client, userdata, message):
-        self.loop.call_soon_threadsafe(
-            self.messages.append, (message.topic, json.loads(message.payload))
-        )
+        try:
+            payload = json.loads(message.payload)
+        except (ValueError, UnicodeError):
+            return
+        self.loop.call_soon_threadsafe(self.messages.append, (message.topic, payload))
 
     async def start(self):
         self.loop = asyncio.get_running_loop()
