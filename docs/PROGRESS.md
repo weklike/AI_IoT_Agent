@@ -13,8 +13,8 @@
 | Task 3 遥测 | DONE | 12 项存储行为 + 2 项真实 Broker 测试通过；页面子项未完成 |
 | Task 4 查询与控制 | DONE | API、统计、5000 行限制、回执超时及真实场景链路通过 |
 | Task 5 工单与幂等 | DONE | 12 项服务/HTTP 幂等测试通过；模型执行链在 Task 6 集成 |
-| Task 6 Agent | IN_PROGRESS | 四工具/模型循环开发；真实配置尚未提供 |
-| Task 7 前端 | NOT_STARTED | 待 Task 6 |
+| Task 6 Agent | BLOCKED | fixture 协议/四工具/预算/默认超时已验证；真实 endpoint/model/key 未配置，未做真实握手 |
+| Task 7 前端 | IN_PROGRESS | 三页已实现，6 项真实四服务 E2E 通过；补测交互边界 |
 | Task 8 部署与性能 | NOT_STARTED | 待 Task 7 |
 | Task 9 真实评测与交付 | NOT_STARTED | 待 Task 8 |
 
@@ -52,3 +52,7 @@
 
 - Task 5：`uv run pytest tests/integration/test_work_orders.py tests/integration/test_run_idempotency.py -q` 退出 0，12 passed / 2.23s；证据 task5/extended.xml。工单与当前调用结果同事务；20 个独立会话、HTTP 接收并发、回滚、证据与授权检查通过。
 - Task 1—4 全回归：87 passed / 118.75s，退出 0，无警告，backend-task4.xml。
+
+- Task 6：默认预算测试 16 passed / 114.99s（task6/default-budgets.xml），包含真实单调 3/20/90 秒；协议单元+快路径 26 passed（task6/fast-final.xml，排除已独立测过的 2 个默认时限测试）。配置脱敏问题先失败后修正。
+- Task 7：typecheck/build 通过，6 项 E2E 通过 / 30.8s；e2e/20260922T065554Z 保存截图和 XML。最初占位页的 6 项失败保留于 e2e/20260922T064603Z。
+- 实际模型恢复条件：本地 .env 配置 LLM_MODE=real、LLM_BASE_URL（/v1 基地址）、LLM_MODEL、LLM_API_KEY；不能用 fixture 证据代替真实握手和 60 案例评测。

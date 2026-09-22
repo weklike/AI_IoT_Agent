@@ -63,3 +63,15 @@ def test_mqtt_cannot_be_disabled_in_local():
 def test_missing_real_configuration_explicit():
     with pytest.raises(ValueError, match="LLM_CONFIGURATION_ERROR"):
         Settings(_env_file=None, llm_mode="real", llm_base_url="", llm_model="", llm_api_key="")
+
+
+def test_real_configuration_error_never_prints_supplied_key():
+    with pytest.raises(ValueError) as error:
+        Settings(
+            _env_file=None,
+            llm_mode="real",
+            llm_base_url="",
+            llm_model="",
+            llm_api_key="SYNTHETIC_KEY_SENTINEL",
+        )
+    assert "SYNTHETIC_KEY_SENTINEL" not in str(error.value)

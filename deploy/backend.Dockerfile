@@ -3,6 +3,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.11.3 /uv /usr/local/bin/uv
 WORKDIR /app
 COPY pyproject.toml uv.lock ./
 COPY backend backend
+COPY knowledge knowledge
 COPY simulator simulator
 COPY tests/__init__.py tests/__init__.py
 COPY tests/support tests/support

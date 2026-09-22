@@ -11,6 +11,9 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException
 
+from backend.app.agent.fixture_provider import FixtureProvider
+from backend.app.agent.provider import RealProvider
+from backend.app.agent.runner import AgentRunner
 from backend.app.agent.scheduler import RunScheduler
 from backend.app.api import router
 from backend.app.clocks import DataClock
@@ -24,15 +27,29 @@ from backend.app.telemetry.ingest import TelemetryStore
 
 
 def create_app(
-    settings: Settings | None = None, *, clock: DataClock | None = None, run_executor=None
+    settings: Settings | None = None,
+    *,
+    clock: DataClock | None = None,
+    run_executor=None,
+    provider=None,
 ) -> FastAPI:
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
     settings = settings or Settings()
     clock = clock or DataClock()
     db = Database(settings)
     mqtt = MQTTConnection(settings, clock)
     store = TelemetryStore(db, settings, clock)
     control = ScenarioControl(db, settings, clock, mqtt)
-    scheduler = RunScheduler(db, clock, run_executor) if run_executor is not None else None
+    if (provider is not None or run_executor is not None) and settings.app_env not in {
+        "test",
+        "eval",
+    }:
+        raise ValueError("Dependency overrides are only allowed in test/eval")
+    provider = provider or (
+        FixtureProvider() if settings.llm_mode == "fixture" else RealProvider(settings)
+    )
+    runner = AgentRunner(db, settings, clock, provider, store)
+    scheduler = RunScheduler(db, clock, run_executor or runner.run)
 
     async def consume():
         while True:
@@ -76,6 +93,7 @@ def create_app(
                     logging.getLogger(__name__).error("MQTT_DRAIN_TIMEOUT")
                 app.state.consumer.cancel()
                 await asyncio.gather(app.state.consumer, return_exceptions=True)
+            await provider.close()
             await control.close()
             await db.close()
 
@@ -85,6 +103,7 @@ def create_app(
     app.state.store = store
     app.state.control = control
     app.state.scheduler = scheduler
+    app.state.runner = runner
     app.include_router(router)
 
     @app.middleware("http")

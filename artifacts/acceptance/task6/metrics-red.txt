@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_failed_model_call_keeps_elapsed_metrics _________________
+
+harness = (<fastapi.applications.FastAPI object at 0x7ce08046f9e0>, <backend.app.agent.fixture_provider.ScriptedProvider object at 0x7ce08046c830>, <function harness.<locals>.run at 0x7ce0804a5800>, <httpx.AsyncClient object at 0x7ce08046f8c0>)
+
+    async def test_failed_model_call_keeps_elapsed_metrics(harness):
+        from backend.app.models import AgentRun
+        app, provider, run, client = harness
+        provider.delay = .05
+        app.state.settings.agent_model_timeout_seconds = .02
+        provider.responses = [{'role': 'assistant', 'content': 'late'}]
+        result = await run()
+        async with app.state.db.sessions() as session:
+            row = await session.get(AgentRun, result['run_id'])
+>           assert len(row.model_metrics_json) == 1
+E           assert 0 == 1
+E            +  where 0 = len([])
+E            +    where [] = <backend.app.models.AgentRun object at 0x7ce07fb32420>.model_metrics_json
+
+tests/integration/test_agent_workflow.py:269: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_agent_workflow.py::test_failed_model_call_keeps_elapsed_metrics
+1 failed, 16 deselected in 0.70s

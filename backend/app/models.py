@@ -91,6 +91,8 @@ class AgentRun(Base):
     created_at: Mapped[datetime] = mapped_column(UTCTime)
     finished_at: Mapped[datetime | None] = mapped_column(UTCTime)
     error_code: Mapped[str | None]
+    messages_json: Mapped[list[dict]] = mapped_column(JSON, default=list)
+    model_metrics_json: Mapped[list[dict]] = mapped_column(JSON, default=list)
 
 
 class ToolCall(Base):
