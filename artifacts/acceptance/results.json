@@ -8,7 +8,7 @@
     "G2": "PASS",
     "G3": "FAIL"
   },
-  "scope": "G1/G2 deterministic engineering acceptance retained. Real endpoint now connected; real evaluation incomplete and failing latency checks. Human review/personal delivery remain incomplete.",
+  "scope": "G1/G2 deterministic engineering acceptance retained. New real model completed 60 cases: 36 automatic pass, 24 fail. Human semantics/critical-error review and personal delivery remain pending; G3 fails automatic thresholds.",
   "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json. Current additions are a host-only TCP bridge, optional Docker model address and stricter evaluation termination checks; Agent business code, UI, telemetry and dependency locks unchanged.",
   "results": {
     "AC-01": {
@@ -421,33 +421,30 @@
     },
     "AC-36": {
       "status": "FAIL",
+      "model": "gpt-5.6-luna",
       "evidence": [
-        "real-model-20260922T095120Z/manifest.json",
-        "real-model-20260922T095120Z/automatic-recheck.json"
+        "real-model-luna-20260922T104501Z/manifest.json",
+        "real-model-luna-20260922T104501Z/automatic-metrics.json",
+        "real-model-luna-20260922T104501Z/case-metrics.csv",
+        "real-model-luna-20260922T104501Z/report.md"
       ],
-      "reason": "Stopped unstable endpoint diagnostic round after 12/60 cases: 8 model timeouts, 4 pass stricter automatic checks; 48 NOT_RUN. No human success rate.",
-      "latest_attempt": {
-        "status": "FAIL",
-        "model": "deepseek-ai/deepseek-v4.1-flash",
-        "evidence": [
-          "real-smoke-nvidia-20260922T102833Z/manifest.json",
-          "real-smoke-nvidia-20260922T102833Z/A01-1.json",
-          "real-smoke-nvidia-20260922T102833Z/container-check.json"
-        ],
-        "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
-      }
+      "reason": "All 60 cases executed; 36 pass automatic checks, below 54/60. Categories: 12/12,9/12,6/12,9/12,0/12. Human semantic success count remains unknown."
     },
     "AC-37": {
-      "status": "NOT_RUN",
+      "status": "PASS",
       "evidence": [
-        "real-model-20260922T095120Z/manifest.json"
+        "real-model-luna-20260922T104501Z/automatic-metrics.json",
+        "real-model-luna-20260922T104501Z/case-metrics.csv"
       ],
-      "reason": "Only 12 cases have timing/usage metrics; required complete 60-case latency/timeout report absent."
+      "scope": "All 60 cases include total/model/tool elapsed time; median/P95 recorded including failures. 123 model requests, 99 returned usage and 24 failed without usage. 126019 reported tokens; no unsupported pricing/cost claim."
     },
     "AC-38": {
       "status": "PENDING_REVIEW",
-      "evidence": [],
-      "reason": "No real 60-case results or human semantic/critical-error reviews; no reviewer fabricated."
+      "evidence": [
+        "real-model-luna-20260922T104501Z/review-template.json",
+        "real-model-luna-20260922T104501Z/human-summary.log"
+      ],
+      "reason": "60 case evidence hashes verified. No human semantic/critical-error review; reviewer and critical-error count unknown."
     },
     "AC-39": {
       "status": "PASS",
@@ -463,16 +460,16 @@
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
   },
-  "updated_at": "2026-09-22T18:31:53+08:00",
+  "updated_at": "2026-09-22T19:02:30+08:00",
   "real_connection": {
-    "status": "FAIL",
-    "model": "deepseek-ai/deepseek-v4.1-flash",
+    "status": "PASS",
+    "model": "gpt-5.6-luna",
     "evidence": [
-      "real-smoke-nvidia-20260922T102833Z/manifest.json",
-      "real-smoke-nvidia-20260922T102833Z/A01-1.json",
-      "real-smoke-nvidia-20260922T102833Z/container-check.json"
+      "real-smoke-luna-20260922T103822Z/manifest.json",
+      "real-smoke-luna-20260922T103822Z/container-check.json",
+      "real-ui-luna-20260922/report.json"
     ],
-    "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+    "scope": "Only basic real tool round trip and browser query passed; full model acceptance failed, including intermittent HTTP 503."
   },
   "connection_source_manifest": "real-connection-source.json",
   "previous_real_connection": {
@@ -483,5 +480,52 @@
       "real-ui-20260922/report.json"
     ],
     "scope": "protocol round trip and one real browser query only"
-  }
+  },
+  "historical_real_connections": [
+    {
+      "status": "FAIL",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "evidence": [
+        "real-smoke-nvidia-20260922T102833Z/manifest.json",
+        "real-smoke-nvidia-20260922T102833Z/A01-1.json",
+        "real-smoke-nvidia-20260922T102833Z/container-check.json"
+      ],
+      "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+    }
+  ],
+  "current_model_source_compatibility": "real-smoke-luna-20260922T103822Z/source-compatibility.json",
+  "historical_real_evaluations": [
+    {
+      "AC-36": {
+        "status": "FAIL",
+        "evidence": [
+          "real-model-20260922T095120Z/manifest.json",
+          "real-model-20260922T095120Z/automatic-recheck.json"
+        ],
+        "reason": "Stopped unstable endpoint diagnostic round after 12/60 cases: 8 model timeouts, 4 pass stricter automatic checks; 48 NOT_RUN. No human success rate.",
+        "latest_attempt": {
+          "status": "FAIL",
+          "model": "deepseek-ai/deepseek-v4.1-flash",
+          "evidence": [
+            "real-smoke-nvidia-20260922T102833Z/manifest.json",
+            "real-smoke-nvidia-20260922T102833Z/A01-1.json",
+            "real-smoke-nvidia-20260922T102833Z/container-check.json"
+          ],
+          "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+        }
+      },
+      "AC-37": {
+        "status": "NOT_RUN",
+        "evidence": [
+          "real-model-20260922T095120Z/manifest.json"
+        ],
+        "reason": "Only 12 cases have timing/usage metrics; required complete 60-case latency/timeout report absent."
+      },
+      "AC-38": {
+        "status": "PENDING_REVIEW",
+        "evidence": [],
+        "reason": "No real 60-case results or human semantic/critical-error reviews; no reviewer fabricated."
+      }
+    }
+  ]
 }

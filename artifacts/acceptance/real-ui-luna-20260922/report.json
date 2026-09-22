@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "llm_mode": "real",
+  "allow_work_order": false,
+  "total_seconds": 18.308,
+  "tools": [
+    {
+      "name": "get_device_status",
+      "status": "succeeded"
+    }
+  ],
+  "error_code": null,
+  "browser_errors": []
+}

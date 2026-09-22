@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 9 NVIDIA 新配置重试仍在最终回答阶段超时；演示已加载新模型，保持 real
-- 当前分支/提交：develop；本次接入与评测修复 37a6309，证据 a2fd749；早期核心实现 75c3c33/2d066f1
-- 更新时间：2026-09-22T18:31:53+08:00
+- 当前任务：Task 9 gpt-5.6-luna 重测完成；60 次自动检查 36 通过 / 24 失败，G3 未通过
+- 当前分支/提交：develop；本轮测试基线 50017cd；本次仅模型配置重载与测试证据、文档更新，业务源码未改
+- 更新时间：2026-09-22T19:04:08+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -13,10 +13,10 @@
 | Task 3 遥测 | DONE | 双唯一约束、严格输入、顺序、新鲜度、重启 unknown |
 | Task 4 查询与控制 | DONE | API、完整历史统计、窗口限制、匹配回执及超时 |
 | Task 5 工单与幂等 | DONE | 授权、同 run 证据、20 会话并发、原子结果与提交边界 |
-| Task 6 Agent | DONE | fixture 协议/预算、deepseek-v4-flash 真实工具往返及 Docker 网页查询通过 |
+| Task 6 Agent | DONE | fixture 协议/预算、真实工具往返及 Docker 网页查询通过；新模型质量另见 Task 9 |
 | Task 7 前端 | DONE | 三页面、14 项 E2E、曲线空窗/窗口切换、离线 16.799s 与恢复 1.353s 均通过 |
 | Task 8 部署与性能 | DONE | core 后端 153 项 + 最新定向回归；resilience 30 项；60 分钟接收率 100%；最新 API P95 404.300ms |
-| Task 9 真实评测与交付 | BLOCKED | NVIDIA 新配置 smoke：状态工具成功、最终回答请求超过 20s；未启动新一轮 60 例。旧端点 12/60 记录保留 |
+| Task 9 真实评测与交付 | BLOCKED | gpt-5.6-luna 完成 60 次：自动 36/60，3 次空数据流程、6 次模型超时、15 次 HTTP 503；未达门槛，真人复核未做 |
 
 ## 本次变更
 - 从仅有方案的目录初始化现有项目，按九任务顺序实现；没有创建平行项目或修改全局配置。
@@ -53,15 +53,15 @@
 
 ## 未完成与阻塞
 - 初轮 API 性能失败已经修复；原 FAIL 保留，新样本见 api-projection。PyPI 两次构建超时已使用相同锁文件镜像依赖缓存恢复，未改变业务依赖。
-- 模型配置已完成并通过真实工具往返/网页查询；当前端点响应不稳定，多次超过固定 20 秒上限。没有回退 fixture，没有提高验收时限。
+- 当前 gpt-5.6-luna 已通过基础真实工具往返与网页查询；完整 60 次自动检查只有 36 次通过，未达到 ≥54/60。3 次 A06 未执行历史工具、6 次故障分析模型超时、15 次 A16—A20 HTTP 503；结束后的最小请求恢复 200，不能证明稳定。没有回退 fixture 或放宽预算。
 - 真实人工语义结论尚无，不能填写 reviewer 或宣布 G3。
 - 基线引用的 `AI_IoT_Agent_方案审阅与修改说明.md` 缺失；两份实际业务合同完整，未补造该文档。
 - 系统 Python 不作为项目解释器；实际使用 uv 管理 Python 3.12.13、Node 24.13.0、Chromium、Docker Compose 5.1.1；完整环境见证据。
 
 ## 下一步
 - 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理；本次按用户要求启动了常驻演示服务（见下方运行记录）。
-- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 工程证据沿用；AC-36 FAIL（本轮未完成且有超时），AC-37 NOT_RUN（没有完整 60 例），AC-38/40 PENDING_REVIEW，未声明完整作品交付。
-- 换用稳定端点后，以新目录先执行真实 smoke，再执行完整 60 次及真人复核；保留本轮 12 个原始案例与剩余 NOT_RUN，不覆盖失败。
+- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 工程证据沿用；AC-36 FAIL（新模型自动 36/60），AC-37 PASS（完整 60 例时间与 usage 汇总），AC-38/40 PENDING_REVIEW，未声明完整作品交付。
+- 本次重测已完成并保持评测对象不变。后续先解决模型端点的间歇性 503/20 秒超时，以及 A06 空数据历史流程；修改 prompt/业务逻辑后需新目录重做完整 60 次。第一条恢复验证：`uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-next-$(date -u +%Y%m%dT%H%M%SZ)`。
 
 - 真人完成 60 例语义/关键错误复核并填写 eval/manual-review.json 后运行 summarize；按 docs/demo.md 完成个人 3—5 分钟演示，确认能解释代码和简历数字。不得由开发 Agent 冒充真人完成。
 
@@ -118,3 +118,24 @@
 | `curl --silent --show-error http://127.0.0.1:8080/api/health` | 0 | PASS | DB/MQTT ready、real |
 
 - 下一步：在既定 20 秒单次上限内获得完整工具往返成功，再使用新证据目录执行 60 例；若修改时限合同需单独记录范围变化，不能把放宽后的结果当成原合同通过。
+
+
+## 更换 gpt-5.6-luna 后重新测试
+
+- 新配置使用本机回环代理。重新启动本项目的私有网桥 TCP 转发，并仅设置本地 Docker 地址覆盖，保留用户模型名、宿主机地址及密钥。后端已重建，四项模型配置逐一比较一致，DB/MQTT ready、模式 real。
+- 所有业务源码、prompt、Schema、评测逻辑与依赖锁摘要均和已有源码证据一致；本次仅重载配置与执行新模型测试。旧模型效果结论不沿用。
+
+| 实际命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| `uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-luna-20260922T103822Z` | 0 | PASS | 两次模型请求、真实 get_device_status、最终回答；7.778s |
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --wait --wait-timeout 60 backend` | 0 | PASS | container-check.json；配置匹配，DB/MQTT ready、real |
+| Playwright 提交真实只读设备查询 | 0 | PASS | real-ui-luna-20260922/report.json、agent.png；18.308s，无浏览器错误 |
+| `uv run python eval/run.py --mode real --repeat 3 --output artifacts/acceptance/real-model-luna-20260922T104501Z` | 3 | PENDING_REVIEW | 60 次均有原始轨迹；入口等待真人，自动指标另判 FAIL：36/60，未达 ≥54/60 |
+| `uv run python artifacts/acceptance/real-model-luna-20260922T104501Z/summarize_automatic.py` | 1 | FAIL | 完整样本自动门槛未通过；automatic-metrics.json、case-metrics.csv、report.md；60 个证据 SHA256 全部匹配 |
+| `uv run python eval/run.py --summarize artifacts/acceptance/real-model-luna-20260922T104501Z --review-file eval/manual-review.json` | 3 | PENDING_REVIEW | human-summary.log；没有伪造人工评审 |
+| 模型列表 + 单次最小 Chat 请求诊断 | 0 | PASS | endpoint-diagnostic.json；列表 200 且模型存在，最小请求 200 / 2.550s，仅证明当时恢复 |
+
+- 分类自动检查：状态查询 12/12、历史统计 9/12、异常分析 6/12、工单幂等 9/12、失败边界 0/12。A17—A20 被 HTTP 503 阻断，不能据此声称验证了其安全行为。
+- 总计 60 次案例、63 个独立 Agent run、123 次模型请求、80 次工具调用；完整保留失败分母。A15 同 request_id 三次均复用原 run/工单，A16 新 request_id 组遭遇 503，未通过。
+- 案例总耗时中位数 11.461s / P95 33.110s / 最大 39.836s；含所有快速失败和多 run 案例。99 次请求返回 usage，共 126019 token；24 次失败请求缺 usage，不将其计作零费用，不估算本机代理价格。
+- 60 条真人复核模板已生成，reviewer/语义结果/关键错误数仍未知。未修改业务源码或 prompt，不改演示库，不提高 20/3/90 秒预算。此前 DeepSeek/NVIDIA 失败原样保留。
