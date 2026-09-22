@@ -69,6 +69,10 @@ uv run python scripts/acceptance.py --suite resilience --output "artifacts/accep
 
 自定义入口退出码：0=通过，1=验收失败，2=环境阻塞，3=待人工复核。pytest/npm 保留自身退出码。尚未覆盖的 AC 子项仍为 NOT_RUN；测试数量不是验收通过率。若外网下载不可用，可显式设置 `CHARGE_TEST_DEPENDENCY_IMAGE=<已有测试镜像>`；工具先核对 uv.lock/pyproject 完全相同，再复制当前源码、离线安装，不能复用旧业务数据。
 
+## 回答显示
+
+Agent 执行结果支持 Markdown 标题、列表、强调、引用、表格与代码块，已有回答刷新页面后即可应用排版。宽表格和代码在回答区内滚动。模型原始 HTML 按文本展示，图片保留替代文字，链接只接受安全协议。渲染采用 markdown-it 15.0.2（MIT）；原始回答与工具轨迹仍由后端保存。
+
 ## 真实模型与评测
 
 只在本机 `.env` 配置 `LLM_BASE_URL`（Chat Completions 的 `/v1` 基地址）、`LLM_MODEL`、`LLM_API_KEY`。运行真实演示再将 `LLM_MODE` 改为 `real` 并重建后端。密钥只给后端，不填写在命令行、聊天、前端构建或证据中。

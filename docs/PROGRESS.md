@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 9 网页超时配置问题已修复；后端切换到 gemini-3.8-flash-high，原问题网页复测 12.305s 完成
-- 当前分支/提交：develop；本轮排查基线 ff69da5；仅运行配置重载、证据及文档更新，业务源码未改
-- 更新时间：2026-09-22T19:26:20+08:00
+- 当前任务：Task 7 执行结果 Markdown 渲染修复完成并更新网页；Task 9 完整模型验收仍未通过
+- 当前分支/提交：develop；本次开发基线 62ce324；新增前端渲染组件/依赖/展示测试及证据，后端未改
+- 更新时间：2026-09-22T19:46:43+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -14,7 +14,7 @@
 | Task 4 查询与控制 | DONE | API、完整历史统计、窗口限制、匹配回执及超时 |
 | Task 5 工单与幂等 | DONE | 授权、同 run 证据、20 会话并发、原子结果与提交边界 |
 | Task 6 Agent | DONE | fixture 协议/预算、真实工具往返及 Docker 网页查询通过；新模型质量另见 Task 9 |
-| Task 7 前端 | DONE | 三页面、14 项 E2E、曲线空窗/窗口切换、离线 16.799s 与恢复 1.353s 均通过 |
+| Task 7 前端 | DONE | 三页面、Markdown 回答；最新 19 项页面测试（含 5 项展示样例）；既有曲线空窗/场景/刷新/错误状态回归通过 |
 | Task 8 部署与性能 | DONE | core 后端 153 项 + 最新定向回归；resilience 30 项；60 分钟接收率 100%；最新 API P95 404.300ms |
 | Task 9 真实评测与交付 | BLOCKED | gpt-5.6-luna 完成 60 次：自动 36/60，3 次空数据流程、6 次模型超时、15 次 HTTP 503；未达门槛，真人复核未做 |
 
@@ -169,3 +169,24 @@
 
 - 本轮证据目录：artifacts/acceptance/web-timeout-20260922T112100Z。README 已补充 .env 更新后的容器加载命令和旧任务恢复说明。
 - 本次未改业务代码、prompt、Schema 或时限，不需重跑无关测试；未执行完整 60 次评测，新模型质量与人工复核仍未完成。旧失败保留。
+
+## 执行结果 Markdown 展示处理
+
+- 原页面以 Vue 文本插值显示模型 Markdown；替换为 MarkdownAnswer.vue + markdown.ts，在前端渲染标题、列表、强调、引用、表格、代码和链接，并保持原始回答与错误状态。
+- 使用 markdown-it 15.0.2（固定版本、自带 TS 类型），现有依赖没有同等 Markdown 解析能力。关闭 HTML 执行，限制链接协议并隔离新窗口；图片只显示替代文字。样式限定在回答区域。
+- 先复现渲染缺失：4 项失败、普通错误文本 1 项通过；实现后 5 项均通过。首次测试源码转义错误也保留在 red.log，没有将其作为功能缺失证据。
+
+| 实际命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| `npm install --save-exact markdown-it@15.0.2`（frontend） | 0 | PASS | package-lock.json；新增 7 包，审计 0 漏洞 |
+| `npm --prefix frontend exec -- playwright test -c frontend/playwright.config.ts markdown.spec.ts`（独立 Vite / 定向展示，修改前） | 1 | FAIL | red-rendering/；4 failed / 1 passed |
+| 同一定向命令，修改后 | 0 | PASS | green/；5 passed / 7.0s |
+| `npm --prefix frontend run typecheck` | 0 | PASS | 无 TypeScript 错误 |
+| `npm --prefix frontend run build` | 0 | PASS | build.log；既有 >500kB 警告保留，未提高阈值 |
+| `CHARGE_TEST_DEPENDENCY_IMAGE=charge-ops-backend:local npm --prefix frontend run test:e2e` | 0 | PASS | e2e/20260922T114001Z：15 + 1 + 3，共 19 通过，0 skip；隔离资源已清理 |
+| 验收镜像静态文件与本地 dist SHA256 比较，标记 local 镜像 | 0 | PASS | image-verification.json；3 文件一致 |
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --force-recreate frontend` | 0 | PASS | runtime-after.json；仅前端重建、后端保持 |
+| Playwright 读取已保存真实回答，两种分辨率检查 | 0 | PASS | live-after.json/截图；原文一致、3 标题/19 加粗/7 列表，无溢出与脚本错误，模型任务 POST=0 |
+
+- 本轮证据：artifacts/acceptance/markdown-20260922T113519Z；README 已说明刷新即可对已有回答应用新排版。
+- 本次只改展示层；后端、prompt、Schema、工具及预算摘要未变，不重跑完整真实评测与 60 分钟性能。旧结果保留且不改变模型成功率结论；新模型完整语义验收仍需后续完成。

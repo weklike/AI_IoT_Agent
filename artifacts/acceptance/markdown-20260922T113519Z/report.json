@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "executed_at": "2026-09-22T19:46:43+08:00",
+  "base_commit": "62ce324ff5bd51aa3be79e95a020b4268d856479",
+  "files_sha256": {
+    "frontend/package.json": "854e020aa1bab8e502d3e5f6f00220b96477f042b00d420593988d2d8c62de25",
+    "frontend/package-lock.json": "d686c26bbb5e25a0e12eecbcd10c2dc37389803113072958964fa495b8bd1a4f",
+    "frontend/src/pages/AgentChat.vue": "b12b9ecabfc77b5e83f28a4a96a68a368602c878bf99aea69b0855aa025f4ff9",
+    "frontend/src/markdown.ts": "cc7c3ff40af340682f4d94ce77bf68e59d83b424e0c4d04276d3a163fade81ff",
+    "frontend/src/components/MarkdownAnswer.vue": "11888bf22cb1b3a156e0cbdeec5df256d03f62a54ddd403c51a6d3967d4fb1c3",
+    "frontend/e2e/markdown.spec.ts": "d9d0336dfec3feaf5e66f04567d42a8f812b759e7057b3af7d42bfc9e7703a13"
+  },
+  "dependency": {
+    "markdown-it": "15.0.2",
+    "new_runtime_packages": 1,
+    "new_transitive_packages": 6,
+    "npm_audit_vulnerabilities": 0
+  },
+  "checks": {
+    "typecheck": {
+      "exit_code": 0
+    },
+    "build": {
+      "exit_code": 0,
+      "warning": "Existing size warning retained; main JS bundle 711.00 kB (gzip 257.76 kB), dominated by shared chart/parser bundle."
+    },
+    "red_rendering": {
+      "exit_code": 1,
+      "failed": 4,
+      "passed": 1,
+      "evidence": "red-rendering/results.xml"
+    },
+    "targeted_rendering": {
+      "exit_code": 0,
+      "passed": 5,
+      "evidence": "green/results.xml"
+    },
+    "isolated_e2e": {
+      "exit_code": 0,
+      "suites": {
+        "normal": {
+          "tests": 15,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "empty": {
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "failures": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "evidence": "artifacts/acceptance/e2e/20260922T114001Z"
+    },
+    "live_saved_answer": {
+      "exit_code": 0,
+      "evidence": "live-after.json",
+      "new_model_requests": 0
+    },
+    "frontend_deploy": {
+      "exit_code": 0,
+      "evidence": "image-verification.json"
+    }
+  },
+  "scope": "Only Markdown presentation changed. Test API interception is explicitly limited to presentation fixtures. Existing real answer read from live backend was unchanged. Backend/container/model prompt/tools/budgets were preserved. No new real-model quality evaluation inferred."
+}

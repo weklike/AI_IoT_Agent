@@ -1,0 +1,1102 @@
+{
+  "run_id": "3fcc493a-72f9-4d46-8705-aa0fc368d048",
+  "request_id": "e98a8c2a-9da1-4594-85af-99aaa2da8a07",
+  "question": "分析 2 号桩最近 10 分钟的温度，给出排查建议。",
+  "allow_work_order": false,
+  "status": "completed",
+  "answer": "### 一、设备当前运行状态\n\n* **设备标识**：2 号桩（CHG-002）\n* **连接状态**：在线（online）\n* **健康状态**：正常（normal）\n* **运行状态**：充电中（charging）\n* **数据新鲜度**：有效新鲜（`data_fresh=true`，延迟约 0.57 秒）\n* **最新采样时间**：2026-09-22T11:23:18.739116Z\n* **当前指标**：\n  * 温度：37.49 °C\n  * 电压：400.0 V\n  * 电流：50.0 A\n  * 功率：20.0 kW\n\n---\n\n### 二、最近 10 分钟温度数据分析\n\n* **统计窗口**：2026-09-22T11:13:19.341209Z 至 2026-09-22T11:23:19.341209Z（共 10 分钟）\n* **采样总数**：297 个样本\n* **最低温度**：35.04 °C\n* **最高温度**：40.00 °C\n* **平均温度**：37.59 °C\n* **超温次数**：0 次\n\n**分析结论**：设备在过去 10 分钟内处于稳定充电状态，温度在 35.04 °C 至 40.00 °C 区间小幅波动，运行平稳。\n\n---\n\n### 三、排查建议与依据\n\n参考排查规范：**《合成过温告警排查》（source_id: GUIDE-OVERHEAT, version: 1.0）**\n\n1. **观测异常**：\n   * 本次 10 分钟监控窗口内**未观测到过温异常**，所有样本均远低于系统演示设定的 60.0 °C 过温阈值（注：60.0 °C 为演示规则阈值，不代表真实工业标准）。\n2. **可能原因分析**：\n   * 当前遥测数据及链路状态良好，无异常触发。\n   * 若未来出现异常升温，常见可能原因包括模拟环境场景触发；若映射至实体设备，通常与设备周围散热受阻、环境温度过高或传感器读数漂移有关（依规不断言具体硬件损坏）。\n3. **运维建议**：\n   * 当前设备状态良好，无需停机或申请检修。\n   * 建议保持常规巡检与遥测监控，重点关注持续高功率充电过程中的温升斜率。",
+  "created_at": "2026-09-22T11:23:16.936284Z",
+  "finished_at": "2026-09-22T11:23:28.276322Z",
+  "error_code": null,
+  "tool_calls": [
+    {
+      "tool_call_id": "077c5999-70ac-4cf9-a63a-49813b3f00ce",
+      "provider_call_id": "get_device_status-1790076199256116100-2",
+      "tool_name": "get_device_status",
+      "args_json": {
+        "device_id": "CHG-002"
+      },
+      "result_json": {
+        "tool_call_id": "077c5999-70ac-4cf9-a63a-49813b3f00ce",
+        "ok": true,
+        "data": {
+          "device_id": "CHG-002",
+          "name": "充电桩 CHG-002",
+          "connection_state": "online",
+          "health_state": "normal",
+          "data_fresh": true,
+          "data_age_seconds": 0.565757,
+          "sample_ts": "2026-09-22T11:23:18.739116Z",
+          "message_id": "576beabf-8f62-5b23-ab91-79fc8d789f06",
+          "temperature_c": 37.49,
+          "voltage_v": 400,
+          "current_a": 50,
+          "power_kw": 20,
+          "operating_state": "charging",
+          "last_live_received_at": "2026-09-22T11:23:18.740951Z"
+        },
+        "error": null
+      },
+      "status": "succeeded",
+      "started_at": "2026-09-22T11:23:19.289585Z",
+      "duration_ms": 19.983801001217216,
+      "error_code": null
+    },
+    {
+      "tool_call_id": "491c7b5b-d50f-4d6b-8327-60d4d0f40332",
+      "provider_call_id": "get_device_history-1790076199256116100-3",
+      "tool_name": "get_device_history",
+      "args_json": {
+        "device_id": "CHG-002",
+        "window_minutes": 10
+      },
+      "result_json": {
+        "tool_call_id": "491c7b5b-d50f-4d6b-8327-60d4d0f40332",
+        "ok": true,
+        "data": {
+          "device_id": "CHG-002",
+          "from": "2026-09-22T11:13:19.341209Z",
+          "to": "2026-09-22T11:23:19.341209Z",
+          "sample_count": 297,
+          "temperature_min_c": 35.04,
+          "temperature_max_c": 40,
+          "temperature_avg_c": 37.59,
+          "overheat_count": 0,
+          "overheat_intervals": [],
+          "overheat_samples": [],
+          "samples": [
+            {
+              "message_id": "59bd7515-4e20-5de6-9ea3-33d38f6e6f21",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:19.841330Z",
+              "temperature_c": 39.49,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "3be560f7-f2e0-529e-b01d-39b9245a1e48",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:25.849902Z",
+              "temperature_c": 39.06,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "cf87781d-2a8f-5bca-97cb-ab4a3622c7f8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:31.858219Z",
+              "temperature_c": 39.87,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "7dab1dde-fc6e-535b-a2e5-39d0ce35d295",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:37.867047Z",
+              "temperature_c": 39.44,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "d0fe3067-f075-5d5b-ae50-d6ead0b05c71",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:43.875958Z",
+              "temperature_c": 37.11,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "db73306c-1404-5dce-9a6f-222a6b20745d",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:49.882874Z",
+              "temperature_c": 38.55,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "f55ec627-3ad8-5b12-9829-dae63c07bcca",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:13:55.891106Z",
+              "temperature_c": 38.21,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "c8b17cdb-b575-5122-ae34-4ab1092bba27",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:01.900332Z",
+              "temperature_c": 37.64,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "2d83e760-2c96-5da8-abe4-65bbcca796f2",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:07.907434Z",
+              "temperature_c": 39.21,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "532af1c3-f758-5d77-93a8-5746c3559cf3",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:13.915941Z",
+              "temperature_c": 39.7,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "56ad88b2-3db5-59ab-a637-c3a3ba75541a",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:19.924448Z",
+              "temperature_c": 39.1,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a1cbfc63-31a4-588e-bdd4-d19f5a343674",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:25.931646Z",
+              "temperature_c": 39.88,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "af22a3d4-0ad0-5490-bcc3-573a62eed117",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:31.939090Z",
+              "temperature_c": 39.33,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "82282844-4c97-581a-99dd-fc513abdf66f",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:37.949075Z",
+              "temperature_c": 38.9,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "0c66c80f-a8ad-5a4a-953d-226b73404df5",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:43.959241Z",
+              "temperature_c": 37.57,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "92ce7a7e-54bc-549d-9b5f-807ed7a6cc44",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:49.968799Z",
+              "temperature_c": 39.95,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "b1619c6b-f741-5dee-8687-ba4b9a2fb0ad",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:14:55.978307Z",
+              "temperature_c": 39.02,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "7fe2f460-28d8-5837-855a-113d96ea973f",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:01.988133Z",
+              "temperature_c": 38.99,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "cd36ed33-93f5-5e6d-8537-a0400fd11933",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:07.997775Z",
+              "temperature_c": 39.53,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "69c8a039-cc84-5a02-b44e-129accca50a8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:14.007135Z",
+              "temperature_c": 38.56,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "ccfcbe61-cb34-5986-b2c1-e25fe57fe1d8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:20.016446Z",
+              "temperature_c": 39.02,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "2cd849a6-fef2-5425-adab-a1dcc27d18d8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:26.026323Z",
+              "temperature_c": 35.96,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "64be8dd7-786b-5f62-ad56-8a734470a115",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:32.036535Z",
+              "temperature_c": 39.3,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "b5f00162-5967-5bc7-a183-bd4d7069891d",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:38.045063Z",
+              "temperature_c": 37.26,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "06dd02ff-9e07-51a7-9b2a-77e32ff3ec01",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:44.054863Z",
+              "temperature_c": 39,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "f56573aa-8130-5e1a-a861-87f9f2fc92d1",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:50.063980Z",
+              "temperature_c": 39.21,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "14f9ad75-0eb7-5d47-abe1-26b5dbc35306",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:15:56.073699Z",
+              "temperature_c": 39.72,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "8c3a569f-2c99-5c38-899f-8b3bdf8bda50",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:02.083426Z",
+              "temperature_c": 39.97,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "54aa5be8-cb77-5c58-ac58-3192efa72ad1",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:08.092360Z",
+              "temperature_c": 37.23,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "ddf29de0-9c0b-5207-96df-6aa5da61ac5c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:14.101936Z",
+              "temperature_c": 38.58,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a2b9c87e-1494-5665-879f-35c6ac891139",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:20.111524Z",
+              "temperature_c": 35.69,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "6458e2fe-a809-515b-aa66-2256528cc30e",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:26.121148Z",
+              "temperature_c": 35.13,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "24c66119-bcbf-5dab-8333-1a3ce1a06f99",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:32.129955Z",
+              "temperature_c": 36.99,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "80c60ef4-6942-5378-ad45-ccbe1e50e9a5",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:38.139990Z",
+              "temperature_c": 38.33,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "ee24c411-c1ad-5d1d-a5ad-7877adf9e96d",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:44.148621Z",
+              "temperature_c": 38.43,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "247ea934-08d0-5185-a8c8-89c8e517594d",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:50.155799Z",
+              "temperature_c": 38.04,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "c8c54eb0-7426-598f-9951-795604f95db8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:16:56.165348Z",
+              "temperature_c": 38.46,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "4a73be43-6c6e-5a22-89f3-90ceebcc6470",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:02.173105Z",
+              "temperature_c": 37.88,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a082836f-2573-5ff3-9c32-5aa358222c12",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:08.182704Z",
+              "temperature_c": 35.33,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "ad352301-8209-5a87-b4f7-21c42922f5ec",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:14.192713Z",
+              "temperature_c": 36.65,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "66b1590c-85be-5846-91dd-3011f423dcb7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:20.200065Z",
+              "temperature_c": 38.16,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "803699db-de4f-5ebd-b620-981e5864dce0",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:26.209124Z",
+              "temperature_c": 38.2,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "75e6220f-b6d4-59d5-b38a-595a892da5dc",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:32.219124Z",
+              "temperature_c": 35.62,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "f348fa2c-11cf-5a4c-848a-4f105489e9fa",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:38.228700Z",
+              "temperature_c": 35.64,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "5d9f94fc-3c18-5061-b6af-5a6f75f2ffa5",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:44.238195Z",
+              "temperature_c": 36.75,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "464f8f39-5e6d-57d7-80af-ecd5fce512b9",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:50.247475Z",
+              "temperature_c": 38.08,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "97d2e4a3-37d3-53c2-b419-92666e49772e",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:17:56.254111Z",
+              "temperature_c": 37.35,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "32342a03-7fb6-5ec4-b0a5-49d095cbf99a",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:02.261210Z",
+              "temperature_c": 39.06,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "3f269a40-26ec-50d2-81a9-0cf12bca1c41",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:08.269086Z",
+              "temperature_c": 37.45,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "769e8000-a1ad-56c0-9181-16621bd290b2",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:14.278595Z",
+              "temperature_c": 38.14,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "69f615f2-65d2-5281-9185-b38a8e02621e",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:18.285365Z",
+              "temperature_c": 38.44,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "16a915ef-1d53-543e-8d27-735c470b74b8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:24.293683Z",
+              "temperature_c": 37.86,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "23908980-8214-5ee1-a37f-aa6a013d39a2",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:30.303301Z",
+              "temperature_c": 38.73,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "f11a6121-3161-5de7-8f0c-af81080e0fa4",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:36.313376Z",
+              "temperature_c": 35.09,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "1a92556e-0885-5c46-b847-bf10b031836d",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:42.321115Z",
+              "temperature_c": 38.8,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a7c6ff53-9d61-5d89-8a9e-bd0e6ce396e7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:48.329464Z",
+              "temperature_c": 38.01,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "7fa77022-05a9-5b04-a126-5462688cd9d9",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:18:54.338740Z",
+              "temperature_c": 39.77,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "7b274e82-55ad-54d2-b30f-8780b865dbe7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:00.348355Z",
+              "temperature_c": 39.37,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "dbbc6737-f0b7-5f16-bf87-fe70c89b84ca",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:06.357100Z",
+              "temperature_c": 39.22,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "7c34adb9-e7fa-51d6-b01b-3e4012045198",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:12.366311Z",
+              "temperature_c": 38.37,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "34937f25-1fdf-57e5-bef6-921f5ff5ce24",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:18.375681Z",
+              "temperature_c": 39.1,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "e7f82a36-eda9-589e-95c3-2e7186536b1c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:24.384227Z",
+              "temperature_c": 39.96,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "78af0e56-4128-5e54-856d-481448f8a284",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:30.393406Z",
+              "temperature_c": 35.44,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "72a0bd92-d29d-5700-a5d5-a23f11e2f33c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:36.403148Z",
+              "temperature_c": 35.53,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "b72d6438-f6b6-5105-a165-79c2e14021c2",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:42.411222Z",
+              "temperature_c": 38.89,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "66b5aa23-7629-5f82-ae7f-2ee8ed296b12",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:48.420545Z",
+              "temperature_c": 38.79,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "9f18430e-b6b1-56fd-a76c-497d167e1f43",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:19:54.429615Z",
+              "temperature_c": 37.39,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "6a6a93c0-6da7-5541-aecb-bd762fa8f45a",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:00.437680Z",
+              "temperature_c": 39.29,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "16b888ac-1e38-5607-b0bf-2de3084960bc",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:06.447031Z",
+              "temperature_c": 36.39,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "62439f77-03d2-59e4-9b24-6f0fcc1ca722",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:12.456463Z",
+              "temperature_c": 38.1,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "d3ca3aea-e61b-5bba-8f1f-6c29a7ce1e83",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:18.463966Z",
+              "temperature_c": 35.66,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "5cec58c4-3d1d-576d-b615-b21d5fdd8de7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:24.471443Z",
+              "temperature_c": 39.2,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "73263971-b540-5071-9fc7-8899fd2e4d16",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:30.480938Z",
+              "temperature_c": 38.02,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "b2354ad1-070a-59b1-9da0-406c695a86cd",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:36.490088Z",
+              "temperature_c": 35.25,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "f2a9d685-f839-5a31-97aa-78d389525b3c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:42.499430Z",
+              "temperature_c": 35.75,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "0d334d47-d5c4-59b1-a9c5-0980464fddfc",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:48.508871Z",
+              "temperature_c": 35.93,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "38f9eea2-f345-56c8-a527-a7c1f7de403a",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:20:54.517006Z",
+              "temperature_c": 37.35,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "9edb2b12-05e6-58f6-a86a-7191ed0aff20",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:00.525883Z",
+              "temperature_c": 37.44,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "9873101a-62aa-5cad-8340-b32fd6144933",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:06.535023Z",
+              "temperature_c": 37.2,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "5208f683-6bbe-5041-9fe8-2cb0251be069",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:12.544328Z",
+              "temperature_c": 35.58,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "c89eacdf-c6e5-502b-a5cc-1cc9eaee5468",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:18.555147Z",
+              "temperature_c": 39.57,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "168bc865-5265-5fc0-bcf1-98ca631de8f1",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:24.564664Z",
+              "temperature_c": 35.77,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "28aa9bd4-b895-599c-b243-00ade5af19db",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:30.574964Z",
+              "temperature_c": 36.26,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "443375a2-9b3a-5d31-b60b-b5806fb61d5c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:36.584978Z",
+              "temperature_c": 36.95,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "503bede1-2187-5b8f-b016-3baf89f60d66",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:48.602391Z",
+              "temperature_c": 39.49,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "294e3924-e7a6-576a-8f1b-b9484c020cc6",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:21:54.611927Z",
+              "temperature_c": 35.19,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "37e3d0b5-49e2-5846-824c-d73b41b223d0",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:00.621127Z",
+              "temperature_c": 39.56,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "127ac052-89dc-5b15-afa5-a8157137fdc8",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:06.629171Z",
+              "temperature_c": 39.05,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "91731d83-38d4-5228-8e36-765add36ee8c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:12.637004Z",
+              "temperature_c": 38.23,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "2e612808-1964-5c3c-ae71-e6ffbff75ea9",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:18.644093Z",
+              "temperature_c": 39.79,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "6ef6f394-b1b7-5509-a365-14b87ad4d1ee",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:24.653053Z",
+              "temperature_c": 37.87,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "afac2133-8dd2-5de1-9af3-44cd6ad384c7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:30.663556Z",
+              "temperature_c": 35.12,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "8d4f9f13-01a6-5de1-b641-71f3ef899267",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:36.671971Z",
+              "temperature_c": 39.33,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "43b6dda3-4bfc-50d2-ba0b-d5ebb9a381e7",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:42.681451Z",
+              "temperature_c": 35.56,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "503bd42b-74f9-5ad7-8eb9-db524dc72b2a",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:48.691567Z",
+              "temperature_c": 39.62,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "fcf9a1ff-1ec1-5f55-83c4-23ca0ad9cd2e",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:22:54.701093Z",
+              "temperature_c": 35.77,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a816fed6-7295-5df7-a8a2-d6e51be8077c",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:23:00.710711Z",
+              "temperature_c": 35.31,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "de4b68fe-bb6c-5a73-9673-f10e9560ba44",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:23:06.720559Z",
+              "temperature_c": 38.02,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "a49ab6fc-cf1f-5649-9ac7-8b63aaf111f2",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:23:12.730064Z",
+              "temperature_c": 38.53,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            },
+            {
+              "message_id": "576beabf-8f62-5b23-ab91-79fc8d789f06",
+              "device_id": "CHG-002",
+              "sample_ts": "2026-09-22T11:23:18.739116Z",
+              "temperature_c": 37.49,
+              "voltage_v": 400,
+              "current_a": 50,
+              "power_kw": 20,
+              "operating_state": "charging"
+            }
+          ]
+        },
+        "error": null
+      },
+      "status": "succeeded",
+      "started_at": "2026-09-22T11:23:19.331192Z",
+      "duration_ms": 17.464245000155643,
+      "error_code": null
+    },
+    {
+      "tool_call_id": "20ad9246-34b8-4eea-a952-b7c326cb6ad1",
+      "provider_call_id": "get_fault_guide-1790076201755366300-4",
+      "tool_name": "get_fault_guide",
+      "args_json": {
+        "reason_code": "OVERHEAT"
+      },
+      "result_json": {
+        "tool_call_id": "20ad9246-34b8-4eea-a952-b7c326cb6ad1",
+        "ok": true,
+        "data": {
+          "source_id": "GUIDE-OVERHEAT",
+          "version": "1.0",
+          "title": "合成过温告警排查",
+          "content": "# 合成过温告警排查\n\nsource_id: GUIDE-OVERHEAT\nversion: 1.0\n\n1. 核对设备 ID、样本时间和数据新鲜度；60 °C 是本项目演示阈值。\n2. 查看最近窗口的温度和超限样本，区分当前异常与已经恢复的历史异常。\n3. 可能原因包括模拟器处于 overheat 场景；若迁移到实体设备，应由专业人员核对环境、传感器与散热。\n4. 需要检修时先获得本次工单授权，并关联工具数据。不能仅凭合成遥测断言具体硬件损坏。\n"
+        },
+        "error": null
+      },
+      "status": "succeeded",
+      "started_at": "2026-09-22T11:23:21.788378Z",
+      "duration_ms": 12.367423987598158,
+      "error_code": null
+    }
+  ],
+  "llm_mode": "real"
+}

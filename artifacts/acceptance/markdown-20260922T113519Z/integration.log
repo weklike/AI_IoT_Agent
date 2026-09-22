@@ -1,0 +1,350 @@
+
+> charge-ops-frontend@0.1.0 test:e2e
+> uv run python ../scripts/e2e.py
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from tmptjxbijgk.Dockerfile
+#1 transferring dockerfile: 225B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/charge-ops-backend:local
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 117B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 110.81kB 0.0s done
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/charge-ops-backend:local@sha256:18ee9ca77be001bf101d3c4ffea2ca12ca2905d2e980db268303ad93cea1ae7a
+#5 resolve docker.io/library/charge-ops-backend:local@sha256:18ee9ca77be001bf101d3c4ffea2ca12ca2905d2e980db268303ad93cea1ae7a 0.0s done
+#5 DONE 0.2s
+
+#6 [2/6] COPY backend backend
+#6 DONE 0.1s
+
+#7 [3/6] COPY simulator simulator
+#7 DONE 0.1s
+
+#8 [4/6] COPY knowledge knowledge
+#8 DONE 0.1s
+
+#9 [5/6] COPY tests/support tests/support
+#9 DONE 0.1s
+
+#10 [6/6] RUN uv sync --offline --locked --no-dev
+#10 0.561 Resolved 31 packages in 19ms
+#10 0.583 Checked 23 packages in 10ms
+#10 DONE 0.6s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.3s done
+#11 exporting manifest sha256:77181d37922414cd02fdc47b264ceecdf0373b8889aeba66bb3d08789c9c2b1f 0.0s done
+#11 exporting config sha256:8793ba316ffd277b134cd7b322a47832b3f10f17fa0de31c8a6d97bf88d5e1f8 0.0s done
+#11 exporting attestation manifest sha256:c6b2ac62fbd3c7636d4aabfb2072f112ded76010aa0680ac06ef7e778baba5f8 0.0s done
+#11 exporting manifest list sha256:4d2c851a23573e1b027db8effa91fe47381664e34c77db775b94910d864b662e 0.0s done
+#11 naming to docker.io/library/charge-ops-backend:test-616965c2f88aa420
+#11 naming to docker.io/library/charge-ops-backend:test-616965c2f88aa420 done
+#11 unpacking to docker.io/library/charge-ops-backend:test-616965c2f88aa420 0.1s done
+#11 DONE 0.6s
+ Image charge-ops-frontend:test-616965c2f88aa420 Building 
+ Image charge-ops-backend:test-616965c2f88aa420 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.03kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from frontend.Dockerfile
+#2 transferring dockerfile: 302B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#3 DONE 3.3s
+
+#4 [internal] load metadata for docker.io/library/node:24.13.0-alpine
+#4 DONE 3.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 117B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#7 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.1s done
+#7 DONE 0.1s
+
+#8 [build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#8 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#8 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#8 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 120.38kB done
+#6 DONE 0.0s
+
+#9 [build 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 3/6] COPY frontend/package*.json ./
+#10 DONE 0.1s
+
+#11 [build 4/6] RUN npm ci
+#11 26.95 
+#11 26.95 added 66 packages, and audited 67 packages in 26s
+#11 26.95 
+#11 26.95 12 packages are looking for funding
+#11 26.95   run `npm fund` for details
+#11 26.95 
+#11 26.95 found 0 vulnerabilities
+#11 26.95 npm notice
+#11 26.95 npm notice New minor version of npm available! 11.6.2 -> 11.19.1
+#11 26.95 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.19.1
+#11 26.95 npm notice To update run: npm install -g npm@11.19.1
+#11 26.95 npm notice
+#11 DONE 27.2s
+
+#12 [build 5/6] COPY frontend/ ./
+#12 DONE 0.1s
+
+#13 [build 6/6] RUN npm run build
+#13 0.559 
+#13 0.559 > charge-ops-frontend@0.1.0 build
+#13 0.559 > vue-tsc --noEmit && vite build
+#13 0.559 
+#13 3.634 vite v6.4.3 building for production...
+#13 3.783 transforming...
+#13 8.162 ✓ 651 modules transformed.
+#13 8.601 rendering chunks...
+#13 8.618 computing gzip size...
+#13 8.656 dist/index.html                   0.36 kB │ gzip:   0.29 kB
+#13 8.656 dist/assets/index-DeheH51E.css   13.77 kB │ gzip:   3.65 kB
+#13 8.657 dist/assets/index-B1ZEU_ve.js   711.00 kB │ gzip: 257.76 kB
+#13 8.657 
+#13 8.657 (!) Some chunks are larger than 500 kB after minification. Consider:
+#13 8.657 - Using dynamic import() to code-split the application
+#13 8.657 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#13 8.657 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#13 8.657 ✓ built in 4.99s
+#13 DONE 8.9s
+
+#14 [stage-1 2/3] COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers 0.1s done
+#16 exporting manifest sha256:0bede447acceb0fc10f7c3cce6f00cea2178bd0421de2378d47b1840af362f79 0.0s done
+#16 exporting config sha256:9e72ecbe7229520a7dcd645819e0807edf42639e34607f0ac77fb35fb052cf4e 0.0s done
+#16 exporting attestation manifest sha256:3747b3e8cd6e108a6478a001a0b1460a66c3c5cbb4c0afc1d2beb42e739ea8ed 0.0s done
+#16 exporting manifest list sha256:653fa6363555577f93f0147c980b1325431ff83c70b1c46b23ee742c677473eb 0.0s done
+#16 naming to docker.io/library/charge-ops-frontend:test-616965c2f88aa420
+#16 naming to docker.io/library/charge-ops-frontend:test-616965c2f88aa420 done
+#16 unpacking to docker.io/library/charge-ops-frontend:test-616965c2f88aa420 0.0s done
+#16 DONE 0.3s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image charge-ops-frontend:test-616965c2f88aa420 Built 
+ Network charge-smoke-98adfa2e6207_default Creating 
+ Network charge-smoke-98adfa2e6207_default Created 
+ Volume charge-smoke-98adfa2e6207_backend_data Creating 
+ Volume charge-smoke-98adfa2e6207_backend_data Created 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Creating 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Created 
+ Container charge-smoke-98adfa2e6207-simulator-1 Creating 
+ Container charge-smoke-98adfa2e6207-backend-1 Creating 
+ Container charge-smoke-98adfa2e6207-simulator-1 Created 
+ Container charge-smoke-98adfa2e6207-backend-1 Created 
+ Container charge-smoke-98adfa2e6207-frontend-1 Creating 
+ Container charge-smoke-98adfa2e6207-frontend-1 Created 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Starting 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Started 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Waiting 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Waiting 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Healthy 
+ Container charge-smoke-98adfa2e6207-backend-1 Starting 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Healthy 
+ Container charge-smoke-98adfa2e6207-simulator-1 Starting 
+ Container charge-smoke-98adfa2e6207-backend-1 Started 
+ Container charge-smoke-98adfa2e6207-backend-1 Waiting 
+ Container charge-smoke-98adfa2e6207-simulator-1 Started 
+ Container charge-smoke-98adfa2e6207-backend-1 Healthy 
+ Container charge-smoke-98adfa2e6207-frontend-1 Starting 
+ Container charge-smoke-98adfa2e6207-frontend-1 Started 
+ Container charge-smoke-98adfa2e6207-backend-1 Waiting 
+ Container charge-smoke-98adfa2e6207-simulator-1 Waiting 
+ Container charge-smoke-98adfa2e6207-frontend-1 Waiting 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Waiting 
+ Container charge-smoke-98adfa2e6207-frontend-1 Healthy 
+ Container charge-smoke-98adfa2e6207-simulator-1 Healthy 
+ Container charge-smoke-98adfa2e6207-backend-1 Healthy 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Healthy 
+
+Running 15 tests using 1 worker
+
+(node:290570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:290570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/agent.spec.ts:3:1 › 查询不建单，刷新恢复服务器轨迹 (2.5s)
+  ✓   2 e2e/agent.spec.ts:17:1 › 授权建单后重复查询只显示真实工单 (5.4s)
+  ✓   3 e2e/agent.spec.ts:30:1 › 响应丢失后重试使用原 request_id，终态停止轮询 (3.0s)
+  ✓   4 e2e/agent.spec.ts:57:1 › 未知设备任务显示失败及真实错误轨迹 (2.3s)
+  ✓   5 e2e/devices.spec.ts:4:1 › 三设备与真实场景切换、离线恢复 (26.8s)
+  ✓   6 e2e/devices.spec.ts:51:3 › 布局与截图 1280 (901ms)
+  ✓   7 e2e/devices.spec.ts:51:3 › 布局与截图 1920 (960ms)
+  ✓   8 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (549ms)
+  ✓   9 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (4.9s)
+  ✓  10 e2e/devices.spec.ts:104:1 › 离开详情时未完成的场景请求不能重启旧轮询 (2.1s)
+  ✓  11 e2e/markdown.spec.ts:48:1 › Markdown 回答渲染标题、强调、嵌套列表、引用、表格和代码 (495ms)
+  ✓  12 e2e/markdown.spec.ts:67:1 › 模型 Markdown 不执行 HTML、危险链接或自动加载外部图片 (356ms)
+  ✓  13 e2e/markdown.spec.ts:98:3 › 长表格和代码在 1280×720 保持页面无横向溢出 (491ms)
+  ✓  14 e2e/markdown.spec.ts:98:3 › 长表格和代码在 1920×1080 保持页面无横向溢出 (602ms)
+  ✓  15 e2e/markdown.spec.ts:112:1 › 普通错误文本保持可读且不改变任务失败状态 (323ms)
+
+  15 passed (53.5s)
+ Container charge-smoke-98adfa2e6207-frontend-1 Stopping 
+ Container charge-smoke-98adfa2e6207-simulator-1 Stopping 
+ Container charge-smoke-98adfa2e6207-frontend-1 Stopped 
+ Container charge-smoke-98adfa2e6207-frontend-1 Removing 
+ Container charge-smoke-98adfa2e6207-frontend-1 Removed 
+ Container charge-smoke-98adfa2e6207-backend-1 Stopping 
+ Container charge-smoke-98adfa2e6207-simulator-1 Stopped 
+ Container charge-smoke-98adfa2e6207-simulator-1 Removing 
+ Container charge-smoke-98adfa2e6207-simulator-1 Removed 
+ Container charge-smoke-98adfa2e6207-backend-1 Stopped 
+ Container charge-smoke-98adfa2e6207-backend-1 Removing 
+ Container charge-smoke-98adfa2e6207-backend-1 Removed 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Stopping 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Stopped 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Removing 
+ Container charge-smoke-98adfa2e6207-mqtt-1 Removed 
+ Volume charge-smoke-98adfa2e6207_backend_data Removing 
+ Network charge-smoke-98adfa2e6207_default Removing 
+ Volume charge-smoke-98adfa2e6207_backend_data Removed 
+ Network charge-smoke-98adfa2e6207_default Removed 
+ Network charge-smoke-7cbe8beffebc_default Creating 
+ Network charge-smoke-7cbe8beffebc_default Created 
+ Volume charge-smoke-7cbe8beffebc_backend_data Creating 
+ Volume charge-smoke-7cbe8beffebc_backend_data Created 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Creating 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Created 
+ Container charge-smoke-7cbe8beffebc-backend-1 Creating 
+ Container charge-smoke-7cbe8beffebc-backend-1 Created 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Creating 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Created 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Starting 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Started 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Waiting 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Healthy 
+ Container charge-smoke-7cbe8beffebc-backend-1 Starting 
+ Container charge-smoke-7cbe8beffebc-backend-1 Started 
+ Container charge-smoke-7cbe8beffebc-backend-1 Waiting 
+ Container charge-smoke-7cbe8beffebc-backend-1 Healthy 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Starting 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Started 
+ Container charge-smoke-7cbe8beffebc-backend-1 Waiting 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Waiting 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Waiting 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Healthy 
+ Container charge-smoke-7cbe8beffebc-backend-1 Healthy 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Healthy 
+
+Running 1 test using 1 worker
+
+(node:293960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:293960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/empty.spec.ts:2:1 › @empty 空库显示未知状态与空历史 (2.6s)
+
+  1 passed (3.9s)
+ Container charge-smoke-7cbe8beffebc-frontend-1 Stopping 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Stopped 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Removing 
+ Container charge-smoke-7cbe8beffebc-frontend-1 Removed 
+ Container charge-smoke-7cbe8beffebc-backend-1 Stopping 
+ Container charge-smoke-7cbe8beffebc-backend-1 Stopped 
+ Container charge-smoke-7cbe8beffebc-backend-1 Removing 
+ Container charge-smoke-7cbe8beffebc-backend-1 Removed 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Stopping 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Stopped 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Removing 
+ Container charge-smoke-7cbe8beffebc-mqtt-1 Removed 
+ Volume charge-smoke-7cbe8beffebc_backend_data Removing 
+ Network charge-smoke-7cbe8beffebc_default Removing 
+ Volume charge-smoke-7cbe8beffebc_backend_data Removed 
+ Network charge-smoke-7cbe8beffebc_default Removed 
+ Network charge-smoke-9ed5fb5458ed_default Creating 
+ Network charge-smoke-9ed5fb5458ed_default Created 
+ Volume charge-smoke-9ed5fb5458ed_backend_data Creating 
+ Volume charge-smoke-9ed5fb5458ed_backend_data Created 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Creating 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Created 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Creating 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Creating 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Created 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Created 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Creating 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Created 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Starting 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Started 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Starting 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Starting 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Started 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Started 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Starting 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Started 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Waiting 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Healthy 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Healthy 
+
+Running 3 tests using 1 worker
+
+(node:295279) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:295279) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/failures.spec.ts:3:3 › @failure 工具超时显示终态 (5.5s)
+  ✓  2 e2e/failures.spec.ts:3:3 › @failure 模型超时显示终态 (21.3s)
+  ✓  3 e2e/failures.spec.ts:19:1 › @failure 未授权建单只显示提示 (2.3s)
+
+  3 passed (30.5s)
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Stopping 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Stopping 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Stopped 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Removing 
+ Container charge-smoke-9ed5fb5458ed-simulator-1 Removed 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Stopped 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Removing 
+ Container charge-smoke-9ed5fb5458ed-frontend-1 Removed 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Stopping 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Stopped 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Removing 
+ Container charge-smoke-9ed5fb5458ed-backend-1 Removed 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Stopping 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Stopped 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Removing 
+ Container charge-smoke-9ed5fb5458ed-mqtt-1 Removed 
+ Volume charge-smoke-9ed5fb5458ed_backend_data Removing 
+ Network charge-smoke-9ed5fb5458ed_default Removing 
+ Volume charge-smoke-9ed5fb5458ed_backend_data Removed 
+ Network charge-smoke-9ed5fb5458ed_default Removed 

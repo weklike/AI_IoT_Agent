@@ -1,0 +1,14 @@
+<testsuites id="" name="" tests="5" failures="0" skipped="0" errors="0" time="7.004698">
+<testsuite name="markdown.spec.ts" timestamp="2026-09-22T11:39:24.463Z" hostname="" tests="5" failures="0" skipped="0" time="5.634" errors="0">
+<testcase name="Markdown 回答渲染标题、强调、嵌套列表、引用、表格和代码" classname="markdown.spec.ts" time="2.595">
+</testcase>
+<testcase name="模型 Markdown 不执行 HTML、危险链接或自动加载外部图片" classname="markdown.spec.ts" time="0.688">
+</testcase>
+<testcase name="长表格和代码在 1280×720 保持页面无横向溢出" classname="markdown.spec.ts" time="0.916">
+</testcase>
+<testcase name="长表格和代码在 1920×1080 保持页面无横向溢出" classname="markdown.spec.ts" time="0.89">
+</testcase>
+<testcase name="普通错误文本保持可读且不改变任务失败状态" classname="markdown.spec.ts" time="0.545">
+</testcase>
+</testsuite>
+</testsuites>

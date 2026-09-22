@@ -73,3 +73,12 @@
 - 独立 smoke 从本地 .env 创建新进程，常驻 Compose backend 保留创建时的环境。因模型不一致，宿主机 Gemini smoke 成功后，网页仍向旧 Luna 发起请求并超时。
 - 通过只读开发库记录及脱敏配置逐项比较定位；确认无运行任务后只重新创建 backend，新旧数据保留。网页同一问题 12.305s 完成；保留旧 timed_out run，不自动重放。README 给出加载命令与“开始新任务”操作。
 - 本次作为运行配置修复，不增加自动重试，不放宽执行预算，也不新增模型管理功能。
+
+
+## Agent 回答的 Markdown 展示
+
+- 原执行结果以 Vue 文本插值和 pre-wrap 展示，导致模型回答中的标题、加粗、列表、表格语法直接出现在页面。此次仅处理展示，不改变存储的原回答、prompt、工具结果或任务状态。
+- 沿用现有控制台配色，在独立 MarkdownAnswer 组件内渲染和排版：标题按回答区域层级降级、段落/嵌套列表/引用/表格/行内及围栏代码正常显示；宽表格、长代码在内部滚动，页面保持无横向溢出。
+- 比较了正则替换、解析器加 HTML 清洗、禁用原始 HTML 的标准解析器。现有依赖没有 Markdown 能力；选择单个 runtime 依赖 markdown-it 15.0.2（自带 TypeScript 类型），固定版本并提交 npm 锁文件，避免自行实现不完整语法或增加第二个 HTML 处理依赖。
+- 根据 [markdown-it 官方 API](https://markdown-it.github.io/markdown-it/interfaces/MarkdownIt.html) 和选项说明，关闭原始 HTML；仅允许 http/https/mailto 和解析为同站地址的相对链接，外链加 noopener/noreferrer。图片显示替代文字，不自动请求外部资源；代码按文本转义。
+- 先补浏览器展示测试并复现失败，再实现。覆盖常见 Markdown、恶意 HTML/链接/图片、1280×720 与 1920×1080 溢出、普通错误文本。页面 API 拦截只用于展示单元边界，不把它当成真实后端集成；另运行隔离 Compose E2E，并在实际已存回答上验证新前端。

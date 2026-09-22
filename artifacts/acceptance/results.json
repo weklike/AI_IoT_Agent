@@ -9,7 +9,7 @@
     "G3": "FAIL"
   },
   "scope": "G1/G2 deterministic engineering acceptance retained. New real model completed 60 cases: 36 automatic pass, 24 fail. Human semantics/critical-error review and personal delivery remain pending; G3 fails automatic thresholds.",
-  "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json. Current additions are a host-only TCP bridge, optional Docker model address and stricter evaluation termination checks; Agent business code, UI, telemetry and dependency locks unchanged.",
+  "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json. Current additions are a host-only TCP bridge, optional Docker model address and stricter evaluation termination checks; Agent business code, UI, telemetry and dependency locks unchanged. Markdown answer rendering adds a frontend-only parser/component and presentation tests; 19 browser checks rerun. Backend, simulator, prompt, schemas and uv lock unchanged; see markdown-20260922T113519Z/source-compatibility.json.",
   "results": {
     "AC-01": {
       "status": "PASS",
@@ -357,7 +357,9 @@
         "e2e/20260922T084330Z/empty/results.xml",
         "e2e/20260922T084330Z/failures/results.xml",
         "clean-reproduction-copy/screenshots/results.xml",
-        "history-gap-fixed.xml"
+        "history-gap-fixed.xml",
+        "e2e/20260922T114001Z/normal/results.xml",
+        "markdown-20260922T113519Z/report.json"
       ],
       "scope": "Actual API-backed pages, viewport screenshots and visible errors; fixture label explicit."
     },
@@ -367,7 +369,9 @@
         "e2e/20260922T084330Z/normal/results.xml",
         "e2e/20260922T084330Z/empty/results.xml",
         "e2e/20260922T084330Z/failures/results.xml",
-        "clean-reproduction-copy/screenshots/results.xml"
+        "clean-reproduction-copy/screenshots/results.xml",
+        "e2e/20260922T114001Z/normal/results.xml",
+        "markdown-20260922T113519Z/report.json"
       ],
       "scope": "Actual API-backed pages, viewport screenshots and visible errors; fixture label explicit."
     },
@@ -377,7 +381,9 @@
         "e2e/20260922T084330Z/normal/results.xml",
         "e2e/20260922T084330Z/empty/results.xml",
         "e2e/20260922T084330Z/failures/results.xml",
-        "clean-reproduction-copy/screenshots/results.xml"
+        "clean-reproduction-copy/screenshots/results.xml",
+        "e2e/20260922T114001Z/normal/results.xml",
+        "markdown-20260922T113519Z/report.json"
       ],
       "scope": "Actual API-backed pages, viewport screenshots and visible errors; fixture label explicit."
     },
@@ -387,7 +393,9 @@
         "e2e/20260922T084330Z/normal/results.xml",
         "e2e/20260922T084330Z/empty/results.xml",
         "e2e/20260922T084330Z/failures/results.xml",
-        "clean-reproduction-copy/screenshots/results.xml"
+        "clean-reproduction-copy/screenshots/results.xml",
+        "e2e/20260922T114001Z/normal/results.xml",
+        "markdown-20260922T113519Z/report.json"
       ],
       "scope": "Actual API-backed pages, viewport screenshots and visible errors; fixture label explicit."
     },
@@ -460,7 +468,7 @@
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
   },
-  "updated_at": "2026-09-22T19:26:20+08:00",
+  "updated_at": "2026-09-22T19:46:43+08:00",
   "real_connection": {
     "status": "PASS",
     "model": "gemini-3.8-flash-high",
@@ -538,5 +546,15 @@
         "reason": "No real 60-case results or human semantic/critical-error reviews; no reviewer fabricated."
       }
     }
-  ]
+  ],
+  "answer_presentation": {
+    "status": "PASS",
+    "evidence": [
+      "markdown-20260922T113519Z/report.json",
+      "markdown-20260922T113519Z/source-compatibility.json",
+      "markdown-20260922T113519Z/live-after.json",
+      "e2e/20260922T114001Z/normal/results.xml"
+    ],
+    "scope": "Safe Markdown rendering and 19 browser regressions pass. Existing backend and model acceptance results retain their original scope; no new model quality claim."
+  }
 }

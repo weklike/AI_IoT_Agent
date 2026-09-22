@@ -1,0 +1,8 @@
+{
+  "image": "charge-ops-frontend:test-616965c2f88aa420",
+  "local_build_matches_image": {
+    "index.html": true,
+    "assets/index-DeheH51E.css": true,
+    "assets/index-B1ZEU_ve.js": true
+  }
+}
