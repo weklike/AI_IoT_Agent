@@ -73,7 +73,15 @@ uv run python scripts/acceptance.py --suite resilience --output "artifacts/accep
 
 只在本机 `.env` 配置 `LLM_BASE_URL`（Chat Completions 的 `/v1` 基地址）、`LLM_MODEL`、`LLM_API_KEY`。运行真实演示再将 `LLM_MODE` 改为 `real` 并重建后端。密钥只给后端，不填写在命令行、聊天、前端构建或证据中。
 
-真实适配器没有隐藏重试和 fixture 回退。此前本机代理的 `deepseek-v4-flash` 通过过真实工具调用往返及 Docker 页面查询验证。当前本机代理的 `gpt-5.6-luna` 已通过真实 smoke（7.778s）和 Docker 页面查询（18.308s）；完整 60 次自动检查 36/60，通过数不足；具体失败和耗时见 [本轮报告](artifacts/acceptance/real-model-luna-20260922T104501Z/report.md)。此前 NVIDIA 配置在最终回答阶段超时，失败证据保留；这不代表任意兼容端点都可用，也不替代完整 60 次效果评测。缺配置会明确报错。独立评测使用相同 create_app、真实 API/工具和每例临时库，在 lifespan 启动后加载固定夹具，只冻结数据时钟。
+修改 `.env` 不会更新已经运行的容器；独立 `eval/run.py --smoke` 也不会替网页加载配置。更新模型、地址或密钥后，从仓库根目录执行：
+
+```bash
+docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --force-recreate --wait --wait-timeout 60 backend
+```
+
+然后在 Agent 页点击“开始新任务”再提交。刷新页面会恢复旧 run，旧任务的失败结果仍会显示，不会自动调用新模型。
+
+真实适配器没有隐藏重试和 fixture 回退。此前本机代理的 `deepseek-v4-flash` 通过过真实工具调用往返及 Docker 页面查询验证。当前本机代理的 `gemini-3.8-flash-high` 已通过独立 smoke（6.373s）和 Docker 网页原问题复测（12.305s，状态/历史/故障说明三工具成功）；新模型尚未完成 60 次质量评测。此前 `gpt-5.6-luna` 完整 60 次自动检查 36/60，通过数不足；具体失败和耗时见 [本轮报告](artifacts/acceptance/real-model-luna-20260922T104501Z/report.md)。此前 NVIDIA 配置在最终回答阶段超时，失败证据保留；这不代表任意兼容端点都可用，也不替代完整 60 次效果评测。缺配置会明确报错。独立评测使用相同 create_app、真实 API/工具和每例临时库，在 lifespan 启动后加载固定夹具，只冻结数据时钟。
 
 ```bash
 ACCEPTANCE_STAMP=$(date -u +%Y%m%dT%H%M%SZ)

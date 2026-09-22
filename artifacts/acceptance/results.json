@@ -460,16 +460,17 @@
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
   },
-  "updated_at": "2026-09-22T19:02:30+08:00",
+  "updated_at": "2026-09-22T19:26:20+08:00",
   "real_connection": {
     "status": "PASS",
-    "model": "gpt-5.6-luna",
+    "model": "gemini-3.8-flash-high",
     "evidence": [
-      "real-smoke-luna-20260922T103822Z/manifest.json",
-      "real-smoke-luna-20260922T103822Z/container-check.json",
-      "real-ui-luna-20260922/report.json"
+      "real-smoke-api-once-20260922T111351Z/manifest.json",
+      "web-timeout-20260922T112100Z/config-after.json",
+      "web-timeout-20260922T112100Z/ui-report.json",
+      "web-timeout-20260922T112100Z/run-metrics.json"
     ],
-    "scope": "Only basic real tool round trip and browser query passed; full model acceptance failed, including intermittent HTTP 503."
+    "scope": "Independent tool smoke and one live browser history/guide query passed after backend model config reload. Prior Luna 60-case failure retained; new model full quality acceptance NOT_RUN."
   },
   "connection_source_manifest": "real-connection-source.json",
   "previous_real_connection": {
@@ -491,6 +492,16 @@
         "real-smoke-nvidia-20260922T102833Z/container-check.json"
       ],
       "scope": "New provider smoke reached a successful real status tool, then the final answer model request exceeded 20 seconds. New 60-case evaluation not started."
+    },
+    {
+      "status": "PASS",
+      "model": "gpt-5.6-luna",
+      "evidence": [
+        "real-smoke-luna-20260922T103822Z/manifest.json",
+        "real-smoke-luna-20260922T103822Z/container-check.json",
+        "real-ui-luna-20260922/report.json"
+      ],
+      "scope": "Only basic real tool round trip and browser query passed; full model acceptance failed, including intermittent HTTP 503."
     }
   ],
   "current_model_source_compatibility": "real-smoke-luna-20260922T103822Z/source-compatibility.json",

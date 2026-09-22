@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：v1.1
-- 当前任务：Task 9 新 API 单次真实工具往返 PASS；按用户本次要求只测一次，完整验收状态不变
-- 当前分支/提交：develop；本轮测试基线 3bae779；本次仅本地 API 路径补全、测试证据及进度更新
-- 更新时间：2026-09-22T19:15:12+08:00
+- 当前任务：Task 9 网页超时配置问题已修复；后端切换到 gemini-3.8-flash-high，原问题网页复测 12.305s 完成
+- 当前分支/提交：develop；本轮排查基线 ff69da5；仅运行配置重载、证据及文档更新，业务源码未改
+- 更新时间：2026-09-22T19:26:20+08:00
 
 ## 任务状态
 | 任务 | 状态 | 证据或剩余事项 |
@@ -53,15 +53,15 @@
 
 ## 未完成与阻塞
 - 初轮 API 性能失败已经修复；原 FAIL 保留，新样本见 api-projection。PyPI 两次构建超时已使用相同锁文件镜像依赖缓存恢复，未改变业务依赖。
-- 当前 gpt-5.6-luna 已通过基础真实工具往返与网页查询；完整 60 次自动检查只有 36 次通过，未达到 ≥54/60。3 次 A06 未执行历史工具、6 次故障分析模型超时、15 次 A16—A20 HTTP 503；结束后的最小请求恢复 200，不能证明稳定。没有回退 fixture 或放宽预算。
+- 当前 Gemini 的独立 smoke 和网页原问题已通过，完整质量评测尚未执行。此前 gpt-5.6-luna 已通过基础真实工具往返与网页查询；完整 60 次自动检查只有 36 次通过，未达到 ≥54/60。3 次 A06 未执行历史工具、6 次故障分析模型超时、15 次 A16—A20 HTTP 503；结束后的最小请求恢复 200，不能证明稳定。没有回退 fixture 或放宽预算。
 - 真实人工语义结论尚无，不能填写 reviewer 或宣布 G3。
 - 基线引用的 `AI_IoT_Agent_方案审阅与修改说明.md` 缺失；两份实际业务合同完整，未补造该文档。
 - 系统 Python 不作为项目解释器；实际使用 uv 管理 Python 3.12.13、Node 24.13.0、Chromium、Docker Compose 5.1.1；完整环境见证据。
 
 ## 下一步
 - 独立开发与 fixture 验证已完成；所有测试容器/卷已按所属项目清理；本次按用户要求启动了常驻演示服务（见下方运行记录）。
-- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 工程证据沿用；AC-36 FAIL（新模型自动 36/60），AC-37 PASS（完整 60 例时间与 usage 汇总），AC-38/40 PENDING_REVIEW，未声明完整作品交付。
-- 本次重测已完成并保持评测对象不变。后续先解决模型端点的间歇性 503/20 秒超时，以及 A06 空数据历史流程；修改 prompt/业务逻辑后需新目录重做完整 60 次。第一条恢复验证：`uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-next-$(date -u +%Y%m%dT%H%M%SZ)`。
+- AC-01—AC-40 当前索引为 `artifacts/acceptance/results.json`，源码校验为 source-manifest.json。G1/G2 工程证据沿用；AC-36 FAIL（历史 Luna 自动 36/60；当前 Gemini 完整评测 NOT_RUN），AC-37 PASS（完整 60 例时间与 usage 汇总），AC-38/40 PENDING_REVIEW，未声明完整作品交付。
+- 本次网页配置问题已解决。后续若继续 G3，以新目录执行当前 Gemini 的完整评测及真人复核，并检查历史 A06 空数据流程失败；修改 prompt/业务逻辑后也需重做完整 60 次。单次接入验证命令：`uv run python eval/run.py --mode real --smoke --output artifacts/acceptance/real-smoke-next-$(date -u +%Y%m%dT%H%M%SZ)`。
 
 - 真人完成 60 例语义/关键错误复核并填写 eval/manual-review.json 后运行 summarize；按 docs/demo.md 完成个人 3—5 分钟演示，确认能解释代码和简历数字。不得由开发 Agent 冒充真人完成。
 
@@ -152,3 +152,20 @@
 | 单次执行数量、证据 SHA256 与本次密钥泄漏检查 | 0 | PASS | 一个案例、一个 run、两次模型请求；原始证据摘要一致，未包含本次密钥 |
 
 - 本次请求已完成。历史完整评测失败保留，G3 未通过；新配置未执行完整评测及真人语义复核。
+
+## 网页超时：后端未加载新模型配置
+
+- 从实际开发库只读查询用户最近失败任务：问题为“分析 2 号桩最近 10 分钟的温度，给出排查建议。”，首次模型请求 20.001s 后 MODEL_TIMEOUT，尚无工具调用。
+- 对比容器环境与本地 .env（不输出密钥）：运行模型仍 gpt-5.6-luna，本地已 gemini-3.8-flash-high；模式、Docker 地址、密钥一致。上次独立 smoke 未重载网页容器。
+- 确认当前没有 queued/running 任务后，仅重新创建 backend 加载最新配置，保留数据卷、MQTT 与模拟器。四项配置随后全部匹配，DB/MQTT ready、real。
+
+| 实际命令/检查 | 退出码 | 结果 | 证据 |
+|---|---|---|---|
+| 只读任务查询与容器/.env 一致性检查 | 0 | FAIL | before.json；LLM_MODEL 不一致，实际失败任务 20.001s |
+| `docker compose --env-file .env -f deploy/compose.yaml up -d --no-build --no-deps --force-recreate --wait --wait-timeout 60 backend` | 0 | PASS | config-after.json；四项匹配、健康 |
+| Playwright 网页提交用户相同问题 | 0 | PASS | ui-report.json、ui-run.json、agent-after.png；12.305s completed，三工具成功，无浏览器错误 |
+| 只读查询新任务的模型耗时 | 0 | PASS | run-metrics.json；2.293s、2.388s、6.425s，均在单次 20s 内 |
+| Playwright 恢复旧失败任务后点击“开始新任务” | 0 | PASS | old-task-recovery.json；旧提交清除，输入恢复，额外 Agent POST=0 |
+
+- 本轮证据目录：artifacts/acceptance/web-timeout-20260922T112100Z。README 已补充 .env 更新后的容器加载命令和旧任务恢复说明。
+- 本次未改业务代码、prompt、Schema 或时限，不需重跑无关测试；未执行完整 60 次评测，新模型质量与人工复核仍未完成。旧失败保留。

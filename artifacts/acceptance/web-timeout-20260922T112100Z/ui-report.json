@@ -1,0 +1,82 @@
+{
+  "question": "分析 2 号桩最近 10 分钟的温度，给出排查建议。",
+  "status": "completed",
+  "llm_mode": "real",
+  "allow_work_order": false,
+  "total_seconds": 12.305,
+  "run_id": "3fcc493a-72f9-4d46-8705-aa0fc368d048",
+  "tools": [
+    {
+      "name": "get_device_status",
+      "status": "succeeded"
+    },
+    {
+      "name": "get_device_history",
+      "status": "succeeded"
+    },
+    {
+      "name": "get_fault_guide",
+      "status": "succeeded"
+    }
+  ],
+  "error_code": null,
+  "browser_errors": [],
+  "requests": [
+    {
+      "method": "POST",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    }
+  ]
+}
