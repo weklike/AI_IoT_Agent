@@ -119,3 +119,17 @@ class TelemetryStore:
     async def device_status(self, device_id: str) -> dict:
         async with self.db.sessions() as session:
             return await device_status(session, device_id, self.clock.now(), self.settings)
+
+    async def history(self, device_id: str, window_minutes: int) -> dict:
+        from datetime import timedelta
+
+        from backend.app.errors import DomainError
+        from backend.app.telemetry.queries import history_rows, summarize
+
+        if type(window_minutes) is not int or not 1 <= window_minutes <= 60:
+            raise DomainError("INVALID_ARGUMENTS", "历史工具窗口必须为 1—60 分钟整数")
+        end = self.clock.now()
+        start = end - timedelta(minutes=window_minutes)
+        async with self.db.sessions() as session:
+            rows = await history_rows(session, device_id, start, end)
+            return summarize(rows, start, end, self.settings.overheat_threshold_c)

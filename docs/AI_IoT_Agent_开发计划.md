@@ -432,11 +432,11 @@ async def test_duplicate_does_not_keep_device_online(store, clock, sample):
 
 **Interfaces：** 消费任务 3 的查询函数；产出第 4.1 节设备、历史和场景接口。
 
-- [ ] 测试未知设备、空历史、反向时间区间、超过 24 小时、缺少时区及最多 5000 行限制。
-- [ ] 为 pending→applied、5 秒无回执→timed_out、晚到回执、错误 command_id 编写测试。
-- [ ] 实现 API 与状态持久化；消息发布后返回 202，不能提前返回 applied。
-- [ ] 执行 `uv run pytest tests/integration/test_api.py tests/integration/test_scenario_control.py -q`。
-- [ ] 导出 OpenAPI，完成 AC-11—AC-15 并提交。
+- [x] 测试未知设备、空历史、反向时间区间、超过 24 小时、缺少时区及最多 5000 行限制。
+- [x] 为 pending→applied、5 秒无回执→timed_out、晚到回执、错误 command_id 编写测试。
+- [x] 实现 API 与状态持久化；消息发布后返回 202，不能提前返回 applied。
+- [x] 执行 `uv run pytest tests/integration/test_api.py tests/integration/test_scenario_control.py -q`。
+- [x] 导出 OpenAPI，完成 AC-11—AC-15 并提交。
 
 ```python
 async def test_reverse_history_range_is_rejected(client):
