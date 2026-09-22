@@ -10,7 +10,8 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import DEVICE_IDS
-from backend.app.models import AgentRun, Base, Device, ScenarioCommandRow, ToolCall
+from backend.app.migrations import migrate
+from backend.app.models import AgentRun, Device, ScenarioCommandRow, ToolCall
 
 
 class Database:
@@ -30,11 +31,12 @@ class Database:
             cursor.close()
 
     async def initialize(self, clock: DataClock | None = None) -> None:
-        async with self.engine.begin() as connection:
+        async with self.engine.connect() as connection:
             mode = (await connection.execute(text("PRAGMA journal_mode=WAL"))).scalar()
             if mode != "wal":
                 raise RuntimeError("SQLite WAL could not be enabled")
-            await connection.run_sync(Base.metadata.create_all)
+            await connection.commit()
+            await migrate(connection)
         async with self.sessions.begin() as session:
             for device_id in DEVICE_IDS:
                 await session.execute(

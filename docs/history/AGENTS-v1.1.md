@@ -1,12 +1,12 @@
 # AGENTS.md — 充电设备监控与运维 Agent
 
-本文件放在 `charge-ops-agent` 仓库根目录，约束本仓库内的开发、修复、测试和交付。业务基线为用户于 2026-09-22 授权实施的两份 v2.0 正式方案，v1.1 未调整条款继续有效。原约束见 docs/history/AGENTS-v1.1.md；；本文件规定执行方式，不代表任何功能已经实现。
+本文件放在 `charge-ops-agent` 仓库根目录，约束本仓库内的开发、修复、测试和交付。业务基线为两份 v1.1 文档；本文件规定执行方式，不代表任何功能已经实现。
 
 ## 1. 先读取项目依据
 
 开始新会话或接手任务时，按顺序读取：
 
-1. 本文件及 `docs/AI_IoT_Agent_v2.0_开发方案.md`、`docs/AI_IoT_Agent_v2.0_验收方案.md`。
+1. 本文件。
 2. `docs/AI_IoT_Agent_开发计划.md`：范围、协议、接口和九项任务。
 3. `docs/AI_IoT_Agent_验收规则.md`：AC-01—AC-40、A01—A20、性能与评分合同。
 4. `docs/PROGRESS.md`：若已存在，确认当前任务、最近验证和未完成项。
@@ -28,16 +28,16 @@
 | 项目 | 第一版固定范围 |
 |---|---|
 | 设备 | 纯软件模拟，CHG-001、CHG-002、CHG-003 三台独立 MQTT 客户端 |
-| 模拟场景 | normal、overheat、offline；legacy/operations 两模式，operations 增加充电会话；offline 暂停遥测但保留控制订阅 |
+| 模拟场景 | normal、overheat、offline；offline 暂停遥测但保留控制订阅 |
 | Agent | 一个业务 Agent；同时最多一个运行中的任务 |
-| 工具 | 原四工具加五个只读工具，唯一写工具仍为 create_work_order |
+| 工具 | get_device_status、get_device_history、get_fault_guide、create_work_order |
 | 页面 | 设备总览、设备详情、Agent 对话；工单展示放在已有页面 |
 | 后端 | FastAPI 单体，一个 Uvicorn worker |
-| 数据库 | 本地 SQLite，v2.0 开发方案第 4 节表集合，WAL、外键与唯一约束 |
+| 数据库 | 本地 SQLite，七张核心表，WAL、外键与唯一约束 |
 | 部署 | mqtt、backend、simulator、frontend 四个 Compose 服务 |
 | 模型 | fixture 与 real 两种模式；真实模式先支持一个已验证的工具调用端点 |
 
-不主动增加实体硬件、模型训练、地图、语音、支付、预约、多租户、微服务、消息中间件集群、向量数据库或多 Agent。本版实施 SQLite FTS5 本地全文检索；仍不实现 MCP、流式回答或向量数据库。
+不主动增加实体硬件、模型训练、地图、语音、支付、预约、多租户、微服务、消息中间件集群、向量数据库或多 Agent。MCP、流式回答和检索扩展属于第一版通过后的选做项，当前不实现。
 
 MQTT 是设备通信协议；第一版 Agent 工具在后端进程内通过函数调用执行。不得把现有 MQTT 链路描述成已经实现 MCP over MQTT，也不得把两份本地故障说明称为向量 RAG。
 
@@ -121,18 +121,13 @@ Git 操作必须保留用户已有修改。不得擅自执行 `git reset --hard`
 
 ## 7. Agent 协议与执行预算
 
-九个工具的模型侧参数固定如下，不能私自增加控制能力：
+四个工具的模型侧参数固定如下，不能私自增加控制能力：
 
 ```text
 get_device_status(device_id)
 get_device_history(device_id, window_minutes)
 get_fault_guide(reason_code)
 create_work_order(device_id, reason_code)
-get_fleet_overview(window_minutes)
-search_fault_knowledge(query, device_id)
-get_charging_sessions(device_id, window_minutes)
-get_work_orders(device_id)
-get_device_timeline(device_id, window_minutes)
 ```
 
 create_work_order 的 ToolContext 由服务器注入，包含 run_id、内部 tool_call_id 与 allow_work_order；模型不能提供这些值。工具结果统一为 `{tool_call_id, ok, data, error}`。
@@ -164,7 +159,7 @@ create_work_order 的 ToolContext 由服务器注入，包含 run_id、内部 to
 - allow_work_order 默认为 false；用户在本次业务任务中明确允许才暴露写工具，服务器仍须再次校验。开启写入选项不表示所有纯查询都应自动建单。
 - 先查 request_id 幂等，再检查忙碌状态。同 ID 同 question/授权标志复用原 run；同 ID 不同内容返回 409。
 - “查幂等→检查运行槽位→持久化 run→登记任务”由进程调度锁保护；模型等待不持有该锁。两个新请求同时到达只能接受一个。
-- 同设备同原因最多一张未关闭（OPEN/IN_PROGRESS/RESOLVED）工单，数据库部分唯一索引兜底。已有单返回真实 order_id、created=false。
+- 同设备同原因最多一张 OPEN 工单，数据库部分唯一索引兜底。已有单返回真实 order_id、created=false。
 - 后端只从本 run、本设备的成功只读工具记录选择证据。OVERHEAT/OFFLINE 的有效性按计划第 4.2 节重算；曾离线但写入前已恢复不能作为当前离线建单依据。
 - 保存被选中的工具记录、原始样本 ID/时间及校验时间，不能只保存模型生成的解释。
 - 工单变更与当前 tool_call 的结果在同一事务提交。提交边界超时后停止后续调度，等待受管理的完成/回滚，按当前调用 ID 恢复结果。
@@ -193,8 +188,6 @@ create_work_order 的 ToolContext 由服务器注入，包含 run_id、内部 to
 | API 合同 | 状态码、统一响应结构、空值与异常；受影响前端调用 |
 | 页面交互 | typecheck、build、受影响 E2E；必要截图 |
 | Compose、生命周期 | 就绪检查、依赖恢复、数据保留、后台任务结束 |
-| 告警、会话、功率 | 持续边界、报告幂等与计量、控制回执与效果、先降后升与部分失败；真实 Broker |
-| 检索、巡检 | 来源与版本、32 条检索集、引用归属、单槽位与重启、失败保留事实 |
 | 纯文档 | 引用、命令、版本和阈值一致性；不机械重跑模型评测 |
 
 资源规则：

@@ -21,14 +21,21 @@ async def test_database_pragmas_seeds_and_restart(tmp_path):
         assert (await session.execute(text("PRAGMA busy_timeout"))).scalar() == 1000
         assert (await session.execute(text("PRAGMA journal_mode"))).scalar() == "wal"
         assert (await session.execute(text("SELECT count(*) FROM devices"))).scalar() == 3
-        assert (
-            len(
-                (
-                    await session.execute(text("SELECT name FROM sqlite_master WHERE type='table'"))
-                ).all()
-            )
-            == 7
+        names = set(
+            (
+                await session.execute(text("SELECT name FROM sqlite_master WHERE type='table'"))
+            ).scalars()
         )
+        assert {
+            "devices",
+            "telemetry",
+            "scenario_commands",
+            "agent_runs",
+            "tool_calls",
+            "work_orders",
+            "diagnostic_events",
+        } <= names
+        assert "schema_migrations" in names
     await db.initialize()
     async with db.sessions() as session:
         assert (await session.execute(text("SELECT count(*) FROM devices"))).scalar() == 3
