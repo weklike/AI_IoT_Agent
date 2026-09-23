@@ -1,0 +1,4 @@
+warning: `VIRTUAL_ENV=/home/syzygy/AI_IoT_Agent/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+........................................................................ [ 94%]
+....                                                                     [100%]
+76 passed in 4.68s

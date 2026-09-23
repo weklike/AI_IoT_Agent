@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "source": "artifacts/acceptance/v2/stability-rss-20260923-formal",
+  "evidence": "artifacts/acceptance/v2/stability-rss-20260923-final05-revalidated/report.json",
+  "source_review": "artifacts/acceptance/v2/stability-rss-20260923-final05-revalidated/source-comparison.json"
+}

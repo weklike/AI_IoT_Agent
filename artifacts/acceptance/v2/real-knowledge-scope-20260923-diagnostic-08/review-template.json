@@ -1,0 +1,92 @@
+[
+  {
+    "case_id": "B06",
+    "repeat": 1,
+    "evidence_sha256": "5c02b9fe9a50e81a6149a05a568f45bbaa77ef534d1cafcbb67f3b55d03bf84d",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B06",
+    "repeat": 2,
+    "evidence_sha256": "abd3369b6cf0f174d14a19d08b8f48535dfc4c6c1ab125ae0618e69d42cceb4f",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B06",
+    "repeat": 3,
+    "evidence_sha256": "e4c50da8d01d5cb35eea2e1dd5700ee88a962aa53264f1404bb509118ef27d24",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B08",
+    "repeat": 1,
+    "evidence_sha256": "406db06398dfe87d0bcb5146cc8cbd017e933c364b4b3f30b55b20e73f0b3c1e",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B08",
+    "repeat": 2,
+    "evidence_sha256": "a4cd9ab36a98f3bd003b13def6c994e8f912d086aa47b1de6da3b1c19f996cc3",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B08",
+    "repeat": 3,
+    "evidence_sha256": "b93e401b3c6c5074b9b94c42401e9d301696b92aee19b36c7ec237e5d5221591",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B23",
+    "repeat": 1,
+    "evidence_sha256": "8047853a24aab2c6b53d22bf9208a29a7bb813a63eddcfcda23cf3b60feecc4a",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B23",
+    "repeat": 2,
+    "evidence_sha256": "afb8ea3341493708d1eaa4d5da2f2dde279229facf99577c16db69d4bb30c65b",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B23",
+    "repeat": 3,
+    "evidence_sha256": "978a288d5645c8fc3f96d4974637263ebe3ff510f6fb3f241a0c5c1a9b5a2ef8",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  }
+]

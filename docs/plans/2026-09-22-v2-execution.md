@@ -17,4 +17,4 @@
 
 T01 首条验证：`uv run pytest tests/integration/test_migrations.py tests/integration/test_operations.py -q`。
 
-- [ ] T11：e0c9f6a已实现评测与性能入口；剩余集中验收映射、20次批量反馈、正式稳定性结果、最终132例与真人复核，详见PROGRESS。
+- [ ] T11：603d152为当前业务冻结版本；确定性验收、20次批量反馈/功率保护、RSS完整小时、旧库升级及干净复现已完成。剩余候选05完整132例、最终索引与真人复核，详见PROGRESS。
