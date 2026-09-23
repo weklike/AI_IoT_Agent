@@ -6,9 +6,9 @@
   "gates": {
     "G1": "PASS",
     "G2": "PASS",
-    "G3": "FAIL"
+    "G3": "PENDING_REVIEW"
   },
-  "scope": "G1/G2 deterministic engineering acceptance retained. New real model completed 60 cases: 36 automatic pass, 24 fail. Human semantics/critical-error review and personal delivery remain pending; G3 fails automatic thresholds.",
+  "scope": "G1/G2 deterministic engineering acceptance retained. Current real model gemini-3.8-flash-high completed 60 cases (real-model-gemini-20260922T134005Z): original checker 51/60; user-approved contract-faithful recheck 57/60 (see docs/decisions.md 2026-09-22), automatic thresholds met with A19 x3 counted as failures. Human semantics/critical-error review and personal delivery remain pending, so G3 is PENDING_REVIEW, not PASS. Superseded gpt-5.6-luna 36/60 result retained under historical_real_evaluations.",
   "compatibility": "Backend core supplemented by focused final API/work-order/Agent tests, final E2E, query benchmark and clean checkout. Original 60-minute ingest path compatibility in performance-compatibility.json. Current additions are a host-only TCP bridge, optional Docker model address and stricter evaluation termination checks; Agent business code, UI, telemetry and dependency locks unchanged. Markdown answer rendering adds a frontend-only parser/component and presentation tests; 19 browser checks rerun. Backend, simulator, prompt, schemas and uv lock unchanged; see markdown-20260922T113519Z/source-compatibility.json.",
   "results": {
     "AC-01": {
@@ -428,31 +428,32 @@
       "scope": "60-minute reception/stability component passes; original combined report remains FAIL because of superseded API measurement."
     },
     "AC-36": {
-      "status": "FAIL",
-      "model": "gpt-5.6-luna",
+      "status": "PENDING_REVIEW",
+      "model": "gemini-3.8-flash-high",
       "evidence": [
-        "real-model-luna-20260922T104501Z/manifest.json",
-        "real-model-luna-20260922T104501Z/automatic-metrics.json",
-        "real-model-luna-20260922T104501Z/case-metrics.csv",
-        "real-model-luna-20260922T104501Z/report.md"
+        "real-model-gemini-20260922T134005Z/manifest.json",
+        "real-model-gemini-20260922T134005Z/automatic-metrics.json",
+        "real-model-gemini-20260922T134005Z/automatic-recheck.json",
+        "real-model-gemini-20260922T134005Z/case-metrics.csv",
+        "real-model-gemini-20260922T134005Z/report.md"
       ],
-      "reason": "All 60 cases executed; 36 pass automatic checks, below 54/60. Categories: 12/12,9/12,6/12,9/12,0/12. Human semantic success count remains unknown."
+      "reason": "All 60 cases executed with complete evidence; 139 model requests, zero 5xx. Original checker: 51/60 (categories 12,12,6,12,9). Contract-faithful recheck of the saved traces: 57/60 (categories 12,12,12,12,9), meeting >=54/60 and >=9/12 per category. The 6 changed cases (A09, A12) failed only get_device_history_arguments, which hardcoded window_minutes==10 for questions that state no window; fixture samples are identical across 10/30/60-minute windows. A19 x3 remain genuine MODEL_TIMEOUT failures. Human semantic success count remains unknown, so this is not PASS."
     },
     "AC-37": {
       "status": "PASS",
       "evidence": [
-        "real-model-luna-20260922T104501Z/automatic-metrics.json",
-        "real-model-luna-20260922T104501Z/case-metrics.csv"
+        "real-model-gemini-20260922T134005Z/automatic-metrics.json",
+        "real-model-gemini-20260922T134005Z/case-metrics.csv"
       ],
-      "scope": "All 60 cases include total/model/tool elapsed time; median/P95 recorded including failures. 123 model requests, 99 returned usage and 24 failed without usage. 126019 reported tokens; no unsupported pricing/cost claim."
+      "scope": "All 60 cases include total/model/tool elapsed time; median 9.69s, P95 20.15s, max 22.74s including failures. 139 model requests, 136 returned usage and 3 timed out without usage. 254441 reported tokens; no unsupported pricing/cost claim."
     },
     "AC-38": {
       "status": "PENDING_REVIEW",
       "evidence": [
-        "real-model-luna-20260922T104501Z/review-template.json",
-        "real-model-luna-20260922T104501Z/human-summary.log"
+        "real-model-gemini-20260922T134005Z/review-template.json",
+        "real-model-gemini-20260922T134005Z/summary.json"
       ],
-      "reason": "60 case evidence hashes verified. No human semantic/critical-error review; reviewer and critical-error count unknown."
+      "reason": "60 case evidence hashes verified by both automatic-metrics.json and automatic-recheck.json. No human semantic/critical-error review; reviewer and critical-error count unknown."
     },
     "AC-39": {
       "status": "PASS",
@@ -468,7 +469,7 @@
       "reason": "docs/demo.md and career-notes.md delivered; personal 3–5 minute walkthrough/recording and ability to explain are not completed by an automated test."
     }
   },
-  "updated_at": "2026-09-22T19:46:43+08:00",
+  "updated_at": "2026-09-23T20:47:22+08:00",
   "real_connection": {
     "status": "PASS",
     "model": "gemini-3.8-flash-high",
@@ -478,7 +479,7 @@
       "web-timeout-20260922T112100Z/ui-report.json",
       "web-timeout-20260922T112100Z/run-metrics.json"
     ],
-    "scope": "Independent tool smoke and one live browser history/guide query passed after backend model config reload. Prior Luna 60-case failure retained; new model full quality acceptance NOT_RUN."
+    "scope": "Independent tool smoke and one live browser history/guide query passed after backend model config reload. Prior Luna 60-case failure retained; current model full 60-case run recorded under AC-36/37/38."
   },
   "connection_source_manifest": "real-connection-source.json",
   "previous_real_connection": {
@@ -512,7 +513,7 @@
       "scope": "Only basic real tool round trip and browser query passed; full model acceptance failed, including intermittent HTTP 503."
     }
   ],
-  "current_model_source_compatibility": "real-smoke-luna-20260922T103822Z/source-compatibility.json",
+  "current_model_source_compatibility": "real-model-gemini-20260922T134005Z/manifest.json",
   "historical_real_evaluations": [
     {
       "AC-36": {
@@ -545,6 +546,38 @@
         "evidence": [],
         "reason": "No real 60-case results or human semantic/critical-error reviews; no reviewer fabricated."
       }
+    },
+    {
+      "AC-36": {
+        "status": "FAIL",
+        "model": "gpt-5.6-luna",
+        "evidence": [
+          "real-model-luna-20260922T104501Z/manifest.json",
+          "real-model-luna-20260922T104501Z/automatic-metrics.json",
+          "real-model-luna-20260922T104501Z/case-metrics.csv",
+          "real-model-luna-20260922T104501Z/report.md"
+        ],
+        "reason": "All 60 cases executed; 36 pass automatic checks, below 54/60. Categories: 12/12,9/12,6/12,9/12,0/12. Human semantic success count remains unknown."
+      },
+      "AC-37": {
+        "status": "PASS",
+        "evidence": [
+          "real-model-luna-20260922T104501Z/automatic-metrics.json",
+          "real-model-luna-20260922T104501Z/case-metrics.csv"
+        ],
+        "scope": "All 60 cases include total/model/tool elapsed time; median/P95 recorded including failures. 123 model requests, 99 returned usage and 24 failed without usage. 126019 reported tokens; no unsupported pricing/cost claim."
+      },
+      "AC-38": {
+        "status": "PENDING_REVIEW",
+        "evidence": [
+          "real-model-luna-20260922T104501Z/review-template.json",
+          "real-model-luna-20260922T104501Z/human-summary.log"
+        ],
+        "reason": "60 case evidence hashes verified. No human semantic/critical-error review; reviewer and critical-error count unknown."
+      },
+      "superseded_at": "2026-09-22T22:05:00+08:00",
+      "superseded_by": "real-model-gemini-20260922T134005Z",
+      "note": "gpt-5.6-luna 那轮 36/60 与 15 次 HTTP 503 的原件与结论保留；不并入当前版本成果。"
     }
   ],
   "answer_presentation": {

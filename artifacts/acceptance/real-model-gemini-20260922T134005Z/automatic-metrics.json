@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-09-22T13:50:50.473694+00:00",
+  "status": "FAIL",
+  "scope": "Automatic checks and measured timing only. No human semantic or critical-error review performed.",
+  "model": {
+    "id": "gemini-3.8-flash-high",
+    "endpoint_protocol": "chat-completions",
+    "temperature": "provider default (not overridden)",
+    "max_output_tokens": "provider default (not overridden)"
+  },
+  "source_commit": "b48bb966d97eb69babf3d282f0e9c421cb8f0909",
+  "manifest_sha256": "da58e6d375995a1546241d652cb8542404d130391de744d310181c0ae5a7fe0f",
+  "evidence_hashes_verified": true,
+  "executed_cases": 60,
+  "automatic_pass_cases": 51,
+  "automatic_fail_cases": 9,
+  "automatic_thresholds_met": false,
+  "human_review": "PENDING_REVIEW",
+  "human_success_cases": null,
+  "critical_error_count": null,
+  "categories": {
+    "状态查询": {
+      "automatic_pass": 12,
+      "executed": 12
+    },
+    "历史统计": {
+      "automatic_pass": 12,
+      "executed": 12
+    },
+    "异常分析": {
+      "automatic_pass": 6,
+      "executed": 12
+    },
+    "工单幂等": {
+      "automatic_pass": 12,
+      "executed": 12
+    },
+    "失败边界": {
+      "automatic_pass": 9,
+      "executed": 12
+    }
+  },
+  "failures": [
+    {
+      "case_id": "A09",
+      "repeat": 1,
+      "evidence": "A09-1.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A09",
+      "repeat": 2,
+      "evidence": "A09-2.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A09",
+      "repeat": 3,
+      "evidence": "A09-3.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 1,
+      "evidence": "A12-1.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 2,
+      "evidence": "A12-2.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A12",
+      "repeat": 3,
+      "evidence": "A12-3.json",
+      "failed_checks": [
+        "get_device_history_arguments"
+      ],
+      "error_codes": [],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 1,
+      "evidence": "A19-1.json",
+      "failed_checks": [
+        "expected_termination"
+      ],
+      "error_codes": [
+        "MODEL_TIMEOUT"
+      ],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 2,
+      "evidence": "A19-2.json",
+      "failed_checks": [
+        "expected_termination"
+      ],
+      "error_codes": [
+        "MODEL_TIMEOUT"
+      ],
+      "human_review": "PENDING_REVIEW"
+    },
+    {
+      "case_id": "A19",
+      "repeat": 3,
+      "evidence": "A19-3.json",
+      "failed_checks": [
+        "expected_termination"
+      ],
+      "error_codes": [
+        "MODEL_TIMEOUT"
+      ],
+      "human_review": "PENDING_REVIEW"
+    }
+  ],
+  "error_cases_by_code": {
+    "DEVICE_NOT_FOUND": 1,
+    "NO_DATA": 3,
+    "TOOL_TIMEOUT": 3,
+    "MODEL_TIMEOUT": 3
+  },
+  "unique_agent_runs": 63,
+  "model_requests": 139,
+  "tool_calls": 124,
+  "case_metrics_seconds": {
+    "total_seconds": {
+      "median": 9.694169576992863,
+      "p95": 20.150757626994164,
+      "max": 22.740285206004046
+    },
+    "model_seconds": {
+      "median": 9.544252620005864,
+      "p95": 20.022410524994484,
+      "max": 22.493194274997222
+    },
+    "tool_seconds": {
+      "median": 0.007925370999146253,
+      "p95": 0.030849044997012243,
+      "max": 0.04880878700350877
+    }
+  },
+  "percentile_method": "nearest rank, ceil(0.95 * n); all 60 cases included, including errors and multi-run cases",
+  "token_usage": {
+    "requests_with_reported_usage": 136,
+    "requests_without_reported_usage": 3,
+    "prompt_tokens": 182153,
+    "completion_tokens": 72288,
+    "total_tokens": 254441,
+    "note": "Provider usage is recorded when returned. Timed-out requests may omit usage; totals are reported usage only, not an exact billed total."
+  },
+  "cost": null,
+  "cost_note": "No verified pricing supplied by the local proxy; no cost inferred.",
+  "budgets": {
+    "agent_model_timeout_seconds": 20.0,
+    "agent_tool_timeout_seconds": 3.0,
+    "agent_total_timeout_seconds": 90.0,
+    "agent_cleanup_timeout_seconds": 5.0,
+    "agent_max_model_requests": 6,
+    "agent_max_tool_calls": 8
+  },
+  "isolation": "Each case uses its own temporary SQLite and fixed data clock; MQTT disabled; normal create_app lifespan, actual API/tools/database. A15 and A16 keep setup inside each case."
+}

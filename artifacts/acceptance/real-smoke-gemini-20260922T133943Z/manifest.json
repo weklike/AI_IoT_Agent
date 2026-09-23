@@ -1,0 +1,48 @@
+{
+  "kind": "protocol-smoke",
+  "cases_sha256": "fc01f5201bb0f8f872c5d68503e7a88dd66b77abb521416949efe9d247f513b4",
+  "mode": "real",
+  "repeat": 1,
+  "executed_at": "2026-09-22T13:39:44.736960+00:00",
+  "environment": {
+    "executed_at": "2026-09-22T13:39:44.736971+00:00",
+    "git_sha": "b48bb966d97eb69babf3d282f0e9c421cb8f0909",
+    "working_tree": "M \"docs/AI_IoT_Agent_\\345\\274\\200\\345\\217\\221\\350\\256\\241\\345\\210\\222.md\"\n M \"docs/AI_IoT_Agent_\\351\\252\\214\\346\\224\\266\\350\\247\\204\\345\\210\\231.md\"\n M docs/PROGRESS.md\n M docs/decisions.md\n?? artifacts/planning/\n?? \"docs/AI_IoT_Agent_v2.0_\\345\\274\\200\\345\\217\\221\\346\\226\\271\\346\\241\\210.md\"\n?? \"docs/AI_IoT_Agent_v2.0_\\351\\252\\214\\346\\224\\266\\346\\226\\271\\346\\241\\210.md\"",
+    "python": "3.12.13 (main, Mar 24 2026, 22:49:22) [Clang 22.1.1 ]",
+    "sqlite": "3.50.4",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "cpu_count": 4,
+    "cpu_model": "AMD Ryzen 7 5800H with Radeon Graphics",
+    "meminfo": [
+      "MemTotal:       12250352 kB",
+      "MemFree:         7815036 kB",
+      "MemAvailable:   10348172 kB"
+    ],
+    "node": "v24.13.0",
+    "compose": "Docker Compose version v5.1.1",
+    "locks": {
+      "uv.lock": "1861468a9de9c130dda178ac147cc692fbbe91f828150bbdd9eae033980eeab3",
+      "frontend/package-lock.json": "d686c26bbb5e25a0e12eecbcd10c2dc37389803113072958964fa495b8bd1a4f"
+    }
+  },
+  "prompt_sha256": "761acc2bda42e9eeff6e5579ae8e7bac93d29bdaa39b329b528f290561019b67",
+  "schema_sha256": "22754452f9ce953d60df99c9fbaba04c2a8e1292a293c7c97633620118e99175",
+  "results": [
+    {
+      "case_id": "A01",
+      "repeat": 1,
+      "file": "A01-1.json",
+      "sha256": "5a87bf4c719c717a1e9ba9e789062374307fccc7bdd2dc9b3bcfa9f3e7967a08",
+      "automatic_pass": true,
+      "total_seconds": 7.464790095007629
+    }
+  ],
+  "model": {
+    "id": "gemini-3.8-flash-high",
+    "endpoint_protocol": "chat-completions",
+    "temperature": "provider default (not overridden)",
+    "max_output_tokens": "provider default (not overridden)"
+  },
+  "status": "PASS",
+  "scope": "real endpoint tool-call round trip only; not model quality acceptance"
+}
