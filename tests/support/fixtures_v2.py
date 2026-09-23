@@ -249,7 +249,9 @@ async def load_v2_dataset(app, profile: str, case_id: str, repeat: int) -> dict:
                     snapshot_json={
                         "confirmed_budget_w": 60000,
                         "fixture": True,
-                        "priority_order": ["CHG-002", "CHG-001", "CHG-003"],
+                        "device_priority": ["CHG-002", "CHG-001", "CHG-003"]
+                        if profile == "POWER-PRIORITY"
+                        else None,
                     },
                     allocation_json=dict(zip(DEVICE_IDS, limits)),
                     results_json=results,

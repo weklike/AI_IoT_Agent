@@ -113,6 +113,7 @@ class PowerService:
                 "fingerprint": self._fingerprint(states),
                 "message_ids": {device: state["message_id"] for device, state in states.items()},
                 "confirmed_budget_w": station.budget_w,
+                "device_priority": list(priority) if strategy == "priority" else None,
             }
             session.add(
                 PowerPlan(

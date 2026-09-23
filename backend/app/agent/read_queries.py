@@ -188,6 +188,7 @@ class ReadQueries:
                     latest,
                     (
                         "plan_id",
+                        "strategy",
                         "status",
                         "budget_w",
                         "created_at",
@@ -196,6 +197,7 @@ class ReadQueries:
                         "results_json",
                     ),
                 )
+                plan["device_priority"] = latest.snapshot_json.get("device_priority")
                 confirmations = {}
                 for device_id in DEVICE_IDS:
                     item = latest.results_json.get(device_id, {})
