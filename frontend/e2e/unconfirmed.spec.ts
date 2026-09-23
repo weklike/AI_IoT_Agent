@@ -25,6 +25,10 @@ test('@v2 applied ACK without telemetry remains unconfirmed after late recovery'
     const after = (await (await page.request.get(`/api/device-commands/${command.command_id}`)).json()).data
     expect(after.verification_status).toBe('unconfirmed')
     await expect(page.getByTestId('charging-command')).toContainText('效果未确认')
+    const informational = page.getByText('会话已开始，等待功率分配。初始限制为 0 W；请在设备总览预览并执行站点功率计划。', { exact: true })
+    await expect(informational).toBeVisible()
+    const background = (element: Element) => getComputedStyle(element).backgroundColor
+    expect(await page.getByTestId('charging-command').evaluate(background)).not.toBe(await informational.evaluate(background))
     await info.attach('actual-command-before-after.json', { body: JSON.stringify({ before, after }, null, 2), contentType: 'application/json' })
     await page.screenshot({ path: info.outputPath('applied-unconfirmed.png'), fullPage: true })
   } finally {

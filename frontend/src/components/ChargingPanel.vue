@@ -10,6 +10,11 @@ const watts = ref(10000), command = ref<DeviceCommand>(), queryError = ref(''), 
 const storageKey = `charge-ops-v2-charging:${props.device.device_id}`
 const activeId = computed(() => props.device.session_id || acceptedSession.value)
 const unsettled = computed(() => !!commandId.value && (!command.value || command.value.status === 'pending' || (command.value.status === 'applied' && command.value.verification_status === 'pending')))
+const commandTone = computed(() => {
+  const value = command.value
+  if (!value || value.status === 'pending' || (value.status === 'applied' && value.verification_status === 'pending')) return 'muted'
+  return value.status === 'applied' && value.verification_status === 'verified' ? 'notice' : 'alert'
+})
 let stop = () => {}
 function persist() { localStorage.setItem(storageKey, JSON.stringify({ command_id: commandId.value, session_id: acceptedSession.value })) }
 function observe() {
@@ -42,7 +47,7 @@ onUnmounted(() => stop())
     <p v-if="device.session_state === 'ACTIVE' && device.power_limit_w === 0" class="notice">会话已开始，等待功率分配。初始限制为 0 W；请在设备总览预览并执行站点功率计划。</p>
     <p v-if="!device.data_fresh" class="muted">当前指标为最后记录，不能据此确认实时功率。已知会话仍可请求停止。</p>
     <div class="form-row"><label>请求功率（W）<input v-model.number="watts" type="number" min="100" max="20000" step="100" :disabled="operation.busy.value || !!operation.pending.value"></label><button class="primary" :disabled="operation.busy.value || !!operation.pending.value || unsettled || !device.data_fresh || device.schema_version !== 2 || device.session_state !== 'IDLE' || !!device.session_id" @click="apply('start')">开始充电</button><button :disabled="operation.busy.value || !!operation.pending.value || unsettled || !activeId" @click="apply('stop')">停止充电</button></div>
-    <p v-if="commandId" data-testid="charging-command" class="notice">{{ command ? commandLabels[command.status] || command.status : '正在查询命令' }} · {{ command ? verificationLabels[command.verification_status] || command.verification_status : '' }}<span v-if="command?.error_code"> · {{ command.error_code }}</span></p>
+    <p v-if="commandId" data-testid="charging-command" :class="commandTone">{{ command ? commandLabels[command.status] || command.status : '正在查询命令' }} · {{ command ? verificationLabels[command.verification_status] || command.verification_status : '' }}<span v-if="command?.error_code"> · {{ command.error_code }}</span></p>
     <p v-if="operation.error.value || queryError" role="alert" class="alert">{{ operation.error.value || queryError }}</p>
     <button v-if="operation.pending.value" :disabled="operation.busy.value" @click="retry">重试原充电请求</button><button v-if="queryError && commandId" @click="observe">重新查询命令</button>
     <p class="muted">收到设备回执与效果已验证分别显示。开始充电不会自动分配功率。</p>
