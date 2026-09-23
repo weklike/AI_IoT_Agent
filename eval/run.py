@@ -83,10 +83,25 @@ def automatic_checks(case, runs, orders, run_count):
             if name == "get_fault_guide"
             else {"device_id": expected_device}
         )
-        if name == "get_device_history":
-            expected_args["window_minutes"] = 10
         if name == "create_work_order":
             expected_args["reason_code"] = "OVERHEAT"
+        if name == "get_device_history":
+            # 只有问题文本声明了窗口才校验具体值；未声明时按工具合同接受任意 1—60 分钟整数。
+            declared = case.get("history_window_minutes")
+            windows = [
+                call["args_json"]["window_minutes"]
+                for call in calls
+                if call["tool_name"] == name
+                and set(call["args_json"]) == {"device_id", "window_minutes"}
+                and call["args_json"]["device_id"] == expected_device
+            ]
+            checks[name + "_arguments"] = any(
+                window == declared
+                if declared is not None
+                else type(window) is int and 1 <= window <= 60
+                for window in windows
+            )
+            continue
         checks[name + "_arguments"] = any(
             call["tool_name"] == name and call["args_json"] == expected_args for call in calls
         )
@@ -219,55 +234,78 @@ async def evaluate(case, repeat, settings, output):
         }
 
 
-def summarize(directory, review_file):
+def summarize(
+    directory, review_file, *, case_prefix="A", case_count=20, min_success=54, min_category=9
+):
     manifest = json.loads((directory / "manifest.json").read_text())
     if manifest.get("status") == "BLOCKED":
         return {"status": "BLOCKED", "executed_cases": 0}, 2
     entries = manifest.get("results", [])
-    if len(entries) != 60 or {(e["case_id"], e["repeat"]) for e in entries} != {
-        (f"A{i:02}", r) for i in range(1, 21) for r in range(1, 4)
+    total = case_count * 3
+    if len(entries) != total or {(e["case_id"], e["repeat"]) for e in entries} != {
+        (f"{case_prefix}{i:02}", r) for i in range(1, case_count + 1) for r in range(1, 4)
     }:
-        return {"status": "FAIL", "message": "需要完整60次案例执行"}, 1
-    if manifest["mode"] != "real":
-        return {"status": "PENDING_REVIEW", "message": "fixture 不能用于 G3 或真实模型成功率"}, 3
-    if not review_file or not review_file.exists():
-        return {"status": "PENDING_REVIEW", "message": "缺少真实人工评审"}, 3
-    reviews = json.loads(review_file.read_text())
+        return {"status": "FAIL", "message": f"需要完整{total}次案例执行"}, 1
+    reviews = json.loads(review_file.read_text()) if review_file and review_file.exists() else []
     indexed = {(r["case_id"], r["repeat"]): r for r in reviews}
     successes, critical, categories, elapsed = 0, [], {}, []
+    pending, automatic_successes, automatic_categories = 0, 0, {}
+    category_totals = {}
     for entry in entries:
         path = directory / entry["file"]
         digest = sha(path.read_bytes())
-        review = indexed.get((entry["case_id"], entry["repeat"]))
         if digest != entry["sha256"]:
             return {"status": "FAIL", "message": "原始证据摘要不匹配"}, 1
-        if (
-            not review
-            or not review.get("reviewer")
-            or not review.get("reviewed_at")
-            or review.get("evidence_sha256") != digest
-            or type(review.get("success")) is not bool
-            or not isinstance(review.get("critical_errors"), list)
-        ):
-            return {"status": "PENDING_REVIEW", "message": "人工评审缺失或尚未关联当前证据"}, 3
         record = json.loads(path.read_text())
+        critical.extend(record.get("critical_errors", []))
         category = record["case"]["category"]
-        categories.setdefault(category, 0)
-        passed = bool(record["automatic_pass"] and review["success"])
-        successes += passed
-        categories[category] += passed
-        critical.extend(review["critical_errors"])
+        category_totals[category] = category_totals.get(category, 0) + 1
+        automatic = record["automatic_pass"] is True
+        automatic_successes += automatic
+        automatic_categories[category] = automatic_categories.get(category, 0) + automatic
+        review = indexed.get((entry["case_id"], entry["repeat"]))
+        reviewed = bool(
+            review
+            and review.get("reviewer")
+            and review.get("reviewed_at")
+            and review.get("evidence_sha256") == digest
+            and type(review.get("success")) is bool
+            and isinstance(review.get("critical_errors"), list)
+        )
+        if not reviewed:
+            pending += 1
+        # With missing reviews this is an upper bound, never a claimed semantic success rate.
+        possible = automatic and (not reviewed or review["success"])
+        successes += possible
+        categories[category] = categories.get(category, 0) + possible
+        if reviewed:
+            critical.extend(review["critical_errors"])
         elapsed.append(record["total_seconds"])
-    passed = successes >= 54 and all(n >= 9 for n in categories.values()) and not critical
-    return {
-        "status": "PASS" if passed else "FAIL",
-        "successful_cases": successes,
-        "total_cases": 60,
-        "categories": categories,
+    if len(category_totals) != case_count // 4 or any(n != 12 for n in category_totals.values()):
+        return {"status": "FAIL", "message": "类别必须各有4例×3次，禁止合并或缺失类别"}, 1
+    impossible = (
+        successes < min_success
+        or any(n < min_category for n in categories.values())
+        or bool(critical)
+    )
+    needs_review = pending > 0 or manifest["mode"] != "real"
+    code = 1 if impossible else 3 if needs_review else 0
+    summary = {
+        "status": {0: "PASS", 1: "FAIL", 3: "PENDING_REVIEW"}[code],
+        "review_status": "PENDING_REVIEW" if needs_review else "PASS",
+        "pending_reviews": pending,
+        "automatic_successful_cases": automatic_successes,
+        "automatic_categories": automatic_categories,
+        "total_cases": total,
         "critical_errors": critical,
         "median_seconds": statistics.median(elapsed),
         "p95_seconds": percentile(elapsed),
-    }, 0 if passed else 1
+    }
+    if needs_review:
+        summary["message"] = "自动门槛失败优先于待评审；fixture和未完成真人复核均不能通过最终门槛"
+    else:
+        summary.update(successful_cases=successes, categories=categories)
+    return summary, code
 
 
 async def run(args):
@@ -321,7 +359,9 @@ async def run(args):
         manifest["scope"] = "real endpoint tool-call round trip only; not model quality acceptance"
         (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
         return 0 if verified else 1
-    manifest["status"] = "PENDING_REVIEW"
+    summary, exit_code = summarize(output, None)
+    manifest["status"] = summary["status"]
+    manifest["summary"] = summary
     (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
     reviews = [
         {
@@ -337,7 +377,7 @@ async def run(args):
         for entry in manifest["results"]
     ]
     (output / "review-template.json").write_text(json.dumps(reviews, ensure_ascii=False, indent=2))
-    return 3
+    return exit_code
 
 
 def main():

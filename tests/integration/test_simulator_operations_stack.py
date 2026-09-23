@@ -13,9 +13,8 @@ from tests.support.mqtt import MQTTProbe
 from tests.support.resources import stack
 
 
-async def test_owned_four_service_operations_volume_survives_kill(tmp_path, monkeypatch):
-    monkeypatch.setenv("SIMULATOR_MODE", "operations")
-    with stack(output=tmp_path / "stack") as ports:
+async def test_owned_four_service_operations_volume_survives_kill(tmp_path):
+    with stack(output=tmp_path / "stack", operations=True) as ports:
         project = ports["PROJECT"]
         prefix = f"charge-test/{project}/v1"
         probe = MQTTProbe(int(ports["MQTT_PUBLISH_PORT"]), prefix)

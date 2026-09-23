@@ -168,6 +168,7 @@ async def test_tool_timeout_and_total_deadline(harness, monkeypatch):
     assert result["status"] == "timed_out"
     assert result["error_code"] == "TOOL_TIMEOUT"
     assert result["tool_calls"][0]["error_code"] == "TOOL_TIMEOUT"
+    assert result["tool_calls"][0]["duration_ms"] >= 25
     app.state.settings.agent_total_timeout_seconds = 0.04
     provider.delay = 0.1
     provider.responses = [{"role": "assistant", "content": "must not finish"}]

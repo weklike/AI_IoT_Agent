@@ -63,7 +63,7 @@ class AgentRunner:
                         report.snapshot_json = fact.result_json["data"]
 
     async def _interrupted_tool(
-        self, task: asyncio.Task, context: ToolContext, code: str, writing: bool
+        self, task: asyncio.Task, context: ToolContext, code: str, writing: bool, started: float
     ):
         task.cancel()
         # SQLAlchemy session ownership stays inside the tool. Wait for commit/rollback before querying.
@@ -72,6 +72,8 @@ class AgentRunner:
                 await asyncio.gather(task, return_exceptions=True)
                 async with self.db.sessions.begin() as session:
                     row = await session.get(ToolCall, str(context.tool_call_id))
+                    if row and row.duration_ms is None:
+                        row.duration_ms = (time.monotonic() - started) * 1000
                     if row and row.result_json and row.result_json.get("ok") and writing:
                         return row.result_json
                     if row:
@@ -243,6 +245,7 @@ class AgentRunner:
                     context = ToolContext(
                         run_id=run_id, tool_call_id=uuid4(), allow_work_order=allowed
                     )
+                    tool_started = time.monotonic()
                     task = asyncio.create_task(
                         self.executor.execute(call, args, context, ordinal=count + 1),
                         name=f"tool-{context.tool_call_id}",
@@ -262,7 +265,9 @@ class AgentRunner:
                             if time.monotonic() >= deadline
                             else "TOOL_TIMEOUT"
                         )
-                        restored = await self._interrupted_tool(task, context, code, writing)
+                        restored = await self._interrupted_tool(
+                            task, context, code, writing, tool_started
+                        )
                         if restored:
                             messages.append(
                                 {

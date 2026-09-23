@@ -83,6 +83,7 @@ def stack(
     simulator: bool = True,
     failures: bool = False,
     operations: bool = False,
+    monitor: bool = False,
 ):
     project = f"charge-smoke-{uuid4().hex[:12]}"
     env = os.environ.copy()
@@ -136,7 +137,9 @@ def stack(
     )
     command = ["docker", "compose", "-p", project, "-f", str(ROOT / "deploy/compose.yaml")]
     override = None
-    if failures:
+    if failures and monitor:
+        raise ValueError("Failure and monitoring test apps cannot be combined")
+    if failures or monitor:
         override = tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False)
         json.dump(
             {
@@ -145,7 +148,11 @@ def stack(
                         "environment": {"APP_ENV": "test"},
                         "command": [
                             "/app/.venv/bin/uvicorn",
-                            "tests.support.failure_app:create_test_app",
+                            (
+                                "tests.support.failure_app:create_test_app"
+                                if failures
+                                else "tests.support.monitor_app:create_test_app"
+                            ),
                             "--factory",
                             "--host",
                             "0.0.0.0",

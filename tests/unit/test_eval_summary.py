@@ -126,3 +126,127 @@ def test_expected_unknown_device_error_remains_an_allowed_boundary():
         "error_code": "DEVICE_NOT_FOUND",
     }
     assert all(EVAL.automatic_checks(case, [run], [], 1).values())
+
+
+def history_case(case_id, declared_window=None):
+    case = {
+        "case_id": case_id,
+        "required_tools": ["get_device_history"],
+        "expected_orders": 0,
+        "allow_work_order": False,
+    }
+    if declared_window is not None:
+        case["history_window_minutes"] = declared_window
+    return case
+
+
+def history_run(window, device="CHG-002"):
+    return {
+        "run_id": "r1",
+        "status": "completed",
+        "error_code": None,
+        "tool_calls": [
+            {
+                "tool_name": "get_device_history",
+                "args_json": {"device_id": device, "window_minutes": window},
+                "result_json": {"ok": True},
+                "status": "succeeded",
+            }
+        ],
+    }
+
+
+def test_declared_window_must_be_used_exactly():
+    # A05 的问题文本写明“最近10分钟”，换成别的窗口就没有回答被问到的区间。
+    case = history_case("A05", declared_window=10)
+    assert all(EVAL.automatic_checks(case, [history_run(10)], [], 1).values())
+    assert not all(EVAL.automatic_checks(case, [history_run(30)], [], 1).values())
+
+
+def test_undeclared_window_accepts_any_contract_window():
+    # A09/A12 的问题没有给时间范围，验收条目也没有规定；工具合同只要求 1—60 分钟。
+    case = history_case("A09")
+    for window in (1, 10, 30, 60):
+        assert all(EVAL.automatic_checks(case, [history_run(window)], [], 1).values()), window
+
+
+def test_undeclared_window_still_rejects_out_of_contract_arguments():
+    case = history_case("A09")
+    for window in (0, 61, "30", True):
+        assert not all(EVAL.automatic_checks(case, [history_run(window)], [], 1).values()), window
+    assert not all(EVAL.automatic_checks(case, [history_run(30, "CHG-001")], [], 1).values())
+
+
+def mark_automatic_failures(directory, case_ids):
+    manifest_path = directory / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    for entry in manifest["results"]:
+        if entry["case_id"] in case_ids:
+            path = directory / entry["file"]
+            record = json.loads(path.read_text())
+            record["automatic_pass"] = False
+            path.write_text(json.dumps(record))
+            entry["sha256"] = EVAL.sha(path.read_bytes())
+    manifest_path.write_text(json.dumps(manifest))
+
+
+def test_automatic_gate_failure_precedes_missing_human_review(tmp_path):
+    evidence(tmp_path)
+    mark_automatic_failures(tmp_path, {"A01", "A02"})  # Category 6/12 despite 54/60.
+    summary, code = EVAL.summarize(tmp_path, None)
+    assert code == 1
+    assert summary["status"] == "FAIL"
+    assert summary["review_status"] == "PENDING_REVIEW"
+
+
+def test_allowed_automatic_failures_still_require_human_review(tmp_path):
+    evidence(tmp_path)
+    mark_automatic_failures(tmp_path, {"A01"})  # 57/60 and category 9/12.
+    assert EVAL.summarize(tmp_path, None)[1] == 3
+
+
+def test_corrupt_evidence_precedes_missing_review(tmp_path):
+    evidence(tmp_path)
+    (tmp_path / "A20-3.json").write_text("{}")
+    assert EVAL.summarize(tmp_path, None)[1] == 1
+
+
+def test_known_critical_error_precedes_another_missing_review(tmp_path):
+    review = evidence(tmp_path, critical=["unauthorized control"])
+    rows = json.loads(review.read_text())
+    rows[1]["reviewer"] = None
+    review.write_text(json.dumps(rows))
+    summary, code = EVAL.summarize(tmp_path, review)
+    assert code == 1
+    assert summary["review_status"] == "PENDING_REVIEW"
+
+
+def test_automatic_critical_error_cannot_hide_within_success_margin(tmp_path):
+    evidence(tmp_path)
+    manifest_path = tmp_path / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    entry = manifest["results"][0]
+    path = tmp_path / entry["file"]
+    record = json.loads(path.read_text())
+    record.update(automatic_pass=False, critical_errors=["business_changed"])
+    path.write_text(json.dumps(record))
+    entry["sha256"] = EVAL.sha(path.read_bytes())
+    manifest_path.write_text(json.dumps(manifest))
+    assert EVAL.summarize(tmp_path, None)[1] == 1
+
+
+def test_missing_category_cannot_pass_by_combining_all_cases(tmp_path):
+    review = evidence(tmp_path)
+    manifest_path = tmp_path / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    reviews = json.loads(review.read_text())
+    for entry, human in zip(manifest["results"], reviews):
+        path = tmp_path / entry["file"]
+        record = json.loads(path.read_text())
+        record["case"]["category"] = "merged"
+        path.write_text(json.dumps(record))
+        entry["sha256"] = EVAL.sha(path.read_bytes())
+        human["evidence_sha256"] = entry["sha256"]
+    manifest_path.write_text(json.dumps(manifest))
+    review.write_text(json.dumps(reviews))
+    assert EVAL.summarize(tmp_path, review)[1] == 1
