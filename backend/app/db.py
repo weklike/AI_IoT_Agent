@@ -13,6 +13,8 @@ from backend.app.contracts import DEVICE_IDS
 from backend.app.migrations import migrate
 from backend.app.models import (
     AgentRun,
+    Alarm,
+    AlarmRule,
     Device,
     DeviceCommand,
     PowerPlan,
@@ -52,6 +54,23 @@ class Database:
                     .values(device_id=device_id, name=f"充电桩 {device_id}")
                     .on_conflict_do_nothing(index_elements=["device_id"])
                 )
+            for device_id in DEVICE_IDS:
+                for reason in ("OVERHEAT", "OFFLINE"):
+                    await session.execute(
+                        insert(AlarmRule)
+                        .values(
+                            device_id=device_id,
+                            reason_code=reason,
+                            updated_at=(clock or DataClock()).now(),
+                        )
+                        .on_conflict_do_nothing(index_elements=["device_id", "reason_code"])
+                    )
+            await session.execute(update(AlarmRule).values(observation_json=None))
+            await session.execute(
+                update(Alarm)
+                .where(Alarm.condition == "ACTIVE")
+                .values(evaluation_state="unknown", observation_json=None)
+            )
             await session.execute(update(Device).values(last_live_received_at=None))
             await session.execute(
                 update(PowerPlan)

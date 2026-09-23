@@ -113,3 +113,25 @@ def test_checkpoint_replace_failure_keeps_previous_file(tmp_path, monkeypatch):
         save_state(path, {"version": 1, "meter_total_wh": 200})
     assert load_state(path)["meter_total_wh"] == 100
     assert list(tmp_path.iterdir()) == [path]
+
+
+def test_delivery_metadata_does_not_advance_meter_checkpoint_time(tmp_path, fixed_now):
+    from datetime import timedelta
+
+    from simulator.charging import ChargingDevice
+    from simulator.reports import ReportDelivery
+
+    device = ChargingDevice("CHG-001", tmp_path / "state.json", fixed_now, monotonic_ns=0)
+    measured = fixed_now + timedelta(seconds=2)
+    device.checkpoint(measured, 2_000_000_000)
+    device.state["pending_reports"] = [
+        {
+            "payload": {"report_id": "retained-evidence"},
+            "attempts": 0,
+            "first_sent_at": measured.isoformat(),
+            "next_due_at": measured.isoformat(),
+            "delivery_failed": False,
+        }
+    ]
+    ReportDelivery(device).due(fixed_now + timedelta(seconds=3))
+    assert device.state["last_checkpoint"] == measured.isoformat()

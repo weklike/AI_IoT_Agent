@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     telemetry_interval_seconds: float = Field(default=2, gt=0)
     fresh_sample_max_age_seconds: float = Field(default=10, gt=0)
     offline_timeout_seconds: float = Field(default=15, gt=0)
+    alarm_max_sample_gap_seconds: float = Field(default=3, gt=0)
     overheat_threshold_c: float = 60
     power_preview_ttl_seconds: float = Field(default=120, gt=0)
     power_plan_timeout_seconds: float = Field(default=30, gt=0)

@@ -3,6 +3,7 @@ from datetime import datetime
 
 from sqlalchemy import and_, or_, select
 
+from backend.app.alarms.service import AlarmService
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import TelemetryMessage, TelemetryV2, parse_telemetry
@@ -16,6 +17,7 @@ logger = logging.getLogger(__name__)
 class TelemetryStore:
     def __init__(self, db: Database, settings: Settings, clock: DataClock):
         self.db, self.settings, self.clock = db, settings, clock
+        self.alarms = AlarmService(db, settings, clock)
 
     async def diagnostic(
         self, event_type: str, device_id: str | None, summary: str, received_at: datetime
@@ -109,6 +111,11 @@ class TelemetryStore:
                     received_at - message.ts
                 ).total_seconds() <= self.settings.fresh_sample_max_age_seconds:
                     device.last_live_received_at = received_at
+                    await self.alarms.observe(session, row, received_at)
+                else:
+                    await self.alarms.interrupt(session, message.device_id)
+            else:
+                await self.alarms.interrupt(session, message.device_id)
         # Logged strictly after commit; usable for later performance correlation.
         logger.info(
             "telemetry_committed message_id=%s device_id=%s committed_at=%s",

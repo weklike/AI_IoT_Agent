@@ -158,6 +158,9 @@ async def work_orders(request: Request, device_id: str | None = None):
                         "evidence_json",
                         "created_from_run_id",
                         "created_at",
+                        "version",
+                        "closed_at",
+                        "alarm_id",
                     )
                 }
                 for row in rows

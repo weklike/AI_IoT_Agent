@@ -78,14 +78,15 @@ class ChargingDevice:
         self.meter.advance(power_w=self.actual_power_w, elapsed_ns=monotonic_ns - self.last_ns)
         self.last_ns = monotonic_ns
 
-    def _save(self, now: datetime) -> None:
+    def _save(self, now: datetime, *, measured: bool = True) -> None:
         from simulator.state_store import save_state
 
         self.state.update(
             meter_total_wh=self.meter.total_wh,
             remainder_wns=self.meter.remainder_wns,
-            last_checkpoint=now.isoformat(),
         )
+        if measured:
+            self.state["last_checkpoint"] = now.isoformat()
         save_state(self.path, self.state)
 
     def checkpoint(self, now: datetime, monotonic_ns: int) -> None:
@@ -172,6 +173,7 @@ class ChargingDevice:
         for cached in self.state["commands"]:
             if cached["command_id"] == str(command.command_id):
                 if cached["digest"] == digest:
+                    self._save(now)
                     return ControlAck.model_validate(cached["ack"])
                 error = "COMMAND_CONFLICT"
                 break

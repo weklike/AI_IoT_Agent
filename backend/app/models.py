@@ -130,7 +130,7 @@ class WorkOrder(Base):
             "device_id",
             "reason_code",
             unique=True,
-            sqlite_where=text("status = 'OPEN'"),
+            sqlite_where=text("status IN ('OPEN', 'IN_PROGRESS', 'RESOLVED')"),
         ),
     )
     order_id: Mapped[str] = mapped_column(String, primary_key=True)
@@ -276,6 +276,7 @@ class AlarmRule(Base):
     trigger_duration_seconds: Mapped[int] = mapped_column(default=0)
     clear_below_c: Mapped[float] = mapped_column(default=55)
     clear_duration_seconds: Mapped[int] = mapped_column(default=10)
+    observation_json: Mapped[dict | None] = mapped_column(JSON)
     updated_at: Mapped[datetime] = mapped_column(UTCTime)
 
 
@@ -302,6 +303,7 @@ class Alarm(Base):
     observed_at: Mapped[datetime] = mapped_column(UTCTime)
     cleared_at: Mapped[datetime | None] = mapped_column(UTCTime)
     rule_json: Mapped[dict] = mapped_column(JSON)
+    observation_json: Mapped[dict | None] = mapped_column(JSON)
     evidence_json: Mapped[dict] = mapped_column(JSON)
 
 

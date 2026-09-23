@@ -36,7 +36,7 @@ class ReportDelivery:
             item["next_due_at"] = (now + timedelta(seconds=delay)).isoformat()
             result.append(item["payload"])
         if changed:
-            self.device._save(now)
+            self.device._save(now, measured=False)
         return result
 
     def ack(self, ack: SessionAck, now: datetime) -> None:
@@ -53,5 +53,5 @@ class ReportDelivery:
             else:
                 item["delivery_failed"] = True
                 item["rejection_status"] = ack.status
-            self.device._save(now)
+            self.device._save(now, measured=False)
             break

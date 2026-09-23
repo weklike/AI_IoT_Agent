@@ -26,8 +26,10 @@ from backend.app.db import Database
 from backend.app.errors import DomainError
 from backend.app.mqtt.client import MQTTConnection
 from backend.app.power.service import PowerService
+from backend.app.routes.alarms import router as alarms_router
 from backend.app.routes.charging import router as charging_router
 from backend.app.routes.power import router as power_router
+from backend.app.routes.work_orders import router as work_orders_router
 from backend.app.simulator_control import ScenarioControl
 from backend.app.telemetry.ingest import TelemetryStore
 
@@ -111,10 +113,16 @@ def create_app(
         try:
             await db.initialize(clock)
             app.state.consumer = asyncio.create_task(consume(), name="mqtt-consumer")
+            app.state.alarm_timer = asyncio.create_task(
+                store.alarms.run_timer(), name="alarm-timer"
+            )
             if settings.mqtt_enabled:
                 await mqtt.start()
             yield
         finally:
+            if hasattr(app.state, "alarm_timer"):
+                app.state.alarm_timer.cancel()
+                await asyncio.gather(app.state.alarm_timer, return_exceptions=True)
             if scheduler:
                 await scheduler.close()
             if settings.mqtt_enabled:
@@ -138,6 +146,7 @@ def create_app(
     app.state.settings, app.state.clock = settings, clock
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
+    app.state.alarms = store.alarms
     app.state.control = control
     app.state.charging = charging
     app.state.power = power
@@ -146,6 +155,8 @@ def create_app(
     app.include_router(router)
     app.include_router(charging_router)
     app.include_router(power_router)
+    app.include_router(alarms_router)
+    app.include_router(work_orders_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):
