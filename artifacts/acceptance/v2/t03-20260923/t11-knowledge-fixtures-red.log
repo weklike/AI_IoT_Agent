@@ -1,0 +1,26 @@
+........FF                                                               [100%]
+=================================== FAILURES ===================================
+____________ test_version_fixture_keeps_old_and_filters_wrong_model ____________
+
+app = <fastapi.applications.FastAPI object at 0x79a80ba0f1d0>
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-161/test_version_fixture_keeps_old0')
+
+    async def test_version_fixture_keeps_old_and_filters_wrong_model(app, tmp_path):
+>       from tests.support.fixtures_v2 import prepare_knowledge
+E       ImportError: cannot import name 'prepare_knowledge' from 'tests.support.fixtures_v2' (/home/syzygy/AI_IoT_Agent/tests/support/fixtures_v2.py)
+
+tests/integration/test_eval_v2_fixtures.py:108: ImportError
+_______________ test_injection_fixture_is_real_indexed_data_only _______________
+
+app = <fastapi.applications.FastAPI object at 0x79a80baa7920>
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-161/test_injection_fixture_is_real0')
+
+    async def test_injection_fixture_is_real_indexed_data_only(app, tmp_path):
+>       from tests.support.fixtures_v2 import prepare_knowledge
+E       ImportError: cannot import name 'prepare_knowledge' from 'tests.support.fixtures_v2' (/home/syzygy/AI_IoT_Agent/tests/support/fixtures_v2.py)
+
+tests/integration/test_eval_v2_fixtures.py:119: ImportError
+=========================== short test summary info ============================
+FAILED tests/integration/test_eval_v2_fixtures.py::test_version_fixture_keeps_old_and_filters_wrong_model
+FAILED tests/integration/test_eval_v2_fixtures.py::test_injection_fixture_is_real_indexed_data_only
+2 failed, 8 passed in 2.79s

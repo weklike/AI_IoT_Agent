@@ -1,0 +1,24 @@
+{
+  "maximum": {
+    "/api/health": 1,
+    "/api/patrols": 1,
+    "/api/patrol-schedule": 1,
+    "/api/alarms": 2,
+    "/api/fleet-overview": 1,
+    "/api/devices/CHG-002": 1,
+    "/api/devices/CHG-002/telemetry": 1,
+    "/api/charging-sessions": 1,
+    "/api/alarm-rules/CHG-002/OVERHEAT": 1,
+    "/api/alarm-rules/CHG-002/OFFLINE": 1,
+    "/api/work-orders": 1,
+    "/api/devices/CHG-002/timeline": 1,
+    "/api/charging-statistics": 1,
+    "/api/agent/runs": 1
+  },
+  "overlaps": [
+    [
+      "http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE",
+      "http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"
+    ]
+  ]
+}

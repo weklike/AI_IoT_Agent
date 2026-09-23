@@ -1,0 +1,7 @@
+Resolved 31 packages in 1ms
+   Building charge-ops-agent @ file:///home/syzygy/AI_IoT_Agent
+      Built charge-ops-agent @ file:///home/syzygy/AI_IoT_Agent
+Prepared 1 package in 1.35s
+Uninstalled 1 package in 1ms
+Installed 1 package in 1ms
+ ~ charge-ops-agent==0.1.0 (from file:///home/syzygy/AI_IoT_Agent)

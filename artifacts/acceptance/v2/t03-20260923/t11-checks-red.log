@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+______________ ERROR collecting tests/unit/test_eval_v2_checks.py ______________
+ImportError while importing test module '/home/syzygy/AI_IoT_Agent/tests/unit/test_eval_v2_checks.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/test_eval_v2_checks.py:3: in <module>
+    from eval.checks_v2 import automatic_checks
+E   ModuleNotFoundError: No module named 'eval.checks_v2'
+=========================== short test summary info ============================
+ERROR tests/unit/test_eval_v2_checks.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.09s

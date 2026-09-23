@@ -1,0 +1,42 @@
+[
+  {
+    "case_id": "B01",
+    "repeat": 1,
+    "evidence_sha256": "3be1a2ebbf9300d7a7563326d398f3f7f18d1bf2f662e83a0abb74935c827051",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B05",
+    "repeat": 1,
+    "evidence_sha256": "cb822b7414bbcfac828edbea34a721b6a36e413a08f7107dc4c1fbdc6f1a63d1",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B21",
+    "repeat": 1,
+    "evidence_sha256": "7a6a7a3ac87c552dd144cdc4e87439cafd169651a59a1fce1bdb103ad4bdcff1",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  },
+  {
+    "case_id": "B22",
+    "repeat": 1,
+    "evidence_sha256": "a5d4a06b776ee681a3d604dc61c71ac25532332362acfcffacc52245f4711d35",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  }
+]

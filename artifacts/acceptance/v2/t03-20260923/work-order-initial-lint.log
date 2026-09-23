@@ -1,0 +1,78 @@
+E701 Multiple statements on one line (colon)
+  --> backend/app/routes/work_orders.py:33:62
+   |
+31 | async def events(request: Request,order_id: UUID,cursor: UUID | None=None,limit: Annotated[int,Query(ge=1,le=100)]=20):
+32 |     async with request.app.state.db.sessions() as session:
+33 |         if await session.get(WorkOrder,str(order_id)) is None:raise DomainError('WORK_ORDER_NOT_FOUND','工单不存在',404)
+   |                                                              ^
+34 |         filters=[WorkOrderEvent.order_id==str(order_id)]
+35 |         if cursor:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/routes/work_orders.py:37:68
+   |
+35 | …     if cursor:
+36 | …         previous=await session.get(WorkOrderEvent,str(cursor))
+37 | …         if previous is None or previous.order_id!=str(order_id):raise DomainError('INVALID_ARGUMENTS','工单事件游标无效')
+   |                                                                  ^
+38 | …         filters.append(or_(WorkOrderEvent.checked_at<previous.checked_at,and_(WorkOrderEvent.checked_at==previous.checked_at,WorkOrd…
+39 | …     rows=(await session.scalars(select(WorkOrderEvent).where(*filters).order_by(WorkOrderEvent.checked_at.desc(),WorkOrderEvent.even…
+   |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/work_orders.py:177:29
+    |
+175 |         async def apply(session) -> dict:
+176 |             order=await session.get(WorkOrder,order_id)
+177 |             if order is None:raise DomainError('WORK_ORDER_NOT_FOUND','工单不存在',404)
+    |                             ^
+178 |             if order.version!=expected_version:raise DomainError('VERSION_CONFLICT','工单版本已变化',409)
+179 |             allowed={'OPEN':{'IN_PROGRESS'},'IN_PROGRESS':{'RESOLVED'},'RESOLVED':{'IN_PROGRESS','CLOSED'},'CLOSED':set()}
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/work_orders.py:178:47
+    |
+176 |             order=await session.get(WorkOrder,order_id)
+177 |             if order is None:raise DomainError('WORK_ORDER_NOT_FOUND','工单不存在',404)
+178 |             if order.version!=expected_version:raise DomainError('VERSION_CONFLICT','工单版本已变化',409)
+    |                                               ^
+179 |             allowed={'OPEN':{'IN_PROGRESS'},'IN_PROGRESS':{'RESOLVED'},'RESOLVED':{'IN_PROGRESS','CLOSED'},'CLOSED':set()}
+180 |             if target_status not in allowed[order.status]:raise DomainError('INVALID_TRANSITION','不允许此工单状态迁移',409)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/work_orders.py:180:58
+    |
+178 |             if order.version!=expected_version:raise DomainError('VERSION_CONFLICT','工单版本已变化',409)
+179 |             allowed={'OPEN':{'IN_PROGRESS'},'IN_PROGRESS':{'RESOLVED'},'RESOLVED':{'IN_PROGRESS','CLOSED'},'CLOSED':set()}
+180 |             if target_status not in allowed[order.status]:raise DomainError('INVALID_TRANSITION','不允许此工单状态迁移',409)
+    |                                                          ^
+181 |             if not isinstance(note,str) or len(note)>2000 or target_status=='RESOLVED' and not note.strip():
+182 |                 raise DomainError('INVALID_ARGUMENTS','待验证工单必须提供1—2000字处理说明')
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/work_orders.py:193:33
+    |
+191 | …         alarm=await session.get(Alarm,order.alarm_id)
+192 | …         recovered=recovered and alarm is not None and alarm.condition=='CLEARED' and alarm.device_id==order.device_id and alarm.rea…
+193 | …     if not recovered:raise DomainError('RECOVERY_NOT_CONFIRMED','需要新鲜恢复证据，且关联告警已经恢复',409)
+    |                       ^
+194 | …     sample=await session.scalar(select(Telemetry).where(Telemetry.message_id==current['message_id'],Telemetry.device_id==order.devi…
+195 | …     if sample is None:raise DomainError('RECOVERY_NOT_CONFIRMED','恢复样本不可用',409)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/work_orders.py:195:34
+    |
+193 | …     if not recovered:raise DomainError('RECOVERY_NOT_CONFIRMED','需要新鲜恢复证据，且关联告警已经恢复',409)
+194 | …     sample=await session.scalar(select(Telemetry).where(Telemetry.message_id==current['message_id'],Telemetry.device_id==order.devi…
+195 | …     if sample is None:raise DomainError('RECOVERY_NOT_CONFIRMED','恢复样本不可用',409)
+    |                        ^
+196 | …     evidence=json_data({'device_id':order.device_id,'sample_id':sample.id,'message_id':sample.message_id,'sample_ts':sample.ts,
+197 | …         'validated_at':checked_at,'temperature_c':sample.temperature_c,'connection_state':current['connection_state'],'alarm_id':or…
+    |
+
+Found 10 errors (3 fixed, 7 remaining).

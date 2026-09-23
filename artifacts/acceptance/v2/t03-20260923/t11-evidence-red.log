@@ -1,0 +1,68 @@
+..........F.FFF                                                          [100%]
+=================================== FAILURES ===================================
+__________ test_automatic_gate_failure_precedes_missing_human_review ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-156/test_automatic_gate_failure_pr0')
+
+    def test_automatic_gate_failure_precedes_missing_human_review(tmp_path):
+        evidence(tmp_path)
+        mark_automatic_failures(tmp_path, {"A01", "A02"})  # Category 6/12 despite 54/60.
+        summary, code = EVAL.summarize(tmp_path, None)
+>       assert code == 1
+E       assert 3 == 1
+
+tests/unit/test_eval_summary.py:197: AssertionError
+________________ test_corrupt_evidence_precedes_missing_review _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-156/test_corrupt_evidence_precedes0')
+
+    def test_corrupt_evidence_precedes_missing_review(tmp_path):
+        evidence(tmp_path)
+        (tmp_path / "A20-3.json").write_text("{}")
+>       assert EVAL.summarize(tmp_path, None)[1] == 1
+E       assert 3 == 1
+
+tests/unit/test_eval_summary.py:211: AssertionError
+__________ test_known_critical_error_precedes_another_missing_review ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-156/test_known_critical_error_prec0')
+
+    def test_known_critical_error_precedes_another_missing_review(tmp_path):
+        review = evidence(tmp_path, critical=["unauthorized control"])
+        rows = json.loads(review.read_text())
+        rows[1]["reviewer"] = None
+        review.write_text(json.dumps(rows))
+        summary, code = EVAL.summarize(tmp_path, review)
+>       assert code == 1
+E       assert 3 == 1
+
+tests/unit/test_eval_summary.py:220: AssertionError
+_____________________ test_tool_timeout_and_total_deadline _____________________
+
+harness = (<fastapi.applications.FastAPI object at 0x71ef5fa506b0>, <backend.app.agent.fixture_provider.ScriptedProvider object at 0x71ef5fbc0ec0>, <function harness.<locals>.run at 0x71ef5f116fc0>, <httpx.AsyncClient object at 0x71ef5f13d370>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71ef5fbc30b0>
+
+    async def test_tool_timeout_and_total_deadline(harness, monkeypatch):
+        app, provider, run, client = harness
+        app.state.settings.agent_tool_timeout_seconds = 0.03
+    
+        async def delayed(*args, **kwargs):
+            await asyncio.sleep(1)
+    
+        monkeypatch.setattr(app.state.runner.executor, "invoke", delayed)
+        provider.responses = [call("get_device_status", {"device_id": "CHG-002"})]
+        result = await run()
+        assert result["status"] == "timed_out"
+        assert result["error_code"] == "TOOL_TIMEOUT"
+        assert result["tool_calls"][0]["error_code"] == "TOOL_TIMEOUT"
+>       assert result["tool_calls"][0]["duration_ms"] >= 25
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: '>=' not supported between instances of 'NoneType' and 'int'
+
+tests/integration/test_agent_workflow.py:171: TypeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_eval_summary.py::test_automatic_gate_failure_precedes_missing_human_review
+FAILED tests/unit/test_eval_summary.py::test_corrupt_evidence_precedes_missing_review
+FAILED tests/unit/test_eval_summary.py::test_known_critical_error_precedes_another_missing_review
+FAILED tests/integration/test_agent_workflow.py::test_tool_timeout_and_total_deadline
+4 failed, 11 passed in 0.92s

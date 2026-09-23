@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-09-23T08:35:16.483193+00:00",
+  "commands": [
+    {
+      "command": "npm --prefix frontend run typecheck",
+      "exit_code": 0,
+      "log": "artifacts/acceptance/v2/t03-20260923/t11-typecheck-candidate04.log",
+      "sha256": "a78ff3f0e6fb7e2e7101de43d2e556bc3c6cc1d1a048ceb3faa9b883a3c600a1"
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0,
+      "log": "artifacts/acceptance/v2/t03-20260923/t11-build-candidate04.log",
+      "sha256": "1d13b4c228e129f46224a3d642af26338e9507ca45238346c8b55281ed29d284"
+    }
+  ],
+  "basis": "同一实际shell依次执行typecheck && build，已观测整体exit 0；ECharts bundle警告保留。"
+}

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="36.372" timestamp="2026-09-23T14:54:20.157146+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_operations_broker_gap" name="test_operations_broker_gap_preserves_energy_without_fabricated_telemetry" time="36.286"><failure message="httpx.HTTPStatusError: Client error '404 Not Found' for url 'http://127.0.0.1:45078/api/devices/CHG-001/history?from=2026-09-23T06%3A54%3A35.699835%2B00%3A00&amp;to=2026-09-23T06%3A54%3A45.700013%2B00%3A00'&#10;For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404">tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-190/test_operations_broker_gap_pre0')
+request = &lt;FixtureRequest for &lt;Function test_operations_broker_gap_preserves_energy_without_fabricated_telemetry&gt;&gt;
+
+    def test_operations_broker_gap_preserves_energy_without_fabricated_telemetry(tmp_path, request):
+        def wait(predicate, seconds=10):
+            end = time.monotonic() + seconds
+            while time.monotonic() &lt; end:
+                result = predicate()
+                if result:
+                    return result
+                time.sleep(0.1)
+            raise AssertionError("Expected actual feedback before deadline")
+    
+        with stack(tmp_path / "logs", operations=True) as ports:
+            with httpx.Client(
+                base_url="http://127.0.0.1:" + ports["BACKEND_PUBLISH_PORT"], timeout=3
+            ) as client:
+    
+                def get(path, **params):
+                    response = client.get(path, params=params)
+                    response.raise_for_status()
+                    return response.json()["data"]
+    
+                def post(path, **body):
+                    response = client.post(path, json={"request_id": str(uuid4()), **body})
+                    response.raise_for_status()
+                    return response.json()["data"]
+    
+                wait(
+                    lambda: all(
+                        x["status"]["data_fresh"]
+                        for x in get("/api/fleet-overview", window_minutes=10)["devices"]
+                    )
+                )
+                started = post("/api/devices/CHG-001/charging/start", requested_power_w=20000)
+                wait(
+                    lambda: (
+                        get("/api/device-commands/" + started["command_id"])["verification_status"]
+                        == "verified"
+                    )
+                )
+                plan = post("/api/power-plans", budget_w=20000, strategy="equal")
+                post("/api/power-plans/" + plan["plan_id"] + "/execute")
+                wait(lambda: get("/api/power-plans/" + plan["plan_id"])["status"] == "VERIFIED")
+                before = get("/api/devices/CHG-001")
+                assert before["power_kw"] == 20
+                broker = ports["PROJECT"] + "-mqtt-1"
+                subprocess.run(["docker", "stop", broker], check=True, capture_output=True, timeout=20)
+                gap_start = datetime.now(UTC)
+                time.sleep(10)
+                gap_end = datetime.now(UTC)
+                subprocess.run(["docker", "start", broker], check=True, capture_output=True, timeout=20)
+                recovered = wait(
+                    lambda: (
+                        row
+                        if (row := get("/api/devices/CHG-001"))["message_id"] != before["message_id"]
+                        and row["data_fresh"]
+                        else None
+                    )
+                )
+                assert recovered["session_id"] == started["session_id"]
+                assert recovered["meter_total_wh"] - before["meter_total_wh"] &gt;= 55
+                assert recovered["session_energy_wh"] - before["session_energy_wh"] &gt;= 55
+                stopped = post("/api/devices/CHG-001/charging/stop", session_id=started["session_id"])
+                wait(
+                    lambda: (
+                        get("/api/device-commands/" + stopped["command_id"])["verification_status"]
+                        == "verified"
+                    )
+                )
+                session = get("/api/charging-sessions/" + started["session_id"])
+                assert session["status"] == "COMPLETED"
+                assert session["energy_wh"] == session["end_meter_wh"] - session["start_meter_wh"]
+                assert session["energy_wh"] &gt;= recovered["session_energy_wh"]
+&gt;               history = get(
+                    "/api/devices/CHG-001/history",
+                    **{"from": gap_start.isoformat(), "to": gap_end.isoformat()},
+                )
+
+tests/integration/test_operations_broker_gap.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/integration/test_operations_broker_gap.py:29: in get
+    response.raise_for_status()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Response [404 Not Found]&gt;
+
+    def raise_for_status(self) -&gt; Response:
+        """
+        Raise the `HTTPStatusError` if one occurred.
+        """
+        request = self._request
+        if request is None:
+            raise RuntimeError(
+                "Cannot call `raise_for_status` as the request "
+                "instance has not been set on this response."
+            )
+    
+        if self.is_success:
+            return self
+    
+        if self.has_redirect_location:
+            message = (
+                "{error_type} '{0.status_code} {0.reason_phrase}' for url '{0.url}'\n"
+                "Redirect location: '{0.headers[location]}'\n"
+                "For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{0.status_code}"
+            )
+        else:
+            message = (
+                "{error_type} '{0.status_code} {0.reason_phrase}' for url '{0.url}'\n"
+                "For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{0.status_code}"
+            )
+    
+        status_class = self.status_code // 100
+        error_types = {
+            1: "Informational response",
+            3: "Redirect response",
+            4: "Client error",
+            5: "Server error",
+        }
+        error_type = error_types.get(status_class, "Invalid status code")
+        message = message.format(self, error_type=error_type)
+&gt;       raise HTTPStatusError(message, request=request, response=self)
+E       httpx.HTTPStatusError: Client error '404 Not Found' for url 'http://127.0.0.1:45078/api/devices/CHG-001/history?from=2026-09-23T06%3A54%3A35.699835%2B00%3A00&amp;to=2026-09-23T06%3A54%3A45.700013%2B00%3A00'
+E       For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+.venv/lib/python3.12/site-packages/httpx/_models.py:829: HTTPStatusError</failure></testcase></testsuite></testsuites>

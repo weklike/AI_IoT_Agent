@@ -1,0 +1,130 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+______________ test_equal_water_filling_and_stable_100w_remainder ______________
+
+    def test_equal_water_filling_and_stable_100w_remainder():
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:5: ModuleNotFoundError
+______________________ test_priority_caps_and_zero_budget ______________________
+
+    def test_priority_caps_and_zero_budget():
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:14: ModuleNotFoundError
+__________ test_reject_invalid_power_inputs[True-demands0-equal-None] __________
+
+budget = True, demands = {'CHG-001': 1000}, strategy = 'equal', priority = None
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+_________ test_reject_invalid_power_inputs[45101-demands1-equal-None] __________
+
+budget = 45101, demands = {'CHG-001': 1000}, strategy = 'equal', priority = None
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+_________ test_reject_invalid_power_inputs[60100-demands2-equal-None] __________
+
+budget = 60100, demands = {'CHG-001': 1000}, strategy = 'equal', priority = None
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+_________ test_reject_invalid_power_inputs[45000-demands3-equal-None] __________
+
+budget = 45000, demands = {'CHG-001': True}, strategy = 'equal', priority = None
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+_________ test_reject_invalid_power_inputs[45000-demands4-equal-None] __________
+
+budget = 45000, demands = {'CHG-001': 20100}, strategy = 'equal'
+priority = None
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+_____ test_reject_invalid_power_inputs[45000-demands5-priority-priority5] ______
+
+budget = 45000, demands = {'CHG-001': 1000}, strategy = 'priority'
+priority = ['CHG-001', 'CHG-001', 'CHG-001']
+
+    @pytest.mark.parametrize('budget,demands,strategy,priority',[
+        (True,{'CHG-001':1000},'equal',None),
+        (45101,{'CHG-001':1000},'equal',None),
+        (60100,{'CHG-001':1000},'equal',None),
+        (45000,{'CHG-001':True},'equal',None),
+        (45000,{'CHG-001':20100},'equal',None),
+        (45000,{'CHG-001':1000},'priority',['CHG-001']*3),
+    ])
+    def test_reject_invalid_power_inputs(budget,demands,strategy,priority):
+>       from backend.app.power.allocation import allocate_power
+E       ModuleNotFoundError: No module named 'backend.app.power.allocation'
+
+tests/unit/test_power_allocation.py:31: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_power_allocation.py::test_equal_water_filling_and_stable_100w_remainder
+FAILED tests/unit/test_power_allocation.py::test_priority_caps_and_zero_budget
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[True-demands0-equal-None]
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[45101-demands1-equal-None]
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[60100-demands2-equal-None]
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[45000-demands3-equal-None]
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[45000-demands4-equal-None]
+FAILED tests/unit/test_power_allocation.py::test_reject_invalid_power_inputs[45000-demands5-priority-priority5]
+8 failed in 0.13s

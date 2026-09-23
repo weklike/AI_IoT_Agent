@@ -1,0 +1,89 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ϟ CHARGE OPS 设备监控与运维" [ref=e5] [cursor=pointer]:
+      - /url: /devices
+      - generic [ref=e6]: ϟ
+      - generic [ref=e7]:
+        - text: CHARGE OPS
+        - generic [ref=e8]: 设备监控与运维
+    - paragraph [ref=e9]: 工作空间 / WORKSPACE
+    - navigation [ref=e10]:
+      - link "◫ 设备总览 01" [ref=e11] [cursor=pointer]:
+        - /url: /devices
+        - generic [ref=e12]: ◫
+        - text: 设备总览
+        - generic [ref=e13]: "01"
+      - link "⌘ Agent 助手 02" [ref=e14] [cursor=pointer]:
+        - /url: /agent
+        - generic [ref=e15]: ⌘
+        - text: Agent 助手
+        - generic [ref=e16]: "02"
+    - generic [ref=e17]:
+      - text: 软件模拟环境
+      - paragraph [ref=e19]: 3 台充电设备 · 单机演示
+      - generic [ref=e20]:
+        - text: 所有数值来自合成遥测。
+        - text: 过温阈值为演示规则。
+  - generic [ref=e21]:
+    - banner [ref=e22]:
+      - generic [ref=e23]: 运维控制台 / 本地工作站
+      - generic [ref=e24]: fixture · 替身模型
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: OPERATIONS ASSISTANT / 02
+          - heading "Agent 助手" [level=1] [ref=e29]
+          - paragraph [ref=e30]: 从设备数据到排查依据，每一次工具调用都有记录。
+        - generic [ref=e31]: 单任务执行
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: ⌘
+          - heading "今天需要检查什么？" [level=2] [ref=e35]
+          - paragraph [ref=e36]: 例如：分析 2 号桩最近 10 分钟的温度，给出排查建议。
+          - generic [ref=e37]: 问题
+          - textbox "问题" [disabled] [ref=e38]:
+            - /placeholder: 输入设备与需要完成的任务…
+            - text: 知识检索：平均分配 equal 的规则
+          - generic [ref=e39]:
+            - checkbox "允许本次创建检修工单" [disabled] [ref=e40]
+            - text: 允许本次创建检修工单
+          - paragraph [ref=e41]: 默认只读。建单需要明确请求、有效证据与本次授权。
+          - button "开始新任务" [ref=e42] [cursor=pointer]
+          - generic [ref=e43]:
+            - generic [ref=e44]: 可用业务能力
+            - generic [ref=e45]: 设备状态 · 历史统计
+            - generic [ref=e46]: 故障说明 · 授权工单
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - heading "执行结果" [level=2] [ref=e50]
+              - generic [ref=e51]: 已完成
+            - text: a22876c7-e1fd-4439-ae23-4c990d26c4c7
+            - article [ref=e52]:
+              - paragraph [ref=e53]: 【fixture 替身模型演示；不是实际模型推理】
+              - paragraph [ref=e54]: CHG-002：online / normal。新鲜样本：36.58 °C，样本时间 2026-09-23T04:11:02.555522Z。
+              - paragraph [ref=e55]: 窗口 2026-09-23T04:01:03.028122Z 至 2026-09-23T04:11:03.028122Z，4 条样本；平均 38.42 °C，最高 39.86 °C，超限 0 条。
+          - generic [ref=e56]:
+            - heading "工具调用轨迹 2 次" [level=2] [ref=e57]:
+              - text: 工具调用轨迹
+              - generic [ref=e58]: 2 次
+            - group [ref=e59]:
+              - generic "1 get_device_status 成功" [ref=e60] [cursor=pointer]:
+                - generic [ref=e61]: "1"
+                - code [ref=e62]: get_device_status
+                - generic [ref=e63]: 成功
+            - group [ref=e64]:
+              - generic "2 get_device_history 成功" [ref=e65] [cursor=pointer]:
+                - generic [ref=e66]: "2"
+                - code [ref=e67]: get_device_history
+                - generic [ref=e68]: 成功
+          - generic [ref=e69]:
+            - heading "检修工单 0" [level=2] [ref=e70]
+            - paragraph [ref=e71]: 暂无工单。仅在本次授权且有有效证据时创建。
+    - contentinfo [ref=e72]:
+      - text: CHARGE OPERATIONS
+      - generic [ref=e73]: MQTT 设备链路 · 数据时间以样本为准
+```

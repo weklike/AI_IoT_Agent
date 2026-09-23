@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-23T06:55:07.770336+00:00",
+  "scope": "模型端点可达性诊断；不调用推理、不输出响应正文或认证值。",
+  "http_status": 200,
+  "selected_model_listed": true,
+  "listed_count": 33,
+  "elapsed_seconds": 0.05544513897621073
+}

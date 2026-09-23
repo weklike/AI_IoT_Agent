@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "error_type": "HTTPStatusError",
+  "message": "Client error '422 Unprocessable Entity' for url 'http://127.0.0.1:44714/api/devices/CHG-001/telemetry?from=2026-09-23T05:22:33.641244+00:00&to=2026-09-23T05:23:33.641244+00:00'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422"
+}

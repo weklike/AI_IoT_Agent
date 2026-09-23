@@ -1,0 +1,76 @@
+ Network charge-smoke-ab14aca9a2e4_default Creating 
+ Network charge-smoke-ab14aca9a2e4_default Created 
+ Volume charge-smoke-ab14aca9a2e4_simulator_state Creating 
+ Volume charge-smoke-ab14aca9a2e4_simulator_state Created 
+ Volume charge-smoke-ab14aca9a2e4_backend_data Creating 
+ Volume charge-smoke-ab14aca9a2e4_backend_data Created 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Creating 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Created 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Creating 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Creating 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Created 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Creating 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Created 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Created 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Starting 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Started 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Starting 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Starting 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Started 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Started 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Starting 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Started 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Waiting 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Healthy 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Stopping 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Stopping 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Stopped 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Removing 
+ Container charge-smoke-ab14aca9a2e4-frontend-1 Removed 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Stopping 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Stopped 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Removing 
+ Container charge-smoke-ab14aca9a2e4-simulator-1 Removed 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Stopped 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Removing 
+ Container charge-smoke-ab14aca9a2e4-backend-1 Removed 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Stopping 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Stopped 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Removing 
+ Container charge-smoke-ab14aca9a2e4-mqtt-1 Removed 
+ Volume charge-smoke-ab14aca9a2e4_simulator_state Removing 
+ Volume charge-smoke-ab14aca9a2e4_backend_data Removing 
+ Network charge-smoke-ab14aca9a2e4_default Removing 
+ Volume charge-smoke-ab14aca9a2e4_simulator_state Removed 
+ Volume charge-smoke-ab14aca9a2e4_backend_data Removed 
+ Network charge-smoke-ab14aca9a2e4_default Removed 
+{
+  "status": "FAIL",
+  "kind": "diagnostic",
+  "groups": {
+    "controls": {
+      "requested": 2,
+      "executed": 1,
+      "within_4s": 0,
+      "p95_ms": null
+    },
+    "alarms": {
+      "requested": 2,
+      "executed": 0,
+      "within_4s": 0,
+      "p95_ms": null
+    }
+  }
+}

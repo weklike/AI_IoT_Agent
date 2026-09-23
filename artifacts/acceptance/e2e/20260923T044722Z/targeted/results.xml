@@ -1,0 +1,194 @@
+<testsuites id="" name="" tests="5" failures="4" skipped="0" errors="0" time="34.63074600000001">
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:47:35.005Z" hostname="" tests="1" failures="1" skipped="0" time="5.608" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.608">
+<failure message="devices.spec.ts:78:1 来回切页十次取消旧轮询，同一查询不重叠" type="FAILURE">
+<![CDATA[  devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 ───────────────────────────────────────────────────────
+
+    Error: {"maximum":{"/api/health":1,"/api/patrols":1,"/api/patrol-schedule":1,"/api/alarms":2,"/api/fleet-overview":1,"/api/devices/CHG-002":1,"/api/devices/CHG-002/telemetry":1,"/api/charging-sessions":1,"/api/alarm-rules/CHG-002/OVERHEAT":1,"/api/alarm-rules/CHG-002/OFFLINE":1,"/api/work-orders":1,"/api/devices/CHG-002/timeline":1,"/api/charging-statistics":1,"/api/agent/runs":1},"overlaps":[["http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE","http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"]]}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 2
+
+      103 |   expect(oldPolls).toBe(0)
+      104 |   await writeFile(info.outputPath('poll-concurrency.json'), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps }, null, 2))
+    > 105 |   expect(Math.max(...maximum.values()), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps })).toBe(1)
+          |                                                                                                             ^
+      106 | })
+      107 |
+      108 | test('离开详情时未完成的场景请求不能重启旧轮询', async ({ page }) => {
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/devices.spec.ts:105:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠/test-failed-1.png]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠/error-context.md]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:47:35.005Z" hostname="" tests="1" failures="0" skipped="0" time="5.352" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.352">
+</testcase>
+</testsuite>
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:47:35.005Z" hostname="" tests="1" failures="1" skipped="0" time="5.593" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.593">
+<failure message="devices.spec.ts:78:1 来回切页十次取消旧轮询，同一查询不重叠" type="FAILURE">
+<![CDATA[  devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 ───────────────────────────────────────────────────────
+
+    Error: {"maximum":{"/api/health":1,"/api/patrols":1,"/api/patrol-schedule":1,"/api/alarms":2,"/api/fleet-overview":1,"/api/devices/CHG-002":1,"/api/devices/CHG-002/telemetry":1,"/api/charging-sessions":1,"/api/alarm-rules/CHG-002/OVERHEAT":1,"/api/alarm-rules/CHG-002/OFFLINE":1,"/api/work-orders":1,"/api/devices/CHG-002/timeline":1,"/api/charging-statistics":1,"/api/agent/runs":1},"overlaps":[["http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE","http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"],["http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE","http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"]]}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 2
+
+      103 |   expect(oldPolls).toBe(0)
+      104 |   await writeFile(info.outputPath('poll-concurrency.json'), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps }, null, 2))
+    > 105 |   expect(Math.max(...maximum.values()), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps })).toBe(1)
+          |                                                                                                             ^
+      106 | })
+      107 |
+      108 | test('离开详情时未完成的场景请求不能重启旧轮询', async ({ page }) => {
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/devices.spec.ts:105:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/test-failed-1.png]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/error-context.md]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat2/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:47:35.005Z" hostname="" tests="1" failures="1" skipped="0" time="5.529" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.529">
+<failure message="devices.spec.ts:78:1 来回切页十次取消旧轮询，同一查询不重叠" type="FAILURE">
+<![CDATA[  devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 ───────────────────────────────────────────────────────
+
+    Error: {"maximum":{"/api/health":1,"/api/patrols":1,"/api/patrol-schedule":1,"/api/alarms":2,"/api/fleet-overview":1,"/api/devices/CHG-002":1,"/api/devices/CHG-002/telemetry":1,"/api/charging-sessions":1,"/api/alarm-rules/CHG-002/OVERHEAT":1,"/api/alarm-rules/CHG-002/OFFLINE":1,"/api/work-orders":1,"/api/devices/CHG-002/timeline":1,"/api/charging-statistics":1,"/api/agent/runs":1},"overlaps":[["http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE","http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"]]}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 2
+
+      103 |   expect(oldPolls).toBe(0)
+      104 |   await writeFile(info.outputPath('poll-concurrency.json'), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps }, null, 2))
+    > 105 |   expect(Math.max(...maximum.values()), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps })).toBe(1)
+          |                                                                                                             ^
+      106 | })
+      107 |
+      108 | test('离开详情时未完成的场景请求不能重启旧轮询', async ({ page }) => {
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/devices.spec.ts:105:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/test-failed-1.png]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/error-context.md]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat3/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:47:35.005Z" hostname="" tests="1" failures="1" skipped="0" time="5.64" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.64">
+<failure message="devices.spec.ts:78:1 来回切页十次取消旧轮询，同一查询不重叠" type="FAILURE">
+<![CDATA[  devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 ───────────────────────────────────────────────────────
+
+    Error: {"maximum":{"/api/health":1,"/api/patrols":1,"/api/patrol-schedule":1,"/api/alarms":2,"/api/fleet-overview":1,"/api/devices/CHG-002":1,"/api/devices/CHG-002/telemetry":1,"/api/charging-sessions":1,"/api/alarm-rules/CHG-002/OVERHEAT":1,"/api/alarm-rules/CHG-002/OFFLINE":1,"/api/work-orders":1,"/api/devices/CHG-002/timeline":1,"/api/charging-statistics":1,"/api/agent/runs":1},"overlaps":[["http://127.0.0.1:43276/api/alarms?limit=20&device_id=CHG-002&condition=ACTIVE","http://127.0.0.1:43276/api/alarms?limit=20&condition=ACTIVE"]]}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 2
+
+      103 |   expect(oldPolls).toBe(0)
+      104 |   await writeFile(info.outputPath('poll-concurrency.json'), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps }, null, 2))
+    > 105 |   expect(Math.max(...maximum.values()), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps })).toBe(1)
+          |                                                                                                             ^
+      106 | })
+      107 |
+      108 | test('离开详情时未完成的场景请求不能重启旧轮询', async ({ page }) => {
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/devices.spec.ts:105:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T044722Z/targeted/devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/test-failed-1.png]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/error-context.md]]
+
+[[ATTACHMENT|devices-来回切页十次取消旧轮询，同一查询不重叠-repeat4/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

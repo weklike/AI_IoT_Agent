@@ -1,0 +1,164 @@
+.........................................................F.FF...F.....   [100%]
+=================================== FAILURES ===================================
+___________________ test_upgrade_preserves_v1_business_rows ____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-133/test_upgrade_preserves_v1_busi0')
+
+    async def test_upgrade_preserves_v1_business_rows(tmp_path):
+        path = tmp_path / "old.db"
+        with sqlite3.connect(path) as con:
+            con.executescript(V1.read_text())
+            con.execute("INSERT INTO devices(device_id,name) VALUES ('CHG-001','旧设备')")
+            con.execute(
+                "INSERT INTO diagnostic_events(event_type,received_at,summary) VALUES ('conflict','2026-09-22T08:10:00.000000Z','保留证据')"
+            )
+        db = database(path)
+        try:
+            await db.initialize()
+            async with db.sessions() as session:
+                assert (
+                    await session.execute(text("SELECT name FROM devices WHERE device_id='CHG-001'"))
+                ).scalar() == "旧设备"
+                assert (
+                    await session.execute(text("SELECT summary FROM diagnostic_events"))
+                ).scalar() == "保留证据"
+>               assert (
+                    await session.execute(text("SELECT count(*) FROM schema_migrations"))
+                ).scalar() == 7
+E               assert 7 == 6
+E                +  where 7 = scalar()
+E                +    where scalar = <sqlalchemy.engine.cursor.CursorResult object at 0x77fdff543d20>.scalar
+
+tests/integration/test_migrations.py:61: AssertionError
+_______________ test_failed_migration_rolls_back_ddl_and_version _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-133/test_failed_migration_rolls_ba0')
+
+    async def test_failed_migration_rolls_back_ddl_and_version(tmp_path):
+        from backend.app.migrations import DIRECTORY, migrate
+    
+        directory = tmp_path / "scripts"
+        directory.mkdir()
+        for source in DIRECTORY.glob("*.sql"):
+            (directory / source.name).write_bytes(source.read_bytes())
+        (directory / "008_failure.sql").write_text(
+            "CREATE TABLE must_rollback(id INTEGER);\nINSERT INTO missing_table VALUES (1);\n"
+        )
+        db = database(tmp_path / "failure.db")
+        try:
+            async with db.engine.connect() as con:
+>               with pytest.raises(Exception, match="missing_table"):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Regex pattern did not match.
+E                 Expected regex: 'missing_table'
+E                 Actual message: 'Migration versions must be contiguous from 1'
+
+tests/integration/test_migrations.py:101: AssertionError
+___________________________ test_schema_matches_orm ____________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-133/test_schema_matches_orm0')
+
+    async def test_schema_matches_orm(tmp_path):
+        from sqlalchemy import inspect
+    
+        from backend.app.models import Base
+    
+        db = database(tmp_path / "schema.db")
+        try:
+            await db.initialize()
+            async with db.engine.connect() as con:
+    
+                def compare(sync):
+                    inspector = inspect(sync)
+                    for table in Base.metadata.tables.values():
+                        columns = {
+                            column["name"]: column for column in inspector.get_columns(table.name)
+                        }
+                        assert set(columns) == set(table.columns.keys()), table.name
+                        for expected in table.columns:
+                            actual = columns[expected.name]
+                            assert actual["nullable"] == expected.nullable, (table.name, expected.name)
+                            assert str(actual["type"]) == str(expected.type), (
+                                table.name,
+                                expected.name,
+                            )
+                        actual_fks = {
+                            (
+                                tuple(f["constrained_columns"]),
+                                f["referred_table"],
+                                tuple(f["referred_columns"]),
+                            )
+                            for f in inspector.get_foreign_keys(table.name)
+                        }
+                        expected_fks = {
+                            (
+                                tuple(c.parent.name for c in f.elements),
+                                f.referred_table.name,
+                                tuple(c.column.name for c in f.elements),
+                            )
+                            for f in table.foreign_key_constraints
+                        }
+                        assert actual_fks == expected_fks, table.name
+                        assert {i["name"] for i in inspector.get_indexes(table.name)} == {
+                            i.name for i in table.indexes
+                        }
+    
+>               await con.run_sync(compare)
+
+tests/integration/test_migrations.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py:888: in run_sync
+    return await greenlet_spawn(
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:203: in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sync = <sqlalchemy.engine.base.Connection object at 0x77fdff5ab290>
+
+    def compare(sync):
+        inspector = inspect(sync)
+        for table in Base.metadata.tables.values():
+            columns = {
+                column["name"]: column for column in inspector.get_columns(table.name)
+            }
+>           assert set(columns) == set(table.columns.keys()), table.name
+E           AssertionError: scenario_commands
+E           assert {'ack_at', 'a...ck_json', ...} == {'ack_at', 'c...sted_at', ...}
+E             
+E             Extra items in the left set:
+E             'late_ack_observed_at'
+E             'ack_received_at'
+E             'late_ack_received_at'
+E             Use -v to get more diff
+
+tests/integration/test_migrations.py:126: AssertionError
+__________________ test_migration_cli_offline_backup_restore ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-133/test_migration_cli_offline_bac0')
+
+    def test_migration_cli_offline_backup_restore(tmp_path):
+        import json
+        import subprocess
+        import sys
+    
+        path = tmp_path / "cli.db"
+    
+        def run(*args):
+            return subprocess.run(
+                [sys.executable, "scripts/migrate.py", *map(str, args)], capture_output=True, text=True
+            )
+    
+        assert run("--apply", "--database", path, "--backup-dir", tmp_path / "initial").returncode == 0
+        result = run("--check", "--database", path)
+        assert result.returncode == 0, result.stderr
+>       assert json.loads(result.stdout)["version"] == 7
+E       assert 7 == 6
+
+tests/integration/test_migrations.py:266: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_migrations.py::test_upgrade_preserves_v1_business_rows
+FAILED tests/integration/test_migrations.py::test_failed_migration_rolls_back_ddl_and_version
+FAILED tests/integration/test_migrations.py::test_schema_matches_orm - Assert...
+FAILED tests/integration/test_migrations.py::test_migration_cli_offline_backup_restore
+4 failed, 66 passed in 123.26s (0:02:03)

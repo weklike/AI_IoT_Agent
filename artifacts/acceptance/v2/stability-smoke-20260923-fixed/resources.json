@@ -1,0 +1,118 @@
+[
+  {
+    "minute": 1,
+    "at": "2026-09-23T05:26:07.244879+00:00",
+    "host_loadavg": [
+      0.64404296875,
+      0.36279296875,
+      0.3837890625
+    ],
+    "containers": [
+      {
+        "BlockIO": "0B / 22.1MB",
+        "CPUPerc": "3.22%",
+        "Container": "charge-smoke-3087f38ea664-backend-1",
+        "ID": "cb79a6ecbfd8",
+        "MemPerc": "0.70%",
+        "MemUsage": "83.19MiB / 11.68GiB",
+        "Name": "charge-smoke-3087f38ea664-backend-1",
+        "NetIO": "255kB / 498kB",
+        "PIDs": "8"
+      },
+      {
+        "BlockIO": "0B / 7.02MB",
+        "CPUPerc": "0.74%",
+        "Container": "charge-smoke-3087f38ea664-simulator-1",
+        "ID": "4547972ec3ed",
+        "MemPerc": "0.26%",
+        "MemUsage": "31.25MiB / 11.68GiB",
+        "Name": "charge-smoke-3087f38ea664-simulator-1",
+        "NetIO": "25.4kB / 102kB",
+        "PIDs": "4"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.07%",
+        "Container": "charge-smoke-3087f38ea664-mqtt-1",
+        "ID": "8c6febb4d8f2",
+        "MemPerc": "0.01%",
+        "MemUsage": "1.441MiB / 11.68GiB",
+        "Name": "charge-smoke-3087f38ea664-mqtt-1",
+        "NetIO": "127kB / 122kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 8.19kB",
+        "CPUPerc": "0.00%",
+        "Container": "charge-smoke-3087f38ea664-frontend-1",
+        "ID": "e640749a8801",
+        "MemPerc": "0.04%",
+        "MemUsage": "4.52MiB / 11.68GiB",
+        "Name": "charge-smoke-3087f38ea664-frontend-1",
+        "NetIO": "593kB / 1.38MB",
+        "PIDs": "5"
+      }
+    ],
+    "volumes": {
+      "backend": {
+        "files_bytes": {
+          "charge_ops.db-shm": 32768,
+          "charge_ops.db-wal": 4103552,
+          "charge_ops.db": 4096
+        },
+        "total_bytes": 4140416
+      },
+      "simulator": {
+        "files_bytes": {
+          "CHG-002.json": 1980,
+          "CHG-003.json": 1978,
+          "CHG-001.json": 1979
+        },
+        "total_bytes": 5937,
+        "pending_reports": {
+          "CHG-002.json": 0,
+          "CHG-003.json": 0,
+          "CHG-001.json": 0
+        }
+      }
+    },
+    "states": [
+      {
+        "name": "/charge-smoke-3087f38ea664-backend-1",
+        "status": "running",
+        "restart_count": 0
+      },
+      {
+        "name": "/charge-smoke-3087f38ea664-simulator-1",
+        "status": "running",
+        "restart_count": 0
+      },
+      {
+        "name": "/charge-smoke-3087f38ea664-mqtt-1",
+        "status": "running",
+        "restart_count": 0
+      },
+      {
+        "name": "/charge-smoke-3087f38ea664-frontend-1",
+        "status": "running",
+        "restart_count": 0
+      }
+    ],
+    "runtime": {
+      "task_count": 7,
+      "mqtt_queue_size": 0,
+      "guardians": {
+        "mqtt-consumer": 1,
+        "alarm-timer": 1,
+        "patrol-timer": 1
+      },
+      "managed": {
+        "charging": 0,
+        "power": 0,
+        "scenario": 0,
+        "scripts": 0,
+        "agent": 0
+      }
+    }
+  }
+]

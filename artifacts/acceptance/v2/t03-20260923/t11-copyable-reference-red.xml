@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="1.198" timestamp="2026-09-23T15:08:59.268813+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_agent_references" name="test_real_search_refs_persist_and_previous_run_evidence_is_rejected" time="0.316" /><testcase classname="tests.integration.test_agent_references" name="test_search_tool_supplies_complete_copyable_citations_with_source_prefix" time="0.172"><failure message="KeyError: 'citation'">tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-197/test_search_tool_supplies_comp0')
+
+    async def test_search_tool_supplies_complete_copyable_citations_with_source_prefix(tmp_path):
+        from backend.app.contracts import ToolContext
+    
+        app = create_app(
+            Settings(
+                _env_file=None,
+                app_env="test",
+                mqtt_enabled=False,
+                database_url=f"sqlite+aiosqlite:///{tmp_path}/citation.db",
+            )
+        )
+        async with app.router.lifespan_context(app):
+            result = await app.state.runner.executor.invoke(
+                "search_fault_knowledge",
+                {"query": "重启 会话中断", "device_id": "CHG-002"},
+                ToolContext(run_id=uuid4(), tool_call_id=uuid4(), allow_work_order=False),
+            )
+            assert result["matches"]
+            for match in result["matches"]:
+                assert (
+&gt;                   match["citation"]
+                    == f"[KB:{match['source_id']}@{match['version']}#{match['chunk_id']}]"
+                )
+E               KeyError: 'citation'
+
+tests/integration/test_agent_references.py:94: KeyError</failure></testcase></testsuite></testsuites>

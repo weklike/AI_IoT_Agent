@@ -1,0 +1,878 @@
+mqtt-1  | 2026-09-23T05:22:15.221551739Z chown: /mosquitto/config/mosquitto.conf: Read-only file system
+mqtt-1  | 2026-09-23T05:22:15.226367195Z 1790140935: mosquitto version 2.0.22 starting
+mqtt-1  | 2026-09-23T05:22:15.226406620Z 1790140935: Config loaded from /mosquitto/config/mosquitto.conf.
+mqtt-1  | 2026-09-23T05:22:15.226434484Z 1790140935: Opening ipv4 listen socket on port 1883.
+mqtt-1  | 2026-09-23T05:22:15.227324016Z 1790140935: Opening ipv6 listen socket on port 1883.
+mqtt-1  | 2026-09-23T05:22:15.237718382Z 1790140935: mosquitto version 2.0.22 running
+mqtt-1  | 2026-09-23T05:22:17.298330409Z 1790140937: New connection from 127.0.0.1:48182 on port 1883.
+mqtt-1  | 2026-09-23T05:22:17.299353369Z 1790140937: New client connected from 127.0.0.1:48182 as auto-246DDBD1-4B20-C943-3B2D-B0F7304DA86E (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:17.299587113Z 1790140937: Client auto-246DDBD1-4B20-C943-3B2D-B0F7304DA86E disconnected.
+mqtt-1  | 2026-09-23T05:22:19.373124796Z 1790140939: New connection from 127.0.0.1:39638 on port 1883.
+mqtt-1  | 2026-09-23T05:22:19.373309917Z 1790140939: New client connected from 127.0.0.1:39638 as auto-D5A62D77-DFF0-A956-1B00-C07734601EA1 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:19.373831207Z 1790140939: Client auto-D5A62D77-DFF0-A956-1B00-C07734601EA1 disconnected.
+mqtt-1  | 2026-09-23T05:22:19.901185316Z 1790140939: New connection from 172.21.0.4:41705 on port 1883.
+mqtt-1  | 2026-09-23T05:22:19.901307217Z 1790140939: New client connected from 172.21.0.4:41705 as sim-CHG-001-eb6d4dcc-13f7-4d83-8641-6159d2dd3c20 (p2, c1, k15).
+mqtt-1  | 2026-09-23T05:22:19.921890991Z 1790140939: New connection from 172.21.0.4:48395 on port 1883.
+mqtt-1  | 2026-09-23T05:22:19.921960292Z 1790140939: New client connected from 172.21.0.4:48395 as sim-CHG-002-10f48ca9-d791-4ad6-81cc-e554bc8ce43c (p2, c1, k15).
+mqtt-1  | 2026-09-23T05:22:19.932127462Z 1790140939: New connection from 172.21.0.4:41207 on port 1883.
+mqtt-1  | 2026-09-23T05:22:19.932224957Z 1790140939: New client connected from 172.21.0.4:41207 as sim-CHG-003-7a7a187a-80ef-42e0-bb2a-b404995dfffb (p2, c1, k15).
+mqtt-1  | 2026-09-23T05:22:21.430457593Z 1790140941: New connection from 127.0.0.1:39656 on port 1883.
+mqtt-1  | 2026-09-23T05:22:21.430484014Z 1790140941: New client connected from 127.0.0.1:39656 as auto-A118E100-C3CA-1083-3D6D-80E79EB5709C (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:21.430495475Z 1790140941: Client auto-A118E100-C3CA-1083-3D6D-80E79EB5709C disconnected.
+mqtt-1  | 2026-09-23T05:22:21.546413688Z 1790140941: New connection from 172.21.0.3:36691 on port 1883.
+mqtt-1  | 2026-09-23T05:22:21.546532614Z 1790140941: New client connected from 172.21.0.3:36691 as backend-3bb609f3-ddce-4454-b65f-486e19ccc72e (p2, c1, k15).
+mqtt-1  | 2026-09-23T05:22:23.486712827Z 1790140943: New connection from 127.0.0.1:39674 on port 1883.
+mqtt-1  | 2026-09-23T05:22:23.486733807Z 1790140943: New client connected from 127.0.0.1:39674 as auto-8E9E23C5-5CE3-E685-73BF-5B2FDAAB30AC (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:23.486776068Z 1790140943: Client auto-8E9E23C5-5CE3-E685-73BF-5B2FDAAB30AC disconnected.
+mqtt-1  | 2026-09-23T05:22:25.554463529Z 1790140945: New connection from 127.0.0.1:39680 on port 1883.
+mqtt-1  | 2026-09-23T05:22:25.554518223Z 1790140945: New client connected from 127.0.0.1:39680 as auto-9325A583-C630-FCED-AAF5-3509B25893E9 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:25.555245806Z 1790140945: Client auto-9325A583-C630-FCED-AAF5-3509B25893E9 disconnected.
+mqtt-1  | 2026-09-23T05:22:27.616130985Z 1790140947: New connection from 127.0.0.1:39704 on port 1883.
+mqtt-1  | 2026-09-23T05:22:27.616161402Z 1790140947: New client connected from 127.0.0.1:39704 as auto-794776A5-4A06-98D9-CC0A-A7A4849F6075 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:27.616315281Z 1790140947: Client auto-794776A5-4A06-98D9-CC0A-A7A4849F6075 disconnected.
+mqtt-1  | 2026-09-23T05:22:29.676452908Z 1790140949: New connection from 127.0.0.1:47398 on port 1883.
+mqtt-1  | 2026-09-23T05:22:29.676719734Z 1790140949: New client connected from 127.0.0.1:47398 as auto-2CA622A6-7EA8-7144-7BB1-4D9CE2A6B2D3 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:29.677543016Z 1790140949: Client auto-2CA622A6-7EA8-7144-7BB1-4D9CE2A6B2D3 disconnected.
+mqtt-1  | 2026-09-23T05:22:31.734408742Z 1790140951: New connection from 127.0.0.1:47404 on port 1883.
+mqtt-1  | 2026-09-23T05:22:31.734530543Z 1790140951: New client connected from 127.0.0.1:47404 as auto-AD000F4B-21BF-5151-45FF-3F750AF7FFD6 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:31.734961581Z 1790140951: Client auto-AD000F4B-21BF-5151-45FF-3F750AF7FFD6 disconnected.
+mqtt-1  | 2026-09-23T05:22:33.786585094Z 1790140953: New connection from 127.0.0.1:47418 on port 1883.
+mqtt-1  | 2026-09-23T05:22:33.786695233Z 1790140953: New client connected from 127.0.0.1:47418 as auto-865354CA-748B-97B4-D990-D68BD2646C3C (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:33.787626009Z 1790140953: Client auto-865354CA-748B-97B4-D990-D68BD2646C3C disconnected.
+mqtt-1  | 2026-09-23T05:22:35.838167949Z 1790140955: New connection from 127.0.0.1:47432 on port 1883.
+mqtt-1  | 2026-09-23T05:22:35.838194039Z 1790140955: New client connected from 127.0.0.1:47432 as auto-8C0DDB34-2529-1356-652E-6CDC70584DF3 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:35.838322422Z 1790140955: Client auto-8C0DDB34-2529-1356-652E-6CDC70584DF3 disconnected.
+mqtt-1  | 2026-09-23T05:22:37.906394907Z 1790140957: New connection from 127.0.0.1:47442 on port 1883.
+mqtt-1  | 2026-09-23T05:22:37.906437077Z 1790140957: New client connected from 127.0.0.1:47442 as auto-9231AA28-0D1D-FB6B-0090-65D9EFABC81B (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:37.906528935Z 1790140957: Client auto-9231AA28-0D1D-FB6B-0090-65D9EFABC81B disconnected.
+mqtt-1  | 2026-09-23T05:22:39.965141947Z 1790140959: New connection from 127.0.0.1:38726 on port 1883.
+mqtt-1  | 2026-09-23T05:22:39.965170171Z 1790140959: New client connected from 127.0.0.1:38726 as auto-D193FE0E-797F-9E57-2B10-972B4286F589 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:39.965646334Z 1790140959: Client auto-D193FE0E-797F-9E57-2B10-972B4286F589 disconnected.
+mqtt-1  | 2026-09-23T05:22:42.021909562Z 1790140962: New connection from 127.0.0.1:38744 on port 1883.
+mqtt-1  | 2026-09-23T05:22:42.021940291Z 1790140962: New client connected from 127.0.0.1:38744 as auto-DE913813-D767-08A4-56D8-1181132836AE (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:42.022124449Z 1790140962: Client auto-DE913813-D767-08A4-56D8-1181132836AE disconnected.
+mqtt-1  | 2026-09-23T05:22:44.086149864Z 1790140964: New connection from 127.0.0.1:38754 on port 1883.
+mqtt-1  | 2026-09-23T05:22:44.086180121Z 1790140964: New client connected from 127.0.0.1:38754 as auto-3367E26E-9516-CB85-59E0-1370A02B93B0 (p2, c1, k60).
+mqtt-1  | 2026-09-23T05:22:44.086318464Z 1790140964: Client auto-3367E26E-9516-CB85-59E0-1370A02B93B0 disconnected.
+mqtt-1  | 2026-09-23T05:22:46.150290764Z 1790140966: New connection from 127.0.0.1:38758 on port 1883.
+mqtt-1  | 2026-09-23T05:22:46.150333475Z 1790140966: New client connected from 127.0.0.1:38758 as auto-21C814E7-41DC-0B97-14A7-9282F012CD46 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:46.150494410Z 1790140966: Client auto-21C814E7-41DC-0B97-14A7-9282F012CD46 disconnected.
+mqtt-1     | 2026-09-23T05:22:48.219131634Z 1790140968: New connection from 127.0.0.1:37650 on port 1883.
+mqtt-1     | 2026-09-23T05:22:48.219212758Z 1790140968: New client connected from 127.0.0.1:37650 as auto-33EA038D-25B7-AB97-0E0E-AC95EEB34F70 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:48.219730411Z 1790140968: Client auto-33EA038D-25B7-AB97-0E0E-AC95EEB34F70 disconnected.
+mqtt-1     | 2026-09-23T05:22:50.282637302Z 1790140970: New connection from 127.0.0.1:37672 on port 1883.
+mqtt-1     | 2026-09-23T05:22:50.282667589Z 1790140970: New client connected from 127.0.0.1:37672 as auto-BA4C5295-5294-47E5-C3F5-0B74E7D0603E (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:50.282905280Z 1790140970: Client auto-BA4C5295-5294-47E5-C3F5-0B74E7D0603E disconnected.
+mqtt-1     | 2026-09-23T05:22:52.338655788Z 1790140972: New connection from 127.0.0.1:37684 on port 1883.
+mqtt-1     | 2026-09-23T05:22:52.338695864Z 1790140972: New client connected from 127.0.0.1:37684 as auto-31073645-498A-03DA-2491-C15037836B38 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:52.338855096Z 1790140972: Client auto-31073645-498A-03DA-2491-C15037836B38 disconnected.
+mqtt-1     | 2026-09-23T05:22:54.394253314Z 1790140974: New connection from 127.0.0.1:37712 on port 1883.
+mqtt-1     | 2026-09-23T05:22:54.394282059Z 1790140974: New client connected from 127.0.0.1:37712 as auto-28D910AD-1170-1D1A-4724-8767EE84B23E (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:54.394466609Z 1790140974: Client auto-28D910AD-1170-1D1A-4724-8767EE84B23E disconnected.
+mqtt-1     | 2026-09-23T05:22:56.449433114Z 1790140976: New connection from 127.0.0.1:37716 on port 1883.
+mqtt-1     | 2026-09-23T05:22:56.449467279Z 1790140976: New client connected from 127.0.0.1:37716 as auto-E60A78B6-3A8D-343D-EEC8-2F6348DFEF17 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:56.449566187Z 1790140976: Client auto-E60A78B6-3A8D-343D-EEC8-2F6348DFEF17 disconnected.
+mqtt-1     | 2026-09-23T05:22:58.502343422Z 1790140978: New connection from 127.0.0.1:34380 on port 1883.
+mqtt-1     | 2026-09-23T05:22:58.502414889Z 1790140978: New client connected from 127.0.0.1:34380 as auto-787199C9-D5BB-FB34-26F5-821A4E39D351 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:22:58.502663069Z 1790140978: Client auto-787199C9-D5BB-FB34-26F5-821A4E39D351 disconnected.
+mqtt-1     | 2026-09-23T05:23:00.561319965Z 1790140980: New connection from 127.0.0.1:34398 on port 1883.
+mqtt-1     | 2026-09-23T05:23:00.561347948Z 1790140980: New client connected from 127.0.0.1:34398 as auto-C6533AC6-9613-B303-F99B-FBB617100F1B (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:00.561621606Z 1790140980: Client auto-C6533AC6-9613-B303-F99B-FBB617100F1B disconnected.
+mqtt-1     | 2026-09-23T05:23:02.622083417Z 1790140982: New connection from 127.0.0.1:34414 on port 1883.
+mqtt-1     | 2026-09-23T05:23:02.622128533Z 1790140982: New client connected from 127.0.0.1:34414 as auto-EF6AC36A-EF16-9E67-3EAE-DDD3E02754BA (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:02.622428833Z 1790140982: Client auto-EF6AC36A-EF16-9E67-3EAE-DDD3E02754BA disconnected.
+mqtt-1     | 2026-09-23T05:23:04.678350609Z 1790140984: New connection from 127.0.0.1:34436 on port 1883.
+mqtt-1     | 2026-09-23T05:23:04.678377981Z 1790140984: New client connected from 127.0.0.1:34436 as auto-EDC6E057-0E60-ED67-0F88-CE7E1514BBA9 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:04.678581868Z 1790140984: Client auto-EDC6E057-0E60-ED67-0F88-CE7E1514BBA9 disconnected.
+mqtt-1     | 2026-09-23T05:23:06.730292619Z 1790140986: New connection from 127.0.0.1:34454 on port 1883.
+mqtt-1     | 2026-09-23T05:23:06.730319270Z 1790140986: New client connected from 127.0.0.1:34454 as auto-8952FF3B-9970-8753-0231-1A00919E0910 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:06.730547974Z 1790140986: Client auto-8952FF3B-9970-8753-0231-1A00919E0910 disconnected.
+mqtt-1     | 2026-09-23T05:23:08.786682883Z 1790140988: New connection from 127.0.0.1:51946 on port 1883.
+mqtt-1     | 2026-09-23T05:23:08.786709713Z 1790140988: New client connected from 127.0.0.1:51946 as auto-4E47AC9C-3247-C71A-ABD6-AC2CC97914B0 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:08.786850190Z 1790140988: Client auto-4E47AC9C-3247-C71A-ABD6-AC2CC97914B0 disconnected.
+mqtt-1     | 2026-09-23T05:23:10.860267242Z 1790140990: New connection from 127.0.0.1:51958 on port 1883.
+mqtt-1     | 2026-09-23T05:23:10.860381990Z 1790140990: New client connected from 127.0.0.1:51958 as auto-F806BBFE-F31E-1B42-9231-F3609BA4B7C8 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:10.860625772Z 1790140990: Client auto-F806BBFE-F31E-1B42-9231-F3609BA4B7C8 disconnected.
+mqtt-1     | 2026-09-23T05:23:12.926311884Z 1790140992: New connection from 127.0.0.1:51982 on port 1883.
+mqtt-1     | 2026-09-23T05:23:12.926339427Z 1790140992: New client connected from 127.0.0.1:51982 as auto-4B52D055-1ADA-3E6E-8A86-3A5D24CB2D4E (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:12.926447902Z 1790140992: Client auto-4B52D055-1ADA-3E6E-8A86-3A5D24CB2D4E disconnected.
+mqtt-1     | 2026-09-23T05:23:15.006991914Z 1790140995: New connection from 127.0.0.1:52004 on port 1883.
+mqtt-1     | 2026-09-23T05:23:15.007025288Z 1790140995: New client connected from 127.0.0.1:52004 as auto-E642100D-805C-88BC-ED65-7E5B2A8DFF58 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:15.007237800Z 1790140995: Client auto-E642100D-805C-88BC-ED65-7E5B2A8DFF58 disconnected.
+mqtt-1     | 2026-09-23T05:23:17.061835942Z 1790140997: New connection from 127.0.0.1:52034 on port 1883.
+mqtt-1     | 2026-09-23T05:23:17.061858625Z 1790140997: New client connected from 127.0.0.1:52034 as auto-64416554-4FA5-4EF2-2C8F-D4CB39274FDE (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:17.062098133Z 1790140997: Client auto-64416554-4FA5-4EF2-2C8F-D4CB39274FDE disconnected.
+mqtt-1     | 2026-09-23T05:23:19.126128143Z 1790140999: New connection from 127.0.0.1:38426 on port 1883.
+mqtt-1     | 2026-09-23T05:23:19.126154412Z 1790140999: New client connected from 127.0.0.1:38426 as auto-611FB496-767F-8B65-2D4F-27ED59BFAEE8 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:19.126373217Z 1790140999: Client auto-611FB496-767F-8B65-2D4F-27ED59BFAEE8 disconnected.
+mqtt-1     | 2026-09-23T05:23:21.198664538Z 1790141001: New connection from 127.0.0.1:38452 on port 1883.
+mqtt-1     | 2026-09-23T05:23:21.198702711Z 1790141001: New client connected from 127.0.0.1:38452 as auto-1B4C7921-7B53-A45C-A709-3DFCF9A70BA4 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:21.198825243Z 1790141001: Client auto-1B4C7921-7B53-A45C-A709-3DFCF9A70BA4 disconnected.
+mqtt-1     | 2026-09-23T05:23:23.259222853Z 1790141003: New connection from 127.0.0.1:38474 on port 1883.
+mqtt-1     | 2026-09-23T05:23:23.259248933Z 1790141003: New client connected from 127.0.0.1:38474 as auto-1642DD7E-F3EE-8FCB-68B6-FC11FDEB8806 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:23.259252309Z 1790141003: Client auto-1642DD7E-F3EE-8FCB-68B6-FC11FDEB8806 disconnected.
+mqtt-1     | 2026-09-23T05:23:25.318072613Z 1790141005: New connection from 127.0.0.1:38486 on port 1883.
+mqtt-1     | 2026-09-23T05:23:25.318285527Z 1790141005: New client connected from 127.0.0.1:38486 as auto-2EFAE28A-54FC-C6C2-F162-0D696FFBF1F6 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:25.318566400Z 1790141005: Client auto-2EFAE28A-54FC-C6C2-F162-0D696FFBF1F6 disconnected.
+mqtt-1     | 2026-09-23T05:23:27.393568267Z 1790141007: New connection from 127.0.0.1:38506 on port 1883.
+mqtt-1     | 2026-09-23T05:23:27.393633581Z 1790141007: New client connected from 127.0.0.1:38506 as auto-F72BB3EB-D7E6-A1D5-9D23-8DFBD7C67870 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:27.393933603Z 1790141007: Client auto-F72BB3EB-D7E6-A1D5-9D23-8DFBD7C67870 disconnected.
+mqtt-1     | 2026-09-23T05:23:29.458280981Z 1790141009: New connection from 127.0.0.1:56614 on port 1883.
+mqtt-1     | 2026-09-23T05:23:29.458309445Z 1790141009: New client connected from 127.0.0.1:56614 as auto-8AD5E076-FEDF-4A5F-ECFB-04F2F0734792 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:29.458499245Z 1790141009: Client auto-8AD5E076-FEDF-4A5F-ECFB-04F2F0734792 disconnected.
+mqtt-1     | 2026-09-23T05:23:31.517647669Z 1790141011: New connection from 127.0.0.1:56626 on port 1883.
+mqtt-1     | 2026-09-23T05:23:31.517776754Z 1790141011: New client connected from 127.0.0.1:56626 as auto-566A18D4-C8F6-6577-F7E2-DC9AEE37875C (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:31.518304676Z 1790141011: Client auto-566A18D4-C8F6-6577-F7E2-DC9AEE37875C disconnected.
+mqtt-1     | 2026-09-23T05:23:33.574616725Z 1790141013: New connection from 127.0.0.1:56640 on port 1883.
+mqtt-1     | 2026-09-23T05:23:33.574645289Z 1790141013: New client connected from 127.0.0.1:56640 as auto-0B496556-2A51-8457-F918-92E3F06D9F15 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:33.574893233Z 1790141013: Client auto-0B496556-2A51-8457-F918-92E3F06D9F15 disconnected.
+mqtt-1     | 2026-09-23T05:23:35.612486526Z 1790141015: New connection from 127.0.0.1:56662 on port 1883.
+mqtt-1     | 2026-09-23T05:23:35.612517936Z 1790141015: New client connected from 127.0.0.1:56662 as auto-B3BA334E-DB39-0A27-D873-D85FADEB4829 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:35.612543094Z 1790141015: Client auto-B3BA334E-DB39-0A27-D873-D85FADEB4829 disconnected.
+mqtt-1     | 2026-09-23T05:23:37.654969225Z 1790141017: New connection from 127.0.0.1:56670 on port 1883.
+mqtt-1     | 2026-09-23T05:23:37.655020075Z 1790141017: New client connected from 127.0.0.1:56670 as auto-1F06D6FA-A381-772E-BB95-CB518A7A5857 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:37.655034422Z 1790141017: Client auto-1F06D6FA-A381-772E-BB95-CB518A7A5857 disconnected.
+mqtt-1     | 2026-09-23T05:23:39.726701960Z 1790141019: New connection from 127.0.0.1:51124 on port 1883.
+mqtt-1     | 2026-09-23T05:23:39.726741595Z 1790141019: New client connected from 127.0.0.1:51124 as auto-93587BD1-DB57-AE92-39D4-23809E4250FF (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:39.727081781Z 1790141019: Client auto-93587BD1-DB57-AE92-39D4-23809E4250FF disconnected.
+mqtt-1     | 2026-09-23T05:23:41.781486431Z 1790141021: New connection from 127.0.0.1:51134 on port 1883.
+mqtt-1     | 2026-09-23T05:23:41.781511138Z 1790141021: New client connected from 127.0.0.1:51134 as auto-7FC31CFC-FEFD-9316-9957-D71C0B702A20 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:41.781794475Z 1790141021: Client auto-7FC31CFC-FEFD-9316-9957-D71C0B702A20 disconnected.
+mqtt-1     | 2026-09-23T05:23:43.842587278Z 1790141023: New connection from 127.0.0.1:51146 on port 1883.
+mqtt-1     | 2026-09-23T05:23:43.842617775Z 1790141023: New client connected from 127.0.0.1:51146 as auto-7C81A8C4-85BF-50BA-163C-556485180955 (p2, c1, k60).
+mqtt-1     | 2026-09-23T05:23:43.842791816Z 1790141023: Client auto-7C81A8C4-85BF-50BA-163C-556485180955 disconnected.
+backend-1  | 2026-09-23T05:22:21.326357344Z INFO:     Started server process [1]
+backend-1  | 2026-09-23T05:22:21.326393884Z INFO:     Waiting for application startup.
+backend-1  | 2026-09-23T05:22:21.526207390Z INFO:     Application startup complete.
+backend-1  | 2026-09-23T05:22:21.535963897Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+backend-1  | 2026-09-23T05:22:21.547140055Z 2026-09-23 05:22:21,546 INFO backend.app.mqtt.client MQTT connected=True
+backend-1  | 2026-09-23T05:22:21.988500709Z 2026-09-23 05:22:21,988 INFO backend.app.telemetry.ingest telemetry_committed message_id=55755d3d-b510-5d70-b288-a0426db2b301 device_id=CHG-001 committed_at=2026-09-23T05:22:21.988233+00:00
+backend-1  | 2026-09-23T05:22:22.014573583Z 2026-09-23 05:22:22,014 INFO backend.app.telemetry.ingest telemetry_committed message_id=b4cebd04-450d-54e9-ae19-9f352385efcb device_id=CHG-002 committed_at=2026-09-23T05:22:22.014290+00:00
+backend-1  | 2026-09-23T05:22:22.030112044Z 2026-09-23 05:22:22,029 INFO backend.app.telemetry.ingest telemetry_committed message_id=1975759b-c3a8-5fa9-8f33-484605090453 device_id=CHG-003 committed_at=2026-09-23T05:22:22.029856+00:00
+backend-1  | 2026-09-23T05:22:23.298015702Z INFO:     127.0.0.1:46672 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T05:22:24.019387632Z 2026-09-23 05:22:24,019 INFO backend.app.telemetry.ingest telemetry_committed message_id=99abb5ca-14c4-5fb7-8aab-68b91a1ed8f9 device_id=CHG-001 committed_at=2026-09-23T05:22:24.019157+00:00
+backend-1  | 2026-09-23T05:22:24.044626476Z 2026-09-23 05:22:24,044 INFO backend.app.telemetry.ingest telemetry_committed message_id=17cc2000-0478-539e-b6c5-767f79fa4197 device_id=CHG-002 committed_at=2026-09-23T05:22:24.044309+00:00
+backend-1  | 2026-09-23T05:22:24.061310062Z 2026-09-23 05:22:24,061 INFO backend.app.telemetry.ingest telemetry_committed message_id=2a790ca9-f1d0-5b2b-8497-457a5817927c device_id=CHG-003 committed_at=2026-09-23T05:22:24.061025+00:00
+backend-1  | 2026-09-23T05:22:24.915151621Z INFO:     172.21.0.5:42224 - "GET /api/devices HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:24.957644504Z INFO:     172.21.0.5:42228 - "POST /api/devices/CHG-001/charging/start HTTP/1.0" 202 Accepted
+backend-1  | 2026-09-23T05:22:24.965511150Z INFO:     172.21.0.5:42242 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:25.174187593Z INFO:     172.21.0.5:42246 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:25.382372761Z INFO:     172.21.0.5:42256 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:25.418164089Z INFO:     127.0.0.1:46696 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T05:22:25.590671811Z INFO:     172.21.0.5:42262 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:25.798678877Z INFO:     172.21.0.5:42264 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.007790778Z INFO:     172.21.0.5:42268 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.082866151Z 2026-09-23 05:22:26,082 INFO backend.app.telemetry.ingest telemetry_committed message_id=801790e2-6b83-5c32-90d5-96a933240ad4 device_id=CHG-001 committed_at=2026-09-23T05:22:26.082553+00:00
+backend-1  | 2026-09-23T05:22:26.104963375Z 2026-09-23 05:22:26,104 INFO backend.app.telemetry.ingest telemetry_committed message_id=7e36674d-ae35-54f9-8495-ad89129a7a31 device_id=CHG-002 committed_at=2026-09-23T05:22:26.104680+00:00
+backend-1  | 2026-09-23T05:22:26.121977703Z 2026-09-23 05:22:26,121 INFO backend.app.telemetry.ingest telemetry_committed message_id=debffb68-4f52-5ca6-90f9-50a89a92de26 device_id=CHG-003 committed_at=2026-09-23T05:22:26.121740+00:00
+backend-1  | 2026-09-23T05:22:26.216174427Z INFO:     172.21.0.5:42276 - "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.243208841Z INFO:     172.21.0.5:42290 - "POST /api/devices/CHG-002/charging/start HTTP/1.0" 202 Accepted
+backend-1  | 2026-09-23T05:22:26.251096606Z INFO:     172.21.0.5:42304 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.459697539Z INFO:     172.21.0.5:42314 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.667687894Z INFO:     172.21.0.5:42324 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:26.875421251Z INFO:     172.21.0.5:42334 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:27.083374345Z INFO:     172.21.0.5:42342 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:27.292484450Z INFO:     172.21.0.5:42348 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:27.500961461Z INFO:     172.21.0.5:42354 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:27.542165508Z INFO:     127.0.0.1:46708 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T05:22:27.708892843Z INFO:     172.21.0.5:42362 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:27.916238825Z INFO:     172.21.0.5:42376 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T05:22:28.129531098Z INFO:     172.21.0.5:42388 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:28.138279407Z 2026-09-23 05:22:28,137 INFO backend.app.telemetry.ingest telemetry_committed message_id=f8009f78-984c-5bec-8342-0e21db3fe5e2 device_id=CHG-001 committed_at=2026-09-23T05:22:28.137940+00:00
+simulator-1  | 2026-09-23T05:22:19.927727243Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=f5d65797-4e6c-5f2c-af99-0c638375ae29
+simulator-1  | 2026-09-23T05:22:19.927761478Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=647801dc-dc6a-577c-89cf-7f2da02ffc48
+simulator-1  | 2026-09-23T05:22:22.005536641Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=55755d3d-b510-5d70-b288-a0426db2b301
+simulator-1  | 2026-09-23T05:22:22.005564925Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=b4cebd04-450d-54e9-ae19-9f352385efcb
+simulator-1  | 2026-09-23T05:22:22.005979352Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=1975759b-c3a8-5fa9-8f33-484605090453
+simulator-1  | 2026-09-23T05:22:23.993866480Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=99abb5ca-14c4-5fb7-8aab-68b91a1ed8f9
+simulator-1  | 2026-09-23T05:22:24.033765336Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=17cc2000-0478-539e-b6c5-767f79fa4197
+simulator-1  | 2026-09-23T05:22:24.034348116Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=2a790ca9-f1d0-5b2b-8497-457a5817927c
+simulator-1  | 2026-09-23T05:22:25.026019600Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=eb135d9a-66fa-4e54-afdd-d30eac6b9564
+simulator-1  | 2026-09-23T05:22:26.074970489Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=801790e2-6b83-5c32-90d5-96a933240ad4
+simulator-1  | 2026-09-23T05:22:26.096462657Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=7e36674d-ae35-54f9-8495-ad89129a7a31
+simulator-1  | 2026-09-23T05:22:26.096863123Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=debffb68-4f52-5ca6-90f9-50a89a92de26
+simulator-1  | 2026-09-23T05:22:26.293261968Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=bb9d844f-21cc-445b-9cd0-66a9cd80dbd2
+simulator-1  | 2026-09-23T05:22:28.152481883Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=f8009f78-984c-5bec-8342-0e21db3fe5e2
+simulator-1  | 2026-09-23T05:22:28.152506390Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=ac1b2078-6a9b-5620-99a4-19648d73b3bf
+simulator-1  | 2026-09-23T05:22:28.152935624Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=0235b3bb-f82d-5b3e-bc0e-ce125fab5391
+simulator-1  | 2026-09-23T05:22:28.470838570Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=79f3a5fe-c0e3-4617-a1d9-cf44e96eb0aa
+simulator-1  | 2026-09-23T05:22:29.932187388Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=a8a49ba8-4648-4bf5-ae06-767f8419ffe4
+simulator-1  | 2026-09-23T05:22:29.969014802Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=e480ea97-bd18-4d75-9c2f-316d240c5873
+simulator-1  | 2026-09-23T05:22:30.016466493Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=da91b6be-d1e3-42bf-8263-37a5334f101a
+simulator-1  | 2026-09-23T05:22:30.149402536Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=530b4d17-d2ca-50e8-91a7-a78952d1a15c
+simulator-1  | 2026-09-23T05:22:30.170578283Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=fdf9030b-3d8a-5bd7-b513-3fe0241b73fa
+simulator-1  | 2026-09-23T05:22:30.190266755Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=d662841d-789a-533e-ba5a-3dd3c1b9591a
+simulator-1  | 2026-09-23T05:22:32.204349660Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=58742e94-a73e-51bf-8e2e-69e05f1e5c54
+simulator-1  | 2026-09-23T05:22:32.204924211Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=413fec0c-8ddd-54b0-953d-cd02d9455fe5
+simulator-1  | 2026-09-23T05:22:32.237835814Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=539c5622-7787-531e-8b0c-3cbbad9b46d9
+simulator-1  | 2026-09-23T05:22:34.255857941Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=61ebc2a6-5fcb-5bca-8a1c-b851e80075f2
+simulator-1  | 2026-09-23T05:22:34.278411603Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=a2fed802-b766-535e-9c98-7959268d9389
+simulator-1  | 2026-09-23T05:22:34.278868079Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=093284a7-5a79-5dc6-beb3-8ed8f73a48da
+simulator-1  | 2026-09-23T05:22:36.305362542Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=6626df07-f37b-5ba3-88eb-cfeea3baf7a4
+simulator-1  | 2026-09-23T05:22:36.327839870Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=e47d4885-e88d-5573-aa1b-02e166e3da81
+simulator-1  | 2026-09-23T05:22:36.328279804Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=444dee2d-990a-56fe-b567-8f48e8db4fb4
+simulator-1  | 2026-09-23T05:22:38.354971488Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=8c4e701f-3f76-52eb-a129-0a504a039cb2
+simulator-1  | 2026-09-23T05:22:38.378131636Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=a73fabc7-bef3-5c2e-872c-a8e14b504d02
+simulator-1  | 2026-09-23T05:22:38.378743942Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=8ea36705-63fc-5491-bd6f-7b47b7ee4792
+simulator-1  | 2026-09-23T05:22:40.018106510Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=ab79bdbc-59cf-4574-9149-ecf5fef1c819
+simulator-1  | 2026-09-23T05:22:40.062999397Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=43a5fe39-cadd-49aa-9cd1-45fe35d1483f
+simulator-1  | 2026-09-23T05:22:40.118300633Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=0518bb71-478f-40d1-bcad-339cd1bf40ca
+simulator-1  | 2026-09-23T05:22:40.327679628Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=d59bdf22-bacc-536c-8f27-7a50d1459c0b
+simulator-1  | 2026-09-23T05:22:40.391484549Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=62e94215-6768-52ee-bd8e-e2eba09dd1ab
+simulator-1  | 2026-09-23T05:22:40.435429267Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=f19a78e1-d2ba-5416-b68e-b9c532cbf74e
+simulator-1  | 2026-09-23T05:22:42.377090813Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=c3a6a7db-c4b3-5eb5-ba73-f89c9eaaecdb
+simulator-1  | 2026-09-23T05:22:42.422532200Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=7a8c3e6e-f0fc-501d-b780-9f654e998605
+simulator-1  | 2026-09-23T05:22:42.494638390Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=5f288e2f-2061-5c59-818c-d539163f3c6a
+simulator-1  | 2026-09-23T05:22:44.761403105Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=9b5ff18a-907f-55f0-bfd5-f2ffde4b8ab0
+simulator-1  | 2026-09-23T05:22:44.761427170Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=553a4e8a-a175-5b9a-b60f-49aad318fc4d
+simulator-1  | 2026-09-23T05:22:44.762005998Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=42379531-c78e-590c-b58f-bcfe9d53a3ca
+simulator-1  | 2026-09-23T05:22:46.479681863Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=eee17c1b-6530-5fc7-8348-dab6404a33ab
+simulator-1  | 2026-09-23T05:22:46.829303634Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=f21920fd-ec1c-5c60-b74a-18472ba7bfb2
+simulator-1  | 2026-09-23T05:22:46.829737675Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=3a5e51d6-25ef-5356-ad57-52b094bae0ad
+simulator-1  | 2026-09-23T05:22:48.531676607Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=57159b35-05a3-5918-8585-768cd560173b
+simulator-1  | 2026-09-23T05:22:48.865389840Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=a84d85c0-07d4-5ef7-98f6-a34fa399851a
+simulator-1  | 2026-09-23T05:22:48.865828451Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=15387a90-2e1c-57af-a3f1-48f8837ec52b
+simulator-1  | 2026-09-23T05:22:50.108615140Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=36bed262-7ea6-484a-b37d-e712d81ff31a
+simulator-1  | 2026-09-23T05:22:50.143166213Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=43441749-ca83-4ba0-a73c-8b16112c05a3
+simulator-1  | 2026-09-23T05:22:50.200420361Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=ef279af9-41f5-48c5-98a0-1c467978b501
+simulator-1  | 2026-09-23T05:22:50.521533220Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=b95d1400-6684-5af3-8403-f400028be717
+simulator-1  | 2026-09-23T05:22:50.973626907Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=92ffd334-297f-5651-a79c-7e98ecaff969
+simulator-1  | 2026-09-23T05:22:50.974137686Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=15a6ff50-a953-552d-a349-31876d0316fb
+simulator-1  | 2026-09-23T05:22:52.571488221Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=c89ccd2b-7e7f-5630-a039-a5fb1e242298
+simulator-1  | 2026-09-23T05:22:53.029488895Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=52e6cd3c-fdca-54b6-8d8c-11d39fa57fc6
+simulator-1  | 2026-09-23T05:22:53.029919162Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=27c0d467-8f4e-56d7-b7a3-b785a0dbca4a
+simulator-1  | 2026-09-23T05:22:54.615536685Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=4592218a-be5d-5f0f-8e14-890abe057f00
+simulator-1  | 2026-09-23T05:22:55.064525328Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=fb2d27c3-89b6-5016-8d5a-3b53032ca20b
+simulator-1  | 2026-09-23T05:22:55.064888582Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=c779b23e-de9c-5204-a612-6929ca1caf21
+simulator-1  | 2026-09-23T05:22:56.655788136Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=a5821d8a-2d48-5c85-b25d-b9e8e50e6bf5
+simulator-1  | 2026-09-23T05:22:57.097922553Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=b2e0027b-08c3-5d80-9c34-4944732c61a8
+simulator-1  | 2026-09-23T05:22:57.098475313Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=83bec956-2c58-5415-a817-b7257941e84d
+simulator-1  | 2026-09-23T05:22:58.714931736Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=44c536a2-c127-5121-9f11-e5c1859b8d1d
+simulator-1  | 2026-09-23T05:22:59.166701062Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=e2bc5808-3a97-54ee-98dc-a8ccd839a586
+simulator-1  | 2026-09-23T05:22:59.167010209Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=e3d9ec3b-16e2-597d-a4ea-da6e869ca080
+simulator-1  | 2026-09-23T05:23:00.208476408Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=7618df04-ef7e-44b7-a3ee-9b7972b9a224
+simulator-1  | 2026-09-23T05:23:00.252910150Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=4b1fbf55-ed6b-45c7-98a8-0570370804df
+simulator-1  | 2026-09-23T05:23:00.308474361Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=eb8ec26b-ae2b-4490-8332-4cfd8add4746
+simulator-1  | 2026-09-23T05:23:00.742368748Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=00c38362-4f1c-56f4-afac-2249488d81bb
+frontend-1   | 2026-09-23T05:22:24.316623316Z /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-1   | 2026-09-23T05:22:24.316655757Z /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-1   | 2026-09-23T05:22:24.317798706Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-1   | 2026-09-23T05:22:24.325739512Z 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+frontend-1   | 2026-09-23T05:22:24.336731037Z 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+frontend-1   | 2026-09-23T05:22:24.337059560Z /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-1   | 2026-09-23T05:22:24.337127699Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-1   | 2026-09-23T05:22:24.340528632Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+backend-1    | 2026-09-23T05:22:28.160924712Z 2026-09-23 05:22:28,160 INFO backend.app.telemetry.ingest telemetry_committed message_id=ac1b2078-6a9b-5620-99a4-19648d73b3bf device_id=CHG-002 committed_at=2026-09-23T05:22:28.160643+00:00
+frontend-1   | 2026-09-23T05:22:24.342352703Z /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-1   | 2026-09-23T05:22:24.357455377Z 2026/09/23 05:22:24 [notice] 1#1: using the "epoll" event method
+frontend-1   | 2026-09-23T05:22:24.357474383Z 2026/09/23 05:22:24 [notice] 1#1: nginx/1.28.0
+frontend-1   | 2026-09-23T05:22:24.357478441Z 2026/09/23 05:22:24 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) 
+frontend-1   | 2026-09-23T05:22:24.357481527Z 2026/09/23 05:22:24 [notice] 1#1: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+frontend-1   | 2026-09-23T05:22:24.357484512Z 2026/09/23 05:22:24 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+frontend-1   | 2026-09-23T05:22:24.358134145Z 2026/09/23 05:22:24 [notice] 1#1: start worker processes
+frontend-1   | 2026-09-23T05:22:24.358363119Z 2026/09/23 05:22:24 [notice] 1#1: start worker process 29
+frontend-1   | 2026-09-23T05:22:24.358581674Z 2026/09/23 05:22:24 [notice] 1#1: start worker process 30
+frontend-1   | 2026-09-23T05:22:24.358973668Z 2026/09/23 05:22:24 [notice] 1#1: start worker process 31
+frontend-1   | 2026-09-23T05:22:24.359268769Z 2026/09/23 05:22:24 [notice] 1#1: start worker process 32
+frontend-1   | 2026-09-23T05:22:24.915563683Z 172.21.0.1 - - [23/Sep/2026:05:22:24 +0000] "GET /api/devices HTTP/1.1" 200 1765 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:24.958257577Z 172.21.0.1 - - [23/Sep/2026:05:22:24 +0000] "POST /api/devices/CHG-001/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:24.965906840Z 172.21.0.1 - - [23/Sep/2026:05:22:24 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:25.174605255Z 172.21.0.1 - - [23/Sep/2026:05:22:25 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:25.382730529Z 172.21.0.1 - - [23/Sep/2026:05:22:25 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:25.591051772Z 172.21.0.1 - - [23/Sep/2026:05:22:25 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:25.799166111Z 172.21.0.1 - - [23/Sep/2026:05:22:25 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:26.008207996Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+simulator-1  | 2026-09-23T05:23:01.197082804Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=a76a95bc-ee40-5589-81f0-f280dfab88ca
+frontend-1   | 2026-09-23T05:22:26.216546453Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/25a74021-386b-4fd3-8c83-456920a734b1 HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+simulator-1  | 2026-09-23T05:23:01.197650651Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=2a117bc3-8a14-5e35-ae44-b36f84df4ac6
+backend-1    | 2026-09-23T05:22:28.187687015Z 2026-09-23 05:22:28,187 INFO backend.app.telemetry.ingest telemetry_committed message_id=0235b3bb-f82d-5b3e-bc0e-ce125fab5391 device_id=CHG-003 committed_at=2026-09-23T05:22:28.187401+00:00
+simulator-1  | 2026-09-23T05:23:02.791315972Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=780730ac-64ab-5a07-9e0a-51127a34f249
+frontend-1   | 2026-09-23T05:22:26.243774314Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "POST /api/devices/CHG-002/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:22:28.337667762Z INFO:     172.21.0.5:33484 - "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.0" 200 OK
+simulator-1  | 2026-09-23T05:23:03.244051123Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=e2876432-38a4-5702-9a36-225019c1e2b3
+backend-1    | 2026-09-23T05:22:28.364912033Z INFO:     172.21.0.5:33486 - "POST /api/devices/CHG-003/charging/start HTTP/1.0" 202 Accepted
+frontend-1   | 2026-09-23T05:22:26.251460496Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:26.460037135Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:26.668114032Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:26.875859212Z 172.21.0.1 - - [23/Sep/2026:05:22:26 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:27.083727545Z 172.21.0.1 - - [23/Sep/2026:05:22:27 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:27.292938431Z 172.21.0.1 - - [23/Sep/2026:05:22:27 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:27.501277761Z 172.21.0.1 - - [23/Sep/2026:05:22:27 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:27.709204244Z 172.21.0.1 - - [23/Sep/2026:05:22:27 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:27.917201451Z 172.21.0.1 - - [23/Sep/2026:05:22:27 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.129932771Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.337988060Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/e120d967-5e6c-451f-8c8f-02ebd3f34ddb HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.365458326Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "POST /api/devices/CHG-003/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.373347619Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.581054635Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.789734798Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:28.998167111Z 172.21.0.1 - - [23/Sep/2026:05:22:28 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:29.205576705Z 172.21.0.1 - - [23/Sep/2026:05:22:29 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:29.416122738Z 172.21.0.1 - - [23/Sep/2026:05:22:29 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:29.623457569Z 172.21.0.1 - - [23/Sep/2026:05:22:29 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:22:28.372967888Z INFO:     172.21.0.5:33500 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:28.580682610Z INFO:     172.21.0.5:33508 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:28.789300945Z INFO:     172.21.0.5:33522 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:28.997721195Z INFO:     172.21.0.5:33536 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:29.205128855Z INFO:     172.21.0.5:33544 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:29.415358478Z INFO:     172.21.0.5:33552 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:29.623108015Z INFO:     172.21.0.5:33566 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:29.666805744Z INFO:     127.0.0.1:59626 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:29.831796184Z INFO:     172.21.0.5:33572 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:30.040668078Z INFO:     172.21.0.5:33580 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:30.170403983Z 2026-09-23 05:22:30,170 INFO backend.app.telemetry.ingest telemetry_committed message_id=530b4d17-d2ca-50e8-91a7-a78952d1a15c device_id=CHG-002 committed_at=2026-09-23T05:22:30.170116+00:00
+backend-1    | 2026-09-23T05:22:30.189998650Z 2026-09-23 05:22:30,189 INFO backend.app.telemetry.ingest telemetry_committed message_id=fdf9030b-3d8a-5bd7-b513-3fe0241b73fa device_id=CHG-003 committed_at=2026-09-23T05:22:30.189758+00:00
+backend-1    | 2026-09-23T05:22:30.207215445Z 2026-09-23 05:22:30,206 INFO backend.app.telemetry.ingest telemetry_committed message_id=d662841d-789a-533e-ba5a-3dd3c1b9591a device_id=CHG-001 committed_at=2026-09-23T05:22:30.206931+00:00
+backend-1    | 2026-09-23T05:22:30.249401466Z INFO:     172.21.0.5:33592 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:30.457636475Z INFO:     172.21.0.5:33606 - "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:30.530808235Z INFO:     172.21.0.5:33616 - "POST /api/power-plans HTTP/1.0" 201 Created
+backend-1    | 2026-09-23T05:22:30.568307683Z INFO:     172.21.0.5:33624 - "POST /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02/execute HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:22:30.583970240Z INFO:     172.21.0.5:33634 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:30.800021610Z INFO:     172.21.0.5:33646 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:31.015051350Z INFO:     172.21.0.5:33652 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:31.229057057Z INFO:     172.21.0.5:33666 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:31.451140330Z INFO:     172.21.0.5:33678 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:31.662238952Z INFO:     172.21.0.5:33684 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:31.794513921Z INFO:     127.0.0.1:59642 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:31.875045906Z INFO:     172.21.0.5:33692 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:32.106768588Z INFO:     172.21.0.5:33694 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:32.213397176Z 2026-09-23 05:22:32,213 INFO backend.app.telemetry.ingest telemetry_committed message_id=58742e94-a73e-51bf-8e2e-69e05f1e5c54 device_id=CHG-002 committed_at=2026-09-23T05:22:32.213062+00:00
+backend-1    | 2026-09-23T05:22:32.247458423Z 2026-09-23 05:22:32,247 INFO backend.app.telemetry.ingest telemetry_committed message_id=413fec0c-8ddd-54b0-953d-cd02d9455fe5 device_id=CHG-003 committed_at=2026-09-23T05:22:32.247173+00:00
+backend-1    | 2026-09-23T05:22:32.276847974Z 2026-09-23 05:22:32,276 INFO backend.app.telemetry.ingest telemetry_committed message_id=539c5622-7787-531e-8b0c-3cbbad9b46d9 device_id=CHG-001 committed_at=2026-09-23T05:22:32.276520+00:00
+backend-1    | 2026-09-23T05:22:32.319942247Z INFO:     172.21.0.5:33698 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:32.532308124Z INFO:     172.21.0.5:33706 - "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.388416088Z INFO:     172.21.0.5:33712 - "GET /api/health HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.406276866Z INFO:     172.21.0.5:33716 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.407711208Z INFO:     172.21.0.5:33732 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.409063954Z INFO:     172.21.0.5:33742 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.443579622Z INFO:     172.21.0.5:33752 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.685414668Z INFO:     172.21.0.5:33760 - "POST /api/patrols HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:22:33.697345165Z INFO:     172.21.0.5:33768 - "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.905682233Z INFO:     172.21.0.5:33780 - "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.916219025Z INFO:     172.21.0.5:33784 - "GET /api/agent/runs/b253d4b4-213c-428f-b1f6-e2cc5cc0cf14 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:33.920762225Z INFO:     127.0.0.1:59670 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:34.264945894Z 2026-09-23 05:22:34,264 INFO backend.app.telemetry.ingest telemetry_committed message_id=61ebc2a6-5fcb-5bca-8a1c-b851e80075f2 device_id=CHG-002 committed_at=2026-09-23T05:22:34.264550+00:00
+backend-1    | 2026-09-23T05:22:34.286488788Z 2026-09-23 05:22:34,286 INFO backend.app.telemetry.ingest telemetry_committed message_id=a2fed802-b766-535e-9c98-7959268d9389 device_id=CHG-003 committed_at=2026-09-23T05:22:34.286219+00:00
+backend-1    | 2026-09-23T05:22:34.303227678Z 2026-09-23 05:22:34,302 INFO backend.app.telemetry.ingest telemetry_committed message_id=093284a7-5a79-5dc6-beb3-8ed8f73a48da device_id=CHG-001 committed_at=2026-09-23T05:22:34.302963+00:00
+backend-1    | 2026-09-23T05:22:35.504927395Z INFO:     172.21.0.5:33800 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:35.505781145Z INFO:     172.21.0.5:33788 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:35.506366315Z INFO:     172.21.0.5:33808 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:35.519232307Z INFO:     172.21.0.5:33834 - "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:35.542211095Z INFO:     172.21.0.5:33820 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:36.044515021Z INFO:     127.0.0.1:59684 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:36.314503202Z 2026-09-23 05:22:36,314 INFO backend.app.telemetry.ingest telemetry_committed message_id=6626df07-f37b-5ba3-88eb-cfeea3baf7a4 device_id=CHG-002 committed_at=2026-09-23T05:22:36.314157+00:00
+backend-1    | 2026-09-23T05:22:36.336863606Z 2026-09-23 05:22:36,336 INFO backend.app.telemetry.ingest telemetry_committed message_id=e47d4885-e88d-5573-aa1b-02e166e3da81 device_id=CHG-003 committed_at=2026-09-23T05:22:36.336525+00:00
+backend-1    | 2026-09-23T05:22:36.354322285Z 2026-09-23 05:22:36,354 INFO backend.app.telemetry.ingest telemetry_committed message_id=444dee2d-990a-56fe-b567-8f48e8db4fb4 device_id=CHG-001 committed_at=2026-09-23T05:22:36.354024+00:00
+backend-1    | 2026-09-23T05:22:37.522473968Z INFO:     172.21.0.5:33872 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:37.522795538Z INFO:     172.21.0.5:33846 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:37.523628478Z INFO:     172.21.0.5:33860 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:37.577252522Z INFO:     172.21.0.5:33874 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:38.184906124Z INFO:     127.0.0.1:42322 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:38.363875502Z 2026-09-23 05:22:38,363 INFO backend.app.telemetry.ingest telemetry_committed message_id=8c4e701f-3f76-52eb-a129-0a504a039cb2 device_id=CHG-002 committed_at=2026-09-23T05:22:38.363667+00:00
+backend-1    | 2026-09-23T05:22:38.386495941Z 2026-09-23 05:22:38,386 INFO backend.app.telemetry.ingest telemetry_committed message_id=a73fabc7-bef3-5c2e-872c-a8e14b504d02 device_id=CHG-003 committed_at=2026-09-23T05:22:38.386189+00:00
+backend-1    | 2026-09-23T05:22:38.403801174Z 2026-09-23 05:22:38,403 INFO backend.app.telemetry.ingest telemetry_committed message_id=8ea36705-63fc-5491-bd6f-7b47b7ee4792 device_id=CHG-001 committed_at=2026-09-23T05:22:38.403496+00:00
+backend-1    | 2026-09-23T05:22:39.540049928Z INFO:     172.21.0.5:53596 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:39.540405342Z INFO:     172.21.0.5:53582 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:39.541264602Z INFO:     172.21.0.5:53578 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+simulator-1  | 2026-09-23T05:23:03.244479836Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=ba5d94f8-ca81-5713-9087-18f7d9bc5665
+simulator-1  | 2026-09-23T05:23:04.842486434Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=05dc649b-ed6c-5ceb-989e-045121760735
+simulator-1  | 2026-09-23T05:23:05.293790464Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=64c5c426-e207-5454-b4c7-df89774cc22d
+simulator-1  | 2026-09-23T05:23:05.294314449Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=05a45497-b60c-57d3-a152-38819ba0ed8d
+simulator-1  | 2026-09-23T05:23:06.890419724Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=86bf7559-2475-5abb-9453-ecf61d557e7d
+simulator-1  | 2026-09-23T05:23:07.334656227Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=0739fc36-121f-59e3-8655-30a8dd502403
+simulator-1  | 2026-09-23T05:23:07.335173729Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=a929fd4c-a39f-545e-a904-fa96dc659349
+simulator-1  | 2026-09-23T05:23:08.941320317Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=7a4ad177-b0bf-51ed-bc26-f8f99250e4a6
+simulator-1  | 2026-09-23T05:23:09.376533847Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=ab8857b1-27c6-53fc-9408-150e612b24db
+simulator-1  | 2026-09-23T05:23:09.376986125Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=041271dc-cde5-51a0-86ad-ab6887efad85
+simulator-1  | 2026-09-23T05:23:10.215704594Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=ee0ed339-eadb-473c-acf3-311c541cc92f
+simulator-1  | 2026-09-23T05:23:10.259522079Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=9dcbf32f-0d5d-420b-80af-605358781216
+simulator-1  | 2026-09-23T05:23:10.317109198Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=03c39940-436a-4867-a60a-ed1dd08d6611
+simulator-1  | 2026-09-23T05:23:10.930491008Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=fe6e2c00-f176-5969-b3dc-e4986b7b21f9
+simulator-1  | 2026-09-23T05:23:11.390715150Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=56fcaa3a-c046-5b9b-86da-09b962b9d01f
+simulator-1  | 2026-09-23T05:23:11.448969586Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=49ebac79-4b1d-5bb2-89d3-3e522aac39ed
+simulator-1  | 2026-09-23T05:23:12.961787372Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=8b5f4681-8fcf-5591-891b-dd8f3eb73637
+simulator-1  | 2026-09-23T05:23:13.423010306Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=5d6b4bcf-c4fb-521a-82c4-26d461225a78
+simulator-1  | 2026-09-23T05:23:13.480593878Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=471542df-acb2-5858-83a0-4ad3c076f1f3
+simulator-1  | 2026-09-23T05:23:15.010563469Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=d4fd1731-3d4b-51cf-a9e1-2605a3c5ee7b
+simulator-1  | 2026-09-23T05:23:15.454547733Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=83c1dc2a-39d8-5ff9-a99f-8331ed4f9e9f
+simulator-1  | 2026-09-23T05:23:15.529805833Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=dd07badc-ecc5-5cca-88a6-65b454f1da23
+simulator-1  | 2026-09-23T05:23:17.041375431Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=dd02681c-5284-5d56-92e4-5e9ac425117d
+simulator-1  | 2026-09-23T05:23:17.487431105Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=105d3dba-c414-5e47-a8f1-a54ef52d8301
+simulator-1  | 2026-09-23T05:23:17.562203319Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=3dd3060a-a9dd-5ec1-828e-2027860bc736
+simulator-1  | 2026-09-23T05:23:19.090306008Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=9ab47425-934b-5388-9009-c9268e7cea0d
+backend-1    | 2026-09-23T05:22:39.610043971Z INFO:     172.21.0.5:53610 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:40.323657196Z INFO:     127.0.0.1:42340 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:40.339928499Z 2026-09-23 05:22:40,339 INFO backend.app.telemetry.ingest telemetry_committed message_id=d59bdf22-bacc-536c-8f27-7a50d1459c0b device_id=CHG-002 committed_at=2026-09-23T05:22:40.339639+00:00
+backend-1    | 2026-09-23T05:22:40.403191972Z 2026-09-23 05:22:40,402 INFO backend.app.telemetry.ingest telemetry_committed message_id=62e94215-6768-52ee-bd8e-e2eba09dd1ab device_id=CHG-001 committed_at=2026-09-23T05:22:40.402913+00:00
+backend-1    | 2026-09-23T05:22:40.447065526Z 2026-09-23 05:22:40,446 INFO backend.app.telemetry.ingest telemetry_committed message_id=f19a78e1-d2ba-5416-b68e-b9c532cbf74e device_id=CHG-003 committed_at=2026-09-23T05:22:40.446735+00:00
+backend-1    | 2026-09-23T05:22:41.557430486Z INFO:     172.21.0.5:53626 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:41.558057095Z INFO:     172.21.0.5:53640 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:41.558757144Z INFO:     172.21.0.5:53646 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:41.642734664Z INFO:     172.21.0.5:53650 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:42.394770427Z 2026-09-23 05:22:42,394 INFO backend.app.telemetry.ingest telemetry_committed message_id=c3a6a7db-c4b3-5eb5-ba73-f89c9eaaecdb device_id=CHG-002 committed_at=2026-09-23T05:22:42.394507+00:00
+backend-1    | 2026-09-23T05:22:42.440461097Z 2026-09-23 05:22:42,440 INFO backend.app.telemetry.ingest telemetry_committed message_id=7a8c3e6e-f0fc-501d-b780-9f654e998605 device_id=CHG-001 committed_at=2026-09-23T05:22:42.440158+00:00
+backend-1    | 2026-09-23T05:22:42.448739124Z INFO:     127.0.0.1:42354 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:42.511621770Z 2026-09-23 05:22:42,511 INFO backend.app.telemetry.ingest telemetry_committed message_id=5f288e2f-2061-5c59-818c-d539163f3c6a device_id=CHG-003 committed_at=2026-09-23T05:22:42.511370+00:00
+backend-1    | 2026-09-23T05:22:43.575685709Z INFO:     172.21.0.5:53660 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+simulator-1  | 2026-09-23T05:23:19.517214880Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=b7b59adf-1cca-52e3-b491-52e1884c0848
+frontend-1   | 2026-09-23T05:22:29.832158762Z 172.21.0.1 - - [23/Sep/2026:05:22:29 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.040989653Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.249693255Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.457943958Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "GET /api/device-commands/dab9cfc2-0de6-42bb-be57-384b1fa8d8eb HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.531228282Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "POST /api/power-plans HTTP/1.1" 201 212 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.568696150Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "POST /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02/execute HTTP/1.1" 202 111 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.584329522Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1122 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:30.800509466Z 172.21.0.1 - - [23/Sep/2026:05:22:30 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:31.015466608Z 172.21.0.1 - - [23/Sep/2026:05:22:31 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:31.229512488Z 172.21.0.1 - - [23/Sep/2026:05:22:31 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:31.451515813Z 172.21.0.1 - - [23/Sep/2026:05:22:31 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:31.662624173Z 172.21.0.1 - - [23/Sep/2026:05:22:31 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:31.875392835Z 172.21.0.1 - - [23/Sep/2026:05:22:31 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:32.107175912Z 172.21.0.1 - - [23/Sep/2026:05:22:32 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:32.320296940Z 172.21.0.1 - - [23/Sep/2026:05:22:32 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1910 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:32.532647830Z 172.21.0.1 - - [23/Sep/2026:05:22:32 +0000] "GET /api/power-plans/41bd4805-bb5e-4279-ba44-26e12732ea02 HTTP/1.1" 200 1936 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:33.295110855Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /devices HTTP/1.1" 200 360 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.304254444Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /assets/index-BkN5etDQ.js HTTP/1.1" 200 758492 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.304546818Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /assets/index-BvGew76c.css HTTP/1.1" 200 18879 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.388811318Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/health HTTP/1.1" 200 131 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.406683838Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.407990287Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.409686846Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:33.443908106Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4759 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+simulator-1  | 2026-09-23T05:23:19.611499061Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=1cc727e4-9ade-5515-a49f-e47d5f05fd55
+simulator-1  | 2026-09-23T05:23:20.266103651Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=e16cede9-4315-4f53-8b79-174df9fef567
+simulator-1  | 2026-09-23T05:23:20.308173039Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=64d874f0-7169-4f9f-8a7f-5b1260b64ef7
+simulator-1  | 2026-09-23T05:23:20.366046903Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=3aade0d4-dba8-400e-8587-922a658fb309
+simulator-1  | 2026-09-23T05:23:21.105018099Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=da43d75f-4095-5898-8134-d5c4090bcf4f
+simulator-1  | 2026-09-23T05:23:21.535015308Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=b970a2cb-db65-53b1-b918-0c42e37f3c3d
+simulator-1  | 2026-09-23T05:23:21.626397578Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=21b74acd-3b10-5a01-b960-6c60fc43edd5
+frontend-1   | 2026-09-23T05:22:33.685854763Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "POST /api/patrols HTTP/1.1" 202 161 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:33.697596982Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.1" 200 384 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:33.906039160Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.1" 200 5148 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:33.916636838Z 172.21.0.1 - - [23/Sep/2026:05:22:33 +0000] "GET /api/agent/runs/b253d4b4-213c-428f-b1f6-e2cc5cc0cf14 HTTP/1.1" 200 6423 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:22:35.505370666Z 172.21.0.1 - - [23/Sep/2026:05:22:35 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+simulator-1  | 2026-09-23T05:23:23.150904330Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=0ee873d7-efa5-5a0a-a83e-6809d3097d9a
+frontend-1   | 2026-09-23T05:22:35.506204899Z 172.21.0.1 - - [23/Sep/2026:05:22:35 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:35.506692273Z 172.21.0.1 - - [23/Sep/2026:05:22:35 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:35.519656331Z 172.21.0.1 - - [23/Sep/2026:05:22:35 +0000] "GET /api/patrols/03d616b6-05f9-4962-9fd8-c0c7dfe8cbb0 HTTP/1.1" 200 5148 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:35.542742824Z 172.21.0.1 - - [23/Sep/2026:05:22:35 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4775 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:37.523254348Z 172.21.0.1 - - [23/Sep/2026:05:22:37 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:37.523350070Z 172.21.0.1 - - [23/Sep/2026:05:22:37 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:37.523968183Z 172.21.0.1 - - [23/Sep/2026:05:22:37 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:37.577720340Z 172.21.0.1 - - [23/Sep/2026:05:22:37 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4701 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:39.540776427Z 172.21.0.1 - - [23/Sep/2026:05:22:39 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:39.540946249Z 172.21.0.1 - - [23/Sep/2026:05:22:39 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:39.541958108Z 172.21.0.1 - - [23/Sep/2026:05:22:39 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:39.610671101Z 172.21.0.1 - - [23/Sep/2026:05:22:39 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4770 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:41.557861534Z 172.21.0.1 - - [23/Sep/2026:05:22:41 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:41.558450523Z 172.21.0.1 - - [23/Sep/2026:05:22:41 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:41.559255195Z 172.21.0.1 - - [23/Sep/2026:05:22:41 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:41.643216942Z 172.21.0.1 - - [23/Sep/2026:05:22:41 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4704 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:43.576275929Z 172.21.0.1 - - [23/Sep/2026:05:22:43 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:43.576768430Z 172.21.0.1 - - [23/Sep/2026:05:22:43 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:43.577623836Z 172.21.0.1 - - [23/Sep/2026:05:22:43 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:43.679068371Z 172.21.0.1 - - [23/Sep/2026:05:22:43 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4779 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:45.593894898Z 172.21.0.1 - - [23/Sep/2026:05:22:45 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:45.595860311Z 172.21.0.1 - - [23/Sep/2026:05:22:45 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:45.595879577Z 172.21.0.1 - - [23/Sep/2026:05:22:45 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:45.713698139Z 172.21.0.1 - - [23/Sep/2026:05:22:45 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4770 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:47.615006653Z 172.21.0.1 - - [23/Sep/2026:05:22:47 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:47.616258218Z 172.21.0.1 - - [23/Sep/2026:05:22:47 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:47.616989064Z 172.21.0.1 - - [23/Sep/2026:05:22:47 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:47.749960646Z 172.21.0.1 - - [23/Sep/2026:05:22:47 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4779 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:49.647817789Z 172.21.0.1 - - [23/Sep/2026:05:22:49 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:49.648662121Z 172.21.0.1 - - [23/Sep/2026:05:22:49 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:49.649038943Z 172.21.0.1 - - [23/Sep/2026:05:22:49 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:49.784015743Z 172.21.0.1 - - [23/Sep/2026:05:22:49 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:51.665185029Z 172.21.0.1 - - [23/Sep/2026:05:22:51 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:51.666590886Z 172.21.0.1 - - [23/Sep/2026:05:22:51 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:51.667870013Z 172.21.0.1 - - [23/Sep/2026:05:22:51 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:51.817453726Z 172.21.0.1 - - [23/Sep/2026:05:22:51 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4775 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+backend-1    | 2026-09-23T05:22:43.576354915Z INFO:     172.21.0.5:53666 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:43.577188447Z INFO:     172.21.0.5:53662 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:43.678571258Z INFO:     172.21.0.5:53670 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:44.594134641Z INFO:     127.0.0.1:42374 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:44.746459632Z 2026-09-23 05:22:44,746 INFO backend.app.telemetry.ingest telemetry_committed message_id=9b5ff18a-907f-55f0-bfd5-f2ffde4b8ab0 device_id=CHG-002 committed_at=2026-09-23T05:22:44.746138+00:00
+backend-1    | 2026-09-23T05:22:44.770384900Z 2026-09-23 05:22:44,770 INFO backend.app.telemetry.ingest telemetry_committed message_id=553a4e8a-a175-5b9a-b60f-49aad318fc4d device_id=CHG-003 committed_at=2026-09-23T05:22:44.770114+00:00
+backend-1    | 2026-09-23T05:22:44.788414518Z 2026-09-23 05:22:44,788 INFO backend.app.telemetry.ingest telemetry_committed message_id=42379531-c78e-590c-b58f-bcfe9d53a3ca device_id=CHG-001 committed_at=2026-09-23T05:22:44.788069+00:00
+backend-1    | 2026-09-23T05:22:45.593349543Z INFO:     172.21.0.5:53704 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:45.594887204Z INFO:     172.21.0.5:53682 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:45.595464950Z INFO:     172.21.0.5:53698 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:45.713263786Z INFO:     172.21.0.5:53712 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:46.499088142Z 2026-09-23 05:22:46,498 INFO backend.app.telemetry.ingest telemetry_committed message_id=eee17c1b-6530-5fc7-8348-dab6404a33ab device_id=CHG-002 committed_at=2026-09-23T05:22:46.498751+00:00
+backend-1    | 2026-09-23T05:22:46.726964478Z INFO:     127.0.0.1:42398 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:46.838459557Z 2026-09-23 05:22:46,838 INFO backend.app.telemetry.ingest telemetry_committed message_id=f21920fd-ec1c-5c60-b74a-18472ba7bfb2 device_id=CHG-003 committed_at=2026-09-23T05:22:46.838149+00:00
+backend-1    | 2026-09-23T05:22:46.855729673Z 2026-09-23 05:22:46,855 INFO backend.app.telemetry.ingest telemetry_committed message_id=3a5e51d6-25ef-5356-ad57-52b094bae0ad device_id=CHG-001 committed_at=2026-09-23T05:22:46.855402+00:00
+backend-1    | 2026-09-23T05:22:47.614369394Z INFO:     172.21.0.5:53740 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:47.615825226Z INFO:     172.21.0.5:53720 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:47.616520345Z INFO:     172.21.0.5:53734 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:47.749456690Z INFO:     172.21.0.5:53742 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:48.549035277Z 2026-09-23 05:22:48,548 INFO backend.app.telemetry.ingest telemetry_committed message_id=57159b35-05a3-5918-8585-768cd560173b device_id=CHG-002 committed_at=2026-09-23T05:22:48.548485+00:00
+backend-1    | 2026-09-23T05:22:48.862082083Z INFO:     127.0.0.1:37584 - "GET /api/health HTTP/1.1" 200 OK
+frontend-1   | 2026-09-23T05:22:53.682312578Z 172.21.0.1 - - [23/Sep/2026:05:22:53 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:53.682801266Z 172.21.0.1 - - [23/Sep/2026:05:22:53 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:53.683389061Z 172.21.0.1 - - [23/Sep/2026:05:22:53 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:53.850320851Z 172.21.0.1 - - [23/Sep/2026:05:22:53 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4720 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:55.699905018Z 172.21.0.1 - - [23/Sep/2026:05:22:55 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:55.700395298Z 172.21.0.1 - - [23/Sep/2026:05:22:55 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:55.700876260Z 172.21.0.1 - - [23/Sep/2026:05:22:55 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+backend-1    | 2026-09-23T05:22:48.874347184Z 2026-09-23 05:22:48,874 INFO backend.app.telemetry.ingest telemetry_committed message_id=a84d85c0-07d4-5ef7-98f6-a34fa399851a device_id=CHG-003 committed_at=2026-09-23T05:22:48.874093+00:00
+backend-1    | 2026-09-23T05:22:48.896630558Z 2026-09-23 05:22:48,896 INFO backend.app.telemetry.ingest telemetry_committed message_id=15387a90-2e1c-57af-a3f1-48f8837ec52b device_id=CHG-001 committed_at=2026-09-23T05:22:48.896289+00:00
+backend-1    | 2026-09-23T05:22:49.647228401Z INFO:     172.21.0.5:60796 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:49.648034731Z INFO:     172.21.0.5:60810 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:49.648688161Z INFO:     172.21.0.5:60806 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:49.783611810Z INFO:     172.21.0.5:60816 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:50.542519858Z 2026-09-23 05:22:50,542 INFO backend.app.telemetry.ingest telemetry_committed message_id=b95d1400-6684-5af3-8403-f400028be717 device_id=CHG-002 committed_at=2026-09-23T05:22:50.542201+00:00
+backend-1    | 2026-09-23T05:22:50.982625280Z 2026-09-23 05:22:50,982 INFO backend.app.telemetry.ingest telemetry_committed message_id=92ffd334-297f-5651-a79c-7e98ecaff969 device_id=CHG-003 committed_at=2026-09-23T05:22:50.982337+00:00
+backend-1    | 2026-09-23T05:22:50.991659667Z INFO:     127.0.0.1:37592 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:51.003399354Z 2026-09-23 05:22:51,003 INFO backend.app.telemetry.ingest telemetry_committed message_id=15a6ff50-a953-552d-a349-31876d0316fb device_id=CHG-001 committed_at=2026-09-23T05:22:51.003197+00:00
+backend-1    | 2026-09-23T05:22:51.664499218Z INFO:     172.21.0.5:60836 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:51.666073234Z INFO:     172.21.0.5:60834 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:51.667154978Z INFO:     172.21.0.5:60826 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:51.816744986Z INFO:     172.21.0.5:60840 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:52.591024968Z 2026-09-23 05:22:52,590 INFO backend.app.telemetry.ingest telemetry_committed message_id=c89ccd2b-7e7f-5630-a039-a5fb1e242298 device_id=CHG-002 committed_at=2026-09-23T05:22:52.590736+00:00
+backend-1    | 2026-09-23T05:22:53.029582573Z 2026-09-23 05:22:53,029 INFO backend.app.telemetry.ingest telemetry_committed message_id=52e6cd3c-fdca-54b6-8d8c-11d39fa57fc6 device_id=CHG-003 committed_at=2026-09-23T05:22:53.029403+00:00
+backend-1    | 2026-09-23T05:22:53.069917070Z 2026-09-23 05:22:53,069 INFO backend.app.telemetry.ingest telemetry_committed message_id=27c0d467-8f4e-56d7-b7a3-b785a0dbca4a device_id=CHG-001 committed_at=2026-09-23T05:22:53.069650+00:00
+backend-1    | 2026-09-23T05:22:53.114093516Z INFO:     127.0.0.1:37608 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:53.681833269Z INFO:     172.21.0.5:60850 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:53.682292831Z INFO:     172.21.0.5:60868 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:53.683420410Z INFO:     172.21.0.5:60864 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:53.849824990Z INFO:     172.21.0.5:60872 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:54.634006628Z 2026-09-23 05:22:54,633 INFO backend.app.telemetry.ingest telemetry_committed message_id=4592218a-be5d-5f0f-8e14-890abe057f00 device_id=CHG-002 committed_at=2026-09-23T05:22:54.633692+00:00
+simulator-1  | 2026-09-23T05:23:23.558751231Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=adc014a5-9feb-581d-ab04-82b94cef412e
+simulator-1  | 2026-09-23T05:23:23.660214708Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=e9b5cac1-c96e-5dfe-9397-12b62c3c36c1
+simulator-1  | 2026-09-23T05:23:25.286886925Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=341b2eb4-bb1c-5f22-b75b-b5590bd35f62
+simulator-1  | 2026-09-23T05:23:25.607835799Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=5424315f-1341-57c2-86e2-c840aeaa5db3
+simulator-1  | 2026-09-23T05:23:25.706651082Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=c804a179-6890-5813-b883-ebe43a9ca2fe
+simulator-1  | 2026-09-23T05:23:27.221914009Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=397496a1-1454-5d17-a736-1cbd38213db8
+simulator-1  | 2026-09-23T05:23:27.667686034Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=3639b37d-7e54-5ba8-8f6e-05f85a0a7254
+simulator-1  | 2026-09-23T05:23:27.750748619Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=cba7e430-04d8-53a7-a36d-b47176534672
+simulator-1  | 2026-09-23T05:23:29.277680387Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=2565bc69-21c0-5fb8-8c30-8f0c5ef42204
+simulator-1  | 2026-09-23T05:23:29.726688104Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=a845746b-f6eb-5fe0-ad6a-fc974ff5ebcb
+simulator-1  | 2026-09-23T05:23:29.805011764Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=17db70bd-3aec-5fbd-adc3-84aa30f9768e
+simulator-1  | 2026-09-23T05:23:30.372839293Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=657ae953-454e-4ca3-a8b0-6883a8ee28f4
+simulator-1  | 2026-09-23T05:23:30.429125194Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=c430b76a-7225-48ce-ab96-d7e7dfee2767
+simulator-1  | 2026-09-23T05:23:30.508887658Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=76c6025e-7f8c-4749-ac3b-aa6d1e38dac9
+simulator-1  | 2026-09-23T05:23:31.359644619Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=d9512641-80b1-56b9-a2e6-61fe85f2e74c
+simulator-1  | 2026-09-23T05:23:31.787667056Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=03312a88-5a71-5546-8203-fd8b35052c35
+simulator-1  | 2026-09-23T05:23:31.886051596Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=3803f517-5630-50b8-ad35-b35ab2dae752
+simulator-1  | 2026-09-23T05:23:33.396141633Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=5b4108ad-c0a4-5409-89aa-281c8fd26519
+simulator-1  | 2026-09-23T05:23:33.825794061Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=841d7f52-8bd1-563c-b996-1ff378fb9095
+simulator-1  | 2026-09-23T05:23:33.923110191Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=d53dbc9b-f728-5270-9b55-2f2b9cdab21c
+simulator-1  | 2026-09-23T05:23:35.434053473Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=35834f57-60cc-52d7-a692-01dbed5e2da8
+simulator-1  | 2026-09-23T05:23:35.884929206Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=847bc200-27c1-52d7-ab42-88f53d863d6b
+simulator-1  | 2026-09-23T05:23:35.961429429Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=7c238fe6-d95e-569f-8b2e-389607d2927b
+simulator-1  | 2026-09-23T05:23:37.474756345Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=bd26ee76-161e-5559-8929-ca3b4d47bc8d
+simulator-1  | 2026-09-23T05:23:37.941561082Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=861418e0-bf48-55da-9ddb-95dabbf66630
+simulator-1  | 2026-09-23T05:23:38.004169831Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=bb6d06ad-0d54-528b-bebf-370f06179e57
+simulator-1  | 2026-09-23T05:23:39.514421428Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=01db2511-9a2d-5b44-8ede-4e5252cf3af6
+simulator-1  | 2026-09-23T05:23:40.000716490Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=f65252cd-59e9-5389-8a67-f8196259cfc0
+simulator-1  | 2026-09-23T05:23:40.039508918Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=481c5d2b-64b4-5892-9a01-8d70a9432ba7
+simulator-1  | 2026-09-23T05:23:40.408644064Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=f2460bd0-d3fc-43ec-b819-94f75498fd93
+simulator-1  | 2026-09-23T05:23:40.453924445Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=8394fe17-6745-4951-8232-adc714cbf02e
+simulator-1  | 2026-09-23T05:23:40.517499086Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=8a9c8799-85cf-45dd-be31-9bc1e3447e1b
+simulator-1  | 2026-09-23T05:23:41.542582185Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=fbd3cd96-d924-5249-b4e4-0b997df82287
+simulator-1  | 2026-09-23T05:23:42.002296145Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=fd51cbaf-30c2-5cd9-9a02-cb4dd4478f90
+simulator-1  | 2026-09-23T05:23:42.063357378Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=68a5cbe8-c5cf-564c-8444-6df3a5f9f675
+simulator-1  | 2026-09-23T05:23:43.574771739Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=2766d2be-fcda-5652-9268-9ccca5754bfb
+simulator-1  | 2026-09-23T05:23:44.066763949Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=0667f3b7-651a-5310-b7cb-0dab5b674f41
+simulator-1  | 2026-09-23T05:23:44.097081197Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=048226ac-312f-5af1-8035-93a222e5367e
+frontend-1   | 2026-09-23T05:22:55.884841989Z 172.21.0.1 - - [23/Sep/2026:05:22:55 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:57.717894272Z 172.21.0.1 - - [23/Sep/2026:05:22:57 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:57.718780894Z 172.21.0.1 - - [23/Sep/2026:05:22:57 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:57.718992286Z 172.21.0.1 - - [23/Sep/2026:05:22:57 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:57.918738623Z 172.21.0.1 - - [23/Sep/2026:05:22:57 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4786 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:59.735876437Z 172.21.0.1 - - [23/Sep/2026:05:22:59 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:59.735977107Z 172.21.0.1 - - [23/Sep/2026:05:22:59 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:59.736942389Z 172.21.0.1 - - [23/Sep/2026:05:22:59 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:22:59.952045251Z 172.21.0.1 - - [23/Sep/2026:05:22:59 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4773 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:01.752984227Z 172.21.0.1 - - [23/Sep/2026:05:23:01 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:01.753920687Z 172.21.0.1 - - [23/Sep/2026:05:23:01 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:01.754351875Z 172.21.0.1 - - [23/Sep/2026:05:23:01 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:01.983606871Z 172.21.0.1 - - [23/Sep/2026:05:23:01 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4711 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:03.770761807Z 172.21.0.1 - - [23/Sep/2026:05:23:03 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:03.771321128Z 172.21.0.1 - - [23/Sep/2026:05:23:03 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:03.771861363Z 172.21.0.1 - - [23/Sep/2026:05:23:03 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:04.018997269Z 172.21.0.1 - - [23/Sep/2026:05:23:04 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4786 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:05.788105398Z 172.21.0.1 - - [23/Sep/2026:05:23:05 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:05.788954098Z 172.21.0.1 - - [23/Sep/2026:05:23:05 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:05.789482080Z 172.21.0.1 - - [23/Sep/2026:05:23:05 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:06.051763146Z 172.21.0.1 - - [23/Sep/2026:05:23:06 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:07.807083797Z 172.21.0.1 - - [23/Sep/2026:05:23:07 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:07.807155718Z 172.21.0.1 - - [23/Sep/2026:05:23:07 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:07.807332303Z 172.21.0.1 - - [23/Sep/2026:05:23:07 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:08.084213629Z 172.21.0.1 - - [23/Sep/2026:05:23:08 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4786 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:09.825818785Z 172.21.0.1 - - [23/Sep/2026:05:23:09 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:09.826636295Z 172.21.0.1 - - [23/Sep/2026:05:23:09 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:09.827374365Z 172.21.0.1 - - [23/Sep/2026:05:23:09 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:10.116835917Z 172.21.0.1 - - [23/Sep/2026:05:23:10 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4773 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:11.846331730Z 172.21.0.1 - - [23/Sep/2026:05:23:11 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:11.847102553Z 172.21.0.1 - - [23/Sep/2026:05:23:11 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:11.848694289Z 172.21.0.1 - - [23/Sep/2026:05:23:11 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:12.155087482Z 172.21.0.1 - - [23/Sep/2026:05:23:12 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4713 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:13.869681401Z 172.21.0.1 - - [23/Sep/2026:05:23:13 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:13.871524959Z 172.21.0.1 - - [23/Sep/2026:05:23:13 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:13.872524356Z 172.21.0.1 - - [23/Sep/2026:05:23:13 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:14.192463032Z 172.21.0.1 - - [23/Sep/2026:05:23:14 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:15.879368815Z 172.21.0.1 - - [23/Sep/2026:05:23:15 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:15.884436233Z 172.21.0.1 - - [23/Sep/2026:05:23:15 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:15.884458665Z 172.21.0.1 - - [23/Sep/2026:05:23:15 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:16.227841453Z 172.21.0.1 - - [23/Sep/2026:05:23:16 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4785 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:17.887635791Z 172.21.0.1 - - [23/Sep/2026:05:23:17 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:17.897720671Z 172.21.0.1 - - [23/Sep/2026:05:23:17 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:17.897780565Z 172.21.0.1 - - [23/Sep/2026:05:23:17 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:18.259547926Z 172.21.0.1 - - [23/Sep/2026:05:23:18 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4783 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:19.897063344Z 172.21.0.1 - - [23/Sep/2026:05:23:19 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:19.910763007Z 172.21.0.1 - - [23/Sep/2026:05:23:19 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:19.910781472Z 172.21.0.1 - - [23/Sep/2026:05:23:19 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:20.298201851Z 172.21.0.1 - - [23/Sep/2026:05:23:20 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4770 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+backend-1    | 2026-09-23T05:22:55.073111051Z 2026-09-23 05:22:55,072 INFO backend.app.telemetry.ingest telemetry_committed message_id=fb2d27c3-89b6-5016-8d5a-3b53032ca20b device_id=CHG-003 committed_at=2026-09-23T05:22:55.072835+00:00
+backend-1    | 2026-09-23T05:22:55.090771083Z 2026-09-23 05:22:55,090 INFO backend.app.telemetry.ingest telemetry_committed message_id=c779b23e-de9c-5204-a612-6929ca1caf21 device_id=CHG-001 committed_at=2026-09-23T05:22:55.090483+00:00
+backend-1    | 2026-09-23T05:22:55.245522056Z INFO:     127.0.0.1:37622 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:55.699485809Z INFO:     172.21.0.5:60898 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:55.699888747Z INFO:     172.21.0.5:60892 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:55.700417630Z INFO:     172.21.0.5:60876 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:55.884506692Z INFO:     172.21.0.5:60900 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:56.673173190Z 2026-09-23 05:22:56,672 INFO backend.app.telemetry.ingest telemetry_committed message_id=a5821d8a-2d48-5c85-b25d-b9e8e50e6bf5 device_id=CHG-002 committed_at=2026-09-23T05:22:56.672889+00:00
+backend-1    | 2026-09-23T05:22:57.106257774Z 2026-09-23 05:22:57,106 INFO backend.app.telemetry.ingest telemetry_committed message_id=b2e0027b-08c3-5d80-9c34-4944732c61a8 device_id=CHG-003 committed_at=2026-09-23T05:22:57.105985+00:00
+backend-1    | 2026-09-23T05:22:57.125431686Z 2026-09-23 05:22:57,125 INFO backend.app.telemetry.ingest telemetry_committed message_id=83bec956-2c58-5415-a817-b7257941e84d device_id=CHG-001 committed_at=2026-09-23T05:22:57.125244+00:00
+backend-1    | 2026-09-23T05:22:57.363765666Z INFO:     127.0.0.1:37642 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:57.717484815Z INFO:     172.21.0.5:60914 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:57.718217625Z INFO:     172.21.0.5:60904 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:57.718402767Z INFO:     172.21.0.5:60922 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:57.917921172Z INFO:     172.21.0.5:60924 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:58.732816207Z 2026-09-23 05:22:58,732 INFO backend.app.telemetry.ingest telemetry_committed message_id=44c536a2-c127-5121-9f11-e5c1859b8d1d device_id=CHG-002 committed_at=2026-09-23T05:22:58.732511+00:00
+backend-1    | 2026-09-23T05:22:59.175536165Z 2026-09-23 05:22:59,175 INFO backend.app.telemetry.ingest telemetry_committed message_id=e2bc5808-3a97-54ee-98dc-a8ccd839a586 device_id=CHG-003 committed_at=2026-09-23T05:22:59.175258+00:00
+backend-1    | 2026-09-23T05:22:59.213246613Z 2026-09-23 05:22:59,212 INFO backend.app.telemetry.ingest telemetry_committed message_id=e3d9ec3b-16e2-597d-a4ea-da6e869ca080 device_id=CHG-001 committed_at=2026-09-23T05:22:59.212847+00:00
+backend-1    | 2026-09-23T05:22:59.481054333Z INFO:     127.0.0.1:42718 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:22:59.735128557Z INFO:     172.21.0.5:50254 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:59.735510980Z INFO:     172.21.0.5:50258 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:59.736356808Z INFO:     172.21.0.5:50242 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:22:59.951643248Z INFO:     172.21.0.5:50260 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:00.759929727Z 2026-09-23 05:23:00,759 INFO backend.app.telemetry.ingest telemetry_committed message_id=00c38362-4f1c-56f4-afac-2249488d81bb device_id=CHG-002 committed_at=2026-09-23T05:23:00.759635+00:00
+backend-1    | 2026-09-23T05:23:01.206078341Z 2026-09-23 05:23:01,205 INFO backend.app.telemetry.ingest telemetry_committed message_id=a76a95bc-ee40-5589-81f0-f280dfab88ca device_id=CHG-003 committed_at=2026-09-23T05:23:01.205786+00:00
+backend-1    | 2026-09-23T05:23:01.247359233Z 2026-09-23 05:23:01,247 INFO backend.app.telemetry.ingest telemetry_committed message_id=2a117bc3-8a14-5e35-ae44-b36f84df4ac6 device_id=CHG-001 committed_at=2026-09-23T05:23:01.246976+00:00
+backend-1    | 2026-09-23T05:23:01.605004149Z INFO:     127.0.0.1:42722 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:01.752624698Z INFO:     172.21.0.5:50268 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:01.753335918Z INFO:     172.21.0.5:50286 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:01.753937950Z INFO:     172.21.0.5:50274 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:01.983134944Z INFO:     172.21.0.5:50300 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:02.808827816Z 2026-09-23 05:23:02,808 INFO backend.app.telemetry.ingest telemetry_committed message_id=780730ac-64ab-5a07-9e0a-51127a34f249 device_id=CHG-002 committed_at=2026-09-23T05:23:02.808492+00:00
+backend-1    | 2026-09-23T05:23:03.253181405Z 2026-09-23 05:23:03,252 INFO backend.app.telemetry.ingest telemetry_committed message_id=e2876432-38a4-5702-9a36-225019c1e2b3 device_id=CHG-003 committed_at=2026-09-23T05:23:03.252852+00:00
+backend-1    | 2026-09-23T05:23:03.296616865Z 2026-09-23 05:23:03,296 INFO backend.app.telemetry.ingest telemetry_committed message_id=ba5d94f8-ca81-5713-9087-18f7d9bc5665 device_id=CHG-001 committed_at=2026-09-23T05:23:03.296316+00:00
+backend-1    | 2026-09-23T05:23:03.728676259Z INFO:     127.0.0.1:42740 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:03.770212847Z INFO:     172.21.0.5:50328 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:03.771044373Z INFO:     172.21.0.5:50322 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:03.771345464Z INFO:     172.21.0.5:50314 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:04.018510937Z INFO:     172.21.0.5:50332 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:04.860510682Z 2026-09-23 05:23:04,860 INFO backend.app.telemetry.ingest telemetry_committed message_id=05dc649b-ed6c-5ceb-989e-045121760735 device_id=CHG-002 committed_at=2026-09-23T05:23:04.860203+00:00
+backend-1    | 2026-09-23T05:23:05.320294429Z 2026-09-23 05:23:05,320 INFO backend.app.telemetry.ingest telemetry_committed message_id=64c5c426-e207-5454-b4c7-df89774cc22d device_id=CHG-003 committed_at=2026-09-23T05:23:05.319970+00:00
+backend-1    | 2026-09-23T05:23:05.338980572Z 2026-09-23 05:23:05,338 INFO backend.app.telemetry.ingest telemetry_committed message_id=05a45497-b60c-57d3-a152-38819ba0ed8d device_id=CHG-001 committed_at=2026-09-23T05:23:05.338597+00:00
+backend-1    | 2026-09-23T05:23:05.787613124Z INFO:     172.21.0.5:50348 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:05.788931305Z INFO:     172.21.0.5:50372 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+frontend-1   | 2026-09-23T05:23:21.905913402Z 172.21.0.1 - - [23/Sep/2026:05:23:21 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:21.923950036Z 172.21.0.1 - - [23/Sep/2026:05:23:21 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:21.924746548Z 172.21.0.1 - - [23/Sep/2026:05:23:21 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:22.335787355Z 172.21.0.1 - - [23/Sep/2026:05:23:22 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4774 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:23.914201744Z 172.21.0.1 - - [23/Sep/2026:05:23:23 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:23.936847473Z 172.21.0.1 - - [23/Sep/2026:05:23:23 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:23.936867210Z 172.21.0.1 - - [23/Sep/2026:05:23:23 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:24.368175973Z 172.21.0.1 - - [23/Sep/2026:05:23:24 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4788 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:25.922969414Z 172.21.0.1 - - [23/Sep/2026:05:23:25 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:25.948942924Z 172.21.0.1 - - [23/Sep/2026:05:23:25 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:25.949100604Z 172.21.0.1 - - [23/Sep/2026:05:23:25 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:26.402606823Z 172.21.0.1 - - [23/Sep/2026:05:23:26 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4726 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:27.931296780Z 172.21.0.1 - - [23/Sep/2026:05:23:27 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:27.962218151Z 172.21.0.1 - - [23/Sep/2026:05:23:27 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:27.962797560Z 172.21.0.1 - - [23/Sep/2026:05:23:27 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:28.435972146Z 172.21.0.1 - - [23/Sep/2026:05:23:28 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4779 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:29.940016032Z 172.21.0.1 - - [23/Sep/2026:05:23:29 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:29.974981843Z 172.21.0.1 - - [23/Sep/2026:05:23:29 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:29.975044982Z 172.21.0.1 - - [23/Sep/2026:05:23:29 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:30.474043354Z 172.21.0.1 - - [23/Sep/2026:05:23:30 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4770 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:31.948352290Z 172.21.0.1 - - [23/Sep/2026:05:23:31 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:31.987727372Z 172.21.0.1 - - [23/Sep/2026:05:23:31 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:31.987955228Z 172.21.0.1 - - [23/Sep/2026:05:23:31 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:32.508077188Z 172.21.0.1 - - [23/Sep/2026:05:23:32 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:33.957826708Z 172.21.0.1 - - [23/Sep/2026:05:23:33 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:34.001286414Z 172.21.0.1 - - [23/Sep/2026:05:23:34 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:34.001362558Z 172.21.0.1 - - [23/Sep/2026:05:23:34 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:34.541604301Z 172.21.0.1 - - [23/Sep/2026:05:23:34 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4781 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:34.960184247Z 172.21.0.1 - - [23/Sep/2026:05:23:34 +0000] "GET /api/test/runtime HTTP/1.1" 200 171 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:23:35.968631164Z 172.21.0.1 - - [23/Sep/2026:05:23:35 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:36.016091471Z 172.21.0.1 - - [23/Sep/2026:05:23:36 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:36.016295127Z 172.21.0.1 - - [23/Sep/2026:05:23:36 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:36.576648712Z 172.21.0.1 - - [23/Sep/2026:05:23:36 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4778 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:37.977267919Z 172.21.0.1 - - [23/Sep/2026:05:23:37 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:38.029070064Z 172.21.0.1 - - [23/Sep/2026:05:23:38 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:38.029206483Z 172.21.0.1 - - [23/Sep/2026:05:23:38 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:38.609668238Z 172.21.0.1 - - [23/Sep/2026:05:23:38 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4781 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:39.985698527Z 172.21.0.1 - - [23/Sep/2026:05:23:39 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:40.044071068Z 172.21.0.1 - - [23/Sep/2026:05:23:40 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:40.044175943Z 172.21.0.1 - - [23/Sep/2026:05:23:40 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:40.643646969Z 172.21.0.1 - - [23/Sep/2026:05:23:40 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4784 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:41.994022277Z 172.21.0.1 - - [23/Sep/2026:05:23:41 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:42.056926296Z 172.21.0.1 - - [23/Sep/2026:05:23:42 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:42.057423539Z 172.21.0.1 - - [23/Sep/2026:05:23:42 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:42.678557394Z 172.21.0.1 - - [23/Sep/2026:05:23:42 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4721 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:44.002762479Z 172.21.0.1 - - [23/Sep/2026:05:23:44 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:44.073130109Z 172.21.0.1 - - [23/Sep/2026:05:23:44 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:44.074388867Z 172.21.0.1 - - [23/Sep/2026:05:23:44 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 5179 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:44.712508627Z 172.21.0.1 - - [23/Sep/2026:05:23:44 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 4779 "http://127.0.0.1:44714/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T05:23:44.967622649Z 172.21.0.1 - - [23/Sep/2026:05:23:44 +0000] "GET /api/devices/CHG-001/telemetry?from=2026-09-23T05:22:33.641244+00:00&to=2026-09-23T05:23:33.641244+00:00 HTTP/1.1" 422 136 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:23:05.789162313Z INFO:     172.21.0.5:50362 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:05.856070244Z INFO:     127.0.0.1:42752 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:06.051419333Z INFO:     172.21.0.5:50386 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:06.910700537Z 2026-09-23 05:23:06,910 INFO backend.app.telemetry.ingest telemetry_committed message_id=86bf7559-2475-5abb-9453-ecf61d557e7d device_id=CHG-002 committed_at=2026-09-23T05:23:06.910436+00:00
+backend-1    | 2026-09-23T05:23:07.343578415Z 2026-09-23 05:23:07,343 INFO backend.app.telemetry.ingest telemetry_committed message_id=0739fc36-121f-59e3-8655-30a8dd502403 device_id=CHG-003 committed_at=2026-09-23T05:23:07.343303+00:00
+backend-1    | 2026-09-23T05:23:07.360888417Z 2026-09-23 05:23:07,360 INFO backend.app.telemetry.ingest telemetry_committed message_id=a929fd4c-a39f-545e-a904-fa96dc659349 device_id=CHG-001 committed_at=2026-09-23T05:23:07.360559+00:00
+backend-1    | 2026-09-23T05:23:07.805654760Z INFO:     172.21.0.5:50402 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:07.807082599Z INFO:     172.21.0.5:50390 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:07.807144126Z INFO:     172.21.0.5:50388 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:07.985668850Z INFO:     127.0.0.1:42776 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:08.083768535Z INFO:     172.21.0.5:50416 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:08.961704922Z 2026-09-23 05:23:08,961 INFO backend.app.telemetry.ingest telemetry_committed message_id=7a4ad177-b0bf-51ed-bc26-f8f99250e4a6 device_id=CHG-002 committed_at=2026-09-23T05:23:08.961397+00:00
+backend-1    | 2026-09-23T05:23:09.385385342Z 2026-09-23 05:23:09,385 INFO backend.app.telemetry.ingest telemetry_committed message_id=ab8857b1-27c6-53fc-9408-150e612b24db device_id=CHG-003 committed_at=2026-09-23T05:23:09.385117+00:00
+backend-1    | 2026-09-23T05:23:09.402107167Z 2026-09-23 05:23:09,401 INFO backend.app.telemetry.ingest telemetry_committed message_id=041271dc-cde5-51a0-86ad-ab6887efad85 device_id=CHG-001 committed_at=2026-09-23T05:23:09.401818+00:00
+backend-1    | 2026-09-23T05:23:09.825439615Z INFO:     172.21.0.5:36856 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:09.826173387Z INFO:     172.21.0.5:36864 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:09.826773786Z INFO:     172.21.0.5:36858 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:10.116475904Z INFO:     172.21.0.5:36870 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:10.122300748Z INFO:     127.0.0.1:57102 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:10.945845609Z 2026-09-23 05:23:10,945 INFO backend.app.telemetry.ingest telemetry_committed message_id=fe6e2c00-f176-5969-b3dc-e4986b7b21f9 device_id=CHG-002 committed_at=2026-09-23T05:23:10.945240+00:00
+backend-1    | 2026-09-23T05:23:11.408819199Z 2026-09-23 05:23:11,408 INFO backend.app.telemetry.ingest telemetry_committed message_id=56fcaa3a-c046-5b9b-86da-09b962b9d01f device_id=CHG-001 committed_at=2026-09-23T05:23:11.408332+00:00
+backend-1    | 2026-09-23T05:23:11.466376789Z 2026-09-23 05:23:11,466 INFO backend.app.telemetry.ingest telemetry_committed message_id=49ebac79-4b1d-5bb2-89d3-3e522aac39ed device_id=CHG-003 committed_at=2026-09-23T05:23:11.466086+00:00
+backend-1    | 2026-09-23T05:23:11.845729407Z INFO:     172.21.0.5:36902 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:11.846327843Z INFO:     172.21.0.5:36886 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:11.846632431Z INFO:     172.21.0.5:36908 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:12.154362918Z INFO:     172.21.0.5:36916 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:12.269688370Z INFO:     127.0.0.1:57130 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:12.980605385Z 2026-09-23 05:23:12,980 INFO backend.app.telemetry.ingest telemetry_committed message_id=8b5f4681-8fcf-5591-891b-dd8f3eb73637 device_id=CHG-002 committed_at=2026-09-23T05:23:12.980268+00:00
+backend-1    | 2026-09-23T05:23:13.443384171Z 2026-09-23 05:23:13,443 INFO backend.app.telemetry.ingest telemetry_committed message_id=5d6b4bcf-c4fb-521a-82c4-26d461225a78 device_id=CHG-001 committed_at=2026-09-23T05:23:13.443090+00:00
+backend-1    | 2026-09-23T05:23:13.500816837Z 2026-09-23 05:23:13,500 INFO backend.app.telemetry.ingest telemetry_committed message_id=471542df-acb2-5858-83a0-4ad3c076f1f3 device_id=CHG-003 committed_at=2026-09-23T05:23:13.500494+00:00
+backend-1    | 2026-09-23T05:23:13.869008997Z INFO:     172.21.0.5:36922 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:13.871017085Z INFO:     172.21.0.5:36938 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:13.872524095Z INFO:     172.21.0.5:36954 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:14.191993632Z INFO:     172.21.0.5:36962 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:14.402271667Z INFO:     127.0.0.1:57134 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:15.030265199Z 2026-09-23 05:23:15,030 INFO backend.app.telemetry.ingest telemetry_committed message_id=d4fd1731-3d4b-51cf-a9e1-2605a3c5ee7b device_id=CHG-002 committed_at=2026-09-23T05:23:15.029991+00:00
+backend-1    | 2026-09-23T05:23:15.472683907Z 2026-09-23 05:23:15,472 INFO backend.app.telemetry.ingest telemetry_committed message_id=83c1dc2a-39d8-5ff9-a99f-8331ed4f9e9f device_id=CHG-001 committed_at=2026-09-23T05:23:15.472386+00:00
+backend-1    | 2026-09-23T05:23:15.548653603Z 2026-09-23 05:23:15,548 INFO backend.app.telemetry.ingest telemetry_committed message_id=dd07badc-ecc5-5cca-88a6-65b454f1da23 device_id=CHG-003 committed_at=2026-09-23T05:23:15.548319+00:00
+backend-1    | 2026-09-23T05:23:15.878835609Z INFO:     172.21.0.5:36968 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:15.883845171Z INFO:     172.21.0.5:36982 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:15.884082562Z INFO:     172.21.0.5:36980 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:16.227350612Z INFO:     172.21.0.5:36996 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:16.519710373Z INFO:     127.0.0.1:57146 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:17.059425081Z 2026-09-23 05:23:17,059 INFO backend.app.telemetry.ingest telemetry_committed message_id=dd02681c-5284-5d56-92e4-5e9ac425117d device_id=CHG-002 committed_at=2026-09-23T05:23:17.059193+00:00
+backend-1    | 2026-09-23T05:23:17.506692346Z 2026-09-23 05:23:17,506 INFO backend.app.telemetry.ingest telemetry_committed message_id=105d3dba-c414-5e47-a8f1-a54ef52d8301 device_id=CHG-001 committed_at=2026-09-23T05:23:17.506374+00:00
+backend-1    | 2026-09-23T05:23:17.580328548Z 2026-09-23 05:23:17,580 INFO backend.app.telemetry.ingest telemetry_committed message_id=3dd3060a-a9dd-5ec1-828e-2027860bc736 device_id=CHG-003 committed_at=2026-09-23T05:23:17.580059+00:00
+backend-1    | 2026-09-23T05:23:17.887228027Z INFO:     172.21.0.5:37004 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:17.897138210Z INFO:     172.21.0.5:37018 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:17.897374709Z INFO:     172.21.0.5:37024 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:18.259162996Z INFO:     172.21.0.5:60882 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:18.646308585Z INFO:     127.0.0.1:60076 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:19.107760574Z 2026-09-23 05:23:19,107 INFO backend.app.telemetry.ingest telemetry_committed message_id=9ab47425-934b-5388-9009-c9268e7cea0d device_id=CHG-002 committed_at=2026-09-23T05:23:19.107438+00:00
+backend-1    | 2026-09-23T05:23:19.537268147Z 2026-09-23 05:23:19,537 INFO backend.app.telemetry.ingest telemetry_committed message_id=b7b59adf-1cca-52e3-b491-52e1884c0848 device_id=CHG-001 committed_at=2026-09-23T05:23:19.537003+00:00
+backend-1    | 2026-09-23T05:23:19.632083970Z 2026-09-23 05:23:19,631 INFO backend.app.telemetry.ingest telemetry_committed message_id=1cc727e4-9ade-5515-a49f-e47d5f05fd55 device_id=CHG-003 committed_at=2026-09-23T05:23:19.631731+00:00
+backend-1    | 2026-09-23T05:23:19.896664868Z INFO:     172.21.0.5:60896 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:19.910027658Z INFO:     172.21.0.5:60910 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:19.910317240Z INFO:     172.21.0.5:60924 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:20.297818193Z INFO:     172.21.0.5:60926 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:20.778319046Z INFO:     127.0.0.1:60082 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:21.124187182Z 2026-09-23 05:23:21,123 INFO backend.app.telemetry.ingest telemetry_committed message_id=da43d75f-4095-5898-8134-d5c4090bcf4f device_id=CHG-002 committed_at=2026-09-23T05:23:21.123883+00:00
+backend-1    | 2026-09-23T05:23:21.554681381Z 2026-09-23 05:23:21,554 INFO backend.app.telemetry.ingest telemetry_committed message_id=b970a2cb-db65-53b1-b918-0c42e37f3c3d device_id=CHG-001 committed_at=2026-09-23T05:23:21.554391+00:00
+backend-1    | 2026-09-23T05:23:21.643472975Z 2026-09-23 05:23:21,643 INFO backend.app.telemetry.ingest telemetry_committed message_id=21b74acd-3b10-5a01-b960-6c60fc43edd5 device_id=CHG-003 committed_at=2026-09-23T05:23:21.643173+00:00
+backend-1    | 2026-09-23T05:23:21.905508935Z INFO:     172.21.0.5:60930 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:21.923616775Z INFO:     172.21.0.5:60946 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:21.924283459Z INFO:     172.21.0.5:60940 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:22.335351417Z INFO:     172.21.0.5:60958 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:22.905221774Z INFO:     127.0.0.1:60104 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:23.168344140Z 2026-09-23 05:23:23,168 INFO backend.app.telemetry.ingest telemetry_committed message_id=0ee873d7-efa5-5a0a-a83e-6809d3097d9a device_id=CHG-002 committed_at=2026-09-23T05:23:23.168040+00:00
+backend-1    | 2026-09-23T05:23:23.571042720Z 2026-09-23 05:23:23,570 INFO backend.app.telemetry.ingest telemetry_committed message_id=adc014a5-9feb-581d-ab04-82b94cef412e device_id=CHG-001 committed_at=2026-09-23T05:23:23.570761+00:00
+backend-1    | 2026-09-23T05:23:23.672771016Z 2026-09-23 05:23:23,672 INFO backend.app.telemetry.ingest telemetry_committed message_id=e9b5cac1-c96e-5dfe-9397-12b62c3c36c1 device_id=CHG-003 committed_at=2026-09-23T05:23:23.672478+00:00
+backend-1    | 2026-09-23T05:23:23.913818340Z INFO:     172.21.0.5:60974 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:23.936135903Z INFO:     172.21.0.5:60984 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:23.936381258Z INFO:     172.21.0.5:60990 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:24.367743823Z INFO:     172.21.0.5:32772 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:25.033108159Z INFO:     127.0.0.1:60116 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:25.309844071Z 2026-09-23 05:23:25,309 INFO backend.app.telemetry.ingest telemetry_committed message_id=341b2eb4-bb1c-5f22-b75b-b5590bd35f62 device_id=CHG-002 committed_at=2026-09-23T05:23:25.309645+00:00
+backend-1    | 2026-09-23T05:23:25.626064174Z 2026-09-23 05:23:25,625 INFO backend.app.telemetry.ingest telemetry_committed message_id=5424315f-1341-57c2-86e2-c840aeaa5db3 device_id=CHG-001 committed_at=2026-09-23T05:23:25.625790+00:00
+backend-1    | 2026-09-23T05:23:25.729103942Z 2026-09-23 05:23:25,728 INFO backend.app.telemetry.ingest telemetry_committed message_id=c804a179-6890-5813-b883-ebe43a9ca2fe device_id=CHG-003 committed_at=2026-09-23T05:23:25.728694+00:00
+backend-1    | 2026-09-23T05:23:25.922507107Z INFO:     172.21.0.5:32782 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:25.948361300Z INFO:     172.21.0.5:32806 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:25.948607293Z INFO:     172.21.0.5:32790 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:26.402208869Z INFO:     172.21.0.5:32816 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:27.157071254Z INFO:     127.0.0.1:60138 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:27.243233680Z 2026-09-23 05:23:27,242 INFO backend.app.telemetry.ingest telemetry_committed message_id=397496a1-1454-5d17-a736-1cbd38213db8 device_id=CHG-002 committed_at=2026-09-23T05:23:27.242932+00:00
+backend-1    | 2026-09-23T05:23:27.691906689Z 2026-09-23 05:23:27,691 INFO backend.app.telemetry.ingest telemetry_committed message_id=3639b37d-7e54-5ba8-8f6e-05f85a0a7254 device_id=CHG-001 committed_at=2026-09-23T05:23:27.691600+00:00
+backend-1    | 2026-09-23T05:23:27.770332065Z 2026-09-23 05:23:27,770 INFO backend.app.telemetry.ingest telemetry_committed message_id=cba7e430-04d8-53a7-a36d-b47176534672 device_id=CHG-003 committed_at=2026-09-23T05:23:27.770028+00:00
+backend-1    | 2026-09-23T05:23:27.930910861Z INFO:     172.21.0.5:32822 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:27.961772676Z INFO:     172.21.0.5:32830 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:27.962302160Z INFO:     172.21.0.5:32836 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:28.435562318Z INFO:     172.21.0.5:59642 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:29.287199546Z INFO:     127.0.0.1:51104 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:29.301167779Z 2026-09-23 05:23:29,300 INFO backend.app.telemetry.ingest telemetry_committed message_id=2565bc69-21c0-5fb8-8c30-8f0c5ef42204 device_id=CHG-002 committed_at=2026-09-23T05:23:29.300899+00:00
+backend-1    | 2026-09-23T05:23:29.748369901Z 2026-09-23 05:23:29,748 INFO backend.app.telemetry.ingest telemetry_committed message_id=a845746b-f6eb-5fe0-ad6a-fc974ff5ebcb device_id=CHG-001 committed_at=2026-09-23T05:23:29.748075+00:00
+backend-1    | 2026-09-23T05:23:29.825442281Z 2026-09-23 05:23:29,825 INFO backend.app.telemetry.ingest telemetry_committed message_id=17db70bd-3aec-5fbd-adc3-84aa30f9768e device_id=CHG-003 committed_at=2026-09-23T05:23:29.825132+00:00
+backend-1    | 2026-09-23T05:23:29.939549467Z INFO:     172.21.0.5:59648 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:29.974386530Z INFO:     172.21.0.5:59662 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:29.974615688Z INFO:     172.21.0.5:59652 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:30.473641616Z INFO:     172.21.0.5:59666 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:31.382490534Z 2026-09-23 05:23:31,382 INFO backend.app.telemetry.ingest telemetry_committed message_id=d9512641-80b1-56b9-a2e6-61fe85f2e74c device_id=CHG-002 committed_at=2026-09-23T05:23:31.382199+00:00
+backend-1    | 2026-09-23T05:23:31.414902129Z INFO:     127.0.0.1:51126 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:31.809380727Z 2026-09-23 05:23:31,809 INFO backend.app.telemetry.ingest telemetry_committed message_id=03312a88-5a71-5546-8203-fd8b35052c35 device_id=CHG-001 committed_at=2026-09-23T05:23:31.809011+00:00
+backend-1    | 2026-09-23T05:23:31.909596868Z 2026-09-23 05:23:31,909 INFO backend.app.telemetry.ingest telemetry_committed message_id=3803f517-5630-50b8-ad35-b35ab2dae752 device_id=CHG-003 committed_at=2026-09-23T05:23:31.909286+00:00
+backend-1    | 2026-09-23T05:23:31.947972198Z INFO:     172.21.0.5:59670 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:31.987103138Z INFO:     172.21.0.5:59672 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:31.987401989Z INFO:     172.21.0.5:59680 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:32.507565427Z INFO:     172.21.0.5:59692 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:33.418917258Z 2026-09-23 05:23:33,418 INFO backend.app.telemetry.ingest telemetry_committed message_id=5b4108ad-c0a4-5409-89aa-281c8fd26519 device_id=CHG-002 committed_at=2026-09-23T05:23:33.418613+00:00
+backend-1    | 2026-09-23T05:23:33.541175330Z INFO:     127.0.0.1:51136 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:33.845894297Z 2026-09-23 05:23:33,845 INFO backend.app.telemetry.ingest telemetry_committed message_id=841d7f52-8bd1-563c-b996-1ff378fb9095 device_id=CHG-001 committed_at=2026-09-23T05:23:33.845596+00:00
+backend-1    | 2026-09-23T05:23:33.943099666Z 2026-09-23 05:23:33,942 INFO backend.app.telemetry.ingest telemetry_committed message_id=d53dbc9b-f728-5270-9b55-2f2b9cdab21c device_id=CHG-003 committed_at=2026-09-23T05:23:33.942786+00:00
+backend-1    | 2026-09-23T05:23:33.957455504Z INFO:     172.21.0.5:59694 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:34.000613718Z INFO:     172.21.0.5:59716 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:34.000921067Z INFO:     172.21.0.5:59710 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:34.541144299Z INFO:     172.21.0.5:59724 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:34.959725425Z INFO:     172.21.0.5:59730 - "GET /api/test/runtime HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:35.453936909Z 2026-09-23 05:23:35,453 INFO backend.app.telemetry.ingest telemetry_committed message_id=35834f57-60cc-52d7-a692-01dbed5e2da8 device_id=CHG-002 committed_at=2026-09-23T05:23:35.453650+00:00
+backend-1    | 2026-09-23T05:23:35.660652372Z INFO:     127.0.0.1:51156 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:35.925256269Z 2026-09-23 05:23:35,925 INFO backend.app.telemetry.ingest telemetry_committed message_id=847bc200-27c1-52d7-ab42-88f53d863d6b device_id=CHG-001 committed_at=2026-09-23T05:23:35.924975+00:00
+backend-1    | 2026-09-23T05:23:35.968263045Z INFO:     172.21.0.5:59744 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:35.987172873Z 2026-09-23 05:23:35,986 INFO backend.app.telemetry.ingest telemetry_committed message_id=7c238fe6-d95e-569f-8b2e-389607d2927b device_id=CHG-003 committed_at=2026-09-23T05:23:35.986889+00:00
+backend-1    | 2026-09-23T05:23:36.015533072Z INFO:     172.21.0.5:59754 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:36.015787073Z INFO:     172.21.0.5:59758 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:36.576223876Z INFO:     172.21.0.5:59760 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:37.491076052Z 2026-09-23 05:23:37,490 INFO backend.app.telemetry.ingest telemetry_committed message_id=bd26ee76-161e-5559-8929-ca3b4d47bc8d device_id=CHG-002 committed_at=2026-09-23T05:23:37.490768+00:00
+backend-1    | 2026-09-23T05:23:37.788312412Z INFO:     127.0.0.1:51174 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:37.957036023Z 2026-09-23 05:23:37,956 INFO backend.app.telemetry.ingest telemetry_committed message_id=861418e0-bf48-55da-9ddb-95dabbf66630 device_id=CHG-001 committed_at=2026-09-23T05:23:37.956712+00:00
+backend-1    | 2026-09-23T05:23:37.976842378Z INFO:     172.21.0.5:59772 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:38.019288552Z 2026-09-23 05:23:38,019 INFO backend.app.telemetry.ingest telemetry_committed message_id=bb6d06ad-0d54-528b-bebf-370f06179e57 device_id=CHG-003 committed_at=2026-09-23T05:23:38.019004+00:00
+backend-1    | 2026-09-23T05:23:38.028409511Z INFO:     172.21.0.5:59786 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:38.028679513Z INFO:     172.21.0.5:59782 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:38.609268830Z INFO:     172.21.0.5:41886 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:39.529787342Z 2026-09-23 05:23:39,529 INFO backend.app.telemetry.ingest telemetry_committed message_id=01db2511-9a2d-5b44-8ede-4e5252cf3af6 device_id=CHG-002 committed_at=2026-09-23T05:23:39.529466+00:00
+backend-1    | 2026-09-23T05:23:39.910198950Z INFO:     127.0.0.1:35476 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:39.985345267Z INFO:     172.21.0.5:41892 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:40.015731650Z 2026-09-23 05:23:40,015 INFO backend.app.telemetry.ingest telemetry_committed message_id=f65252cd-59e9-5389-8a67-f8196259cfc0 device_id=CHG-001 committed_at=2026-09-23T05:23:40.015427+00:00
+backend-1    | 2026-09-23T05:23:40.043426104Z INFO:     172.21.0.5:41902 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:40.043730812Z INFO:     172.21.0.5:41898 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:40.057750582Z 2026-09-23 05:23:40,057 INFO backend.app.telemetry.ingest telemetry_committed message_id=481c5d2b-64b4-5892-9a01-8d70a9432ba7 device_id=CHG-003 committed_at=2026-09-23T05:23:40.057423+00:00
+backend-1    | 2026-09-23T05:23:40.643136170Z INFO:     172.21.0.5:41904 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:41.555343116Z 2026-09-23 05:23:41,555 INFO backend.app.telemetry.ingest telemetry_committed message_id=fbd3cd96-d924-5249-b4e4-0b997df82287 device_id=CHG-002 committed_at=2026-09-23T05:23:41.555065+00:00
+backend-1    | 2026-09-23T05:23:41.993656083Z INFO:     172.21.0.5:41920 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:42.015820746Z 2026-09-23 05:23:42,015 INFO backend.app.telemetry.ingest telemetry_committed message_id=fd51cbaf-30c2-5cd9-9a02-cb4dd4478f90 device_id=CHG-001 committed_at=2026-09-23T05:23:42.015517+00:00
+backend-1    | 2026-09-23T05:23:42.040324865Z INFO:     127.0.0.1:35486 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:42.056344412Z INFO:     172.21.0.5:41944 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:42.057108652Z INFO:     172.21.0.5:41930 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:42.077063242Z 2026-09-23 05:23:42,076 INFO backend.app.telemetry.ingest telemetry_committed message_id=68a5cbe8-c5cf-564c-8444-6df3a5f9f675 device_id=CHG-003 committed_at=2026-09-23T05:23:42.076763+00:00
+backend-1    | 2026-09-23T05:23:42.678109455Z INFO:     172.21.0.5:41960 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:43.588120746Z 2026-09-23 05:23:43,587 INFO backend.app.telemetry.ingest telemetry_committed message_id=2766d2be-fcda-5652-9268-9ccca5754bfb device_id=CHG-002 committed_at=2026-09-23T05:23:43.587894+00:00
+backend-1    | 2026-09-23T05:23:44.002368571Z INFO:     172.21.0.5:41970 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:44.072539227Z INFO:     172.21.0.5:41980 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:44.074017242Z INFO:     172.21.0.5:41976 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:44.087904830Z 2026-09-23 05:23:44,087 INFO backend.app.telemetry.ingest telemetry_committed message_id=0667f3b7-651a-5310-b7cb-0dab5b674f41 device_id=CHG-001 committed_at=2026-09-23T05:23:44.087637+00:00
+backend-1    | 2026-09-23T05:23:44.110682467Z 2026-09-23 05:23:44,110 INFO backend.app.telemetry.ingest telemetry_committed message_id=048226ac-312f-5af1-8035-93a222e5367e device_id=CHG-003 committed_at=2026-09-23T05:23:44.110390+00:00
+backend-1    | 2026-09-23T05:23:44.162325185Z INFO:     127.0.0.1:35498 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:23:44.712076137Z INFO:     172.21.0.5:41982 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:23:44.967229824Z INFO:     172.21.0.5:41988 - "GET /api/devices/CHG-001/telemetry?from=2026-09-23T05:22:33.641244+00:00&to=2026-09-23T05:23:33.641244+00:00 HTTP/1.0" 422 Unprocessable Entity

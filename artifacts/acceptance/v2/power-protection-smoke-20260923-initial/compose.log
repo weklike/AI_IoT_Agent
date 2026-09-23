@@ -1,0 +1,341 @@
+frontend-1  | 2026-09-23T05:48:51.952835989Z /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-1  | 2026-09-23T05:48:51.952865405Z /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-1  | 2026-09-23T05:48:51.954139302Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-1  | 2026-09-23T05:48:51.969973385Z 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+frontend-1  | 2026-09-23T05:48:51.979999255Z 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+frontend-1  | 2026-09-23T05:48:51.980334000Z /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-1  | 2026-09-23T05:48:51.980531766Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-1  | 2026-09-23T05:48:51.983450409Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+frontend-1  | 2026-09-23T05:48:51.985257642Z /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-1  | 2026-09-23T05:48:51.999982891Z 2026/09/23 05:48:51 [notice] 1#1: using the "epoll" event method
+frontend-1  | 2026-09-23T05:48:52.000002298Z 2026/09/23 05:48:51 [notice] 1#1: nginx/1.28.0
+frontend-1  | 2026-09-23T05:48:52.000005434Z 2026/09/23 05:48:51 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) 
+frontend-1  | 2026-09-23T05:48:52.000007899Z 2026/09/23 05:48:51 [notice] 1#1: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+frontend-1  | 2026-09-23T05:48:52.000010213Z 2026/09/23 05:48:51 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+frontend-1  | 2026-09-23T05:48:52.000763932Z 2026/09/23 05:48:51 [notice] 1#1: start worker processes
+frontend-1  | 2026-09-23T05:48:52.001027488Z 2026/09/23 05:48:51 [notice] 1#1: start worker process 29
+frontend-1  | 2026-09-23T05:48:52.001226410Z 2026/09/23 05:48:51 [notice] 1#1: start worker process 30
+frontend-1  | 2026-09-23T05:48:52.001402584Z 2026/09/23 05:48:51 [notice] 1#1: start worker process 31
+frontend-1  | 2026-09-23T05:48:52.001737950Z 2026/09/23 05:48:51 [notice] 1#1: start worker process 32
+frontend-1  | 2026-09-23T05:48:52.536787969Z 172.22.0.1 - - [23/Sep/2026:05:48:52 +0000] "GET /api/devices HTTP/1.1" 200 1766 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:52.582895287Z 172.22.0.1 - - [23/Sep/2026:05:48:52 +0000] "POST /api/devices/CHG-001/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:52.590916883Z 172.22.0.1 - - [23/Sep/2026:05:48:52 +0000] "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:52.799260403Z 172.22.0.1 - - [23/Sep/2026:05:48:52 +0000] "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:53.006802648Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:53.216017708Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1  | 2026-09-23T05:48:53.423774720Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:53.450700365Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "POST /api/devices/CHG-002/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:53.458835270Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:53.669025460Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:53.877308410Z 172.22.0.1 - - [23/Sep/2026:05:48:53 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+simulator-1  | 2026-09-23T05:48:47.183177055Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=77a5ace3-3208-5474-9575-cf1f107908d3
+simulator-1  | 2026-09-23T05:48:47.183398814Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=76d98430-ae73-5a46-b663-db739082e1d4
+simulator-1  | 2026-09-23T05:48:47.183663967Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=9721f038-7515-5e37-bf05-a7053eab4d2f
+simulator-1  | 2026-09-23T05:48:49.242544470Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=a8106328-4e88-57ab-bc87-b00dfe0e54ae
+simulator-1  | 2026-09-23T05:48:49.242569668Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=945372f8-4709-57d1-b920-e18ada0c6299
+simulator-1  | 2026-09-23T05:48:49.242892440Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=5d8e5098-ffde-5f6c-8c60-ee85eb0b1cb2
+simulator-1  | 2026-09-23T05:48:51.247455946Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=a026933a-c56e-5c75-9267-c9da7fbe7971
+simulator-1  | 2026-09-23T05:48:51.247899725Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=b3daabfa-c4d7-58cd-8003-d2a73fdd0d8b
+simulator-1  | 2026-09-23T05:48:51.279571279Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=c4b39e6f-b161-537d-972d-c9341cb8cd10
+simulator-1  | 2026-09-23T05:48:52.657732755Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=227b7711-4aa7-4b90-a4cf-65db0eb9408b
+simulator-1  | 2026-09-23T05:48:53.293031515Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=b2dec5f9-c877-5444-9651-ff90048c2506
+simulator-1  | 2026-09-23T05:48:53.293461139Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=50aafb29-fff3-5dbe-bef4-666c8eafb67a
+simulator-1  | 2026-09-23T05:48:53.319738405Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=b2ff45a8-fe9b-547a-9030-0fcce1801501
+simulator-1  | 2026-09-23T05:48:53.521793399Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=512d89dc-5cd6-42c0-b374-cb4a6e5c9efc
+simulator-1  | 2026-09-23T05:48:55.317786439Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=b71cbffc-8eef-5965-bca5-a16a64fe575a
+simulator-1  | 2026-09-23T05:48:55.368958462Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=52b01808-a262-513b-b235-5800a7c7b3dc
+simulator-1  | 2026-09-23T05:48:55.369266026Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=b8185f41-f427-5cc0-a3f4-aa59fd213774
+simulator-1  | 2026-09-23T05:48:55.687683076Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=8c1b0c66-e440-4084-bbec-44f00db6e6ae
+simulator-1  | 2026-09-23T05:48:57.182061140Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=4e7e1402-6215-40f6-ac49-3336d044ecf4
+simulator-1  | 2026-09-23T05:48:57.238287342Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=4eb45523-46d4-4d7c-9e8c-20eeb04a72be
+simulator-1  | 2026-09-23T05:48:57.298585348Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=04a31c32-34f3-4978-b796-b6fafdc92ed6
+simulator-1  | 2026-09-23T05:48:57.332652108Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=afb06cde-79da-53d0-902a-823fda4d4b09
+simulator-1  | 2026-09-23T05:48:57.377006404Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=334200f2-6a3f-5358-81d5-c8857a280beb
+simulator-1  | 2026-09-23T05:48:57.417562371Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=e7f85104-31bb-5e72-a347-3fd4045eab89
+simulator-1  | 2026-09-23T05:48:59.346038895Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=63ceaba9-8230-5f11-ac7d-5bba8742d95e
+simulator-1  | 2026-09-23T05:48:59.403376992Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=2d685ea5-d747-5830-9d24-138dd6244250
+mqtt-1      | 2026-09-23T05:48:42.803574043Z chown: /mosquitto/config/mosquitto.conf: Read-only file system
+mqtt-1       | 2026-09-23T05:48:42.807792767Z 1790142522: mosquitto version 2.0.22 starting
+mqtt-1       | 2026-09-23T05:48:42.807809860Z 1790142522: Config loaded from /mosquitto/config/mosquitto.conf.
+mqtt-1       | 2026-09-23T05:48:42.807813837Z 1790142522: Opening ipv4 listen socket on port 1883.
+mqtt-1       | 2026-09-23T05:48:42.808734293Z 1790142522: Opening ipv6 listen socket on port 1883.
+mqtt-1       | 2026-09-23T05:48:42.819070654Z 1790142522: mosquitto version 2.0.22 running
+mqtt-1       | 2026-09-23T05:48:44.870290094Z 1790142524: New connection from 127.0.0.1:52536 on port 1883.
+mqtt-1       | 2026-09-23T05:48:44.871375555Z 1790142524: New client connected from 127.0.0.1:52536 as auto-948C0538-BD00-6AB9-5472-2199151ADBA6 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:44.871596019Z 1790142524: Client auto-948C0538-BD00-6AB9-5472-2199151ADBA6 disconnected.
+mqtt-1       | 2026-09-23T05:48:46.931251936Z 1790142526: New connection from 127.0.0.1:52560 on port 1883.
+mqtt-1       | 2026-09-23T05:48:46.931282814Z 1790142526: New client connected from 127.0.0.1:52560 as auto-4FF224FD-FDA6-278F-4AF2-A03D319B3B43 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:46.931286541Z 1790142526: Client auto-4FF224FD-FDA6-278F-4AF2-A03D319B3B43 disconnected.
+mqtt-1       | 2026-09-23T05:48:47.148819598Z 1790142527: New connection from 172.22.0.3:43837 on port 1883.
+mqtt-1       | 2026-09-23T05:48:47.149042531Z 1790142527: New client connected from 172.22.0.3:43837 as sim-CHG-001-66f30e32-fb0b-4095-b590-ce223d904073 (p2, c1, k15).
+mqtt-1       | 2026-09-23T05:48:47.169757182Z 1790142527: New connection from 172.22.0.3:56199 on port 1883.
+mqtt-1       | 2026-09-23T05:48:47.169892549Z 1790142527: New client connected from 172.22.0.3:56199 as sim-CHG-002-8aa395b8-c927-46e5-9ccd-76d4dd9c1498 (p2, c1, k15).
+mqtt-1       | 2026-09-23T05:48:47.180048307Z 1790142527: New connection from 172.22.0.3:34981 on port 1883.
+mqtt-1       | 2026-09-23T05:48:47.180165727Z 1790142527: New client connected from 172.22.0.3:34981 as sim-CHG-003-7f4c1cd1-4a05-45aa-b549-187bf5f14524 (p2, c1, k15).
+mqtt-1       | 2026-09-23T05:48:48.998535610Z 1790142528: New connection from 127.0.0.1:59196 on port 1883.
+mqtt-1       | 2026-09-23T05:48:48.998558774Z 1790142528: New client connected from 127.0.0.1:59196 as auto-EEEDFA1D-9FB1-D152-EC5A-82EA7F955007 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:48.998732644Z 1790142528: Client auto-EEEDFA1D-9FB1-D152-EC5A-82EA7F955007 disconnected.
+mqtt-1       | 2026-09-23T05:48:49.098081686Z 1790142529: New connection from 172.22.0.4:47687 on port 1883.
+mqtt-1       | 2026-09-23T05:48:49.098200952Z 1790142529: New client connected from 172.22.0.4:47687 as backend-e32cc0ab-5208-4060-80b6-3e45f35138a4 (p2, c1, k15).
+mqtt-1       | 2026-09-23T05:48:51.059264752Z 1790142531: New connection from 127.0.0.1:59234 on port 1883.
+mqtt-1       | 2026-09-23T05:48:51.059775285Z 1790142531: New client connected from 127.0.0.1:59234 as auto-CEAC704C-7EE6-9878-FD64-062A608E53EB (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:51.059783511Z 1790142531: Client auto-CEAC704C-7EE6-9878-FD64-062A608E53EB disconnected.
+mqtt-1       | 2026-09-23T05:48:53.117292077Z 1790142533: New connection from 127.0.0.1:59254 on port 1883.
+mqtt-1       | 2026-09-23T05:48:53.117343094Z 1790142533: New client connected from 127.0.0.1:59254 as auto-B8E18C0C-AA33-F7A9-9B36-1E30369BFFE3 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:53.117577419Z 1790142533: Client auto-B8E18C0C-AA33-F7A9-9B36-1E30369BFFE3 disconnected.
+mqtt-1       | 2026-09-23T05:48:55.173404476Z 1790142535: New connection from 127.0.0.1:59286 on port 1883.
+mqtt-1       | 2026-09-23T05:48:55.173449802Z 1790142535: New client connected from 127.0.0.1:59286 as auto-D33E8309-F47D-8268-65CE-85532CB16B2F (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:55.173462826Z 1790142535: Client auto-D33E8309-F47D-8268-65CE-85532CB16B2F disconnected.
+mqtt-1       | 2026-09-23T05:48:57.230835057Z 1790142537: New connection from 127.0.0.1:59310 on port 1883.
+mqtt-1       | 2026-09-23T05:48:57.230858741Z 1790142537: New client connected from 127.0.0.1:59310 as auto-745F6BF9-ABBE-D6F2-0FFB-36EF22B8CD3C (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:48:57.232091581Z 1790142537: Client auto-745F6BF9-ABBE-D6F2-0FFB-36EF22B8CD3C disconnected.
+mqtt-1       | 2026-09-23T05:48:59.286526654Z 1790142539: New connection from 127.0.0.1:33090 on port 1883.
+simulator-1  | 2026-09-23T05:48:59.445563852Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=8eb590c4-5e20-5307-8c27-a79ace01f9c5
+simulator-1  | 2026-09-23T05:49:01.378058300Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=30a3d5a2-7902-560e-bf54-ee61b10f3101
+simulator-1  | 2026-09-23T05:49:01.433130998Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=82d9262c-dac8-5ac6-88a6-23a98709a8d3
+mqtt-1       | 2026-09-23T05:48:59.286555379Z 1790142539: New client connected from 127.0.0.1:33090 as auto-682701AA-9A79-4B31-A9F8-73A93D14F3F2 (p2, c1, k60).
+simulator-1  | 2026-09-23T05:49:01.473216120Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=cf6a138a-58b6-571e-be7c-b7b6dc0c9798
+frontend-1   | 2026-09-23T05:48:54.085766564Z 172.22.0.1 - - [23/Sep/2026:05:48:54 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+mqtt-1       | 2026-09-23T05:48:59.286959756Z 1790142539: Client auto-682701AA-9A79-4B31-A9F8-73A93D14F3F2 disconnected.
+simulator-1  | 2026-09-23T05:49:03.425914864Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=6f904708-726b-5985-ad23-8ef7fa17214a
+mqtt-1       | 2026-09-23T05:49:01.341299028Z 1790142541: New connection from 127.0.0.1:33110 on port 1883.
+backend-1    | 2026-09-23T05:48:48.850935794Z INFO:     Started server process [1]
+simulator-1  | 2026-09-23T05:49:03.471262471Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=34d29beb-c6c4-5c3d-afd2-53570e5b7811
+backend-1    | 2026-09-23T05:48:48.850973977Z INFO:     Waiting for application startup.
+simulator-1  | 2026-09-23T05:49:03.512718635Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=bd3f1726-e497-5465-93fa-34f3cf116dcd
+frontend-1   | 2026-09-23T05:48:54.294451107Z 172.22.0.1 - - [23/Sep/2026:05:48:54 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:54.503350015Z 172.22.0.1 - - [23/Sep/2026:05:48:54 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+mqtt-1       | 2026-09-23T05:49:01.341334185Z 1790142541: New client connected from 127.0.0.1:33110 as auto-CD6DECB4-3D6C-B14A-2D89-E22E828FF0F0 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:49:01.341650396Z 1790142541: Client auto-CD6DECB4-3D6C-B14A-2D89-E22E828FF0F0 disconnected.
+mqtt-1       | 2026-09-23T05:49:03.407891970Z 1790142543: New connection from 127.0.0.1:33132 on port 1883.
+mqtt-1       | 2026-09-23T05:49:03.407914744Z 1790142543: New client connected from 127.0.0.1:33132 as auto-834141A6-8BEF-B9E3-E5B1-DCF99C9C9479 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:49:03.407919573Z 1790142543: Client auto-834141A6-8BEF-B9E3-E5B1-DCF99C9C9479 disconnected.
+mqtt-1       | 2026-09-23T05:49:05.463657358Z 1790142545: New connection from 127.0.0.1:33166 on port 1883.
+mqtt-1       | 2026-09-23T05:49:05.463681985Z 1790142545: New client connected from 127.0.0.1:33166 as auto-04DBC980-CFEF-AC85-C2CA-68026CAED296 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:49:05.464013684Z 1790142545: Client auto-04DBC980-CFEF-AC85-C2CA-68026CAED296 disconnected.
+mqtt-1       | 2026-09-23T05:49:07.533527648Z 1790142547: New connection from 127.0.0.1:33188 on port 1883.
+mqtt-1       | 2026-09-23T05:49:07.533598067Z 1790142547: New client connected from 127.0.0.1:33188 as auto-B3331A5D-3C1B-64A9-F9CA-03B52390C5C2 (p2, c1, k60).
+mqtt-1       | 2026-09-23T05:49:07.533801122Z 1790142547: Client auto-B3331A5D-3C1B-64A9-F9CA-03B52390C5C2 disconnected.
+simulator-1  | 2026-09-23T05:49:05.476074396Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=0d737afc-d2d6-5e4b-b602-556dea23770b
+simulator-1  | 2026-09-23T05:49:05.511709095Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=7d40bb11-e411-5b49-8a10-ac2e7f00ef84
+simulator-1  | 2026-09-23T05:49:05.547439947Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=7316342a-1a27-5326-a322-7235852cc9f7
+simulator-1  | 2026-09-23T05:49:07.241219262Z INFO:__main__:session_report_attempt device_id=CHG-001 report_id=b73a54bc-a519-464a-ace7-bf2409bb3f61
+simulator-1  | 2026-09-23T05:49:07.282901876Z INFO:__main__:session_report_attempt device_id=CHG-002 report_id=e6add57d-3cb4-424e-80b2-eaf4b96c68a1
+simulator-1  | 2026-09-23T05:49:07.345601215Z INFO:__main__:session_report_attempt device_id=CHG-003 report_id=f70fed0f-9ab3-4c15-809c-1f16b4bf27c1
+simulator-1  | 2026-09-23T05:49:07.467043958Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=6e771c5c-5a48-5231-a2e5-70267d0b9acc
+simulator-1  | 2026-09-23T05:49:07.566241035Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=c2ff0370-f4a7-557c-8168-ef3d37232145
+simulator-1  | 2026-09-23T05:49:07.603447286Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=f8331f85-34e5-517d-b449-fee76ec23c90
+backend-1    | 2026-09-23T05:48:49.078045161Z INFO:     Application startup complete.
+backend-1    | 2026-09-23T05:48:49.088030562Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+backend-1    | 2026-09-23T05:48:49.098836086Z 2026-09-23 05:48:49,098 INFO backend.app.mqtt.client MQTT connected=True
+backend-1    | 2026-09-23T05:48:49.234629634Z 2026-09-23 05:48:49,234 INFO backend.app.telemetry.ingest telemetry_committed message_id=a8106328-4e88-57ab-bc87-b00dfe0e54ae device_id=CHG-001 committed_at=2026-09-23T05:48:49.234308+00:00
+frontend-1   | 2026-09-23T05:48:54.713085441Z 172.22.0.1 - - [23/Sep/2026:05:48:54 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:54.921903484Z 172.22.0.1 - - [23/Sep/2026:05:48:54 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:48:49.251853913Z 2026-09-23 05:48:49,251 INFO backend.app.telemetry.ingest telemetry_committed message_id=945372f8-4709-57d1-b920-e18ada0c6299 device_id=CHG-002 committed_at=2026-09-23T05:48:49.251620+00:00
+backend-1    | 2026-09-23T05:48:49.268064799Z 2026-09-23 05:48:49,267 INFO backend.app.telemetry.ingest telemetry_committed message_id=5d8e5098-ffde-5f6c-8c60-ee85eb0b1cb2 device_id=CHG-003 committed_at=2026-09-23T05:48:49.267783+00:00
+backend-1    | 2026-09-23T05:48:50.865116462Z INFO:     127.0.0.1:33958 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:48:51.264927766Z 2026-09-23 05:48:51,264 INFO backend.app.telemetry.ingest telemetry_committed message_id=a026933a-c56e-5c75-9267-c9da7fbe7971 device_id=CHG-001 committed_at=2026-09-23T05:48:51.264670+00:00
+backend-1    | 2026-09-23T05:48:51.287413156Z 2026-09-23 05:48:51,287 INFO backend.app.telemetry.ingest telemetry_committed message_id=b3daabfa-c4d7-58cd-8003-d2a73fdd0d8b device_id=CHG-002 committed_at=2026-09-23T05:48:51.287152+00:00
+backend-1    | 2026-09-23T05:48:51.309804515Z 2026-09-23 05:48:51,309 INFO backend.app.telemetry.ingest telemetry_committed message_id=c4b39e6f-b161-537d-972d-c9341cb8cd10 device_id=CHG-003 committed_at=2026-09-23T05:48:51.309514+00:00
+backend-1    | 2026-09-23T05:48:52.536349988Z INFO:     172.22.0.5:45476 - "GET /api/devices HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:52.582321916Z INFO:     172.22.0.5:45478 - "POST /api/devices/CHG-001/charging/start HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:48:52.590500717Z INFO:     172.22.0.5:45490 - "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:52.798901251Z INFO:     172.22.0.5:45506 - "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:52.988175367Z INFO:     127.0.0.1:33984 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:48:53.006421004Z INFO:     172.22.0.5:45514 - "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:53.215463226Z INFO:     172.22.0.5:45518 - "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:53.302277306Z 2026-09-23 05:48:53,302 INFO backend.app.telemetry.ingest telemetry_committed message_id=b2dec5f9-c877-5444-9651-ff90048c2506 device_id=CHG-001 committed_at=2026-09-23T05:48:53.302028+00:00
+frontend-1   | 2026-09-23T05:48:55.129865860Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:55.339590162Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:55.547354373Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:55.574679847Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "POST /api/devices/CHG-003/charging/start HTTP/1.1" 202 166 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:55.583893247Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 577 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:55.794297453Z 172.22.0.1 - - [23/Sep/2026:05:48:55 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:48:53.327420541Z 2026-09-23 05:48:53,327 INFO backend.app.telemetry.ingest telemetry_committed message_id=50aafb29-fff3-5dbe-bef4-666c8eafb67a device_id=CHG-002 committed_at=2026-09-23T05:48:53.327148+00:00
+backend-1    | 2026-09-23T05:48:53.372623181Z 2026-09-23 05:48:53,372 INFO backend.app.telemetry.ingest telemetry_committed message_id=b2ff45a8-fe9b-547a-9030-0fcce1801501 device_id=CHG-003 committed_at=2026-09-23T05:48:53.372360+00:00
+backend-1    | 2026-09-23T05:48:53.423371475Z INFO:     172.22.0.5:45524 - "GET /api/device-commands/b0409cc7-8ea8-4414-be8d-08ac8cd473af HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:53.450116778Z INFO:     172.22.0.5:45526 - "POST /api/devices/CHG-002/charging/start HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:48:53.458362122Z INFO:     172.22.0.5:45536 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:53.668594893Z INFO:     172.22.0.5:45550 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:53.876919061Z INFO:     172.22.0.5:45560 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:54.085302002Z INFO:     172.22.0.5:45568 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:54.293976977Z INFO:     172.22.0.5:45572 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:54.502694873Z INFO:     172.22.0.5:45582 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:54.712786885Z INFO:     172.22.0.5:45594 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:54.921441832Z INFO:     172.22.0.5:45596 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:55.119795195Z INFO:     127.0.0.1:34008 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:48:55.129330374Z INFO:     172.22.0.5:45606 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:55.337019615Z 2026-09-23 05:48:55,336 INFO backend.app.telemetry.ingest telemetry_committed message_id=b71cbffc-8eef-5965-bca5-a16a64fe575a device_id=CHG-001 committed_at=2026-09-23T05:48:55.336747+00:00
+backend-1    | 2026-09-23T05:48:55.339082824Z INFO:     172.22.0.5:45614 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+frontend-1   | 2026-09-23T05:48:56.002718787Z 172.22.0.1 - - [23/Sep/2026:05:48:56 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:56.211025178Z 172.22.0.1 - - [23/Sep/2026:05:48:56 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:56.419464770Z 172.22.0.1 - - [23/Sep/2026:05:48:56 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:56.627389611Z 172.22.0.1 - - [23/Sep/2026:05:48:56 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:56.836833095Z 172.22.0.1 - - [23/Sep/2026:05:48:56 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.045230533Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.255920099Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.464775057Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1200 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.672709536Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.1" 200 1345 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.701374472Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "POST /api/power-plans HTTP/1.1" 201 212 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.733569735Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "POST /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77/execute HTTP/1.1" 202 111 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:57.796995361Z 172.22.0.1 - - [23/Sep/2026:05:48:57 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1122 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:58.014726848Z 172.22.0.1 - - [23/Sep/2026:05:48:58 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:58.256763409Z 172.22.0.1 - - [23/Sep/2026:05:48:58 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:58.469528514Z 172.22.0.1 - - [23/Sep/2026:05:48:58 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:58.680474577Z 172.22.0.1 - - [23/Sep/2026:05:48:58 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:58.906490812Z 172.22.0.1 - - [23/Sep/2026:05:48:58 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.118919558Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.330371630Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1909 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.547082600Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1912 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.760951698Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.1" 200 1936 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.792310545Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "POST /api/power-plans HTTP/1.1" 201 211 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.823801662Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "POST /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33/execute HTTP/1.1" 202 111 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:48:59.834731359Z 172.22.0.1 - - [23/Sep/2026:05:48:59 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1136 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:00.045081981Z 172.22.0.1 - - [23/Sep/2026:05:49:00 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:00.254792429Z 172.22.0.1 - - [23/Sep/2026:05:49:00 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:00.466053469Z 172.22.0.1 - - [23/Sep/2026:05:49:00 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:00.676689834Z 172.22.0.1 - - [23/Sep/2026:05:49:00 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:00.886397816Z 172.22.0.1 - - [23/Sep/2026:05:49:00 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:01.097250832Z 172.22.0.1 - - [23/Sep/2026:05:49:01 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:01.314928786Z 172.22.0.1 - - [23/Sep/2026:05:49:01 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:01.524869832Z 172.22.0.1 - - [23/Sep/2026:05:49:01 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1396 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:01.741026961Z 172.22.0.1 - - [23/Sep/2026:05:49:01 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:01.954441677Z 172.22.0.1 - - [23/Sep/2026:05:49:01 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:02.170033463Z 172.22.0.1 - - [23/Sep/2026:05:49:02 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:02.384611527Z 172.22.0.1 - - [23/Sep/2026:05:49:02 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:02.600943067Z 172.22.0.1 - - [23/Sep/2026:05:49:02 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:02.816755232Z 172.22.0.1 - - [23/Sep/2026:05:49:02 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.031724096Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.246210295Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.462985113Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1923 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.674688512Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.1" 200 1949 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:48:55.380631784Z 2026-09-23 05:48:55,380 INFO backend.app.telemetry.ingest telemetry_committed message_id=52b01808-a262-513b-b235-5800a7c7b3dc device_id=CHG-002 committed_at=2026-09-23T05:48:55.380360+00:00
+backend-1    | 2026-09-23T05:48:55.404363168Z 2026-09-23 05:48:55,404 INFO backend.app.telemetry.ingest telemetry_committed message_id=b8185f41-f427-5cc0-a3f4-aa59fd213774 device_id=CHG-003 committed_at=2026-09-23T05:48:55.404079+00:00
+backend-1    | 2026-09-23T05:48:55.547011523Z INFO:     172.22.0.5:45622 - "GET /api/device-commands/6609c969-03ff-4afd-abb2-877a7121a47b HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:55.574101039Z INFO:     172.22.0.5:45634 - "POST /api/devices/CHG-003/charging/start HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:48:55.583386386Z INFO:     172.22.0.5:45642 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:55.793846938Z INFO:     172.22.0.5:45650 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:56.002318144Z INFO:     172.22.0.5:45654 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:56.210665690Z INFO:     172.22.0.5:45664 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:56.419202719Z INFO:     172.22.0.5:45678 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:56.626988701Z INFO:     172.22.0.5:45686 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:56.836425030Z INFO:     172.22.0.5:45696 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:57.044673567Z INFO:     172.22.0.5:45712 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:57.250683815Z INFO:     127.0.0.1:34046 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:48:57.255548364Z INFO:     172.22.0.5:45726 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:57.342332558Z 2026-09-23 05:48:57,342 INFO backend.app.telemetry.ingest telemetry_committed message_id=afb06cde-79da-53d0-902a-823fda4d4b09 device_id=CHG-001 committed_at=2026-09-23T05:48:57.342050+00:00
+frontend-1   | 2026-09-23T05:49:03.682149831Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/device-commands/da496bb9-88f9-45f1-870b-0999e7e05938 HTTP/1.1" 200 1238 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.689265191Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/device-commands/86754ad0-be4e-43a6-bd42-fd1621eb00a4 HTTP/1.1" 200 1243 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.697202480Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/device-commands/146cab99-09a0-41c8-a612-7bb00088a7c3 HTTP/1.1" 200 1243 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.710312564Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/devices HTTP/1.1" 200 1911 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.743701441Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "POST /api/power-plans HTTP/1.1" 201 211 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.776253512Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "POST /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099/execute HTTP/1.1" 202 111 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.787231551Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1135 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:03.998644690Z 172.22.0.1 - - [23/Sep/2026:05:49:03 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:04.209361095Z 172.22.0.1 - - [23/Sep/2026:05:49:04 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:04.420170549Z 172.22.0.1 - - [23/Sep/2026:05:49:04 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:04.631551576Z 172.22.0.1 - - [23/Sep/2026:05:49:04 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:04.840652758Z 172.22.0.1 - - [23/Sep/2026:05:49:04 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:05.053199888Z 172.22.0.1 - - [23/Sep/2026:05:49:05 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:05.264166119Z 172.22.0.1 - - [23/Sep/2026:05:49:05 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:05.474374862Z 172.22.0.1 - - [23/Sep/2026:05:49:05 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1395 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:05.685310665Z 172.22.0.1 - - [23/Sep/2026:05:49:05 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:05.899063352Z 172.22.0.1 - - [23/Sep/2026:05:49:05 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:06.109053370Z 172.22.0.1 - - [23/Sep/2026:05:49:06 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:06.323507338Z 172.22.0.1 - - [23/Sep/2026:05:49:06 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:06.535729762Z 172.22.0.1 - - [23/Sep/2026:05:49:06 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:06.748651204Z 172.22.0.1 - - [23/Sep/2026:05:49:06 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:06.961404550Z 172.22.0.1 - - [23/Sep/2026:05:49:06 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.173003396Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.386572962Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.597942181Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1659 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.809516491Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.1" 200 1684 "-" "python-httpx/0.28.1" "-"
+backend-1    | 2026-09-23T05:48:57.390286410Z 2026-09-23 05:48:57,390 INFO backend.app.telemetry.ingest telemetry_committed message_id=334200f2-6a3f-5358-81d5-c8857a280beb device_id=CHG-002 committed_at=2026-09-23T05:48:57.390012+00:00
+backend-1    | 2026-09-23T05:48:57.458745096Z 2026-09-23 05:48:57,458 INFO backend.app.telemetry.ingest telemetry_committed message_id=e7f85104-31bb-5e72-a347-3fd4045eab89 device_id=CHG-003 committed_at=2026-09-23T05:48:57.458394+00:00
+backend-1    | 2026-09-23T05:48:57.464249528Z INFO:     172.22.0.5:45736 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:57.672183297Z INFO:     172.22.0.5:45742 - "GET /api/device-commands/2a144533-9758-4ca5-9994-85b7624f3ebe HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:57.700964824Z INFO:     172.22.0.5:45756 - "POST /api/power-plans HTTP/1.0" 201 Created
+backend-1    | 2026-09-23T05:48:57.733107628Z INFO:     172.22.0.5:45758 - "POST /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77/execute HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:48:57.796598368Z INFO:     172.22.0.5:45764 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:58.014343791Z INFO:     172.22.0.5:45772 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:58.255845784Z INFO:     172.22.0.5:48242 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:58.469043814Z INFO:     172.22.0.5:48250 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:58.680247887Z INFO:     172.22.0.5:48264 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:58.906054865Z INFO:     172.22.0.5:48266 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:59.118540449Z INFO:     172.22.0.5:48268 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:59.330137818Z INFO:     172.22.0.5:48278 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:59.379422693Z INFO:     127.0.0.1:45282 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:48:59.390313165Z 2026-09-23 05:48:59,390 INFO backend.app.telemetry.ingest telemetry_committed message_id=63ceaba9-8230-5f11-ac7d-5bba8742d95e device_id=CHG-001 committed_at=2026-09-23T05:48:59.390074+00:00
+backend-1    | 2026-09-23T05:48:59.428121929Z 2026-09-23 05:48:59,427 INFO backend.app.telemetry.ingest telemetry_committed message_id=2d685ea5-d747-5830-9d24-138dd6244250 device_id=CHG-002 committed_at=2026-09-23T05:48:59.427798+00:00
+backend-1    | 2026-09-23T05:48:59.487507460Z 2026-09-23 05:48:59,487 INFO backend.app.telemetry.ingest telemetry_committed message_id=8eb590c4-5e20-5307-8c27-a79ace01f9c5 device_id=CHG-003 committed_at=2026-09-23T05:48:59.487234+00:00
+backend-1    | 2026-09-23T05:48:59.546596885Z INFO:     172.22.0.5:48286 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:59.760505739Z INFO:     172.22.0.5:48302 - "GET /api/power-plans/b70f8fee-e233-46bc-b2e0-52f5ffa1ea77 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:48:59.791923370Z INFO:     172.22.0.5:48314 - "POST /api/power-plans HTTP/1.0" 201 Created
+backend-1    | 2026-09-23T05:48:59.823282227Z INFO:     172.22.0.5:48318 - "POST /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33/execute HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:48:59.834416942Z INFO:     172.22.0.5:48334 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:00.044622469Z INFO:     172.22.0.5:48350 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:00.254357494Z INFO:     172.22.0.5:48366 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:00.465616891Z INFO:     172.22.0.5:48376 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:00.676301987Z INFO:     172.22.0.5:48388 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:00.886438894Z INFO:     172.22.0.5:48390 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:01.096882493Z INFO:     172.22.0.5:48402 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:01.314511967Z INFO:     172.22.0.5:48410 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:01.396856816Z 2026-09-23 05:49:01,396 INFO backend.app.telemetry.ingest telemetry_committed message_id=30a3d5a2-7902-560e-bf54-ee61b10f3101 device_id=CHG-001 committed_at=2026-09-23T05:49:01.396616+00:00
+backend-1    | 2026-09-23T05:49:01.452696681Z 2026-09-23 05:49:01,452 INFO backend.app.telemetry.ingest telemetry_committed message_id=82d9262c-dac8-5ac6-88a6-23a98709a8d3 device_id=CHG-002 committed_at=2026-09-23T05:49:01.452419+00:00
+backend-1    | 2026-09-23T05:49:01.494314500Z 2026-09-23 05:49:01,494 INFO backend.app.telemetry.ingest telemetry_committed message_id=cf6a138a-58b6-571e-be7c-b7b6dc0c9798 device_id=CHG-003 committed_at=2026-09-23T05:49:01.494033+00:00
+backend-1    | 2026-09-23T05:49:01.505963117Z INFO:     127.0.0.1:45312 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:49:01.524362550Z INFO:     172.22.0.5:48418 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:01.739909411Z INFO:     172.22.0.5:48432 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:01.953995962Z INFO:     172.22.0.5:48440 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:02.169512826Z INFO:     172.22.0.5:48454 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:02.384127098Z INFO:     172.22.0.5:48466 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:02.600646795Z INFO:     172.22.0.5:48480 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:02.816275341Z INFO:     172.22.0.5:48494 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.031249335Z INFO:     172.22.0.5:48498 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.245808383Z INFO:     172.22.0.5:48512 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.447118493Z 2026-09-23 05:49:03,446 INFO backend.app.telemetry.ingest telemetry_committed message_id=6f904708-726b-5985-ad23-8ef7fa17214a device_id=CHG-001 committed_at=2026-09-23T05:49:03.446836+00:00
+backend-1    | 2026-09-23T05:49:03.462500717Z INFO:     172.22.0.5:48520 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.504913837Z 2026-09-23 05:49:03,504 INFO backend.app.telemetry.ingest telemetry_committed message_id=34d29beb-c6c4-5c3d-afd2-53570e5b7811 device_id=CHG-002 committed_at=2026-09-23T05:49:03.504558+00:00
+backend-1    | 2026-09-23T05:49:03.535531416Z 2026-09-23 05:49:03,535 INFO backend.app.telemetry.ingest telemetry_committed message_id=bd3f1726-e497-5465-93fa-34f3cf116dcd device_id=CHG-003 committed_at=2026-09-23T05:49:03.535229+00:00
+backend-1    | 2026-09-23T05:49:03.636309872Z INFO:     127.0.0.1:45352 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:49:03.674265463Z INFO:     172.22.0.5:48532 - "GET /api/power-plans/e468787b-960d-4ebc-b202-b3cefddeac33 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.681835716Z INFO:     172.22.0.5:48546 - "GET /api/device-commands/da496bb9-88f9-45f1-870b-0999e7e05938 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.688879489Z INFO:     172.22.0.5:48562 - "GET /api/device-commands/86754ad0-be4e-43a6-bd42-fd1621eb00a4 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.696898063Z INFO:     172.22.0.5:48572 - "GET /api/device-commands/146cab99-09a0-41c8-a612-7bb00088a7c3 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.709890754Z INFO:     172.22.0.5:48586 - "GET /api/devices HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.743283869Z INFO:     172.22.0.5:48592 - "POST /api/power-plans HTTP/1.0" 201 Created
+backend-1    | 2026-09-23T05:49:03.775836511Z INFO:     172.22.0.5:48596 - "POST /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099/execute HTTP/1.0" 202 Accepted
+backend-1    | 2026-09-23T05:49:03.786756569Z INFO:     172.22.0.5:48606 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:03.998195547Z INFO:     172.22.0.5:48612 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:04.208966206Z INFO:     172.22.0.5:48622 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:04.419762772Z INFO:     172.22.0.5:48628 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:04.631162528Z INFO:     172.22.0.5:48638 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:04.840045506Z INFO:     172.22.0.5:48640 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:05.052759462Z INFO:     172.22.0.5:48644 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:05.263757369Z INFO:     172.22.0.5:48656 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:05.473960546Z INFO:     172.22.0.5:48660 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:05.503045004Z 2026-09-23 05:49:05,502 INFO backend.app.telemetry.ingest telemetry_committed message_id=0d737afc-d2d6-5e4b-b602-556dea23770b device_id=CHG-001 committed_at=2026-09-23T05:49:05.502758+00:00
+backend-1    | 2026-09-23T05:49:05.530634742Z 2026-09-23 05:49:05,530 INFO backend.app.telemetry.ingest telemetry_committed message_id=7d40bb11-e411-5b49-8a10-ac2e7f00ef84 device_id=CHG-002 committed_at=2026-09-23T05:49:05.530343+00:00
+backend-1    | 2026-09-23T05:49:05.572940538Z 2026-09-23 05:49:05,572 INFO backend.app.telemetry.ingest telemetry_committed message_id=7316342a-1a27-5326-a322-7235852cc9f7 device_id=CHG-003 committed_at=2026-09-23T05:49:05.572662+00:00
+backend-1    | 2026-09-23T05:49:05.684849680Z INFO:     172.22.0.5:48664 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:05.767658211Z INFO:     127.0.0.1:45384 - "GET /api/health HTTP/1.1" 200 OK
+backend-1    | 2026-09-23T05:49:05.897813381Z INFO:     172.22.0.5:48678 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:06.108664623Z INFO:     172.22.0.5:48680 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:06.323140442Z INFO:     172.22.0.5:48688 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:06.535331536Z INFO:     172.22.0.5:48702 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:06.748268799Z INFO:     172.22.0.5:48704 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:06.960943666Z INFO:     172.22.0.5:48710 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.172627874Z INFO:     172.22.0.5:48726 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.386022688Z INFO:     172.22.0.5:48732 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.494090123Z 2026-09-23 05:49:07,493 INFO backend.app.telemetry.ingest telemetry_committed message_id=6e771c5c-5a48-5231-a2e5-70267d0b9acc device_id=CHG-001 committed_at=2026-09-23T05:49:07.493777+00:00
+backend-1    | 2026-09-23T05:49:07.584657907Z 2026-09-23 05:49:07,584 INFO backend.app.telemetry.ingest telemetry_committed message_id=c2ff0370-f4a7-557c-8168-ef3d37232145 device_id=CHG-003 committed_at=2026-09-23T05:49:07.584259+00:00
+backend-1    | 2026-09-23T05:49:07.597424609Z INFO:     172.22.0.5:48748 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.629305623Z 2026-09-23 05:49:07,629 INFO backend.app.telemetry.ingest telemetry_committed message_id=f8331f85-34e5-517d-b449-fee76ec23c90 device_id=CHG-002 committed_at=2026-09-23T05:49:07.629004+00:00
+backend-1    | 2026-09-23T05:49:07.808983666Z INFO:     172.22.0.5:48762 - "GET /api/power-plans/f598f94f-f03e-4f61-8bc8-84cd9645f099 HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.816991834Z INFO:     172.22.0.5:48774 - "GET /api/device-commands/a7c72b3a-ed53-44a7-86f2-d6afbe58ae1f HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.824506015Z INFO:     172.22.0.5:48780 - "GET /api/device-commands/aef75164-f9c6-41cf-b9dc-6b4feb5c272d HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.840338199Z INFO:     172.22.0.5:48788 - "GET /api/devices HTTP/1.0" 200 OK
+backend-1    | 2026-09-23T05:49:07.897487794Z INFO:     127.0.0.1:45418 - "GET /api/health HTTP/1.1" 200 OK
+frontend-1   | 2026-09-23T05:49:07.817816274Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/device-commands/a7c72b3a-ed53-44a7-86f2-d6afbe58ae1f HTTP/1.1" 200 1240 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.825076929Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/device-commands/aef75164-f9c6-41cf-b9dc-6b4feb5c272d HTTP/1.1" 200 1243 "-" "python-httpx/0.28.1" "-"
+frontend-1   | 2026-09-23T05:49:07.840882240Z 172.22.0.1 - - [23/Sep/2026:05:49:07 +0000] "GET /api/devices HTTP/1.1" 200 1910 "-" "python-httpx/0.28.1" "-"

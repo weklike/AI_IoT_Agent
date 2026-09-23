@@ -1,0 +1,4 @@
+
+> charge-ops-frontend@0.1.0 typecheck
+> vue-tsc --noEmit
+

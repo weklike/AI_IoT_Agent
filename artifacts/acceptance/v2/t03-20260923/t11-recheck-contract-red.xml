@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.584" timestamp="2026-09-23T14:57:20.520012+08:00" hostname="Syzygy"><testcase classname="tests.unit.test_eval_recheck_contract" name="test_recheck_complete_automatic_results_still_require_human_review" time="0.009"><failure message="assert 0 == 3">tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-192/test_recheck_complete_automati0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7c1e97559760&gt;
+
+    def test_recheck_complete_automatic_results_still_require_human_review(tmp_path, monkeypatch):
+        report, code = recheck.recheck(evidence(tmp_path, monkeypatch), "测试退出码合同")
+        assert report["status"] == "PENDING_REVIEW"
+&gt;       assert code == 3
+E       assert 0 == 3
+
+tests/unit/test_eval_recheck_contract.py:62: AssertionError</failure></testcase><testcase classname="tests.unit.test_eval_recheck_contract" name="test_recheck_missing_cases_cannot_pass_even_when_numerical_threshold_is_met" time="0.007"><failure message="AssertionError: assert 'PENDING_REVIEW' == 'FAIL'&#10;  &#10;  - FAIL&#10;  + PENDING_REVIEW">tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-192/test_recheck_missing_cases_can0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7c1e97559880&gt;
+
+    def test_recheck_missing_cases_cannot_pass_even_when_numerical_threshold_is_met(
+        tmp_path, monkeypatch
+    ):
+        report, code = recheck.recheck(evidence(tmp_path, monkeypatch, 57), "测试完整分母")
+&gt;       assert report["status"] == "FAIL"
+E       AssertionError: assert 'PENDING_REVIEW' == 'FAIL'
+E         
+E         - FAIL
+E         + PENDING_REVIEW
+
+tests/unit/test_eval_recheck_contract.py:69: AssertionError</failure></testcase></testsuite></testsuites>

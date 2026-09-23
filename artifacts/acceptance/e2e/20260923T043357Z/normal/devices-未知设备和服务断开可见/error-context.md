@@ -1,0 +1,202 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ϟ CHARGE OPS 设备监控与运维" [ref=e5] [cursor=pointer]:
+      - /url: /devices
+      - generic [ref=e6]: ϟ
+      - generic [ref=e7]:
+        - text: CHARGE OPS
+        - generic [ref=e8]: 设备监控与运维
+    - paragraph [ref=e9]: 工作空间 / WORKSPACE
+    - navigation [ref=e10]:
+      - link "◫ 设备总览 01" [ref=e11] [cursor=pointer]:
+        - /url: /devices
+        - generic [ref=e12]: ◫
+        - text: 设备总览
+        - generic [ref=e13]: "01"
+      - link "⌘ Agent 助手 02" [ref=e14] [cursor=pointer]:
+        - /url: /agent
+        - generic [ref=e15]: ⌘
+        - text: Agent 助手
+        - generic [ref=e16]: "02"
+    - generic [ref=e17]:
+      - text: 软件模拟环境
+      - paragraph [ref=e19]: 3 台充电设备 · 单机演示
+      - generic [ref=e20]:
+        - text: 所有数值来自合成遥测。
+        - text: 过温阈值为演示规则。
+  - generic [ref=e21]:
+    - banner [ref=e22]:
+      - generic [ref=e23]: 运维控制台 / 本地工作站
+      - generic [ref=e24]: fixture · 替身模型
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: FLEET MONITOR / 01
+          - heading "设备总览" [level=1] [ref=e29]
+          - paragraph [ref=e30]: 掌握设备连接、温度与数据新鲜度。
+        - generic [ref=e31]: ↻ 每 2 秒更新
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: 设备总数
+          - strong [ref=e35]: 3 台
+        - generic [ref=e36]:
+          - generic [ref=e37]: 当前在线
+          - strong [ref=e38]: 3 台
+        - generic [ref=e39]:
+          - generic [ref=e40]: 过温告警
+          - strong [ref=e41]: 0 台
+        - generic [ref=e42]:
+          - generic [ref=e43]: 演示阈值
+          - strong [ref=e44]: 60 °C
+          - generic [ref=e45]: 仅用于合成过温规则
+      - generic [ref=e46]:
+        - heading "设备列表" [level=2] [ref=e47]
+        - generic [ref=e48]: 固定设备 CHG-001 — CHG-003
+      - generic [ref=e49]:
+        - article [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]: "01"
+            - generic [ref=e53]: 在线
+          - generic [ref=e54]: ϟ
+          - heading "CHG-001" [level=2] [ref=e56]
+          - paragraph [ref=e57]: 模拟充电桩 / DC CHARGER
+          - generic [ref=e58]: 38.0 °C
+          - paragraph [ref=e59]: 正常
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: 功率
+              - generic [ref=e63]: 20.0 kW
+            - generic [ref=e64]:
+              - generic [ref=e65]: 电压
+              - generic [ref=e66]: 400.0 V
+          - paragraph [ref=e67]: 样本 2026/9/23 12:34:57
+          - link "查看 CHG-001" [ref=e68] [cursor=pointer]:
+            - /url: /devices/CHG-001
+            - text: 查看详情与历史
+            - generic [ref=e69]: ↗
+        - article [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: "02"
+            - generic [ref=e73]: 在线
+          - generic [ref=e74]: ϟ
+          - heading "CHG-002" [level=2] [ref=e76]
+          - paragraph [ref=e77]: 模拟充电桩 / DC CHARGER
+          - generic [ref=e78]: 35.3 °C
+          - paragraph [ref=e79]: 正常
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - generic [ref=e82]: 功率
+              - generic [ref=e83]: 20.0 kW
+            - generic [ref=e84]:
+              - generic [ref=e85]: 电压
+              - generic [ref=e86]: 400.0 V
+          - paragraph [ref=e87]: 样本 2026/9/23 12:34:57
+          - link "查看 CHG-002" [ref=e88] [cursor=pointer]:
+            - /url: /devices/CHG-002
+            - text: 查看详情与历史
+            - generic [ref=e89]: ↗
+        - article [ref=e90]:
+          - generic [ref=e91]:
+            - generic [ref=e92]: "03"
+            - generic [ref=e93]: 在线
+          - generic [ref=e94]: ϟ
+          - heading "CHG-003" [level=2] [ref=e96]
+          - paragraph [ref=e97]: 模拟充电桩 / DC CHARGER
+          - generic [ref=e98]: 36.6 °C
+          - paragraph [ref=e99]: 正常
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: 功率
+              - generic [ref=e103]: 20.0 kW
+            - generic [ref=e104]:
+              - generic [ref=e105]: 电压
+              - generic [ref=e106]: 400.0 V
+          - paragraph [ref=e107]: 样本 2026/9/23 12:34:57
+          - link "查看 CHG-003" [ref=e108] [cursor=pointer]:
+            - /url: /devices/CHG-003
+            - text: 查看详情与历史
+            - generic [ref=e109]: ↗
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: STATION POWER / 调度
+            - heading "站点功率分配" [level=2] [ref=e114]
+          - generic [ref=e115]: 已确认预算 60000 W
+        - generic [ref=e116]:
+          - generic [ref=e117]:
+            - text: 站点预算（W）
+            - spinbutton "站点预算（W）" [ref=e118]: "30000"
+          - generic [ref=e119]:
+            - text: 分配策略
+            - combobox "分配策略" [ref=e120] [cursor=pointer]:
+              - option "平均分配" [selected]
+              - option "按优先级分配"
+          - button "生成预览" [ref=e121] [cursor=pointer]
+        - paragraph [ref=e122]: 预览不下发命令。执行时先确认全部降低，再进行提升；设备状态变化或预览过期需重新预览。
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - generic [ref=e125]:
+            - paragraph [ref=e126]: FLEET PATROL / 只读巡检
+            - heading "站点巡检" [level=2] [ref=e127]
+          - generic [ref=e128]: 与聊天共享一个运行槽位
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - text: 巡检窗口
+            - combobox "巡检窗口" [ref=e131] [cursor=pointer]:
+              - option "10 分钟"
+              - option "30 分钟" [selected]
+              - option "60 分钟"
+          - button "一键巡检" [ref=e132] [cursor=pointer]
+        - paragraph [ref=e133]: 查询三台设备并保存实际观测。巡检不建单、不控制设备；模型失败也会保留已获得的事实。
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - text: 定时巡检已关闭
+            - generic [ref=e136]: 启用后每 30 分钟巡检最近 30 分钟；忙碌跳过，不补跑。
+          - button "启用定时巡检" [ref=e137] [cursor=pointer]
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - paragraph [ref=e141]: ALARMS / 状态与确认
+            - heading "告警事件" [level=2] [ref=e142]
+          - generic [ref=e143]: 确认已知晓不代表故障已恢复
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - text: 告警设备
+            - combobox "告警设备" [ref=e146] [cursor=pointer]:
+              - option "全部设备" [selected]
+              - option "CHG-001"
+              - option "CHG-002"
+              - option "CHG-003"
+          - generic [ref=e147]:
+            - text: 告警状态
+            - combobox "告警状态" [ref=e148] [cursor=pointer]:
+              - option "活动告警" [selected]
+              - option "已恢复"
+              - option "全部状态"
+          - generic [ref=e149]:
+            - text: 告警原因
+            - combobox "告警原因" [ref=e150] [cursor=pointer]:
+              - option "全部原因" [selected]
+              - option "过温"
+              - option "离线"
+          - generic [ref=e151]:
+            - text: 确认状态
+            - combobox "确认状态" [ref=e152] [cursor=pointer]:
+              - option "全部" [selected]
+              - option "未确认"
+              - option "已确认"
+        - paragraph [ref=e153]: 当前筛选下暂无告警
+      - generic [ref=e154]:
+        - generic [ref=e155]: i
+        - generic [ref=e156]:
+          - text: 连接状态与数据新鲜度分别判定
+          - paragraph [ref=e157]: 在线不一定代表数据新鲜。超过 10 秒的指标显示为最后记录；最后新鲜接收超过 15 秒才判离线。
+        - link "向 Agent 提问 →" [ref=e158] [cursor=pointer]:
+          - /url: /agent
+    - contentinfo [ref=e159]:
+      - text: CHARGE OPERATIONS
+      - generic [ref=e160]: MQTT 设备链路 · 数据时间以样本为准
+```

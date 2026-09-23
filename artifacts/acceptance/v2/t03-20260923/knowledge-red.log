@@ -1,0 +1,39 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+____________ test_corpus_metadata_and_deterministic_bounded_chunks _____________
+
+    def test_corpus_metadata_and_deterministic_bounded_chunks():
+>       from backend.app.knowledge.index import load_documents,make_chunks,tokenize
+E       ModuleNotFoundError: No module named 'backend.app.knowledge'
+
+tests/unit/test_knowledge_index.py:7: ModuleNotFoundError
+_________________ test_rejects_external_symlink_before_reading _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-105/test_rejects_external_symlink_0')
+
+    def test_rejects_external_symlink_before_reading(tmp_path):
+>       from backend.app.knowledge.index import load_documents
+E       ModuleNotFoundError: No module named 'backend.app.knowledge'
+
+tests/unit/test_knowledge_index.py:23: ModuleNotFoundError
+________ test_cold_start_indexes_sources_and_serves_safe_bounded_search ________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-105/test_cold_start_indexes_source0')
+
+    async def test_cold_start_indexes_sources_and_serves_safe_bounded_search(tmp_path):
+        settings=Settings(_env_file=None,app_env='test',mqtt_enabled=False,database_url=f'sqlite+aiosqlite:///{tmp_path}/knowledge.db')
+        app=create_app(settings)
+        async with app.router.lifespan_context(app):
+            async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app),base_url='http://test') as client:
+                response=await client.get('/api/knowledge/search',params={'query':'平均分配 equal','device_id':'CHG-001'})
+>               assert response.status_code==200,response.text
+E               AssertionError: {"error":{"code":"HTTP_ERROR","message":"Not Found"},"request_id":"28120ef7-9946-40b3-bfe5-f64994aee6ea"}
+E               assert 404 == 200
+E                +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/integration/test_knowledge_search.py:15: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_knowledge_index.py::test_corpus_metadata_and_deterministic_bounded_chunks
+FAILED tests/unit/test_knowledge_index.py::test_rejects_external_symlink_before_reading
+FAILED tests/integration/test_knowledge_search.py::test_cold_start_indexes_sources_and_serves_safe_bounded_search
+3 failed in 0.85s

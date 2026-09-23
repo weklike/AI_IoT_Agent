@@ -1,0 +1,26 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+___________ test_rejected_high_generation_fences_later_lower_command ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-70/test_rejected_high_generation_0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    def test_rejected_high_generation_fences_later_lower_command(tmp_path, fixed_now):
+        from datetime import timedelta
+        from uuid import uuid4
+        from simulator.charging import ChargingDevice
+        from backend.app.charging.contracts import ControlCommand
+        device=ChargingDevice('CHG-001',tmp_path/'state.json',fixed_now,monotonic_ns=0)
+        def command(generation,action,args):
+            return ControlCommand(command_id=uuid4(),device_id='CHG-001',generation=generation,action=action,args=args,
+                                  issued_at=fixed_now,expires_at=fixed_now+timedelta(seconds=5))
+        assert device.apply(command(5,'stop_session',{'session_id':str(uuid4())}),fixed_now,0).status=='rejected'
+        result=device.apply(command(4,'start_session',{'session_id':str(uuid4()),'requested_power_w':20000}),fixed_now,0)
+>       assert result.error_code=='OLD_GENERATION'
+E       AssertionError: assert None == 'OLD_GENERATION'
+E        +  where None = ControlAck(command_id=UUID('43a380f7-442a-4ee2-8128-71949d72f70f'), device_id='CHG-001', generation=4, action='start_s...ted_power_w': 20000, 'power_limit_w': 0, 'meter_total_wh': 0, 'session_energy_wh': 0, 'applied_control_generation': 4}).error_code
+
+tests/unit/test_simulator_charging.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_simulator_charging.py::test_rejected_high_generation_fences_later_lower_command
+1 failed, 2 passed in 0.12s

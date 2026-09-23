@@ -1,0 +1,11 @@
+{
+  "anchor": "2026-09-23T06:35:45.039039+00:00",
+  "counts": {
+    "telemetry": 5403,
+    "charging_sessions": 90,
+    "alarm_events": 60,
+    "work_order_events": 60,
+    "knowledge_documents": 24
+  },
+  "source": "synthetic performance fixture; not model output"
+}

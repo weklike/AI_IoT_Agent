@@ -1,0 +1,2150 @@
+{
+  "suite": "iot",
+  "scope": "自动子断言；不表示完整XAC、M1—M4或真人复核通过",
+  "steps": {
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/integration/test_migrations.py",
+        "tests/unit/test_telemetry_v2.py",
+        "tests/integration/test_session_reporting.py",
+        "tests/unit/test_report_delivery.py",
+        "tests/integration/test_mqtt_ingestion.py",
+        "tests/unit/test_simulator_charging.py",
+        "tests/integration/test_charging_commands.py",
+        "tests/integration/test_charging_sessions.py",
+        "tests/integration/test_simulator_operations_stack.py",
+        "tests/unit/test_power_allocation.py",
+        "tests/integration/test_power_plans.py",
+        "tests/unit/test_alarm_rules.py",
+        "tests/integration/test_alarms.py",
+        "tests/integration/test_work_order_lifecycle.py",
+        "tests/integration/test_work_orders.py",
+        "tests/integration/test_operations.py",
+        "tests/integration/test_v2_write_idempotency.py",
+        "tests/integration/test_timeline_v2.py",
+        "tests/integration/test_timeline_sources.py",
+        "tests/integration/test_simulator_scripts.py",
+        "tests/integration/test_simulator_script_boundaries.py",
+        "-q",
+        "--junitxml=/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml"
+      ],
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/pytest.log"
+    },
+    "XAC-01": {
+      "status": "PASS",
+      "scope": "旧行/摘要、空库迁移与ORM一致",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_upgrade_preserves_v1_business_rows",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.118
+        },
+        {
+          "test": "test_legacy_evidence_digest_unchanged",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.048
+        },
+        {
+          "test": "test_schema_matches_orm",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.169
+        },
+        {
+          "test": "test_empty_database_has_versioned_schema",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.099
+        }
+      ]
+    },
+    "XAC-02": {
+      "status": "PASS",
+      "scope": "迁移摘要拒绝与DDL原子回滚",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_migration_checksum_tampering_rejected",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.102
+        },
+        {
+          "test": "test_failed_migration_rolls_back_ddl_and_version",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.053
+        }
+      ]
+    },
+    "XAC-03": {
+      "status": "PASS",
+      "scope": "WAL备份及拒绝覆盖恢复",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_backup_includes_wal_and_restore_refuses_overwrite",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 0.004
+        },
+        {
+          "test": "test_migration_cli_offline_backup_restore",
+          "class": "tests.integration.test_migrations",
+          "status": "PASS",
+          "seconds": 2.372
+        }
+      ]
+    },
+    "XAC-04": {
+      "status": "PASS",
+      "scope": "共享操作幂等/冲突/回滚及各新写路由重复5次",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_operation_idempotency_conflict_and_rollback",
+          "class": "tests.integration.test_operations",
+          "status": "PASS",
+          "seconds": 0.133
+        },
+        {
+          "test": "test_all_new_write_routes_repeat_five_and_reject_changed_content",
+          "class": "tests.integration.test_v2_write_idempotency",
+          "status": "PASS",
+          "seconds": 13.231
+        }
+      ]
+    },
+    "XAC-05": {
+      "status": "PASS",
+      "scope": "合法v1/v2 JSON",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_dual_json_versions",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        }
+      ]
+    },
+    "XAC-06": {
+      "status": "PASS",
+      "scope": "每个v2数字字段严格类型及真实Broker拒绝后恢复",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_v2_rejects_invalid_fields[power_limit_w-15000]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[meter_total_wh-True]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[session_energy_wh--1]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[requested_power_w-20001]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[applied_control_generation-False]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[meter_total_wh-nan]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[meter_total_wh-inf]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[session_id-bad]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[extra-0]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[schema_version-True]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_rejects_invalid_fields[schema_version-2]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_cross_field_consistency[overrides0]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_cross_field_consistency[overrides1]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_cross_field_consistency[overrides2]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_cross_field_consistency[overrides3]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_v2_cross_field_consistency[overrides4]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-requested_power_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-power_limit_w]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-meter_total_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-session_energy_wh]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-applied_control_generation]",
+          "class": "tests.unit.test_telemetry_v2",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_real_retained_invalid_inputs_then_valid_sample[1]",
+          "class": "tests.integration.test_mqtt_ingestion",
+          "status": "PASS",
+          "seconds": 4.593
+        },
+        {
+          "test": "test_real_retained_invalid_inputs_then_valid_sample[2]",
+          "class": "tests.integration.test_mqtt_ingestion",
+          "status": "PASS",
+          "seconds": 4.675
+        }
+      ]
+    },
+    "XAC-07": {
+      "status": "PASS",
+      "scope": "接收服务重复/冲突/retained不刷新",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_v2_ingestion_duplicates_conflicts_and_retained_do_not_refresh",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 0.106
+        }
+      ]
+    },
+    "XAC-08": {
+      "status": "PASS",
+      "scope": "实际报告入库/ACK/冲突/在线独立",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 4.848
+        }
+      ]
+    },
+    "XAC-09": {
+      "status": "PASS",
+      "scope": "报告退避/过期/积压",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_retry_schedule_ack_matching_and_expired_evidence",
+          "class": "tests.unit.test_report_delivery",
+          "status": "PASS",
+          "seconds": 0.003
+        },
+        {
+          "test": "test_pending_reports_bounded_and_backlog_refuses_start_but_allows_stop",
+          "class": "tests.unit.test_report_delivery",
+          "status": "PASS",
+          "seconds": 2.313
+        }
+      ]
+    },
+    "XAC-10": {
+      "status": "PASS",
+      "scope": "报告与控制不刷新在线",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 4.848
+        }
+      ]
+    },
+    "XAC-11": {
+      "status": "PASS",
+      "scope": "实际HTTP与MQTT启停反馈",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_http_start_stop_idempotency_and_verified_feedback",
+          "class": "tests.integration.test_charging_commands",
+          "status": "PASS",
+          "seconds": 10.586
+        }
+      ]
+    },
+    "XAC-12": {
+      "status": "PASS",
+      "scope": "真实控制报告与generation围栏",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_operations_simulator_real_mqtt_control_and_reports",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 24.671
+        },
+        {
+          "test": "test_rejected_high_generation_fences_later_lower_command",
+          "class": "tests.unit.test_simulator_charging",
+          "status": "PASS",
+          "seconds": 0.002
+        },
+        {
+          "test": "test_ten_duplicate_controls_conflict_old_generation_and_expiry",
+          "class": "tests.unit.test_simulator_charging",
+          "status": "PASS",
+          "seconds": 0.008
+        }
+      ]
+    },
+    "XAC-13": {
+      "status": "PASS",
+      "scope": "同设备并发与参数拒绝",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_concurrent_start_serializes_per_device_and_rejects_invalid_inputs",
+          "class": "tests.integration.test_charging_commands",
+          "status": "PASS",
+          "seconds": 0.154
+        }
+      ]
+    },
+    "XAC-14": {
+      "status": "PASS",
+      "scope": "默认ACK超时、晚回执、幂等恢复",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_no_ack_times_out_and_duplicate_request_reuses_original",
+          "class": "tests.integration.test_charging_commands",
+          "status": "PASS",
+          "seconds": 9.716
+        }
+      ]
+    },
+    "XAC-15": {
+      "status": "PASS",
+      "scope": "4秒验证deadline",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_slow_effect_query_cannot_verify_after_four_second_deadline",
+          "class": "tests.integration.test_charging_commands",
+          "status": "PASS",
+          "seconds": 4.125
+        }
+      ]
+    },
+    "XAC-16": {
+      "status": "PASS",
+      "scope": "提交发布窗口与重启不重放",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_commit_before_publish_restart_preserves_request_without_replay",
+          "class": "tests.integration.test_charging_commands",
+          "status": "PASS",
+          "seconds": 0.155
+        }
+      ]
+    },
+    "XAC-17": {
+      "status": "PASS",
+      "scope": "分段整数积分与真实模拟器",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_energy_integrates_fractional_wh_without_sample_rounding",
+          "class": "tests.unit.test_simulator_charging",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_operations_simulator_real_mqtt_control_and_reports",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 24.671
+        }
+      ]
+    },
+    "XAC-18": {
+      "status": "PASS",
+      "scope": "报告原始事实与终态约束",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 4.848
+        }
+      ]
+    },
+    "XAC-19": {
+      "status": "PASS",
+      "scope": "遥测静默和报告分离",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_operations_simulator_real_mqtt_control_and_reports",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 24.671
+        }
+      ]
+    },
+    "XAC-20": {
+      "status": "PASS",
+      "scope": "真实进程及容器SIGKILL保表底",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_simulator_process_kill_preserves_published_meter",
+          "class": "tests.integration.test_session_reporting",
+          "status": "PASS",
+          "seconds": 10.669
+        },
+        {
+          "test": "test_owned_four_service_operations_volume_survives_kill",
+          "class": "tests.integration.test_simulator_operations_stack",
+          "status": "PASS",
+          "seconds": 17.337
+        }
+      ]
+    },
+    "XAC-21": {
+      "status": "PASS",
+      "scope": "会话窗口统计",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_sessions_full_window_statistics_and_stable_pagination",
+          "class": "tests.integration.test_charging_sessions",
+          "status": "PASS",
+          "seconds": 0.191
+        }
+      ]
+    },
+    "XAC-22": {
+      "status": "PASS",
+      "scope": "稳定分页与完整统计",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_sessions_full_window_statistics_and_stable_pagination",
+          "class": "tests.integration.test_charging_sessions",
+          "status": "PASS",
+          "seconds": 0.191
+        }
+      ]
+    },
+    "XAC-23": {
+      "status": "PASS",
+      "scope": "equal及100W确定余量",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_equal_water_filling_and_stable_100w_remainder",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        }
+      ]
+    },
+    "XAC-24": {
+      "status": "PASS",
+      "scope": "priority/零预算/非法输入",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_priority_caps_and_zero_budget",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.0
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[True-demands0-equal-None]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[45101-demands1-equal-None]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[60100-demands2-equal-None]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[45000-demands3-equal-None]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[45000-demands4-equal-None]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_reject_invalid_power_inputs[45000-demands5-priority-priority5]",
+          "class": "tests.unit.test_power_allocation",
+          "status": "PASS",
+          "seconds": 0.001
+        }
+      ]
+    },
+    "XAC-25": {
+      "status": "PASS",
+      "scope": "预览控制指纹及120秒失效",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_preview_control_fingerprint_and_expiry",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 0.371
+        }
+      ]
+    },
+    "XAC-26": {
+      "status": "PASS",
+      "scope": "三设备实际先降后升",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_real_three_device_plan_preview_and_decrease_before_increase",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 19.892
+        }
+      ]
+    },
+    "XAC-27": {
+      "status": "PASS",
+      "scope": "失败停止和真实30秒deadline",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_real_three_device_plan_preview_and_decrease_before_increase",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 19.892
+        },
+        {
+          "test": "test_plan_uses_real_thirty_second_deadline_and_clears_slot",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 30.171
+        }
+      ]
+    },
+    "XAC-28": {
+      "status": "PASS",
+      "scope": "计划槽位与执行指纹",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_preview_control_fingerprint_and_expiry",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 0.371
+        },
+        {
+          "test": "test_plan_uses_real_thirty_second_deadline_and_clears_slot",
+          "class": "tests.integration.test_power_plans",
+          "status": "PASS",
+          "seconds": 30.171
+        }
+      ]
+    },
+    "XAC-29": {
+      "status": "PASS",
+      "scope": "告警确认/新鲜恢复基础",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.305
+        }
+      ]
+    },
+    "XAC-30": {
+      "status": "PASS",
+      "scope": "连续独立观测与持久化触发",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_only_continuous_unique_samples_advance_duration",
+          "class": "tests.unit.test_alarm_rules",
+          "status": "PASS",
+          "seconds": 0.001
+        },
+        {
+          "test": "test_persisted_trigger_duration_resets_after_out_of_order_sample",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.283
+        }
+      ]
+    },
+    "XAC-31": {
+      "status": "PASS",
+      "scope": "新鲜连续恢复与stale",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.305
+        }
+      ]
+    },
+    "XAC-32": {
+      "status": "PASS",
+      "scope": "确认不等于恢复与版本",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.305
+        }
+      ]
+    },
+    "XAC-33": {
+      "status": "PASS",
+      "scope": "变更禁用规则保留旧版本",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_changed_disabled_rule_preserves_active_rule_and_restart_unknown",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.343
+        }
+      ]
+    },
+    "XAC-34": {
+      "status": "PASS",
+      "scope": "重启unknown后恢复",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_changed_disabled_rule_preserves_active_rule_and_restart_unknown",
+          "class": "tests.integration.test_alarms",
+          "status": "PASS",
+          "seconds": 0.343
+        }
+      ]
+    },
+    "XAC-35": {
+      "status": "PASS",
+      "scope": "生命周期、说明与恢复合同",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_work_order_transitions_require_current_recovery_and_cleared_alarm",
+          "class": "tests.integration.test_work_order_lifecycle",
+          "status": "PASS",
+          "seconds": 0.468
+        }
+      ]
+    },
+    "XAC-36": {
+      "status": "PASS",
+      "scope": "IN_PROGRESS/RESOLVED各20独立事务",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_twenty_independent_creates_reuse_in_progress_and_resolved",
+          "class": "tests.integration.test_work_order_lifecycle",
+          "status": "PASS",
+          "seconds": 1.971
+        }
+      ]
+    },
+    "XAC-37": {
+      "status": "PASS",
+      "scope": "关单需新鲜且关联告警已恢复",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_work_order_transitions_require_current_recovery_and_cleared_alarm",
+          "class": "tests.integration.test_work_order_lifecycle",
+          "status": "PASS",
+          "seconds": 0.468
+        }
+      ]
+    },
+    "XAC-38": {
+      "status": "PASS",
+      "scope": "迁移事务回滚不留事件/请求",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_transition_rollback_keeps_status_event_and_request_atomic",
+          "class": "tests.integration.test_work_order_lifecycle",
+          "status": "PASS",
+          "seconds": 0.191
+        }
+      ]
+    },
+    "XAC-49": {
+      "status": "PASS",
+      "scope": "混合来源、稳定游标及只读",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_all_event_sources_link_exact_records_and_keep_late_receipts",
+          "class": "tests.integration.test_timeline_sources",
+          "status": "PASS",
+          "seconds": 0.211
+        },
+        {
+          "test": "test_http_timeline_cursor_preserves_full_counts_and_scope",
+          "class": "tests.integration.test_timeline_v2",
+          "status": "PASS",
+          "seconds": 0.228
+        }
+      ]
+    },
+    "XAC-50": {
+      "status": "PASS",
+      "scope": "两个60秒真实脚本及取消边界",
+      "missing_tests": [],
+      "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+      "tests": [
+        {
+          "test": "test_two_fixed_sixty_second_scripts_real_broker",
+          "class": "tests.integration.test_simulator_scripts",
+          "status": "PASS",
+          "seconds": 64.689
+        },
+        {
+          "test": "test_cancel_manual_override_missing_ack_and_restart_stop_remaining_steps",
+          "class": "tests.integration.test_simulator_script_boundaries",
+          "status": "PASS",
+          "seconds": 30.061
+        }
+      ]
+    }
+  },
+  "results": {
+    "XAC-01": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "旧行/摘要、空库迁移与ORM一致",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_upgrade_preserves_v1_business_rows",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.118
+          },
+          {
+            "test": "test_legacy_evidence_digest_unchanged",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.048
+          },
+          {
+            "test": "test_schema_matches_orm",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.169
+          },
+          {
+            "test": "test_empty_database_has_versioned_schema",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.099
+          }
+        ]
+      }
+    },
+    "XAC-02": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "迁移摘要拒绝与DDL原子回滚",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_migration_checksum_tampering_rejected",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.102
+          },
+          {
+            "test": "test_failed_migration_rolls_back_ddl_and_version",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.053
+          }
+        ]
+      }
+    },
+    "XAC-03": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "WAL备份及拒绝覆盖恢复",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_backup_includes_wal_and_restore_refuses_overwrite",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 0.004
+          },
+          {
+            "test": "test_migration_cli_offline_backup_restore",
+            "class": "tests.integration.test_migrations",
+            "status": "PASS",
+            "seconds": 2.372
+          }
+        ]
+      }
+    },
+    "XAC-04": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "共享操作幂等/冲突/回滚及各新写路由重复5次",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_operation_idempotency_conflict_and_rollback",
+            "class": "tests.integration.test_operations",
+            "status": "PASS",
+            "seconds": 0.133
+          },
+          {
+            "test": "test_all_new_write_routes_repeat_five_and_reject_changed_content",
+            "class": "tests.integration.test_v2_write_idempotency",
+            "status": "PASS",
+            "seconds": 13.231
+          }
+        ]
+      }
+    },
+    "XAC-05": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "合法v1/v2 JSON",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_dual_json_versions",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          }
+        ]
+      }
+    },
+    "XAC-06": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "每个v2数字字段严格类型及真实Broker拒绝后恢复",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_v2_rejects_invalid_fields[power_limit_w-15000]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[meter_total_wh-True]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[session_energy_wh--1]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[requested_power_w-20001]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[applied_control_generation-False]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[meter_total_wh-nan]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[meter_total_wh-inf]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[session_id-bad]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[extra-0]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[schema_version-True]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_rejects_invalid_fields[schema_version-2]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_cross_field_consistency[overrides0]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_cross_field_consistency[overrides1]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_cross_field_consistency[overrides2]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_cross_field_consistency[overrides3]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_v2_cross_field_consistency[overrides4]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[True-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[1.5-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[nan-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[inf-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-requested_power_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-power_limit_w]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-meter_total_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-session_energy_wh]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_each_v2_numeric_field_is_strict_and_nonnegative[-1-applied_control_generation]",
+            "class": "tests.unit.test_telemetry_v2",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_real_retained_invalid_inputs_then_valid_sample[1]",
+            "class": "tests.integration.test_mqtt_ingestion",
+            "status": "PASS",
+            "seconds": 4.593
+          },
+          {
+            "test": "test_real_retained_invalid_inputs_then_valid_sample[2]",
+            "class": "tests.integration.test_mqtt_ingestion",
+            "status": "PASS",
+            "seconds": 4.675
+          }
+        ]
+      }
+    },
+    "XAC-07": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "接收服务重复/冲突/retained不刷新",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_v2_ingestion_duplicates_conflicts_and_retained_do_not_refresh",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 0.106
+          }
+        ]
+      }
+    },
+    "XAC-08": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "实际报告入库/ACK/冲突/在线独立",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 4.848
+          }
+        ]
+      }
+    },
+    "XAC-09": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "报告退避/过期/积压",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_retry_schedule_ack_matching_and_expired_evidence",
+            "class": "tests.unit.test_report_delivery",
+            "status": "PASS",
+            "seconds": 0.003
+          },
+          {
+            "test": "test_pending_reports_bounded_and_backlog_refuses_start_but_allows_stop",
+            "class": "tests.unit.test_report_delivery",
+            "status": "PASS",
+            "seconds": 2.313
+          }
+        ]
+      }
+    },
+    "XAC-10": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "报告与控制不刷新在线",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 4.848
+          }
+        ]
+      }
+    },
+    "XAC-11": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "实际HTTP与MQTT启停反馈",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_http_start_stop_idempotency_and_verified_feedback",
+            "class": "tests.integration.test_charging_commands",
+            "status": "PASS",
+            "seconds": 10.586
+          }
+        ]
+      }
+    },
+    "XAC-12": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "真实控制报告与generation围栏",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_operations_simulator_real_mqtt_control_and_reports",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 24.671
+          },
+          {
+            "test": "test_rejected_high_generation_fences_later_lower_command",
+            "class": "tests.unit.test_simulator_charging",
+            "status": "PASS",
+            "seconds": 0.002
+          },
+          {
+            "test": "test_ten_duplicate_controls_conflict_old_generation_and_expiry",
+            "class": "tests.unit.test_simulator_charging",
+            "status": "PASS",
+            "seconds": 0.008
+          }
+        ]
+      }
+    },
+    "XAC-13": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "同设备并发与参数拒绝",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_concurrent_start_serializes_per_device_and_rejects_invalid_inputs",
+            "class": "tests.integration.test_charging_commands",
+            "status": "PASS",
+            "seconds": 0.154
+          }
+        ]
+      }
+    },
+    "XAC-14": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "默认ACK超时、晚回执、幂等恢复",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_no_ack_times_out_and_duplicate_request_reuses_original",
+            "class": "tests.integration.test_charging_commands",
+            "status": "PASS",
+            "seconds": 9.716
+          }
+        ]
+      }
+    },
+    "XAC-15": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "4秒验证deadline",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_slow_effect_query_cannot_verify_after_four_second_deadline",
+            "class": "tests.integration.test_charging_commands",
+            "status": "PASS",
+            "seconds": 4.125
+          }
+        ]
+      }
+    },
+    "XAC-16": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "提交发布窗口与重启不重放",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_commit_before_publish_restart_preserves_request_without_replay",
+            "class": "tests.integration.test_charging_commands",
+            "status": "PASS",
+            "seconds": 0.155
+          }
+        ]
+      }
+    },
+    "XAC-17": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "分段整数积分与真实模拟器",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_energy_integrates_fractional_wh_without_sample_rounding",
+            "class": "tests.unit.test_simulator_charging",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_operations_simulator_real_mqtt_control_and_reports",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 24.671
+          }
+        ]
+      }
+    },
+    "XAC-18": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "报告原始事实与终态约束",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_real_broker_report_commit_ack_duplicate_conflict_and_no_live_refresh",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 4.848
+          }
+        ]
+      }
+    },
+    "XAC-19": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "遥测静默和报告分离",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_operations_simulator_real_mqtt_control_and_reports",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 24.671
+          }
+        ]
+      }
+    },
+    "XAC-20": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "真实进程及容器SIGKILL保表底",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_simulator_process_kill_preserves_published_meter",
+            "class": "tests.integration.test_session_reporting",
+            "status": "PASS",
+            "seconds": 10.669
+          },
+          {
+            "test": "test_owned_four_service_operations_volume_survives_kill",
+            "class": "tests.integration.test_simulator_operations_stack",
+            "status": "PASS",
+            "seconds": 17.337
+          }
+        ]
+      }
+    },
+    "XAC-21": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "会话窗口统计",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_sessions_full_window_statistics_and_stable_pagination",
+            "class": "tests.integration.test_charging_sessions",
+            "status": "PASS",
+            "seconds": 0.191
+          }
+        ]
+      }
+    },
+    "XAC-22": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "稳定分页与完整统计",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_sessions_full_window_statistics_and_stable_pagination",
+            "class": "tests.integration.test_charging_sessions",
+            "status": "PASS",
+            "seconds": 0.191
+          }
+        ]
+      }
+    },
+    "XAC-23": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "equal及100W确定余量",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_equal_water_filling_and_stable_100w_remainder",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          }
+        ]
+      }
+    },
+    "XAC-24": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "priority/零预算/非法输入",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_priority_caps_and_zero_budget",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.0
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[True-demands0-equal-None]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[45101-demands1-equal-None]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[60100-demands2-equal-None]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[45000-demands3-equal-None]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[45000-demands4-equal-None]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_reject_invalid_power_inputs[45000-demands5-priority-priority5]",
+            "class": "tests.unit.test_power_allocation",
+            "status": "PASS",
+            "seconds": 0.001
+          }
+        ]
+      }
+    },
+    "XAC-25": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "预览控制指纹及120秒失效",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_preview_control_fingerprint_and_expiry",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 0.371
+          }
+        ]
+      }
+    },
+    "XAC-26": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "三设备实际先降后升",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_real_three_device_plan_preview_and_decrease_before_increase",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 19.892
+          }
+        ]
+      }
+    },
+    "XAC-27": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "失败停止和真实30秒deadline",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_real_three_device_plan_preview_and_decrease_before_increase",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 19.892
+          },
+          {
+            "test": "test_plan_uses_real_thirty_second_deadline_and_clears_slot",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 30.171
+          }
+        ]
+      }
+    },
+    "XAC-28": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "计划槽位与执行指纹",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_preview_control_fingerprint_and_expiry",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 0.371
+          },
+          {
+            "test": "test_plan_uses_real_thirty_second_deadline_and_clears_slot",
+            "class": "tests.integration.test_power_plans",
+            "status": "PASS",
+            "seconds": 30.171
+          }
+        ]
+      }
+    },
+    "XAC-29": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "告警确认/新鲜恢复基础",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.305
+          }
+        ]
+      }
+    },
+    "XAC-30": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "连续独立观测与持久化触发",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_only_continuous_unique_samples_advance_duration",
+            "class": "tests.unit.test_alarm_rules",
+            "status": "PASS",
+            "seconds": 0.001
+          },
+          {
+            "test": "test_persisted_trigger_duration_resets_after_out_of_order_sample",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.283
+          }
+        ]
+      }
+    },
+    "XAC-31": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "新鲜连续恢复与stale",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.305
+          }
+        ]
+      }
+    },
+    "XAC-32": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "确认不等于恢复与版本",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.305
+          }
+        ]
+      }
+    },
+    "XAC-33": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "变更禁用规则保留旧版本",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_changed_disabled_rule_preserves_active_rule_and_restart_unknown",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.343
+          }
+        ]
+      }
+    },
+    "XAC-34": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "重启unknown后恢复",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_changed_disabled_rule_preserves_active_rule_and_restart_unknown",
+            "class": "tests.integration.test_alarms",
+            "status": "PASS",
+            "seconds": 0.343
+          }
+        ]
+      }
+    },
+    "XAC-35": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "生命周期、说明与恢复合同",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_work_order_transitions_require_current_recovery_and_cleared_alarm",
+            "class": "tests.integration.test_work_order_lifecycle",
+            "status": "PASS",
+            "seconds": 0.468
+          }
+        ]
+      }
+    },
+    "XAC-36": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "IN_PROGRESS/RESOLVED各20独立事务",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_twenty_independent_creates_reuse_in_progress_and_resolved",
+            "class": "tests.integration.test_work_order_lifecycle",
+            "status": "PASS",
+            "seconds": 1.971
+          }
+        ]
+      }
+    },
+    "XAC-37": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "关单需新鲜且关联告警已恢复",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_work_order_transitions_require_current_recovery_and_cleared_alarm",
+            "class": "tests.integration.test_work_order_lifecycle",
+            "status": "PASS",
+            "seconds": 0.468
+          }
+        ]
+      }
+    },
+    "XAC-38": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "迁移事务回滚不留事件/请求",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_transition_rollback_keeps_status_event_and_request_atomic",
+            "class": "tests.integration.test_work_order_lifecycle",
+            "status": "PASS",
+            "seconds": 0.191
+          }
+        ]
+      }
+    },
+    "XAC-49": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "混合来源、稳定游标及只读",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_all_event_sources_link_exact_records_and_keep_late_receipts",
+            "class": "tests.integration.test_timeline_sources",
+            "status": "PASS",
+            "seconds": 0.211
+          },
+          {
+            "test": "test_http_timeline_cursor_preserves_full_counts_and_scope",
+            "class": "tests.integration.test_timeline_v2",
+            "status": "PASS",
+            "seconds": 0.228
+          }
+        ]
+      }
+    },
+    "XAC-50": {
+      "status": "NOT_RUN",
+      "scope": "完整XAC仍需逐项核对其余子断言，不能由测试名称推定",
+      "automatic_subassertions": {
+        "status": "PASS",
+        "scope": "两个60秒真实脚本及取消边界",
+        "missing_tests": [],
+        "evidence_file": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/suite-iot-20260923-final/backend.xml",
+        "tests": [
+          {
+            "test": "test_two_fixed_sixty_second_scripts_real_broker",
+            "class": "tests.integration.test_simulator_scripts",
+            "status": "PASS",
+            "seconds": 64.689
+          },
+          {
+            "test": "test_cancel_manual_override_missing_ack_and_restart_stop_remaining_steps",
+            "class": "tests.integration.test_simulator_script_boundaries",
+            "status": "PASS",
+            "seconds": 30.061
+          }
+        ]
+      }
+    }
+  },
+  "status": "PASS"
+}

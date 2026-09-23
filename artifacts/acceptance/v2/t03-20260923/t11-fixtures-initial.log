@@ -1,0 +1,49 @@
+......FF                                                                 [100%]
+=================================== FAILURES ===================================
+_ test_power_profiles_expose_confirmed_and_unknown_parts[POWER-PARTIAL-powers2-60000-PARTIAL] _
+
+app = <fastapi.applications.FastAPI object at 0x78e74bd64f20>
+profile = 'POWER-PARTIAL', powers = [15, 15, 20], budget = 60000
+status = 'PARTIAL'
+
+    @pytest.mark.parametrize("profile,powers,budget,status", [
+        ("POWER-EQUAL", [15, 15, 15], 45000, "VERIFIED"),
+        ("POWER-PRIORITY", [20, 20, 5], 45000, "VERIFIED"),
+        ("POWER-PARTIAL", [15, 15, 20], 60000, "PARTIAL"),
+    ])
+    async def test_power_profiles_expose_confirmed_and_unknown_parts(app, profile, powers, budget, status):
+        await load_v2_dataset(app, profile, "test", 1)
+        data = await app.state.read_queries.fleet(30)
+        assert [d["status"]["power_kw"] for d in data["devices"]] == powers
+        assert data["station"]["budget_w"] == budget
+        assert data["latest_plan"]["status"] == status
+        if status == "PARTIAL":
+>           assert any(c["status"] == "timed_out" for c in data["latest_plan"]["commands"])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'commands'
+
+tests/integration/test_eval_v2_fixtures.py:70: KeyError
+_______ test_recovered_fixture_preserves_real_recovery_and_order_history _______
+
+app = <fastapi.applications.FastAPI object at 0x78e74bc58530>
+
+    async def test_recovered_fixture_preserves_real_recovery_and_order_history(app):
+        await load_v2_dataset(app, "RECOVERED-CLOSED", "test", 1)
+        orders = await app.state.read_queries.work_orders("CHG-002")
+        assert len(orders["closed"]) == 1 and not orders["unclosed"]
+        before = await snapshot_business(app.state.db)
+        alarm = next(a for a in before["alarms"] if a["reason_code"] == "OVERHEAT")
+        assert alarm["condition"] == "CLEARED"
+>       assert alarm["cleared_at"] == (T0 + timedelta(seconds=12)).isoformat()
+E       AssertionError: assert '2026-09-22T08:10:12Z' == '2026-09-22T08:10:12+00:00'
+E         
+E         - 2026-09-22T08:10:12+00:00
+E         ?                    ^^^^^^
+E         + 2026-09-22T08:10:12Z
+E         ?                    ^
+
+tests/integration/test_eval_v2_fixtures.py:80: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_eval_v2_fixtures.py::test_power_profiles_expose_confirmed_and_unknown_parts[POWER-PARTIAL-powers2-60000-PARTIAL]
+FAILED tests/integration/test_eval_v2_fixtures.py::test_recovered_fixture_preserves_real_recovery_and_order_history
+2 failed, 6 passed in 2.54s

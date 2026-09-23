@@ -1,0 +1,41 @@
+warning: `VIRTUAL_ENV=/home/syzygy/AI_IoT_Agent/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+Using CPython 3.12.13
+Creating virtual environment at: .venv
+Resolved 31 packages in 1ms
+   Building charge-ops-agent @ file:///tmp/charge-v2-reproduction-ljidjb6g
+      Built charge-ops-agent @ file:///tmp/charge-v2-reproduction-ljidjb6g
+Prepared 1 package in 697ms
+warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 30 packages in 247ms
+ + aiosqlite==0.22.1
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + certifi==2026.7.22
+ + charge-ops-agent==0.1.0 (from file:///tmp/charge-v2-reproduction-ljidjb6g)
+ + click==8.5.0
+ + fastapi==0.141.1
+ + greenlet==3.5.6
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + iniconfig==2.3.0
+ + packaging==26.3
+ + paho-mqtt==2.1.0
+ + pluggy==1.6.0
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pydantic-settings==2.15.0
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0
+ + python-dotenv==1.2.3
+ + ruff==0.16.8
+ + sqlalchemy==2.0.54
+ + starlette==1.6.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + uvicorn==0.53.0

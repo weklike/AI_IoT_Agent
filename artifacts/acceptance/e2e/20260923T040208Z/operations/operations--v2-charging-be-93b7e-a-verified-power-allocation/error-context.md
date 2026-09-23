@@ -1,0 +1,82 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ϟ CHARGE OPS 设备监控与运维" [ref=e5] [cursor=pointer]:
+      - /url: /devices
+      - generic [ref=e6]: ϟ
+      - generic [ref=e7]:
+        - text: CHARGE OPS
+        - generic [ref=e8]: 设备监控与运维
+    - paragraph [ref=e9]: 工作空间 / WORKSPACE
+    - navigation [ref=e10]:
+      - link "◫ 设备总览 01" [ref=e11] [cursor=pointer]:
+        - /url: /devices
+        - generic [ref=e12]: ◫
+        - text: 设备总览
+        - generic [ref=e13]: "01"
+      - link "⌘ Agent 助手 02" [ref=e14] [cursor=pointer]:
+        - /url: /agent
+        - generic [ref=e15]: ⌘
+        - text: Agent 助手
+        - generic [ref=e16]: "02"
+    - generic [ref=e17]:
+      - text: 软件模拟环境
+      - paragraph [ref=e19]: 3 台充电设备 · 单机演示
+      - generic [ref=e20]:
+        - text: 所有数值来自合成遥测。
+        - text: 过温阈值为演示规则。
+  - generic [ref=e21]:
+    - banner [ref=e22]:
+      - generic [ref=e23]: 运维控制台 / 本地工作站
+      - generic [ref=e24]: fixture · 替身模型
+    - main [ref=e25]:
+      - link "← 返回设备总览" [ref=e26] [cursor=pointer]:
+        - /url: /devices
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: DEVICE INSIGHT / 01
+          - heading "CHG-001" [level=1] [ref=e30]
+          - paragraph [ref=e31]: 当前指标、遥测历史与场景控制
+        - generic [ref=e32]: 在线
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: 温度
+          - strong [ref=e36]: 39.4 °C
+        - generic [ref=e37]:
+          - generic [ref=e38]: 功率
+          - strong [ref=e39]: 0.0 kW
+        - generic [ref=e40]:
+          - generic [ref=e41]: 电压 / 电流
+          - strong [ref=e42]: 400.0 V / 0.0 A
+        - generic [ref=e43]:
+          - generic [ref=e44]: 健康状态
+          - generic [ref=e45]: 正常
+          - generic [ref=e46]: 数据新鲜
+      - paragraph [ref=e47]: 最后样本 2026/9/23 12:02:40 · 数据年龄 0.9 秒
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "温度历史" [level=2] [ref=e50]
+          - generic [ref=e51]:
+            - text: 时间窗口
+            - combobox "历史窗口" [ref=e52] [cursor=pointer]:
+              - option "10 分钟" [selected]
+              - option "30 分钟"
+              - option "60 分钟"
+        - img "历史温度曲线，横轴样本时间，纵轴摄氏度" [ref=e53]
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - heading "模拟场景" [level=2] [ref=e59]
+          - paragraph [ref=e60]: 命令收到匹配回执后才确认应用；不是实际电路控制。
+        - generic [ref=e61]:
+          - button "恢复正常" [ref=e62] [cursor=pointer]
+          - button "模拟过温" [ref=e63] [cursor=pointer]
+          - button "暂停上报" [ref=e64] [cursor=pointer]
+      - generic [ref=e65]:
+        - heading "检修工单 0" [level=2] [ref=e66]
+        - paragraph [ref=e67]: 暂无工单。仅在本次授权且有有效证据时创建。
+    - contentinfo [ref=e68]:
+      - text: CHARGE OPERATIONS
+      - generic [ref=e69]: MQTT 设备链路 · 数据时间以样本为准
+```

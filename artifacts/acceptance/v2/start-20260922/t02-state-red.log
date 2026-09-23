@@ -1,0 +1,17 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+_______ test_persisted_meter_restart_interrupts_without_downtime_energy ________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-65/test_persisted_meter_restart_i0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    def test_persisted_meter_restart_interrupts_without_downtime_energy(tmp_path, fixed_now):
+        from datetime import timedelta
+        from uuid import uuid4
+>       from simulator.charging import ChargingDevice
+E       ImportError: cannot import name 'ChargingDevice' from 'simulator.charging' (/home/syzygy/AI_IoT_Agent/simulator/charging.py)
+
+tests/unit/test_simulator_charging.py:18: ImportError
+=========================== short test summary info ============================
+FAILED tests/unit/test_simulator_charging.py::test_persisted_meter_restart_interrupts_without_downtime_energy
+1 failed, 1 passed in 0.12s

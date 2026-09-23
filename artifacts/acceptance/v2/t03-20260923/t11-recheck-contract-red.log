@@ -1,0 +1,34 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+______ test_recheck_complete_automatic_results_still_require_human_review ______
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-192/test_recheck_complete_automati0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c1e97559760>
+
+    def test_recheck_complete_automatic_results_still_require_human_review(tmp_path, monkeypatch):
+        report, code = recheck.recheck(evidence(tmp_path, monkeypatch), "测试退出码合同")
+        assert report["status"] == "PENDING_REVIEW"
+>       assert code == 3
+E       assert 0 == 3
+
+tests/unit/test_eval_recheck_contract.py:62: AssertionError
+_ test_recheck_missing_cases_cannot_pass_even_when_numerical_threshold_is_met __
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-192/test_recheck_missing_cases_can0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c1e97559880>
+
+    def test_recheck_missing_cases_cannot_pass_even_when_numerical_threshold_is_met(
+        tmp_path, monkeypatch
+    ):
+        report, code = recheck.recheck(evidence(tmp_path, monkeypatch, 57), "测试完整分母")
+>       assert report["status"] == "FAIL"
+E       AssertionError: assert 'PENDING_REVIEW' == 'FAIL'
+E         
+E         - FAIL
+E         + PENDING_REVIEW
+
+tests/unit/test_eval_recheck_contract.py:69: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_eval_recheck_contract.py::test_recheck_complete_automatic_results_still_require_human_review
+FAILED tests/unit/test_eval_recheck_contract.py::test_recheck_missing_cases_cannot_pass_even_when_numerical_threshold_is_met
+2 failed in 0.58s

@@ -1,0 +1,12 @@
+[
+  {
+    "case_id": "B22",
+    "repeat": 1,
+    "evidence_sha256": "ab75084247867a7f751715cf3134e32f46bb6b663c3f488043f2f816308b26ff",
+    "reviewer": null,
+    "reviewed_at": null,
+    "success": null,
+    "critical_errors": [],
+    "notes": ""
+  }
+]

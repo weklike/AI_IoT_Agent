@@ -1,0 +1,277 @@
+[
+  {
+    "kind": "start",
+    "device_id": "CHG-001",
+    "accepted": {
+      "command_id": "b0409cc7-8ea8-4414-be8d-08ac8cd473af",
+      "session_id": "28d0abef-2f78-4c5b-942a-054dea268e1d"
+    },
+    "final": {
+      "command_id": "b0409cc7-8ea8-4414-be8d-08ac8cd473af",
+      "device_id": "CHG-001",
+      "generation": 1,
+      "action": "start_session",
+      "args_json": {
+        "session_id": "28d0abef-2f78-4c5b-942a-054dea268e1d",
+        "requested_power_w": 20000
+      },
+      "status": "applied",
+      "issued_at": "2026-09-23T05:48:52.555250Z",
+      "expires_at": "2026-09-23T05:48:57.555250Z",
+      "ack_at": "2026-09-23T05:48:52.627217Z",
+      "ack_observed_at": "2026-09-23T05:48:52.582760Z",
+      "ack_json": {
+        "command_id": "b0409cc7-8ea8-4414-be8d-08ac8cd473af",
+        "device_id": "CHG-001",
+        "generation": 1,
+        "action": "start_session",
+        "args": {
+          "session_id": "28d0abef-2f78-4c5b-942a-054dea268e1d",
+          "requested_power_w": 20000
+        },
+        "issued_at": "2026-09-23T05:48:52.555250Z",
+        "expires_at": "2026-09-23T05:48:57.555250Z",
+        "applied_at": "2026-09-23T05:48:52.582760Z",
+        "status": "applied",
+        "error_code": null,
+        "actual_state": {
+          "session_id": "28d0abef-2f78-4c5b-942a-054dea268e1d",
+          "session_state": "ACTIVE",
+          "requested_power_w": 20000,
+          "power_limit_w": 0,
+          "meter_total_wh": 0,
+          "session_energy_wh": 0,
+          "applied_control_generation": 1
+        }
+      },
+      "late_ack_json": null,
+      "late_ack_observed_at": null,
+      "late_ack_received_at": null,
+      "verification_status": "verified",
+      "verification_json": {
+        "message_id": "b2dec5f9-c877-5444-9651-ff90048c2506",
+        "sample_ts": "2026-09-23T05:48:53.261951+00:00",
+        "checked_at": "2026-09-23T05:48:53.309754+00:00"
+      },
+      "error_code": null
+    }
+  },
+  {
+    "kind": "start",
+    "device_id": "CHG-002",
+    "accepted": {
+      "command_id": "6609c969-03ff-4afd-abb2-877a7121a47b",
+      "session_id": "50c9e506-cfb3-4309-8edd-ef612447a7aa"
+    },
+    "final": {
+      "command_id": "6609c969-03ff-4afd-abb2-877a7121a47b",
+      "device_id": "CHG-002",
+      "generation": 1,
+      "action": "start_session",
+      "args_json": {
+        "session_id": "50c9e506-cfb3-4309-8edd-ef612447a7aa",
+        "requested_power_w": 20000
+      },
+      "status": "applied",
+      "issued_at": "2026-09-23T05:48:53.436378Z",
+      "expires_at": "2026-09-23T05:48:58.436378Z",
+      "ack_at": "2026-09-23T05:48:53.495254Z",
+      "ack_observed_at": "2026-09-23T05:48:53.450735Z",
+      "ack_json": {
+        "command_id": "6609c969-03ff-4afd-abb2-877a7121a47b",
+        "device_id": "CHG-002",
+        "generation": 1,
+        "action": "start_session",
+        "args": {
+          "session_id": "50c9e506-cfb3-4309-8edd-ef612447a7aa",
+          "requested_power_w": 20000
+        },
+        "issued_at": "2026-09-23T05:48:53.436378Z",
+        "expires_at": "2026-09-23T05:48:58.436378Z",
+        "applied_at": "2026-09-23T05:48:53.450735Z",
+        "status": "applied",
+        "error_code": null,
+        "actual_state": {
+          "session_id": "50c9e506-cfb3-4309-8edd-ef612447a7aa",
+          "session_state": "ACTIVE",
+          "requested_power_w": 20000,
+          "power_limit_w": 0,
+          "meter_total_wh": 0,
+          "session_energy_wh": 0,
+          "applied_control_generation": 1
+        }
+      },
+      "late_ack_json": null,
+      "late_ack_observed_at": null,
+      "late_ack_received_at": null,
+      "verification_status": "verified",
+      "verification_json": {
+        "message_id": "52b01808-a262-513b-b235-5800a7c7b3dc",
+        "sample_ts": "2026-09-23T05:48:55.331813+00:00",
+        "checked_at": "2026-09-23T05:48:55.401949+00:00"
+      },
+      "error_code": null
+    }
+  },
+  {
+    "kind": "start",
+    "device_id": "CHG-003",
+    "accepted": {
+      "command_id": "2a144533-9758-4ca5-9994-85b7624f3ebe",
+      "session_id": "2066ee46-70e6-45d3-8dfa-013ce4edf37a"
+    },
+    "final": {
+      "command_id": "2a144533-9758-4ca5-9994-85b7624f3ebe",
+      "device_id": "CHG-003",
+      "generation": 1,
+      "action": "start_session",
+      "args_json": {
+        "session_id": "2066ee46-70e6-45d3-8dfa-013ce4edf37a",
+        "requested_power_w": 20000
+      },
+      "status": "applied",
+      "issued_at": "2026-09-23T05:48:55.560053Z",
+      "expires_at": "2026-09-23T05:49:00.560053Z",
+      "ack_at": "2026-09-23T05:48:55.618756Z",
+      "ack_observed_at": "2026-09-23T05:48:55.574336Z",
+      "ack_json": {
+        "command_id": "2a144533-9758-4ca5-9994-85b7624f3ebe",
+        "device_id": "CHG-003",
+        "generation": 1,
+        "action": "start_session",
+        "args": {
+          "session_id": "2066ee46-70e6-45d3-8dfa-013ce4edf37a",
+          "requested_power_w": 20000
+        },
+        "issued_at": "2026-09-23T05:48:55.560053Z",
+        "expires_at": "2026-09-23T05:49:00.560053Z",
+        "applied_at": "2026-09-23T05:48:55.574336Z",
+        "status": "applied",
+        "error_code": null,
+        "actual_state": {
+          "session_id": "2066ee46-70e6-45d3-8dfa-013ce4edf37a",
+          "session_state": "ACTIVE",
+          "requested_power_w": 20000,
+          "power_limit_w": 0,
+          "meter_total_wh": 0,
+          "session_energy_wh": 0,
+          "applied_control_generation": 1
+        }
+      },
+      "late_ack_json": null,
+      "late_ack_observed_at": null,
+      "late_ack_received_at": null,
+      "verification_status": "verified",
+      "verification_json": {
+        "message_id": "e7f85104-31bb-5e72-a347-3fd4045eab89",
+        "sample_ts": "2026-09-23T05:48:57.398982+00:00",
+        "checked_at": "2026-09-23T05:48:57.484687+00:00"
+      },
+      "error_code": null
+    }
+  },
+  {
+    "kind": "plan",
+    "minute": -1,
+    "preview": {
+      "plan_id": "b70f8fee-e233-46bc-b2e0-52f5ffa1ea77",
+      "allocation_w": {
+        "CHG-001": 15000,
+        "CHG-002": 15000,
+        "CHG-003": 15000
+      },
+      "budget_w": 45000,
+      "status": "PREVIEW"
+    },
+    "accepted": {
+      "plan_id": "b70f8fee-e233-46bc-b2e0-52f5ffa1ea77"
+    },
+    "final": {
+      "plan_id": "b70f8fee-e233-46bc-b2e0-52f5ffa1ea77",
+      "strategy": "equal",
+      "budget_w": 45000,
+      "station_revision": 1,
+      "snapshot_json": {
+        "fingerprint": {
+          "CHG-001": {
+            "session_id": "28d0abef-2f78-4c5b-942a-054dea268e1d",
+            "session_state": "ACTIVE",
+            "requested_power_w": 20000,
+            "power_limit_w": 0,
+            "applied_control_generation": 1
+          },
+          "CHG-002": {
+            "session_id": "50c9e506-cfb3-4309-8edd-ef612447a7aa",
+            "session_state": "ACTIVE",
+            "requested_power_w": 20000,
+            "power_limit_w": 0,
+            "applied_control_generation": 1
+          },
+          "CHG-003": {
+            "session_id": "2066ee46-70e6-45d3-8dfa-013ce4edf37a",
+            "session_state": "ACTIVE",
+            "requested_power_w": 20000,
+            "power_limit_w": 0,
+            "applied_control_generation": 1
+          }
+        },
+        "message_ids": {
+          "CHG-001": "afb06cde-79da-53d0-902a-823fda4d4b09",
+          "CHG-002": "334200f2-6a3f-5358-81d5-c8857a280beb",
+          "CHG-003": "e7f85104-31bb-5e72-a347-3fd4045eab89"
+        },
+        "confirmed_budget_w": 60000
+      },
+      "allocation_json": {
+        "CHG-001": 15000,
+        "CHG-002": 15000,
+        "CHG-003": 15000
+      },
+      "results_json": {
+        "CHG-002": {
+          "command_id": "fbe1fbbf-d598-43be-ae3c-65854fb46184",
+          "target_w": 15000,
+          "worst_case_w": 15000,
+          "protection_budget_w": 60000
+        },
+        "CHG-001": {
+          "command_id": "1bbe6100-6ca8-443e-a771-3e446827fa66",
+          "target_w": 15000,
+          "worst_case_w": 30000,
+          "protection_budget_w": 60000
+        },
+        "CHG-003": {
+          "command_id": "f78abf23-d130-4b7e-ae1a-788fbce42f0a",
+          "target_w": 15000,
+          "worst_case_w": 45000,
+          "protection_budget_w": 60000
+        }
+      },
+      "status": "VERIFIED",
+      "created_at": "2026-09-23T05:48:57.693703Z",
+      "finished_at": "2026-09-23T05:48:59.558313Z",
+      "confirmed_budget_w": 45000,
+      "protection_budget_w": 60000,
+      "commands": {
+        "CHG-002": {
+          "command_id": "fbe1fbbf-d598-43be-ae3c-65854fb46184",
+          "status": "applied",
+          "verification_status": "verified",
+          "error_code": null
+        },
+        "CHG-001": {
+          "command_id": "1bbe6100-6ca8-443e-a771-3e446827fa66",
+          "status": "applied",
+          "verification_status": "verified",
+          "error_code": null
+        },
+        "CHG-003": {
+          "command_id": "f78abf23-d130-4b7e-ae1a-788fbce42f0a",
+          "status": "applied",
+          "verification_status": "verified",
+          "error_code": null
+        }
+      }
+    }
+  }
+]

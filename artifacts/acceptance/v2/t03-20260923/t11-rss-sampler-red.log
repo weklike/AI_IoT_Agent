@@ -1,0 +1,66 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____ test_resource_count_alone_cannot_replace_required_cpu_rss_measurements ____
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-194/test_resource_count_alone_cann0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    def test_resource_count_alone_cannot_replace_required_cpu_rss_measurements(tmp_path, fixed_now):
+        (tmp_path / "browser-observed.json").write_text(json.dumps({"errors": [], "observations": []}))
+        resources = [
+            {
+                "runtime": {
+                    "guardians": {"mqtt-consumer": 1, "alarm-timer": 1, "patrol-timer": 1},
+                    "managed": {"charging": 0, "power": 0, "scenario": 0, "scripts": 0, "agent": 0},
+                },
+                "states": [],
+                "containers": [],
+                "volumes": {},
+            }
+        ]
+        result = summarize_window(
+            tmp_path, fixed_now, fixed_now + timedelta(minutes=1), [], "", resources, [], 1
+        )
+>       assert result["checks"]["resource_samples"] is False
+E       assert True is False
+
+tests/unit/test_stability_resource_contract.py:23: AssertionError
+___ test_resource_sampler_records_process_rss_separately_from_docker_memory ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7cf12e31f560>
+
+    def test_resource_sampler_records_process_rss_separately_from_docker_memory(monkeypatch):
+        from types import SimpleNamespace
+    
+        def run(command, **kwargs):
+            if command[1] == "stats":
+                output = "\n".join(
+                    json.dumps({"Name": name, "CPUPerc": "1.2%", "MemUsage": "90MiB / 1GiB"})
+                    for name in command[6:]
+                )
+            elif command[1] == "inspect":
+                output = json.dumps(
+                    [
+                        {"Name": name, "State": {"Status": "running"}, "RestartCount": 0}
+                        for name in command[2:]
+                    ]
+                )
+            elif command[1] == "top":
+                assert command[3:] == ["-eo", "pid,ppid,rss,comm"]
+                output = "PID PPID RSS COMMAND\n101 1 12345 uvicorn\n102 101 2345 worker\n"
+            else:
+                output = json.dumps({"total_bytes": 4096, "files_bytes": {"state": 4096}})
+            return SimpleNamespace(stdout=output)
+    
+        monkeypatch.setattr("scripts.stability_v2.subprocess.run", run)
+        response = SimpleNamespace(raise_for_status=lambda: None, json=lambda: {})
+        result = resource_sample("owned-project", SimpleNamespace(get=lambda path: response), 1)
+>       assert set(result["rss_processes"]) == {"backend", "simulator", "mqtt", "frontend"}
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'rss_processes'
+
+tests/unit/test_stability_resource_contract.py:52: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_stability_resource_contract.py::test_resource_count_alone_cannot_replace_required_cpu_rss_measurements
+FAILED tests/unit/test_stability_resource_contract.py::test_resource_sampler_records_process_rss_separately_from_docker_memory
+2 failed in 0.15s

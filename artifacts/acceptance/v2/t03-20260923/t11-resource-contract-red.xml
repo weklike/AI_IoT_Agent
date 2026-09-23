@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.139" timestamp="2026-09-23T15:00:22.589170+08:00" hostname="Syzygy"><testcase classname="tests.unit.test_stability_resource_contract" name="test_resource_count_alone_cannot_replace_required_cpu_rss_measurements" time="0.071"><failure message="assert True is False">tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-193/test_resource_count_alone_cann0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    def test_resource_count_alone_cannot_replace_required_cpu_rss_measurements(tmp_path, fixed_now):
+        (tmp_path / "browser-observed.json").write_text(json.dumps({"errors": [], "observations": []}))
+        resources = [
+            {
+                "runtime": {
+                    "guardians": {"mqtt-consumer": 1, "alarm-timer": 1, "patrol-timer": 1},
+                    "managed": {"charging": 0, "power": 0, "scenario": 0, "scripts": 0, "agent": 0},
+                },
+                "states": [],
+                "containers": [],
+                "volumes": {},
+            }
+        ]
+        result = summarize_window(
+            tmp_path, fixed_now, fixed_now + timedelta(minutes=1), [], "", resources, [], 1
+        )
+&gt;       assert result["checks"]["resource_samples"] is False
+E       assert True is False
+
+tests/unit/test_stability_resource_contract.py:23: AssertionError</failure></testcase></testsuite></testsuites>

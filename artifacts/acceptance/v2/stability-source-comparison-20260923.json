@@ -1,0 +1,28 @@
+{
+  "kind": "fixture-stability-source-comparison",
+  "source_commit": "e0c9f6a4f1404c612128961784ddaabb1195a75a",
+  "target_runtime_commit": "7ef09227c4052e91624e0a3a8976373045b0ce22",
+  "scope": "仅判断稳态遥测/控制/资源证据是否仍适用，不作为真实模型、人类语义或新查询投影的验收",
+  "files": {
+    "backend/app/agent/prompts.py": {
+      "before_sha256": "b81eac724a67b6f3d46c3b1249959c194f8338a2de728d1a1f70b5f100f00815",
+      "after_sha256": "b0a07f749e29b0c6f2034bc43701348a85ba26c9ab96f2b9c692b17a9bf8a686",
+      "unchanged_behavior_reason": "只补充用户提供的旧引用必须重新取证的指令；fixture provider从不读取system消息内容，稳态巡检的业务调用和实际负载不变。真实模型评测必须使用新提示重新执行，不能沿用该例外。"
+    },
+    "backend/app/agent/read_queries.py": {
+      "before_sha256": "24e3ccc63ac98de17f5e161e59cdf27469d8db8574ce4435d67146c34128964d",
+      "after_sha256": "df68866c8425fdc96ab22c1ece5a9410c63cbad2c6721e0347ee1307cf8a50d2",
+      "unchanged_behavior_reason": "fleet最近计划仅新增strategy及device_priority两个返回字段，SQL窗口、聚合、设备状态、取数和事务均不变；fixture巡检回答只读取devices/window，不读取新增字段。查询性能将另用新投影实测。"
+    },
+    "backend/app/power/service.py": {
+      "before_sha256": "86d1e1e40ca8210b39ee94ed0d08abd8877ec95b827178b2f610ffbb7b2b4692",
+      "after_sha256": "29f17480eda488eb4f00e880f4cff80cb9a708b639a81bad8933ab2bfdf1847e",
+      "unchanged_behavior_reason": "只在preview的snapshot_json中保存原输入device_priority副本，未改allocate_power、指纹、执行、ACK、验证、保守上界、期限、预算或后台任务逻辑。新增小型元数据不改变本次稳态控制和遥测路径。"
+    }
+  },
+  "evidence": [
+    "artifacts/acceptance/v2/t03-20260923/t11-plan-explanation-fixed.xml",
+    "artifacts/acceptance/v2/power-protection-20260923-formal/report.json"
+  ],
+  "method": "核对完整diff，且将允许差异绑定到实际前后摘要；任何其他变化拒绝复用"
+}

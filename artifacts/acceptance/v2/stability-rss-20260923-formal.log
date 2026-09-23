@@ -1,0 +1,302 @@
+ Image charge-ops-backend:test-30d3503108c7c6c7 Building 
+ Image charge-ops-backend:test-30d3503108c7c6c7 Building 
+ Image charge-ops-frontend:test-30d3503108c7c6c7 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.53kB done
+#1 DONE 0.0s
+
+#2 [simulator internal] load build definition from backend.Dockerfile
+#2 transferring dockerfile: 642B done
+#2 DONE 0.1s
+
+#3 [frontend internal] load build definition from frontend.Dockerfile
+#3 transferring dockerfile: 302B done
+#3 DONE 0.1s
+
+#4 [simulator internal] load metadata for docker.io/library/python:3.12.13-slim
+#4 DONE 1.9s
+
+#5 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#5 DONE 2.0s
+
+#6 [frontend internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#6 DONE 2.0s
+
+#7 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#7 ...
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 117B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#10 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#10 DONE 0.1s
+
+#11 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#11 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.1s done
+#11 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 2.78kB done
+#9 DONE 0.0s
+
+#12 [frontend build 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [frontend build 4/6] RUN npm ci
+#13 CACHED
+
+#14 [frontend build 5/6] COPY frontend/ ./
+#14 CACHED
+
+#15 [frontend build 6/6] RUN npm run build
+#15 CACHED
+
+#16 [frontend build 3/6] COPY frontend/package*.json ./
+#16 CACHED
+
+#17 [frontend stage-1 2/3] COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+#17 CACHED
+
+#18 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#18 CACHED
+
+#19 [frontend] exporting to image
+#19 exporting layers done
+#19 exporting manifest sha256:6607d8bbdca8149ede912d1f93ae5ec38c3d687bf7ddf6f1a82dc3d9db05e0a2 0.1s done
+#19 exporting config sha256:f834dfc95a0338805edfa649fdde788303cd68c94e652d68ad6dcf05976994b5
+#19 exporting config sha256:f834dfc95a0338805edfa649fdde788303cd68c94e652d68ad6dcf05976994b5 0.1s done
+#19 exporting attestation manifest sha256:d4dd1538643ebbc9d830e9bb63596cd0b4dc764f7aa90d9782113c284cb0f1be
+#19 exporting attestation manifest sha256:d4dd1538643ebbc9d830e9bb63596cd0b4dc764f7aa90d9782113c284cb0f1be 0.1s done
+#19 exporting manifest list sha256:03ec4b49b99a118095170da46ee4e297a8742c6339e115f35034dff5e1dc242a
+#19 exporting manifest list sha256:03ec4b49b99a118095170da46ee4e297a8742c6339e115f35034dff5e1dc242a 0.1s done
+#19 naming to docker.io/library/charge-ops-frontend:test-30d3503108c7c6c7 done
+#19 unpacking to docker.io/library/charge-ops-frontend:test-30d3503108c7c6c7 0.0s done
+#19 DONE 0.4s
+
+#7 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#7 ...
+
+#20 [frontend] resolving provenance for metadata file
+#20 DONE 0.0s
+
+#7 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#7 DONE 4.2s
+
+#8 [backend internal] load .dockerignore
+#8 CACHED
+
+#21 [backend internal] load build context
+#21 DONE 0.0s
+
+#22 [backend] FROM ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823
+#22 resolve ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823 0.1s done
+#22 resolve ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823 0.1s done
+#22 DONE 0.1s
+
+#23 [backend stage-0  1/11] FROM docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36
+#23 resolve docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36 0.1s done
+#23 DONE 0.1s
+
+#21 [backend internal] load build context
+#21 transferring context: 412.03kB 0.0s done
+#21 DONE 0.1s
+
+#24 [backend stage-0  2/11] COPY --from=ghcr.io/astral-sh/uv:0.11.3 /uv /usr/local/bin/uv
+#24 CACHED
+
+#25 [backend stage-0  3/11] WORKDIR /app
+#25 CACHED
+
+#26 [backend stage-0  4/11] COPY pyproject.toml uv.lock ./
+#26 CACHED
+
+#27 [backend stage-0  5/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev --no-install-project
+#27 CACHED
+
+#26 [simulator stage-0  4/11] COPY pyproject.toml uv.lock ./
+#26 CACHED
+
+#24 [simulator stage-0  2/11] COPY --from=ghcr.io/astral-sh/uv:0.11.3 /uv /usr/local/bin/uv
+#24 CACHED
+
+#25 [simulator stage-0  3/11] WORKDIR /app
+#25 CACHED
+
+#27 [simulator stage-0  5/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev --no-install-project
+#27 CACHED
+
+#28 [simulator stage-0  6/11] COPY backend backend
+#28 DONE 0.1s
+
+#29 [backend stage-0  7/11] COPY knowledge knowledge
+#29 DONE 0.1s
+
+#30 [backend stage-0  8/11] COPY simulator simulator
+#30 DONE 0.0s
+
+#31 [backend stage-0  9/11] COPY tests/__init__.py tests/__init__.py
+#31 DONE 0.1s
+
+#32 [simulator stage-0 10/11] COPY tests/support tests/support
+#32 DONE 0.1s
+
+#33 [backend stage-0 11/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev
+#33 0.350 Resolved 31 packages in 1ms
+#33 0.361 Installed 1 package in 7ms
+#33 0.361  + charge-ops-agent==0.1.0 (from file:///app)
+#33 DONE 0.4s
+
+#34 [backend] exporting to image
+#34 exporting layers 0.4s done
+#34 exporting manifest sha256:61eb9edfde7126dac739e29a06e34d8aa342e750cf6cb8111296afac6d69a0f3 0.0s done
+#34 exporting config sha256:09e17de09f9353c0b0ee2025047d5a4c79ac3346a2e94f2fa1bc98e8ca24d778 0.0s done
+#34 exporting attestation manifest sha256:35a94693d0239f924a087d5afa84e81a35a2dda162b44aa73462b034c6b1293c 0.1s done
+#34 exporting manifest list sha256:d9ebdd3d0ac3d5b60313e025eaee4d5268b50221ab04ebc53fdb89533940cfd2
+#34 exporting manifest list sha256:d9ebdd3d0ac3d5b60313e025eaee4d5268b50221ab04ebc53fdb89533940cfd2 0.0s done
+#34 naming to docker.io/library/charge-ops-backend:test-30d3503108c7c6c7 done
+#34 unpacking to docker.io/library/charge-ops-backend:test-30d3503108c7c6c7
+#34 unpacking to docker.io/library/charge-ops-backend:test-30d3503108c7c6c7 0.2s done
+#34 DONE 0.8s
+
+#35 [simulator] exporting to image
+#35 exporting layers 0.4s done
+#35 exporting manifest sha256:87c8dd90aabb08a002a039b51e0d31643267caf9f79788cc9cd64d02e31c6ad9 0.0s done
+#35 exporting config sha256:000713c9ad56bcb7bbaabd681f8dc40ab8b9b01eeacf99bb0de41493d7ebbb39 0.0s done
+#35 exporting attestation manifest sha256:ade3964d246c19f7a8f9de2405cdc9899adfd7dbbae7805c7b78ce25d7cfad05 0.1s done
+#35 exporting manifest list sha256:fa6ae842d386ca802c18e380f9c16c48c50cca12d32b8f39da6eba35c22ae1e6 0.0s done
+#35 naming to docker.io/library/charge-ops-backend:test-30d3503108c7c6c7 done
+#35 unpacking to docker.io/library/charge-ops-backend:test-30d3503108c7c6c7 0.2s done
+#35 DONE 0.8s
+
+#36 [backend] resolving provenance for metadata file
+#36 DONE 0.1s
+
+#37 [simulator] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image charge-ops-frontend:test-30d3503108c7c6c7 Built 
+ Image charge-ops-backend:test-30d3503108c7c6c7 Built 
+ Image charge-ops-backend:test-30d3503108c7c6c7 Built 
+ Network charge-smoke-0e18c024693b_default Creating 
+ Network charge-smoke-0e18c024693b_default Created 
+ Volume charge-smoke-0e18c024693b_backend_data Creating 
+ Volume charge-smoke-0e18c024693b_backend_data Created 
+ Volume charge-smoke-0e18c024693b_simulator_state Creating 
+ Volume charge-smoke-0e18c024693b_simulator_state Created 
+ Container charge-smoke-0e18c024693b-mqtt-1 Creating 
+ Container charge-smoke-0e18c024693b-mqtt-1 Created 
+ Container charge-smoke-0e18c024693b-backend-1 Creating 
+ Container charge-smoke-0e18c024693b-simulator-1 Creating 
+ Container charge-smoke-0e18c024693b-simulator-1 Created 
+ Container charge-smoke-0e18c024693b-backend-1 Created 
+ Container charge-smoke-0e18c024693b-frontend-1 Creating 
+ Container charge-smoke-0e18c024693b-frontend-1 Created 
+ Container charge-smoke-0e18c024693b-mqtt-1 Starting 
+ Container charge-smoke-0e18c024693b-mqtt-1 Started 
+ Container charge-smoke-0e18c024693b-mqtt-1 Waiting 
+ Container charge-smoke-0e18c024693b-mqtt-1 Waiting 
+ Container charge-smoke-0e18c024693b-mqtt-1 Healthy 
+ Container charge-smoke-0e18c024693b-simulator-1 Starting 
+ Container charge-smoke-0e18c024693b-mqtt-1 Healthy 
+ Container charge-smoke-0e18c024693b-backend-1 Starting 
+ Container charge-smoke-0e18c024693b-backend-1 Started 
+ Container charge-smoke-0e18c024693b-backend-1 Waiting 
+ Container charge-smoke-0e18c024693b-simulator-1 Started 
+ Container charge-smoke-0e18c024693b-backend-1 Healthy 
+ Container charge-smoke-0e18c024693b-frontend-1 Starting 
+ Container charge-smoke-0e18c024693b-frontend-1 Started 
+ Container charge-smoke-0e18c024693b-mqtt-1 Waiting 
+ Container charge-smoke-0e18c024693b-backend-1 Waiting 
+ Container charge-smoke-0e18c024693b-simulator-1 Waiting 
+ Container charge-smoke-0e18c024693b-frontend-1 Waiting 
+ Container charge-smoke-0e18c024693b-simulator-1 Healthy 
+ Container charge-smoke-0e18c024693b-mqtt-1 Healthy 
+ Container charge-smoke-0e18c024693b-backend-1 Healthy 
+ Container charge-smoke-0e18c024693b-frontend-1 Healthy 
+Operations window started 2026-09-23T07:11:06.200052+00:00; 60 minutes
+Operations steady-state elapsed 1/60 minutes
+Operations steady-state elapsed 2/60 minutes
+Operations steady-state elapsed 3/60 minutes
+Operations steady-state elapsed 4/60 minutes
+Operations steady-state elapsed 5/60 minutes
+Operations steady-state elapsed 6/60 minutes
+Operations steady-state elapsed 7/60 minutes
+Operations steady-state elapsed 8/60 minutes
+Operations steady-state elapsed 9/60 minutes
+Operations steady-state elapsed 10/60 minutes
+Operations steady-state elapsed 11/60 minutes
+Operations steady-state elapsed 12/60 minutes
+Operations steady-state elapsed 13/60 minutes
+Operations steady-state elapsed 14/60 minutes
+Operations steady-state elapsed 15/60 minutes
+Operations steady-state elapsed 16/60 minutes
+Operations steady-state elapsed 17/60 minutes
+Operations steady-state elapsed 18/60 minutes
+Operations steady-state elapsed 19/60 minutes
+Operations steady-state elapsed 20/60 minutes
+Operations steady-state elapsed 21/60 minutes
+Operations steady-state elapsed 22/60 minutes
+Operations steady-state elapsed 23/60 minutes
+Operations steady-state elapsed 24/60 minutes
+Operations steady-state elapsed 25/60 minutes
+Operations steady-state elapsed 26/60 minutes
+Operations steady-state elapsed 27/60 minutes
+Operations steady-state elapsed 28/60 minutes
+Operations steady-state elapsed 29/60 minutes
+Operations steady-state elapsed 30/60 minutes
+Operations steady-state elapsed 31/60 minutes
+Operations steady-state elapsed 32/60 minutes
+Operations steady-state elapsed 33/60 minutes
+Operations steady-state elapsed 34/60 minutes
+Operations steady-state elapsed 35/60 minutes
+Operations steady-state elapsed 36/60 minutes
+Operations steady-state elapsed 37/60 minutes
+Operations steady-state elapsed 38/60 minutes
+Operations steady-state elapsed 39/60 minutes
+Operations steady-state elapsed 40/60 minutes
+Operations steady-state elapsed 41/60 minutes
+Operations steady-state elapsed 42/60 minutes
+Operations steady-state elapsed 43/60 minutes
+Operations steady-state elapsed 44/60 minutes
+Operations steady-state elapsed 45/60 minutes
+Operations steady-state elapsed 46/60 minutes
+Operations steady-state elapsed 47/60 minutes
+Operations steady-state elapsed 48/60 minutes
+Operations steady-state elapsed 49/60 minutes
+Operations steady-state elapsed 50/60 minutes
+Operations steady-state elapsed 51/60 minutes
+Operations steady-state elapsed 52/60 minutes
+Operations steady-state elapsed 53/60 minutes
+Operations steady-state elapsed 54/60 minutes
+Operations steady-state elapsed 55/60 minutes
+Operations steady-state elapsed 56/60 minutes
+Operations steady-state elapsed 57/60 minutes
+Operations steady-state elapsed 58/60 minutes
+Operations steady-state elapsed 59/60 minutes
+Operations steady-state elapsed 60/60 minutes
+ Container charge-smoke-0e18c024693b-frontend-1 Stopping 
+ Container charge-smoke-0e18c024693b-simulator-1 Stopping 
+ Container charge-smoke-0e18c024693b-frontend-1 Stopped 
+ Container charge-smoke-0e18c024693b-frontend-1 Removing 
+ Container charge-smoke-0e18c024693b-simulator-1 Stopped 
+ Container charge-smoke-0e18c024693b-simulator-1 Removing 
+ Container charge-smoke-0e18c024693b-frontend-1 Removed 
+ Container charge-smoke-0e18c024693b-backend-1 Stopping 
+ Container charge-smoke-0e18c024693b-simulator-1 Removed 
+ Container charge-smoke-0e18c024693b-backend-1 Stopped 
+ Container charge-smoke-0e18c024693b-backend-1 Removing 
+ Container charge-smoke-0e18c024693b-backend-1 Removed 
+ Container charge-smoke-0e18c024693b-mqtt-1 Stopping 
+ Container charge-smoke-0e18c024693b-mqtt-1 Stopped 
+ Container charge-smoke-0e18c024693b-mqtt-1 Removing 
+ Container charge-smoke-0e18c024693b-mqtt-1 Removed 
+ Volume charge-smoke-0e18c024693b_backend_data Removing 
+ Network charge-smoke-0e18c024693b_default Removing 
+ Volume charge-smoke-0e18c024693b_simulator_state Removing 
+ Volume charge-smoke-0e18c024693b_simulator_state Removed 
+ Volume charge-smoke-0e18c024693b_backend_data Removed 
+ Network charge-smoke-0e18c024693b_default Removed 

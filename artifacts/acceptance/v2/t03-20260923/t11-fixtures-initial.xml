@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="8" time="2.536" timestamp="2026-09-23T13:03:39.381878+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_fleet_fixture_keeps_stale_offline_and_active_sessions" time="0.356" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_meter_profiles_have_authoritative_reports[SESSION-DONE-CHG-001-COMPLETED-3333]" time="0.192" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_meter_profiles_have_authoritative_reports[SESSION-ACTIVE-STALE-CHG-001-ACTIVE-2500]" time="0.212" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_meter_profiles_have_authoritative_reports[SESSION-CRASH-CHG-002-INTERRUPTED-3322]" time="0.184" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_power_profiles_expose_confirmed_and_unknown_parts[POWER-EQUAL-powers0-45000-VERIFIED]" time="0.229" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_power_profiles_expose_confirmed_and_unknown_parts[POWER-PRIORITY-powers1-45000-VERIFIED]" time="0.228" /><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_power_profiles_expose_confirmed_and_unknown_parts[POWER-PARTIAL-powers2-60000-PARTIAL]" time="0.228"><failure message="KeyError: 'commands'">app = &lt;fastapi.applications.FastAPI object at 0x78e74bd64f20&gt;
+profile = 'POWER-PARTIAL', powers = [15, 15, 20], budget = 60000
+status = 'PARTIAL'
+
+    @pytest.mark.parametrize("profile,powers,budget,status", [
+        ("POWER-EQUAL", [15, 15, 15], 45000, "VERIFIED"),
+        ("POWER-PRIORITY", [20, 20, 5], 45000, "VERIFIED"),
+        ("POWER-PARTIAL", [15, 15, 20], 60000, "PARTIAL"),
+    ])
+    async def test_power_profiles_expose_confirmed_and_unknown_parts(app, profile, powers, budget, status):
+        await load_v2_dataset(app, profile, "test", 1)
+        data = await app.state.read_queries.fleet(30)
+        assert [d["status"]["power_kw"] for d in data["devices"]] == powers
+        assert data["station"]["budget_w"] == budget
+        assert data["latest_plan"]["status"] == status
+        if status == "PARTIAL":
+&gt;           assert any(c["status"] == "timed_out" for c in data["latest_plan"]["commands"])
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'commands'
+
+tests/integration/test_eval_v2_fixtures.py:70: KeyError</failure></testcase><testcase classname="tests.integration.test_eval_v2_fixtures" name="test_recovered_fixture_preserves_real_recovery_and_order_history" time="0.299"><failure message="AssertionError: assert '2026-09-22T08:10:12Z' == '2026-09-22T08:10:12+00:00'&#10;  &#10;  - 2026-09-22T08:10:12+00:00&#10;  ?                    ^^^^^^&#10;  + 2026-09-22T08:10:12Z&#10;  ?                    ^">app = &lt;fastapi.applications.FastAPI object at 0x78e74bc58530&gt;
+
+    async def test_recovered_fixture_preserves_real_recovery_and_order_history(app):
+        await load_v2_dataset(app, "RECOVERED-CLOSED", "test", 1)
+        orders = await app.state.read_queries.work_orders("CHG-002")
+        assert len(orders["closed"]) == 1 and not orders["unclosed"]
+        before = await snapshot_business(app.state.db)
+        alarm = next(a for a in before["alarms"] if a["reason_code"] == "OVERHEAT")
+        assert alarm["condition"] == "CLEARED"
+&gt;       assert alarm["cleared_at"] == (T0 + timedelta(seconds=12)).isoformat()
+E       AssertionError: assert '2026-09-22T08:10:12Z' == '2026-09-22T08:10:12+00:00'
+E         
+E         - 2026-09-22T08:10:12+00:00
+E         ?                    ^^^^^^
+E         + 2026-09-22T08:10:12Z
+E         ?                    ^
+
+tests/integration/test_eval_v2_fixtures.py:80: AssertionError</failure></testcase></testsuite></testsuites>

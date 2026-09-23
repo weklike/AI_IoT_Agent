@@ -1,0 +1,42 @@
+<testsuites id="" name="" tests="11" failures="0" skipped="0" errors="0" time="64.851011">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="2.505" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="2.505">
+</testcase>
+</testsuite>
+<testsuite name="layout_v2.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="2" failures="0" skipped="0" time="5.636" errors="0">
+<testcase name="@v2 three-page layout 1280" classname="layout_v2.spec.ts" time="2.748">
+</testcase>
+<testcase name="@v2 three-page layout 1920" classname="layout_v2.spec.ts" time="2.888">
+</testcase>
+</testsuite>
+<testsuite name="lifecycle.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="17.365" errors="0">
+<testcase name="@v2 alarm acknowledgement does not clear the fault and work order closes only after recovery" classname="lifecycle.spec.ts" time="17.365">
+</testcase>
+</testsuite>
+<testsuite name="operations.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="9.82" errors="0">
+<testcase name="@v2 charging begins at zero then receives a verified power allocation" classname="operations.spec.ts" time="9.82">
+</testcase>
+</testsuite>
+<testsuite name="patrols.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="2.676" errors="0">
+<testcase name="@v2 patrol uses real fleet facts and refresh restores the same report" classname="patrols.spec.ts" time="2.676">
+</testcase>
+</testsuite>
+<testsuite name="retry.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="2" failures="0" skipped="0" time="7.847" errors="0">
+<testcase name="@v2 lost charging response disconnect survives refresh and retries the original request" classname="retry.spec.ts" time="3.657">
+</testcase>
+<testcase name="@v2 lost charging response server-error survives refresh and retries the original request" classname="retry.spec.ts" time="4.19">
+</testcase>
+</testsuite>
+<testsuite name="rules.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="0.911" errors="0">
+<testcase name="@v2 rules use server versions and keep fixed offline threshold" classname="rules.spec.ts" time="0.911">
+</testcase>
+</testsuite>
+<testsuite name="scripts.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="1.015" errors="0">
+<testcase name="@v2 script refresh restores its record and explicit cancellation stops it" classname="scripts.spec.ts" time="1.015">
+</testcase>
+</testsuite>
+<testsuite name="zz_partial.spec.ts" timestamp="2026-09-23T06:28:23.785Z" hostname="" tests="1" failures="0" skipped="0" time="15.53" errors="0">
+<testcase name="@v2 lost device ACK leaves the power plan partial and budget unconfirmed" classname="zz_partial.spec.ts" time="15.53">
+</testcase>
+</testsuite>
+</testsuites>

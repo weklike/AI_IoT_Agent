@@ -1,0 +1,93 @@
+ Network charge-smoke-b5acdd00b740_default Creating 
+ Network charge-smoke-b5acdd00b740_default Created 
+ Volume charge-smoke-b5acdd00b740_simulator_state Creating 
+ Volume charge-smoke-b5acdd00b740_simulator_state Created 
+ Volume charge-smoke-b5acdd00b740_backend_data Creating 
+ Volume charge-smoke-b5acdd00b740_backend_data Created 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Creating 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Created 
+ Container charge-smoke-b5acdd00b740-simulator-1 Creating 
+ Container charge-smoke-b5acdd00b740-backend-1 Creating 
+ Container charge-smoke-b5acdd00b740-simulator-1 Created 
+ Container charge-smoke-b5acdd00b740-backend-1 Created 
+ Container charge-smoke-b5acdd00b740-frontend-1 Creating 
+ Container charge-smoke-b5acdd00b740-frontend-1 Created 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Starting 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Started 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Waiting 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Waiting 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Healthy 
+ Container charge-smoke-b5acdd00b740-simulator-1 Starting 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Healthy 
+ Container charge-smoke-b5acdd00b740-backend-1 Starting 
+ Container charge-smoke-b5acdd00b740-backend-1 Started 
+ Container charge-smoke-b5acdd00b740-backend-1 Waiting 
+ Container charge-smoke-b5acdd00b740-simulator-1 Started 
+ Container charge-smoke-b5acdd00b740-backend-1 Healthy 
+ Container charge-smoke-b5acdd00b740-frontend-1 Starting 
+ Container charge-smoke-b5acdd00b740-frontend-1 Started 
+ Container charge-smoke-b5acdd00b740-backend-1 Waiting 
+ Container charge-smoke-b5acdd00b740-simulator-1 Waiting 
+ Container charge-smoke-b5acdd00b740-frontend-1 Waiting 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Waiting 
+ Container charge-smoke-b5acdd00b740-simulator-1 Healthy 
+ Container charge-smoke-b5acdd00b740-frontend-1 Healthy 
+ Container charge-smoke-b5acdd00b740-backend-1 Healthy 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Healthy 
+
+Running 10 tests using 1 worker
+
+(node:1474726) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1474726) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (794ms)
+  ✓   2 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.4s)
+(node:1475127) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1475127) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (717ms)
+  ✓   4 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.3s)
+(node:1475456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1475456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (722ms)
+  ✓   6 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.3s)
+(node:1475787) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1475787) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (723ms)
+  ✓   8 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.3s)
+(node:1476160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1476160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 e2e/devices.spec.ts:68:1 › 未知设备和服务断开可见 (723ms)
+  ✓  10 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.3s)
+
+  10 passed (36.6s)
+ Container charge-smoke-b5acdd00b740-frontend-1 Stopping 
+ Container charge-smoke-b5acdd00b740-simulator-1 Stopping 
+ Container charge-smoke-b5acdd00b740-simulator-1 Stopped 
+ Container charge-smoke-b5acdd00b740-simulator-1 Removing 
+ Container charge-smoke-b5acdd00b740-simulator-1 Removed 
+ Container charge-smoke-b5acdd00b740-frontend-1 Stopped 
+ Container charge-smoke-b5acdd00b740-frontend-1 Removing 
+ Container charge-smoke-b5acdd00b740-frontend-1 Removed 
+ Container charge-smoke-b5acdd00b740-backend-1 Stopping 
+ Container charge-smoke-b5acdd00b740-backend-1 Stopped 
+ Container charge-smoke-b5acdd00b740-backend-1 Removing 
+ Container charge-smoke-b5acdd00b740-backend-1 Removed 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Stopping 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Stopped 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Removing 
+ Container charge-smoke-b5acdd00b740-mqtt-1 Removed 
+ Volume charge-smoke-b5acdd00b740_simulator_state Removing 
+ Volume charge-smoke-b5acdd00b740_backend_data Removing 
+ Network charge-smoke-b5acdd00b740_default Removing 
+ Volume charge-smoke-b5acdd00b740_simulator_state Removed 
+ Volume charge-smoke-b5acdd00b740_backend_data Removed 
+ Network charge-smoke-b5acdd00b740_default Removed 

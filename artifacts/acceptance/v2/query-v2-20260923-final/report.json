@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "queries": {
+    "status": "PASS",
+    "concurrency": 10,
+    "groups": {
+      "fleet": {
+        "requests": 250,
+        "p95_ms": 492.3129689996131,
+        "errors": 0
+      },
+      "sessions": {
+        "requests": 250,
+        "p95_ms": 168.55253500398248,
+        "errors": 0
+      },
+      "statistics": {
+        "requests": 250,
+        "p95_ms": 93.27129399753176,
+        "errors": 0
+      },
+      "timeline": {
+        "requests": 250,
+        "p95_ms": 210.89937302167527,
+        "errors": 0
+      }
+    },
+    "p95_ms": 443.66421998711303,
+    "threshold_ms": 500
+  },
+  "knowledge": {
+    "status": "PASS",
+    "p95_ms": 23.601138003868982,
+    "threshold_ms": 300,
+    "query_order_sha256": "c48db1f1cb72fa8fedc303245ee7d850537bb454f9b250227326df8b172d4071"
+  }
+}

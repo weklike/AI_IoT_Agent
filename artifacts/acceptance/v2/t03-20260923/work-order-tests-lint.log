@@ -1,0 +1,23 @@
+E701 Multiple statements on one line (colon)
+   --> tests/integration/test_work_order_lifecycle.py:116:34
+    |
+114 | …     await orders.transition(identity,str(uuid4()),1,'IN_PROGRESS','')
+115 | …     for status in ('IN_PROGRESS','RESOLVED'):
+116 | …         if status=='RESOLVED':await orders.transition(identity,str(uuid4()),2,'RESOLVED','已处理，等待恢复验证')
+    |                                ^
+117 | …         contexts=[await seed_hot_run(app.state.store,valid_payload) for _ in range(20)]
+118 | …         results=await asyncio.gather(*(orders.create('CHG-002','OVERHEAT',context=context) for context in contexts),return_exceptio…
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tests/integration/test_work_order_lifecycle.py:141:74
+    |
+139 |         request_id=str(uuid4())
+140 |         def fail(session):
+141 |             if any(isinstance(row,WorkOrderEvent) for row in session.new):raise RuntimeError('injected transition commit failure')
+    |                                                                          ^
+142 |         event.listen(Session,'before_commit',fail)
+143 |         try:
+    |
+
+Found 4 errors (2 fixed, 2 remaining).

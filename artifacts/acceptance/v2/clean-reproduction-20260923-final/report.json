@@ -1,0 +1,63 @@
+{
+  "git_sha": "175eba89f079c34b8c9bb129c1b77a0772d2f8fa",
+  "scope": "从当前已提交代码归档到新临时目录；无.env/数据库/node_modules/.venv，按锁离线安装、类型检查、构建与知识冷启动集成测试。四服务独立冷启动另见cold-start-20260923-final。",
+  "status": "PASS",
+  "steps": [
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/clean-reproduction-20260923-final/0.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "ci",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/clean-reproduction-20260923-final/1.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/clean-reproduction-20260923-final/2.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/clean-reproduction-20260923-final/3.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_telemetry_v2.py",
+        "tests/unit/test_agent_v2_schemas.py",
+        "tests/integration/test_knowledge_search.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "/home/syzygy/AI_IoT_Agent/artifacts/acceptance/v2/clean-reproduction-20260923-final/4.log"
+    }
+  ]
+}

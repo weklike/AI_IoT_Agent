@@ -1,0 +1,20 @@
+{
+  "maximum": {
+    "/api/health?": 1,
+    "/api/patrols?limit=5": 1,
+    "/api/patrol-schedule?": 1,
+    "/api/alarms?condition=ACTIVE&limit=20": 1,
+    "/api/fleet-overview?window_minutes=30": 1,
+    "/api/devices/CHG-002?": 1,
+    "/api/devices/CHG-002/telemetry?window_ms=600000": 1,
+    "/api/charging-sessions?device_id=CHG-002&limit=20&window_ms=1800000": 1,
+    "/api/alarms?condition=ACTIVE&device_id=CHG-002&limit=20": 1,
+    "/api/alarm-rules/CHG-002/OVERHEAT?": 1,
+    "/api/alarm-rules/CHG-002/OFFLINE?": 1,
+    "/api/work-orders?device_id=CHG-002&limit=20": 1,
+    "/api/devices/CHG-002/timeline?limit=100&window_ms=1800000": 1,
+    "/api/charging-statistics?device_id=CHG-002&window_ms=1800000": 1,
+    "/api/agent/runs?limit=20": 1
+  },
+  "overlaps": []
+}

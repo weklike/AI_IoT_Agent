@@ -1,0 +1,99 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_missing_fts_module_exposes_failed_health_without_partial_schema _____
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-110/test_missing_fts_module_expose0')
+
+    async def test_missing_fts_module_exposes_failed_health_without_partial_schema(tmp_path):
+        import sqlite3
+        from sqlalchemy import event
+        from sqlalchemy.exc import OperationalError
+        app=create_app(Settings(_env_file=None,app_env='test',mqtt_enabled=False,database_url=f'sqlite+aiosqlite:///{tmp_path}/no-fts.db'))
+        def unavailable(connection,cursor,statement,parameters,context,executemany):
+            if statement.startswith('CREATE VIRTUAL TABLE knowledge_fts'):
+                raise OperationalError(statement,None,sqlite3.OperationalError('no such module: fts5'))
+        event.listen(app.state.db.engine.sync_engine,'before_cursor_execute',unavailable)
+        try:
+>           async with app.router.lifespan_context(app):
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_knowledge_search.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:240: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+../.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+backend/app/main.py:119: in lifespan
+    await db.initialize(clock)
+backend/app/db.py:49: in initialize
+    await migrate(connection)
+backend/app/migrations/__init__.py:87: in migrate
+    await connection.exec_driver_sql(statement)
+.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py:508: in exec_driver_sql
+    result = await greenlet_spawn(
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:190: in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1781: in exec_driver_sql
+    ret = self._execute_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1891: in _exec_single_context
+    str_statement, effective_parameters = fn(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/events.py:183: in wrap_before_cursor_execute
+    orig_fn(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+connection = <sqlalchemy.engine.base.Connection object at 0x7d396bd09f70>
+cursor = <sqlalchemy.dialects.sqlite.aiosqlite.AsyncAdapt_aiosqlite_cursor object at 0x7d396bed9a20>
+statement = "CREATE VIRTUAL TABLE knowledge_fts USING fts5(title, tags, body, tokenize='unicode61');"
+parameters = ()
+context = <sqlalchemy.dialects.sqlite.aiosqlite.SQLiteExecutionContext_aiosqlite object at 0x7d396bd0b7d0>
+executemany = False
+
+    def unavailable(connection,cursor,statement,parameters,context,executemany):
+        if statement.startswith('CREATE VIRTUAL TABLE knowledge_fts'):
+>           raise OperationalError(statement,None,sqlite3.OperationalError('no such module: fts5'))
+E           sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such module: fts5
+E           [SQL: CREATE VIRTUAL TABLE knowledge_fts USING fts5(title, tags, body, tokenize='unicode61');]
+E           (Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+tests/integration/test_knowledge_search.py:151: OperationalError
+=========================== short test summary info ============================
+FAILED tests/integration/test_knowledge_search.py::test_missing_fts_module_exposes_failed_health_without_partial_schema
+1 failed in 1.39s

@@ -1,0 +1,119 @@
+
+> charge-ops-frontend@0.1.0 test:e2e
+> uv run python ../scripts/e2e.py --operations --grep knowledge
+
+ Network charge-smoke-21d0791f654f_default Creating 
+ Network charge-smoke-21d0791f654f_default Created 
+ Volume charge-smoke-21d0791f654f_backend_data Creating 
+ Volume charge-smoke-21d0791f654f_backend_data Created 
+ Volume charge-smoke-21d0791f654f_simulator_state Creating 
+ Volume charge-smoke-21d0791f654f_simulator_state Created 
+ Container charge-smoke-21d0791f654f-mqtt-1 Creating 
+ Container charge-smoke-21d0791f654f-mqtt-1 Created 
+ Container charge-smoke-21d0791f654f-simulator-1 Creating 
+ Container charge-smoke-21d0791f654f-backend-1 Creating 
+ Container charge-smoke-21d0791f654f-backend-1 Created 
+ Container charge-smoke-21d0791f654f-frontend-1 Creating 
+ Container charge-smoke-21d0791f654f-simulator-1 Created 
+ Container charge-smoke-21d0791f654f-frontend-1 Created 
+ Container charge-smoke-21d0791f654f-mqtt-1 Starting 
+ Container charge-smoke-21d0791f654f-mqtt-1 Started 
+ Container charge-smoke-21d0791f654f-mqtt-1 Waiting 
+ Container charge-smoke-21d0791f654f-mqtt-1 Waiting 
+ Container charge-smoke-21d0791f654f-mqtt-1 Healthy 
+ Container charge-smoke-21d0791f654f-backend-1 Starting 
+ Container charge-smoke-21d0791f654f-mqtt-1 Healthy 
+ Container charge-smoke-21d0791f654f-simulator-1 Starting 
+ Container charge-smoke-21d0791f654f-backend-1 Started 
+ Container charge-smoke-21d0791f654f-backend-1 Waiting 
+ Container charge-smoke-21d0791f654f-simulator-1 Started 
+ Container charge-smoke-21d0791f654f-backend-1 Healthy 
+ Container charge-smoke-21d0791f654f-frontend-1 Starting 
+ Container charge-smoke-21d0791f654f-frontend-1 Started 
+ Container charge-smoke-21d0791f654f-backend-1 Waiting 
+ Container charge-smoke-21d0791f654f-simulator-1 Waiting 
+ Container charge-smoke-21d0791f654f-frontend-1 Waiting 
+ Container charge-smoke-21d0791f654f-mqtt-1 Waiting 
+ Container charge-smoke-21d0791f654f-frontend-1 Healthy 
+ Container charge-smoke-21d0791f654f-simulator-1 Healthy 
+ Container charge-smoke-21d0791f654f-backend-1 Healthy 
+ Container charge-smoke-21d0791f654f-mqtt-1 Healthy 
+
+Running 4 tests using 1 worker
+
+(node:1850253) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1850253) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/knowledge.spec.ts:3:1 › @v2 knowledge displays actual searched source version and original chunk (2.5s)
+  ✘  2 e2e/knowledge.spec.ts:15:1 › @v2 knowledge with no matching document states the lack of evidence (7.3s)
+(node:1850903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1850903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 e2e/knowledge.spec.ts:24:1 › @v2 knowledge source HTML is displayed as text and never executed (2.5s)
+  ✓  4 e2e/lifecycle.spec.ts:3:1 › @v2 alarm acknowledgement does not clear the fault and work order closes only after recovery (18.3s)
+
+
+  1) e2e/knowledge.spec.ts:15:1 › @v2 knowledge with no matching document states the lack of evidence 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('本次检索没有适用的知识依据，无法据此提供排查结论。')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('本次检索没有适用的知识依据，无法据此提供排查结论。')[22m
+
+
+      18 |   await page.getByRole('button', { name: '发送任务' }).click()
+      19 |   await expect(page.getByTestId('run-status')).toContainText('已完成', { timeout: 12000 })
+    > 20 |   await expect(page.getByText('本次检索没有适用的知识依据，无法据此提供排查结论。', { exact: false })).toBeVisible()
+         |                                                                               ^
+      21 |   await expect(page.getByTestId('knowledge-sources')).toHaveCount(0)
+      22 | })
+      23 |
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/knowledge.spec.ts:20:79
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/trace.zip
+    Usage:
+
+        npx playwright show-trace ../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e/knowledge.spec.ts:15:1 › @v2 knowledge with no matching document states the lack of evidence 
+  3 passed (33.4s)
+ Container charge-smoke-21d0791f654f-frontend-1 Stopping 
+ Container charge-smoke-21d0791f654f-simulator-1 Stopping 
+ Container charge-smoke-21d0791f654f-frontend-1 Stopped 
+ Container charge-smoke-21d0791f654f-frontend-1 Removing 
+ Container charge-smoke-21d0791f654f-simulator-1 Stopped 
+ Container charge-smoke-21d0791f654f-simulator-1 Removing 
+ Container charge-smoke-21d0791f654f-frontend-1 Removed 
+ Container charge-smoke-21d0791f654f-backend-1 Stopping 
+ Container charge-smoke-21d0791f654f-simulator-1 Removed 
+ Container charge-smoke-21d0791f654f-backend-1 Stopped 
+ Container charge-smoke-21d0791f654f-backend-1 Removing 
+ Container charge-smoke-21d0791f654f-backend-1 Removed 
+ Container charge-smoke-21d0791f654f-mqtt-1 Stopping 
+ Container charge-smoke-21d0791f654f-mqtt-1 Stopped 
+ Container charge-smoke-21d0791f654f-mqtt-1 Removing 
+ Container charge-smoke-21d0791f654f-mqtt-1 Removed 
+ Volume charge-smoke-21d0791f654f_backend_data Removing 
+ Volume charge-smoke-21d0791f654f_simulator_state Removing 
+ Network charge-smoke-21d0791f654f_default Removing 
+ Volume charge-smoke-21d0791f654f_backend_data Removed 
+ Volume charge-smoke-21d0791f654f_simulator_state Removed 
+ Network charge-smoke-21d0791f654f_default Removed 

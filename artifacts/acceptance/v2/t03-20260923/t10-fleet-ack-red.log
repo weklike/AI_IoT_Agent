@@ -1,0 +1,28 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_fleet_exposes_acknowledgement_without_claiming_recovery _________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-153/test_fleet_exposes_acknowledge0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+valid_payload = {'schema_version': 1, 'device_id': 'CHG-002', 'message_id': 'bb7ce354-0569-4bcb-82de-233380fbba31', 'boot_id': 'ee456e0c-cd91-4fe0-83f1-a63dfc076f6a', ...}
+
+    async def test_fleet_exposes_acknowledgement_without_claiming_recovery(tmp_path, fixed_now, valid_payload):
+        settings = Settings(_env_file=None, app_env='test', mqtt_enabled=False,
+                            database_url=f'sqlite+aiosqlite:///{tmp_path}/ack-summary.db')
+        app = create_app(settings, clock=FixedClock(fixed_now))
+        async with app.router.lifespan_context(app):
+            await app.state.store.ingest(TelemetryMessage.model_validate(valid_payload), fixed_now)
+            before = await app.state.read_queries.fleet(30)
+            alarm = before['devices'][1]['active_alarms'][0]
+            await app.state.alarms.acknowledge(alarm['alarm_id'], str(uuid4()), alarm['version'])
+            after = await app.state.read_queries.fleet(30)
+            acknowledged = after['devices'][1]['active_alarms'][0]
+            assert acknowledged['condition'] == 'ACTIVE'
+>           assert acknowledged['acknowledged_at'] == fixed_now
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'acknowledged_at'
+
+tests/integration/test_fleet_queries.py:153: KeyError
+=========================== short test summary info ============================
+FAILED tests/integration/test_fleet_queries.py::test_fleet_exposes_acknowledgement_without_claiming_recovery
+1 failed, 2 deselected in 0.81s

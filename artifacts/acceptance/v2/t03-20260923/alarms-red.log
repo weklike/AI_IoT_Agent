@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_only_continuous_unique_samples_advance_duration _____________
+
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    def test_only_continuous_unique_samples_advance_duration(fixed_now):
+>       from backend.app.alarms.rules import observe_duration
+E       ModuleNotFoundError: No module named 'backend.app.alarms.rules'
+
+tests/unit/test_alarm_rules.py:5: ModuleNotFoundError
+_________ test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear _________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-95/test_alarm_ack_is_not_recovery0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+valid_payload = {'schema_version': 1, 'device_id': 'CHG-002', 'message_id': 'bb7ce354-0569-4bcb-82de-233380fbba31', 'boot_id': 'ee456e0c-cd91-4fe0-83f1-a63dfc076f6a', ...}
+
+    async def test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear(tmp_path,fixed_now,valid_payload):
+        clock=FixedClock(fixed_now)
+        app=create_app(Settings(_env_file=None,app_env='test',mqtt_enabled=False,database_url=f'sqlite+aiosqlite:///{tmp_path}/alarms.db'),clock=clock)
+        async with app.router.lifespan_context(app):
+            seq=0
+            async def sample(temperature):
+                nonlocal seq
+                seq+=1
+                payload={**valid_payload,'message_id':str(uuid4()),'seq':seq,'ts':clock.now().isoformat(),'temperature_c':temperature}
+                assert await app.state.store.receive(json.dumps(payload).encode(),'charge/v1/devices/CHG-002/telemetry',clock.now(),False)=='accepted'
+            async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app),base_url='http://test') as client:
+                await sample(59.999)
+                response=await client.get('/api/alarms',params={'device_id':'CHG-002'})
+>               assert response.status_code==200,response.text
+E               AssertionError: {"error":{"code":"HTTP_ERROR","message":"Not Found"},"request_id":"6b4144f7-18cd-4dbc-8516-66becf9f5ea7"}
+E               assert 404 == 200
+E                +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/integration/test_alarms.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_alarm_rules.py::test_only_continuous_unique_samples_advance_duration
+FAILED tests/integration/test_alarms.py::test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear
+2 failed in 0.74s

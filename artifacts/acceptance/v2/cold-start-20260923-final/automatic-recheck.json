@@ -1,0 +1,12 @@
+{
+  "original_sha256": "634aa16a5e34867e69e72ee665663cc40120b9942a878bc45ebb8767d4fa4c62",
+  "correction": "Fleet设备新鲜度在status.data_fresh中；原临时检查误读顶层字段。保留原FAIL与15秒观测等待耗时。",
+  "cold_start_seconds_upper_bound": 26.744176834996324,
+  "checks": {
+    "cold_start": true,
+    "health": true,
+    "knowledge": true,
+    "three_fresh_devices": true
+  },
+  "status": "PASS"
+}

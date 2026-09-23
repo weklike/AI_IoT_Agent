@@ -1,0 +1,72 @@
+...F...........................                                          [100%]
+=================================== FAILURES ===================================
+_______ test_persisted_trigger_duration_resets_after_out_of_order_sample _______
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-97/test_persisted_trigger_duratio0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+valid_payload = {'schema_version': 1, 'device_id': 'CHG-002', 'message_id': 'bb7ce354-0569-4bcb-82de-233380fbba31', 'boot_id': 'ee456e0c-cd91-4fe0-83f1-a63dfc076f6a', ...}
+
+    async def test_persisted_trigger_duration_resets_after_out_of_order_sample(
+        tmp_path, fixed_now, valid_payload
+    ):
+        from datetime import timedelta
+    
+        clock = FixedClock(fixed_now)
+        app = create_app(
+            Settings(
+                _env_file=None,
+                app_env="test",
+                mqtt_enabled=False,
+                database_url=f"sqlite+aiosqlite:///{tmp_path}/duration.db",
+            ),
+            clock=clock,
+        )
+        async with app.router.lifespan_context(app):
+            async with httpx.AsyncClient(
+                transport=httpx.ASGITransport(app=app), base_url="http://test"
+            ) as client:
+                response = await client.put(
+                    "/api/alarm-rules/CHG-002/OVERHEAT",
+                    json={
+                        "request_id": str(uuid4()),
+                        "expected_version": 1,
+                        "trigger_duration_seconds": 10,
+                    },
+                )
+                assert response.status_code == 200
+                seq = 0
+    
+                async def sample(old=False):
+                    nonlocal seq
+                    seq += 1
+                    payload = {
+                        **valid_payload,
+                        "message_id": str(uuid4()),
+                        "seq": seq,
+                        "ts": (clock.now() - timedelta(seconds=1) if old else clock.now()).isoformat(),
+                    }
+                    await app.state.store.receive(
+                        json.dumps(payload).encode(),
+                        "charge/v1/devices/CHG-002/telemetry",
+                        clock.now(),
+                        False,
+                    )
+    
+                for _ in range(4):
+                    await sample()
+                    clock.advance(2)
+                await sample(old=True)
+                await sample()
+                for _ in range(4):
+                    clock.advance(2)
+                    await sample()
+>                   assert (await client.get("/api/alarms")).json()["data"]["items"] == []
+E                   AssertionError: assert [{'alarm_id':...ACTIVE', ...}] == []
+E                     
+E                     Left contains one more item: {'alarm_id': '35495a8f-53f6-44bc-8d73-46d46ed246c5', 'device_id': 'CHG-002', 'reason_code': 'OVERHEAT', 'condition': 'ACTIVE', ...}
+E                     Use -v to get more diff
+
+tests/integration/test_alarms.py:271: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_alarms.py::test_persisted_trigger_duration_resets_after_out_of_order_sample
+1 failed, 30 passed in 5.49s

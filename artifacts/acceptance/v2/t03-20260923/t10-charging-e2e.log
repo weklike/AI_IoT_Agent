@@ -1,0 +1,256 @@
+ Image charge-ops-frontend:test-78b4634859b8dad2 Building 
+ Image charge-ops-backend:test-78b4634859b8dad2 Building 
+ Image charge-ops-backend:test-78b4634859b8dad2 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.53kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from frontend.Dockerfile
+#2 transferring dockerfile: 302B done
+#2 DONE 0.1s
+
+#3 [simulator internal] load build definition from backend.Dockerfile
+#3 transferring dockerfile: 642B done
+#3 DONE 0.1s
+
+#4 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#4 ...
+
+#5 [frontend internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#5 DONE 0.3s
+
+#6 [backend internal] load metadata for docker.io/library/python:3.12.13-slim
+#6 DONE 0.3s
+
+#7 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#7 DONE 1.4s
+
+#4 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#4 ...
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 117B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#10 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#10 DONE 0.1s
+
+#11 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#11 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.1s done
+#11 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 52.11kB done
+#9 DONE 0.1s
+
+#12 [frontend build 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [frontend build 3/6] COPY frontend/package*.json ./
+#13 CACHED
+
+#14 [frontend build 4/6] RUN npm ci
+#14 CACHED
+
+#4 [simulator internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#4 DONE 1.7s
+
+#8 [backend internal] load .dockerignore
+#8 transferring context: 117B done
+#8 DONE 0.0s
+
+#15 [backend internal] load build context
+#15 DONE 0.0s
+
+#16 [frontend build 5/6] COPY frontend/ ./
+#16 DONE 0.2s
+
+#17 [simulator stage-0  1/11] FROM docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36
+#17 resolve docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36
+#17 resolve docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36 0.1s done
+#17 DONE 0.2s
+
+#18 [simulator] FROM ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823
+#18 resolve ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823 0.2s done
+#18 DONE 0.2s
+
+#15 [simulator internal] load build context
+#15 transferring context: 5.39kB done
+#15 DONE 0.0s
+
+#19 [simulator stage-0  7/11] COPY knowledge knowledge
+#19 CACHED
+
+#20 [simulator stage-0 10/11] COPY tests/support tests/support
+#20 CACHED
+
+#21 [simulator stage-0  9/11] COPY tests/__init__.py tests/__init__.py
+#21 CACHED
+
+#22 [simulator stage-0  4/11] COPY pyproject.toml uv.lock ./
+#22 CACHED
+
+#23 [simulator stage-0  8/11] COPY simulator simulator
+#23 CACHED
+
+#24 [simulator stage-0  6/11] COPY backend backend
+#24 CACHED
+
+#25 [simulator stage-0  2/11] COPY --from=ghcr.io/astral-sh/uv:0.11.3 /uv /usr/local/bin/uv
+#25 CACHED
+
+#26 [simulator stage-0  5/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev --no-install-project
+#26 CACHED
+
+#27 [simulator stage-0  3/11] WORKDIR /app
+#27 CACHED
+
+#28 [simulator stage-0 11/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev
+#28 CACHED
+
+#29 [simulator] exporting to image
+#29 exporting layers done
+#29 exporting manifest sha256:0d73acc157c0138f92b3556c77ef339b6fb2730daa217f545f438842d1870ab0 0.0s done
+#29 exporting config sha256:4a302c9f8713b5c1e6da84c2fabc836cf758a70c726cde328b19cf059194228d 0.0s done
+#29 exporting attestation manifest sha256:47b00c0a31a964215f39a94c8f9dea3e2f4217f6480e85d7ecda2721b31b21cf 0.1s done
+#29 exporting manifest list sha256:d7d114540d9236509423845066921840c7d033d282cb55c8ebc2d9e62002e25a
+#29 exporting manifest list sha256:d7d114540d9236509423845066921840c7d033d282cb55c8ebc2d9e62002e25a 0.0s done
+#29 naming to docker.io/library/charge-ops-backend:test-78b4634859b8dad2 done
+#29 unpacking to docker.io/library/charge-ops-backend:test-78b4634859b8dad2 0.0s done
+#29 DONE 0.2s
+
+#30 [backend] exporting to image
+#30 exporting layers done
+#30 exporting manifest sha256:fe39d7160b34616eb9a27325f1dfda0463047895c58eb840fb9a4b391c865204 0.0s done
+#30 exporting config sha256:4846dd76a89568c952d5a62446b967697bc055d9b4c0f84b2506ef8d83eb1f91 0.0s done
+#30 exporting attestation manifest sha256:330fefd10b24b9753e1f1a2cc7a4f39c0957dfca515958e39dd1db010a54d750 0.1s done
+#30 exporting manifest list sha256:ce3a8c29788e07e3b8f3abe8bd17c199e3508c8757ff4985af676eeedbac7dbf 0.0s done
+#30 naming to docker.io/library/charge-ops-backend:test-78b4634859b8dad2 done
+#30 unpacking to docker.io/library/charge-ops-backend:test-78b4634859b8dad2 0.0s done
+#30 DONE 0.2s
+
+#31 [frontend build 6/6] RUN npm run build
+#31 ...
+
+#32 [simulator] resolving provenance for metadata file
+#32 DONE 0.0s
+
+#33 [backend] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#31 [frontend build 6/6] RUN npm run build
+#31 0.623 
+#31 0.623 > charge-ops-frontend@0.1.0 build
+#31 0.623 > vue-tsc --noEmit && vite build
+#31 0.623 
+#31 4.050 vite v6.4.3 building for production...
+#31 4.192 transforming...
+#31 8.820 ✓ 660 modules transformed.
+#31 9.263 rendering chunks...
+#31 9.280 computing gzip size...
+#31 9.305 dist/index.html                   0.36 kB │ gzip:   0.29 kB
+#31 9.307 dist/assets/index-DNPUltEs.css   16.43 kB │ gzip:   4.18 kB
+#31 9.307 dist/assets/index-ZRk8SNaG.js   729.14 kB │ gzip: 263.96 kB
+#31 9.307 
+#31 9.307 (!) Some chunks are larger than 500 kB after minification. Consider:
+#31 9.307 - Using dynamic import() to code-split the application
+#31 9.307 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#31 9.307 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#31 9.308 ✓ built in 5.22s
+#31 DONE 9.5s
+
+#34 [frontend stage-1 2/3] COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+#34 CACHED
+
+#35 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#35 DONE 0.0s
+
+#36 [frontend] exporting to image
+#36 exporting layers
+#36 exporting layers 0.2s done
+#36 exporting manifest sha256:9a2cfacd4cffb5278bb876bed07eff76c752a27ef05f66aeb05e0fd99ab3ff8c 0.0s done
+#36 exporting config sha256:4f071aec34d6ae3e893bdf222610085441ae0b6f67ff8327128cceca41f5447e 0.0s done
+#36 exporting attestation manifest sha256:661a84c80ebb7c3c2187b1c92ac747e75c85385b1b9414fb8dae33a6cf72e3ad 0.0s done
+#36 exporting manifest list sha256:73fa76286b69e01b3aa13fd026e36446bf8c7ddd437b2b736584095e24bb2e75 0.0s done
+#36 naming to docker.io/library/charge-ops-frontend:test-78b4634859b8dad2
+#36 naming to docker.io/library/charge-ops-frontend:test-78b4634859b8dad2 0.0s done
+#36 unpacking to docker.io/library/charge-ops-frontend:test-78b4634859b8dad2 0.0s done
+#36 DONE 0.3s
+
+#37 [frontend] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image charge-ops-frontend:test-78b4634859b8dad2 Built 
+ Image charge-ops-backend:test-78b4634859b8dad2 Built 
+ Image charge-ops-backend:test-78b4634859b8dad2 Built 
+ Network charge-smoke-ed7b31372c7d_default Creating 
+ Network charge-smoke-ed7b31372c7d_default Created 
+ Volume charge-smoke-ed7b31372c7d_simulator_state Creating 
+ Volume charge-smoke-ed7b31372c7d_simulator_state Created 
+ Volume charge-smoke-ed7b31372c7d_backend_data Creating 
+ Volume charge-smoke-ed7b31372c7d_backend_data Created 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Creating 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Created 
+ Container charge-smoke-ed7b31372c7d-backend-1 Creating 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Creating 
+ Container charge-smoke-ed7b31372c7d-backend-1 Created 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Creating 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Created 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Created 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Starting 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Started 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Starting 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-backend-1 Starting 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Started 
+ Container charge-smoke-ed7b31372c7d-backend-1 Started 
+ Container charge-smoke-ed7b31372c7d-backend-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-backend-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Starting 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Started 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-backend-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Waiting 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-backend-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Healthy 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Healthy 
+
+Running 1 test using 1 worker
+
+(node:1406219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1406219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/operations.spec.ts:3:1 › @v2 charging begins at zero then receives a verified power allocation (9.0s)
+
+  1 passed (10.4s)
+ Container charge-smoke-ed7b31372c7d-frontend-1 Stopping 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Stopping 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Stopped 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Removing 
+ Container charge-smoke-ed7b31372c7d-simulator-1 Removed 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Stopped 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Removing 
+ Container charge-smoke-ed7b31372c7d-frontend-1 Removed 
+ Container charge-smoke-ed7b31372c7d-backend-1 Stopping 
+ Container charge-smoke-ed7b31372c7d-backend-1 Stopped 
+ Container charge-smoke-ed7b31372c7d-backend-1 Removing 
+ Container charge-smoke-ed7b31372c7d-backend-1 Removed 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Stopping 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Stopped 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Removing 
+ Container charge-smoke-ed7b31372c7d-mqtt-1 Removed 
+ Volume charge-smoke-ed7b31372c7d_simulator_state Removing 
+ Volume charge-smoke-ed7b31372c7d_backend_data Removing 
+ Network charge-smoke-ed7b31372c7d_default Removing 
+ Volume charge-smoke-ed7b31372c7d_simulator_state Removed 
+ Volume charge-smoke-ed7b31372c7d_backend_data Removed 
+ Network charge-smoke-ed7b31372c7d_default Removed 

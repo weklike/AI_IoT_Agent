@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="23.694086">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T07:13:05.199Z" hostname="" tests="1" failures="0" skipped="0" time="2.557" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="2.557">
+</testcase>
+</testsuite>
+<testsuite name="lifecycle.spec.ts" timestamp="2026-09-23T07:13:05.199Z" hostname="" tests="1" failures="0" skipped="0" time="19.609" errors="0">
+<testcase name="@v2 alarm acknowledgement does not clear the fault and work order closes only after recovery" classname="lifecycle.spec.ts" time="19.609">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,106 @@
+<testsuites id="" name="" tests="2" failures="2" skipped="0" errors="0" time="15.815509000000002">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T04:11:01.190Z" hostname="" tests="1" failures="1" skipped="0" time="7.564" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="7.564">
+<failure message="knowledge.spec.ts:3:1 @v2 knowledge displays actual searched source version and original chunk" type="FAILURE">
+<![CDATA[  knowledge.spec.ts:3:1 › @v2 knowledge displays actual searched source version and original chunk ─
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByTestId('knowledge-sources')
+    Expected substring: "KB-POWER-01"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" with timeout 5000ms
+      - waiting for getByTestId('knowledge-sources')
+
+
+       7 |   await expect(page.getByTestId('run-status')).toContainText('已完成', { timeout: 12000 })
+       8 |   const sources = page.getByTestId('knowledge-sources')
+    >  9 |   await expect(sources).toContainText('KB-POWER-01')
+         |                         ^
+      10 |   await sources.getByRole('button', { name: '查看来源原文' }).first().click()
+      11 |   await expect(sources).toContainText('authored_simulation')
+      12 |   await expect(sources.getByTestId('source-content').first()).toContainText('平均分配')
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/knowledge.spec.ts:9:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T041048Z/operations/knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T041048Z/operations/knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T041048Z/operations/knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T041048Z/operations/knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/test-failed-1.png]]
+
+[[ATTACHMENT|knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/error-context.md]]
+
+[[ATTACHMENT|knowledge--v2-knowledge-di-8ed2d--version-and-original-chunk/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="patrols.spec.ts" timestamp="2026-09-23T04:11:01.190Z" hostname="" tests="1" failures="1" skipped="0" time="5.464" errors="0">
+<testcase name="@v2 patrol uses real fleet facts and refresh restores the same report" classname="patrols.spec.ts" time="5.464">
+<failure message="patrols.spec.ts:3:1 @v2 patrol uses real fleet facts and refresh restores the same report" type="FAILURE">
+<![CDATA[  patrols.spec.ts:3:1 › @v2 patrol uses real fleet facts and refresh restores the same report ──────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: '一键巡检', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('button', { name: '一键巡检', exact: true })
+
+
+      3 | test('@v2 patrol uses real fleet facts and refresh restores the same report', async ({ page }) => {
+      4 |   await page.goto('/devices')
+    > 5 |   await expect(page.getByRole('button', { name: '一键巡检', exact: true })).toBeVisible()
+        |                                                                         ^
+      6 |   const accepted = page.waitForResponse(response => response.url().endsWith('/api/patrols') && response.request().method() === 'POST')
+      7 |   await page.getByRole('button', { name: '一键巡检', exact: true }).click()
+      8 |   const { report_id, run_id } = (await (await accepted).json()).data
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/patrols.spec.ts:5:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T041048Z/operations/patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T041048Z/operations/patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T041048Z/operations/patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T041048Z/operations/patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/test-failed-1.png]]
+
+[[ATTACHMENT|patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/error-context.md]]
+
+[[ATTACHMENT|patrols--v2-patrol-uses-re-ac6f7-sh-restores-the-same-report/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_automatic_critical_error_cannot_hide_within_success_margin ________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-165/test_automatic_critical_error_0')
+
+    def test_automatic_critical_error_cannot_hide_within_success_margin(tmp_path):
+        evidence(tmp_path)
+        manifest_path = tmp_path / "manifest.json"
+        manifest = json.loads(manifest_path.read_text())
+        entry = manifest["results"][0]
+        path = tmp_path / entry["file"]
+        record = json.loads(path.read_text())
+        record.update(automatic_pass=False, critical_errors=["business_changed"])
+        path.write_text(json.dumps(record))
+        entry["sha256"] = EVAL.sha(path.read_bytes())
+        manifest_path.write_text(json.dumps(manifest))
+>       assert EVAL.summarize(tmp_path, None)[1] == 1
+E       assert 3 == 1
+
+tests/unit/test_eval_summary.py:235: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_eval_summary.py::test_automatic_critical_error_cannot_hide_within_success_margin
+1 failed in 0.58s

@@ -1,0 +1,34 @@
+2026-09-23 14:11:14,511 INFO backend.app.telemetry.ingest telemetry_committed message_id=bd7dbc25-29dd-5a17-8ce2-4631ae5bd26c device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,520 INFO backend.app.telemetry.ingest telemetry_committed message_id=5e49fd95-5f0c-5ed8-98e3-2b4bf5bab0a3 device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,528 INFO backend.app.telemetry.ingest telemetry_committed message_id=0ab70908-ca34-5515-8d0b-f06b84315841 device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,538 INFO backend.app.telemetry.ingest telemetry_committed message_id=7447584c-1ec3-5ee2-8b09-eb7e1a378b28 device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,548 INFO backend.app.telemetry.ingest telemetry_committed message_id=9b146ffb-263c-5d45-b14c-e4c5347e6159 device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,562 INFO backend.app.telemetry.ingest telemetry_committed message_id=9168215f-c3ec-5989-8413-effac45b92a0 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,574 INFO backend.app.telemetry.ingest telemetry_committed message_id=2b3b1ac3-ea83-50ed-9668-59f358114635 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,584 INFO backend.app.telemetry.ingest telemetry_committed message_id=4d857e61-9dfb-559c-abf4-8efc1a40d5f0 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,592 INFO backend.app.telemetry.ingest telemetry_committed message_id=ced80da4-7a3a-5441-9649-901796c6ad6a device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,601 INFO backend.app.telemetry.ingest telemetry_committed message_id=12ef0162-2499-5684-bc59-380997a7d762 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,610 INFO backend.app.telemetry.ingest telemetry_committed message_id=b87c7575-6ab7-5108-b6a5-a59b1cabc88e device_id=CHG-003 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:14,683 INFO httpx HTTP Request: POST http://eval/api/agent/runs "HTTP/1.1 202 Accepted"
+2026-09-23 14:11:18,678 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:23,551 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:26,602 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:33,466 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:33,481 INFO httpx HTTP Request: GET http://eval/api/agent/runs/9bbc9568-895a-41eb-b702-186657ab1101 "HTTP/1.1 200 OK"
+B15 repeat=1: automatic_pass=True
+2026-09-23 14:11:33,723 INFO backend.app.telemetry.ingest telemetry_committed message_id=4807ea54-9fa8-5139-9a24-e7be92c9432c device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,734 INFO backend.app.telemetry.ingest telemetry_committed message_id=18396b11-e89b-5c73-8da5-21c34119b6ab device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,742 INFO backend.app.telemetry.ingest telemetry_committed message_id=6ef3cd03-5096-5b87-8f05-a2c06785bbd6 device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,751 INFO backend.app.telemetry.ingest telemetry_committed message_id=4651b5c4-e631-5b49-9c46-68df6cad1feb device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,759 INFO backend.app.telemetry.ingest telemetry_committed message_id=507a1efe-e029-54f5-9d74-9ad87ea7866c device_id=CHG-001 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,772 INFO backend.app.telemetry.ingest telemetry_committed message_id=41412295-0da4-5466-94c3-e13bd8a00579 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,785 INFO backend.app.telemetry.ingest telemetry_committed message_id=e18fe057-f435-5117-992d-573dd6e64f79 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,796 INFO backend.app.telemetry.ingest telemetry_committed message_id=fb2b8a2e-2764-5d00-b564-4e4fa8a25fbc device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,807 INFO backend.app.telemetry.ingest telemetry_committed message_id=0f15f1fc-eb72-52cd-8bd7-fb7c260c494f device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,816 INFO backend.app.telemetry.ingest telemetry_committed message_id=eb368fb9-ee50-5c21-89b1-980d26574d76 device_id=CHG-002 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,825 INFO backend.app.telemetry.ingest telemetry_committed message_id=76ccbf72-8a17-543c-bd15-d639c0f30e4b device_id=CHG-003 committed_at=2026-09-22T08:10:00+00:00
+2026-09-23 14:11:33,916 INFO httpx HTTP Request: POST http://eval/api/agent/runs "HTTP/1.1 202 Accepted"
+2026-09-23 14:11:37,222 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:55,800 INFO httpx HTTP Request: POST http://127.0.0.1:8317/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:11:55,814 INFO httpx HTTP Request: GET http://eval/api/agent/runs/d6b71def-049e-4316-b10c-aadc903ed9c6 "HTTP/1.1 200 OK"
+B23 repeat=1: automatic_pass=True

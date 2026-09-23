@@ -1,0 +1,62 @@
+<testsuites id="" name="" tests="4" failures="1" skipped="0" errors="0" time="33.377081999999994">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T07:30:43.842Z" hostname="" tests="3" failures="1" skipped="0" time="12.316" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="2.527">
+</testcase>
+<testcase name="@v2 knowledge with no matching document states the lack of evidence" classname="knowledge.spec.ts" time="7.303">
+<failure message="knowledge.spec.ts:15:1 @v2 knowledge with no matching document states the lack of evidence" type="FAILURE">
+<![CDATA[  knowledge.spec.ts:15:1 › @v2 knowledge with no matching document states the lack of evidence ─────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('本次检索没有适用的知识依据，无法据此提供排查结论。')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('本次检索没有适用的知识依据，无法据此提供排查结论。')
+
+
+      18 |   await page.getByRole('button', { name: '发送任务' }).click()
+      19 |   await expect(page.getByTestId('run-status')).toContainText('已完成', { timeout: 12000 })
+    > 20 |   await expect(page.getByText('本次检索没有适用的知识依据，无法据此提供排查结论。', { exact: false })).toBeVisible()
+         |                                                                               ^
+      21 |   await expect(page.getByTestId('knowledge-sources')).toHaveCount(0)
+      22 | })
+      23 |
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/knowledge.spec.ts:20:79
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T073031Z/operations/knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/test-failed-1.png]]
+
+[[ATTACHMENT|knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/error-context.md]]
+
+[[ATTACHMENT|knowledge--v2-knowledge-wi-55fc4-states-the-lack-of-evidence/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="@v2 knowledge source HTML is displayed as text and never executed" classname="knowledge.spec.ts" time="2.486">
+</testcase>
+</testsuite>
+<testsuite name="lifecycle.spec.ts" timestamp="2026-09-23T07:30:43.842Z" hostname="" tests="1" failures="0" skipped="0" time="18.301" errors="0">
+<testcase name="@v2 alarm acknowledgement does not clear the fault and work order closes only after recovery" classname="lifecycle.spec.ts" time="18.301">
+</testcase>
+</testsuite>
+</testsuites>

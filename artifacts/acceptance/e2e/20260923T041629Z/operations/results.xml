@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="6.513052">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T04:16:55.034Z" hostname="" tests="1" failures="0" skipped="0" time="2.537" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="2.537">
+</testcase>
+</testsuite>
+<testsuite name="patrols.spec.ts" timestamp="2026-09-23T04:16:55.034Z" hostname="" tests="1" failures="0" skipped="0" time="2.569" errors="0">
+<testcase name="@v2 patrol uses real fleet facts and refresh restores the same report" classname="patrols.spec.ts" time="2.569">
+</testcase>
+</testsuite>
+</testsuites>

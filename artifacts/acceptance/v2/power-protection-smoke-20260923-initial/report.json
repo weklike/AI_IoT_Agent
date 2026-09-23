@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "kind": "diagnostic",
+  "requested_plans": 2,
+  "executed_plans": 2,
+  "passed_plans": 2,
+  "evidence": "plans.json"
+}

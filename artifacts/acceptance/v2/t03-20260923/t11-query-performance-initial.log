@@ -1,0 +1,250 @@
+ Image charge-ops-backend:test-6fd0b3f95f48e4ce Building 
+ Image charge-ops-backend:test-6fd0b3f95f48e4ce Building 
+ Image charge-ops-frontend:test-6fd0b3f95f48e4ce Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.53kB done
+#1 DONE 0.0s
+
+#2 [simulator internal] load build definition from backend.Dockerfile
+#2 transferring dockerfile: 642B done
+#2 DONE 0.1s
+
+#3 [frontend internal] load build definition from frontend.Dockerfile
+#3 transferring dockerfile: 302B done
+#3 DONE 0.1s
+
+#4 [backend internal] load metadata for docker.io/library/python:3.12.13-slim
+#4 DONE 0.3s
+
+#5 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#5 DONE 0.3s
+
+#6 [frontend internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#6 DONE 0.4s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 117B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load build context
+#8 DONE 0.0s
+
+#9 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#9 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#9 ...
+
+#10 [frontend build 1/6] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#10 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#10 DONE 0.1s
+
+#9 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#9 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.1s done
+#9 DONE 0.1s
+
+#8 [frontend internal] load build context
+#8 transferring context: 201.57kB 0.0s done
+#8 DONE 0.1s
+
+#11 [frontend build 5/6] COPY frontend/ ./
+#11 CACHED
+
+#12 [frontend build 3/6] COPY frontend/package*.json ./
+#12 CACHED
+
+#13 [frontend build 6/6] RUN npm run build
+#13 CACHED
+
+#14 [frontend stage-1 2/3] COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+#14 CACHED
+
+#15 [frontend build 2/6] WORKDIR /app
+#15 CACHED
+
+#16 [frontend build 4/6] RUN npm ci
+#16 CACHED
+
+#17 [frontend stage-1 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#17 CACHED
+
+#18 [frontend] exporting to image
+#18 exporting layers done
+#18 exporting manifest sha256:02947bf134b0eb29a65606ac015bffc30df67ce35ba91146ac4ae254cf7c69b4 0.1s done
+#18 exporting config sha256:0055179db8dcd4ebeb8b8a99f513394e1dfd92d0eb495ab9d34e3ae9481423ed
+#18 exporting config sha256:0055179db8dcd4ebeb8b8a99f513394e1dfd92d0eb495ab9d34e3ae9481423ed 0.1s done
+#18 exporting attestation manifest sha256:1f64f2261585814798b29b2ffe249a81299ea2c9764f789ca8d6c18fb6d646e6
+#18 exporting attestation manifest sha256:1f64f2261585814798b29b2ffe249a81299ea2c9764f789ca8d6c18fb6d646e6 0.1s done
+#18 exporting manifest list sha256:06f2fbe311075aa89d9f7bd29ba28ec3f26b905d180a8fb059d52696d50c80dd
+#18 exporting manifest list sha256:06f2fbe311075aa89d9f7bd29ba28ec3f26b905d180a8fb059d52696d50c80dd 0.1s done
+#18 naming to docker.io/library/charge-ops-frontend:test-6fd0b3f95f48e4ce done
+#18 unpacking to docker.io/library/charge-ops-frontend:test-6fd0b3f95f48e4ce 0.0s done
+#18 DONE 0.4s
+
+#19 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#19 ...
+
+#20 [frontend] resolving provenance for metadata file
+#20 DONE 0.0s
+
+#19 [backend internal] load metadata for ghcr.io/astral-sh/uv:0.11.3
+#19 DONE 1.6s
+
+#7 [simulator internal] load .dockerignore
+#7 CACHED
+
+#21 [backend internal] load build context
+#21 DONE 0.0s
+
+#22 [backend] FROM ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823
+#22 resolve ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823 0.1s done
+#22 resolve ghcr.io/astral-sh/uv:0.11.3@sha256:90bbb3c16635e9627f49eec6539f956d70746c409209041800a0280b93152823 0.1s done
+#22 DONE 0.1s
+
+#23 [simulator stage-0  1/11] FROM docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36
+#23 resolve docker.io/library/python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36 0.1s done
+#23 DONE 0.1s
+
+#21 [simulator internal] load build context
+#21 transferring context: 406.98kB 0.0s done
+#21 DONE 0.1s
+
+#24 [backend stage-0  2/11] COPY --from=ghcr.io/astral-sh/uv:0.11.3 /uv /usr/local/bin/uv
+#24 CACHED
+
+#25 [backend stage-0  3/11] WORKDIR /app
+#25 CACHED
+
+#26 [backend stage-0  6/11] COPY backend backend
+#26 CACHED
+
+#27 [backend stage-0  5/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev --no-install-project
+#27 CACHED
+
+#28 [backend stage-0  7/11] COPY knowledge knowledge
+#28 CACHED
+
+#29 [backend stage-0  8/11] COPY simulator simulator
+#29 CACHED
+
+#30 [backend stage-0  4/11] COPY pyproject.toml uv.lock ./
+#30 CACHED
+
+#31 [backend stage-0  9/11] COPY tests/__init__.py tests/__init__.py
+#31 CACHED
+
+#32 [backend stage-0 10/11] COPY tests/support tests/support
+#32 DONE 0.1s
+
+#33 [simulator stage-0 11/11] RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-dev
+#33 0.356 Resolved 31 packages in 1ms
+#33 0.366 Installed 1 package in 8ms
+#33 0.366  + charge-ops-agent==0.1.0 (from file:///app)
+#33 DONE 0.4s
+
+#34 [simulator] exporting to image
+#34 exporting layers 0.1s done
+#34 exporting manifest sha256:e02f2fc901013fce0d511dd404df65886c0d975477959fdd6e809d2469e59894 0.0s done
+#34 exporting config sha256:5acd9fd1fd0b51875c8aed7f371944e1784357acf7426ed6e975055c86233841 0.0s done
+#34 exporting attestation manifest sha256:a93da66cea589e28473b5d38b0bbdf29f685d0bd1fba06fb555795ee4bb8f69b 0.1s done
+#34 exporting manifest list sha256:fefa93119bdf5322a5a7f7db51e8037127d023f6f82e4660b3defef8a092542f
+#34 exporting manifest list sha256:fefa93119bdf5322a5a7f7db51e8037127d023f6f82e4660b3defef8a092542f 0.0s done
+#34 naming to docker.io/library/charge-ops-backend:test-6fd0b3f95f48e4ce done
+#34 unpacking to docker.io/library/charge-ops-backend:test-6fd0b3f95f48e4ce 0.1s done
+#34 DONE 0.4s
+
+#35 [backend] exporting to image
+#35 exporting layers 0.1s done
+#35 exporting manifest sha256:72225c6d79d9da96da3fefe53fc2cab63949d5a3ed4724077f1cc753faa88452 0.0s done
+#35 exporting config sha256:a86613411a3d23be900a8efaeaa3a5c0a52193eaf19551c70df9867a4fab0e2c 0.0s done
+#35 exporting attestation manifest sha256:dda970344479f24054c54d2b00ac2033fbd9216ee55ab4c3acb438a41f55a1a2 0.1s done
+#35 exporting manifest list sha256:ced14717a655426abf63d14168e71f812355165caceec95119f6fb8e45eba6af 0.0s done
+#35 naming to docker.io/library/charge-ops-backend:test-6fd0b3f95f48e4ce done
+#35 unpacking to docker.io/library/charge-ops-backend:test-6fd0b3f95f48e4ce 0.1s done
+#35 DONE 0.4s
+
+#36 [simulator] resolving provenance for metadata file
+#36 DONE 0.1s
+
+#37 [backend] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image charge-ops-backend:test-6fd0b3f95f48e4ce Built 
+ Image charge-ops-backend:test-6fd0b3f95f48e4ce Built 
+ Image charge-ops-frontend:test-6fd0b3f95f48e4ce Built 
+ Network charge-smoke-185ee48f6586_default Creating 
+ Network charge-smoke-185ee48f6586_default Created 
+ Volume charge-smoke-185ee48f6586_backend_data Creating 
+ Volume charge-smoke-185ee48f6586_backend_data Created 
+ Container charge-smoke-185ee48f6586-mqtt-1 Creating 
+ Container charge-smoke-185ee48f6586-mqtt-1 Created 
+ Container charge-smoke-185ee48f6586-backend-1 Creating 
+ Container charge-smoke-185ee48f6586-backend-1 Created 
+ Container charge-smoke-185ee48f6586-frontend-1 Creating 
+ Container charge-smoke-185ee48f6586-frontend-1 Created 
+ Container charge-smoke-185ee48f6586-mqtt-1 Starting 
+ Container charge-smoke-185ee48f6586-mqtt-1 Started 
+ Container charge-smoke-185ee48f6586-mqtt-1 Waiting 
+ Container charge-smoke-185ee48f6586-mqtt-1 Healthy 
+ Container charge-smoke-185ee48f6586-backend-1 Starting 
+ Container charge-smoke-185ee48f6586-backend-1 Started 
+ Container charge-smoke-185ee48f6586-backend-1 Waiting 
+ Container charge-smoke-185ee48f6586-backend-1 Healthy 
+ Container charge-smoke-185ee48f6586-frontend-1 Starting 
+ Container charge-smoke-185ee48f6586-frontend-1 Started 
+ Container charge-smoke-185ee48f6586-backend-1 Waiting 
+ Container charge-smoke-185ee48f6586-frontend-1 Waiting 
+ Container charge-smoke-185ee48f6586-mqtt-1 Waiting 
+ Container charge-smoke-185ee48f6586-frontend-1 Healthy 
+ Container charge-smoke-185ee48f6586-mqtt-1 Healthy 
+ Container charge-smoke-185ee48f6586-backend-1 Healthy 
+ Container charge-smoke-185ee48f6586-frontend-1 Stopping 
+ Container charge-smoke-185ee48f6586-frontend-1 Stopped 
+ Container charge-smoke-185ee48f6586-frontend-1 Removing 
+ Container charge-smoke-185ee48f6586-frontend-1 Removed 
+ Container charge-smoke-185ee48f6586-backend-1 Stopping 
+ Container charge-smoke-185ee48f6586-backend-1 Stopped 
+ Container charge-smoke-185ee48f6586-backend-1 Removing 
+ Container charge-smoke-185ee48f6586-backend-1 Removed 
+ Container charge-smoke-185ee48f6586-mqtt-1 Stopping 
+ Container charge-smoke-185ee48f6586-mqtt-1 Stopped 
+ Container charge-smoke-185ee48f6586-mqtt-1 Removing 
+ Container charge-smoke-185ee48f6586-mqtt-1 Removed 
+ Volume charge-smoke-185ee48f6586_backend_data Removing 
+ Network charge-smoke-185ee48f6586_default Removing 
+ Volume charge-smoke-185ee48f6586_backend_data Removed 
+ Network charge-smoke-185ee48f6586_default Removed 
+{
+  "status": "PASS",
+  "queries": {
+    "status": "PASS",
+    "concurrency": 10,
+    "groups": {
+      "fleet": {
+        "requests": 250,
+        "p95_ms": 434.55108400667086,
+        "errors": 0
+      },
+      "sessions": {
+        "requests": 250,
+        "p95_ms": 138.11600898043253,
+        "errors": 0
+      },
+      "statistics": {
+        "requests": 250,
+        "p95_ms": 88.08680099900812,
+        "errors": 0
+      },
+      "timeline": {
+        "requests": 250,
+        "p95_ms": 185.1089500123635,
+        "errors": 0
+      }
+    },
+    "p95_ms": 384.93369400384836,
+    "threshold_ms": 500
+  },
+  "knowledge": {
+    "status": "PASS",
+    "p95_ms": 16.461755003547296,
+    "threshold_ms": 300,
+    "query_order_sha256": "c48db1f1cb72fa8fedc303245ee7d850537bb454f9b250227326df8b172d4071"
+  }
+}

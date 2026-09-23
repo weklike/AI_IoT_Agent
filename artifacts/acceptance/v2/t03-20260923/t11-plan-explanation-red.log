@@ -1,0 +1,35 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+________ test_saved_priority_order_is_exposed_as_actual_fleet_evidence _________
+
+app = <fastapi.applications.FastAPI object at 0x79f0b3147b60>
+
+    async def test_saved_priority_order_is_exposed_as_actual_fleet_evidence(app):
+        await load_v2_dataset(app,"POWER-PRIORITY","explanation",1)
+        order=["CHG-003","CHG-002","CHG-001"]
+        accepted=await app.state.power.preview(str(uuid4()),45000,"priority",order)
+        saved=await app.state.power.get(accepted["plan_id"])
+>       assert saved["snapshot_json"]["device_priority"]==order
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'device_priority'
+
+tests/integration/test_power_plan_explanation.py:15: KeyError
+___________ test_legacy_plan_does_not_invent_an_unrecorded_priority ____________
+
+app = <fastapi.applications.FastAPI object at 0x79f0b3176390>
+
+    async def test_legacy_plan_does_not_invent_an_unrecorded_priority(app):
+        await load_v2_dataset(app,"POWER-PRIORITY","legacy-explanation",1)
+        async with app.state.db.sessions.begin() as session:
+            plan=await session.scalar(select(PowerPlan))
+            plan.snapshot_json={"confirmed_budget_w":60000,"fixture":True}
+        latest=(await app.state.read_queries.fleet(30))["latest_plan"]
+>       assert latest["strategy"]=="priority"
+               ^^^^^^^^^^^^^^^^^^
+E       KeyError: 'strategy'
+
+tests/integration/test_power_plan_explanation.py:28: KeyError
+=========================== short test summary info ============================
+FAILED tests/integration/test_power_plan_explanation.py::test_saved_priority_order_is_exposed_as_actual_fleet_evidence
+FAILED tests/integration/test_power_plan_explanation.py::test_legacy_plan_does_not_invent_an_unrecorded_priority
+2 failed in 1.19s

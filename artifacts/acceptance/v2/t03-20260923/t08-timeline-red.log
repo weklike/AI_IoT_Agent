@@ -1,0 +1,15 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_timeline_stable_late_scoped_bounded_readonly _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-134/test_timeline_stable_late_scop0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+
+    async def test_timeline_stable_late_scoped_bounded_readonly(tmp_path, fixed_now):
+>       from backend.app.timeline import TimelineService
+E       ModuleNotFoundError: No module named 'backend.app.timeline'
+
+tests/integration/test_timeline_v2.py:13: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/integration/test_timeline_v2.py::test_timeline_stable_late_scoped_bounded_readonly
+1 failed in 0.57s

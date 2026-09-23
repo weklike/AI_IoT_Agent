@@ -1,0 +1,29 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_work_order_transitions_require_current_recovery_and_cleared_alarm ____
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-102/test_work_order_transitions_re0')
+fixed_now = datetime.datetime(2026, 9, 22, 8, 10, tzinfo=datetime.timezone.utc)
+valid_payload = {'schema_version': 1, 'device_id': 'CHG-002', 'message_id': 'bb7ce354-0569-4bcb-82de-233380fbba31', 'boot_id': 'ee456e0c-cd91-4fe0-83f1-a63dfc076f6a', ...}
+
+    async def test_work_order_transitions_require_current_recovery_and_cleared_alarm(tmp_path,fixed_now,valid_payload):
+        clock=FixedClock(fixed_now)
+        app=create_app(Settings(_env_file=None,app_env='test',mqtt_enabled=False,database_url=f'sqlite+aiosqlite:///{tmp_path}/orders.db'),clock=clock)
+        async with app.router.lifespan_context(app):
+            orders=WorkOrderService(app.state.db,app.state.settings,clock)
+            context=await seed_hot_run(app.state.store,valid_payload)
+            created=await orders.create('CHG-002','OVERHEAT',context=context)
+            order_id=created['data']['order_id']
+            async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app),base_url='http://test') as client:
+                async def transition(version,target,note='',request_id=None):
+                    return await client.post(f'/api/work-orders/{order_id}/transitions',json={'request_id':request_id or str(uuid4()),'expected_version':version,'target_status':target,'note':note})
+                invalid=await transition(1,'CLOSED')
+>               assert invalid.status_code==409,invalid.text
+E               AssertionError: {"error":{"code":"HTTP_ERROR","message":"Not Found"},"request_id":"3243ebdf-4c6b-435c-8a14-8cf9460caa4b"}
+E               assert 404 == 409
+E                +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/integration/test_work_order_lifecycle.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_work_order_lifecycle.py::test_work_order_transitions_require_current_recovery_and_cleared_alarm
+1 failed in 0.74s

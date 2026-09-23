@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="65.193" timestamp="2026-09-23T11:53:37.630075+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_simulator_scripts" name="test_two_fixed_sixty_second_scripts_real_broker" time="64.670" /></testsuite></testsuites>

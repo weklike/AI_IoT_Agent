@@ -1,0 +1,122 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ϟ CHARGE OPS 设备监控与运维" [ref=e5] [cursor=pointer]:
+      - /url: /devices
+      - generic [ref=e6]: ϟ
+      - generic [ref=e7]:
+        - text: CHARGE OPS
+        - generic [ref=e8]: 设备监控与运维
+    - paragraph [ref=e9]: 工作空间 / WORKSPACE
+    - navigation [ref=e10]:
+      - link "◫ 设备总览 01" [ref=e11] [cursor=pointer]:
+        - /url: /devices
+        - generic [ref=e12]: ◫
+        - text: 设备总览
+        - generic [ref=e13]: "01"
+      - link "⌘ Agent 助手 02" [ref=e14] [cursor=pointer]:
+        - /url: /agent
+        - generic [ref=e15]: ⌘
+        - text: Agent 助手
+        - generic [ref=e16]: "02"
+    - generic [ref=e17]:
+      - text: 软件模拟环境
+      - paragraph [ref=e19]: 3 台充电设备 · 单机演示
+      - generic [ref=e20]:
+        - text: 所有数值来自合成遥测。
+        - text: 过温阈值为演示规则。
+  - generic [ref=e21]:
+    - banner [ref=e22]:
+      - generic [ref=e23]: 运维控制台 / 本地工作站
+      - generic [ref=e24]: fixture · 替身模型
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: OPERATIONS ASSISTANT / 02
+          - heading "Agent 助手" [level=1] [ref=e29]
+          - paragraph [ref=e30]: 从设备数据到排查依据，每一次工具调用都有记录。
+        - generic [ref=e31]: 单任务执行
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - text: 历史任务
+            - combobox "历史任务" [ref=e35] [cursor=pointer]:
+              - option "选择已保存任务"
+              - option "2026/9/23 15:30:47 · 聊天 · 已完成 · 知识检索：银河望远镜的观测参数" [selected]
+              - option "2026/9/23 15:30:45 · 聊天 · 已完成 · 知识检索：平均分配 equal 的规则"
+          - button "刷新历史" [ref=e36] [cursor=pointer]
+        - paragraph [ref=e37]: 历史工具轨迹只用于复盘，不自动成为新任务的当前依据。
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]: ⌘
+          - heading "今天需要检查什么？" [level=2] [ref=e41]
+          - paragraph [ref=e42]: 例如：分析 2 号桩最近 10 分钟的温度，给出排查建议。
+          - generic [ref=e43]: 问题
+          - textbox "问题" [disabled] [ref=e44]:
+            - /placeholder: 输入设备与需要完成的任务…
+            - text: 知识检索：银河望远镜的观测参数
+          - generic [ref=e45]:
+            - checkbox "允许本次创建检修工单" [disabled] [ref=e46]
+            - text: 允许本次创建检修工单
+          - paragraph [ref=e47]: 默认只读。建单需要明确请求、有效证据与本次授权。
+          - button "开始新任务" [ref=e48] [cursor=pointer]
+          - generic [ref=e49]:
+            - generic [ref=e50]: 可用业务能力
+            - generic [ref=e51]: 设备状态 · 历史统计
+            - generic [ref=e52]: 知识检索 · 站点汇总 · 巡检报告
+            - generic [ref=e53]: 会话 · 工单 · 事件时间线
+            - generic [ref=e54]: 唯一写入能力：授权建单
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - heading "执行结果" [level=2] [ref=e58]
+              - generic [ref=e59]: 已完成
+            - text: dfd2fc40-d029-42ac-982d-ae28e5cd7bfd
+            - article [ref=e60]:
+              - paragraph [ref=e61]: 【fixture 替身模型演示；不是实际模型推理】
+              - paragraph [ref=e62]: 过温触发持续时间与采样断档：OVERHEAT的触发持续时间允许配置0至60秒，默认0秒。设置为10秒时，需要连续新鲜温度超限观测覆盖10秒。重复样本不能推进计时，乱序和超过3秒的间隔中断连续性。修改规则只作用于后续观测；已有活动告警保存原规则版本并按原恢复参数跟踪。 [KB:KB-HEAT-04@1.0#07cec55628e2b3549ce3176f]
+              - paragraph [ref=e63]: 证据时间线与历史回看：时间线汇总命令、会话报告、告警和工单事件及相关工具调用，每条保留来源ID、观测时间和接收时间。晚到记录要说明当时尚未接收，不能伪造先后关系。历史回看只读，不重放旧遥测，不刷新在线，也不触发控制。资料引用需对应当前任务实际检索到的版本与段落，不是硬件诊断概率。 [KB:KB-OPS-04@1.0#8664b1fb858d0acdf1b91124]
+              - paragraph [ref=e64]: "[DATA:bd42b6ac-48ed-4c4c-8913-a94924ba8093]"
+          - generic [ref=e65]:
+            - paragraph [ref=e66]: KNOWLEDGE / 可追溯依据
+            - heading "知识来源" [level=2] [ref=e67]
+            - paragraph [ref=e68]: 以下引用已经由服务器校验为本轮成功检索结果。资料只解释模拟系统，排名不是诊断概率。
+            - article [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e71]: KB-HEAT-04 · v1.0
+                - button "查看来源原文" [ref=e72] [cursor=pointer]
+              - text: 块 07cec55628e2b3549ce3176f · 依据工具 bd42b6ac-48ed-4c4c-8913-a94924ba8093
+            - article [ref=e73]:
+              - generic [ref=e74]:
+                - generic [ref=e75]: KB-OPS-04 · v1.0
+                - button "查看来源原文" [ref=e76] [cursor=pointer]
+              - text: 块 8664b1fb858d0acdf1b91124 · 依据工具 bd42b6ac-48ed-4c4c-8913-a94924ba8093
+          - generic [ref=e77]:
+            - heading "工具调用轨迹 1 次" [level=2] [ref=e78]:
+              - text: 工具调用轨迹
+              - generic [ref=e79]: 1 次
+            - button "查看数据依据 · 1" [ref=e81] [cursor=pointer]
+            - group [ref=e82]:
+              - generic "1 search_fault_knowledge 成功" [ref=e83] [cursor=pointer]:
+                - generic [ref=e84]: "1"
+                - code [ref=e85]: search_fault_knowledge
+                - generic [ref=e86]: 成功
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - heading "检修工单 当前显示 0" [level=2] [ref=e89]
+              - generic [ref=e90]:
+                - text: 工单状态
+                - combobox "工单状态" [ref=e91] [cursor=pointer]:
+                  - option "全部状态" [selected]
+                  - option "所有未关闭"
+                  - option "OPEN"
+                  - option "IN_PROGRESS"
+                  - option "RESOLVED"
+                  - option "CLOSED"
+            - paragraph [ref=e92]: 暂无工单。仅在本次授权且有有效证据时创建。
+    - contentinfo [ref=e93]:
+      - text: CHARGE OPERATIONS
+      - generic [ref=e94]: MQTT 设备链路 · 数据时间以样本为准
+```

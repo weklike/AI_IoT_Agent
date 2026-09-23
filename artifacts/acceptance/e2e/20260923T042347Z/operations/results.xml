@@ -1,0 +1,58 @@
+<testsuites id="" name="" tests="2" failures="1" skipped="0" errors="0" time="8.089649999999999">
+<testsuite name="rules.spec.ts" timestamp="2026-09-23T04:24:00.913Z" hostname="" tests="1" failures="0" skipped="0" time="1.078" errors="0">
+<testcase name="@v2 rules use server versions and keep fixed offline threshold" classname="rules.spec.ts" time="1.078">
+</testcase>
+</testsuite>
+<testsuite name="scripts.spec.ts" timestamp="2026-09-23T04:24:00.913Z" hostname="" tests="1" failures="1" skipped="0" time="5.467" errors="0">
+<testcase name="@v2 script refresh restores its record and explicit cancellation stops it" classname="scripts.spec.ts" time="5.467">
+<failure message="scripts.spec.ts:3:1 @v2 script refresh restores its record and explicit cancellation stops it" type="FAILURE">
+<![CDATA[  scripts.spec.ts:3:1 › @v2 script refresh restores its record and explicit cancellation stops it ──
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: '固定场景脚本' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: '固定场景脚本' })
+
+
+      3 | test('@v2 script refresh restores its record and explicit cancellation stops it', async ({ page }) => {
+      4 |   await page.goto('/devices/CHG-003')
+    > 5 |   await expect(page.getByRole('heading', { name: '固定场景脚本' })).toBeVisible()
+        |                                                               ^
+      6 |   const accepted = page.waitForResponse(response => response.url().endsWith('/api/simulator/scripts') && response.request().method() === 'POST')
+      7 |   await page.getByRole('button', { name: '运行60秒脚本', exact: true }).click()
+      8 |   const id = (await (await accepted).json()).data.script_id
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/scripts.spec.ts:5:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T042347Z/operations/scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T042347Z/operations/scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T042347Z/operations/scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T042347Z/operations/scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/test-failed-1.png]]
+
+[[ATTACHMENT|scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/error-context.md]]
+
+[[ATTACHMENT|scripts--v2-script-refresh-0c202-licit-cancellation-stops-it/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="30.652" timestamp="2026-09-23T10:18:57.736032+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_power_plans" name="test_plan_uses_real_thirty_second_deadline_and_clears_slot" time="30.125" /></testsuite></testsuites>

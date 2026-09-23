@@ -1,0 +1,54 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="7.540035">
+<testsuite name="operations.spec.ts" timestamp="2026-09-23T04:02:35.084Z" hostname="" tests="1" failures="1" skipped="0" time="5.761" errors="0">
+<testcase name="@v2 charging begins at zero then receives a verified power allocation" classname="operations.spec.ts" time="5.761">
+<failure message="operations.spec.ts:3:1 @v2 charging begins at zero then receives a verified power allocation" type="FAILURE">
+<![CDATA[  operations.spec.ts:3:1 › @v2 charging begins at zero then receives a verified power allocation ───
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: '充电运行' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: '充电运行' })
+
+
+      4 |   test.setTimeout(90000)
+      5 |   await page.goto('/devices/CHG-001')
+    > 6 |   await expect(page.getByRole('heading', { name: '充电运行' })).toBeVisible()
+        |                                                             ^
+      7 |   await page.getByLabel('请求功率（W）').fill('10000')
+      8 |   await page.getByRole('button', { name: '开始充电', exact: true }).click()
+      9 |   await expect(page.getByTestId('charging-command')).toContainText('效果已验证', { timeout: 12000 })
+        at /home/syzygy/AI_IoT_Agent/frontend/e2e/operations.spec.ts:6:61
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T040208Z/operations/operations--v2-charging-be-93b7e-a-verified-power-allocation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../artifacts/acceptance/e2e/20260923T040208Z/operations/operations--v2-charging-be-93b7e-a-verified-power-allocation/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../artifacts/acceptance/e2e/20260923T040208Z/operations/operations--v2-charging-be-93b7e-a-verified-power-allocation/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../artifacts/acceptance/e2e/20260923T040208Z/operations/operations--v2-charging-be-93b7e-a-verified-power-allocation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|operations--v2-charging-be-93b7e-a-verified-power-allocation/test-failed-1.png]]
+
+[[ATTACHMENT|operations--v2-charging-be-93b7e-a-verified-power-allocation/error-context.md]]
+
+[[ATTACHMENT|operations--v2-charging-be-93b7e-a-verified-power-allocation/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

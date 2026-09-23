@@ -1,0 +1,250 @@
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:27:38
+   |
+25 |             for offset,character in enumerate(word):
+26 |                 result.append(character)
+27 |                 if offset+1<len(word):result.append(word[offset:offset+2])
+   |                                      ^
+28 |         else:result.append(word)
+29 |     return result
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:28:13
+   |
+26 |                 result.append(character)
+27 |                 if offset+1<len(word):result.append(word[offset:offset+2])
+28 |         else:result.append(word)
+   |             ^
+29 |     return result
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:61:51
+   |
+59 |             raise ValueError('Knowledge path is outside its root')
+60 |     for path in sorted(root.rglob('*.md')):
+61 |         if not path.resolve().is_relative_to(root):raise ValueError('Knowledge path is outside its root')
+   |                                                   ^
+62 |         size=path.stat().st_size
+63 |         total+=size
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:64:39
+   |
+62 |         size=path.stat().st_size
+63 |         total+=size
+64 |         if size>32768 or total>1048576:raise ValueError('Knowledge corpus exceeds size limits')
+   |                                       ^
+65 |         lines=path.read_text().splitlines()
+66 |         if not lines or not lines[0].startswith('# '):raise ValueError('Knowledge title is missing')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:66:54
+   |
+64 |         if size>32768 or total>1048576:raise ValueError('Knowledge corpus exceeds size limits')
+65 |         lines=path.read_text().splitlines()
+66 |         if not lines or not lines[0].startswith('# '):raise ValueError('Knowledge title is missing')
+   |                                                      ^
+67 |         offset=1
+68 |         while offset<len(lines) and not lines[offset].strip():offset+=1
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:68:62
+   |
+66 |         if not lines or not lines[0].startswith('# '):raise ValueError('Knowledge title is missing')
+67 |         offset=1
+68 |         while offset<len(lines) and not lines[offset].strip():offset+=1
+   |                                                              ^
+69 |         metadata={}
+70 |         while offset<len(lines) and lines[offset].strip():
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:72:48
+   |
+70 |         while offset<len(lines) and lines[offset].strip():
+71 |             key,separator,value=lines[offset].partition(':')
+72 |             if not separator or key in metadata:raise ValueError('Malformed or duplicate knowledge metadata')
+   |                                                ^
+73 |             metadata[key]=None if value.strip()=='null' else value.strip()
+74 |             offset+=1
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:76:82
+   |
+74 | …         offset+=1
+75 | …     document=Document.model_validate({**metadata,'content':'\n'.join(lines[offset:]).strip()})
+76 | …     if document.source_kind=='external_reference' and not document.source_url:raise ValueError('External sources need attribution UR…
+   |                                                                                ^
+77 | …     if document.source_url and not document.source_url.startswith(('https://','http://')):raise ValueError('Invalid attribution URL')
+78 | …     key=(document.source_id,document.version)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:77:94
+   |
+75 | …     document=Document.model_validate({**metadata,'content':'\n'.join(lines[offset:]).strip()})
+76 | …     if document.source_kind=='external_reference' and not document.source_url:raise ValueError('External sources need attribution UR…
+77 | …     if document.source_url and not document.source_url.startswith(('https://','http://')):raise ValueError('Invalid attribution URL')
+   |                                                                                            ^
+78 | …     key=(document.source_id,document.version)
+79 | …     if key in seen or document.current and document.source_id in current:raise ValueError('Duplicate knowledge source/version')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:79:77
+   |
+77 | …     if document.source_url and not document.source_url.startswith(('https://','http://')):raise ValueError('Invalid attribution URL')
+78 | …     key=(document.source_id,document.version)
+79 | …     if key in seen or document.current and document.source_id in current:raise ValueError('Duplicate knowledge source/version')
+   |                                                                           ^
+80 | …     seen.add(key)
+81 | …     if document.current:current.add(document.source_id)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:81:28
+   |
+79 |         if key in seen or document.current and document.source_id in current:raise ValueError('Duplicate knowledge source/version')
+80 |         seen.add(key)
+81 |         if document.current:current.add(document.source_id)
+   |                            ^
+82 |         documents.append(document)
+83 |     if not documents:raise ValueError('Knowledge corpus is empty')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:83:21
+   |
+81 |         if document.current:current.add(document.source_id)
+82 |         documents.append(document)
+83 |     if not documents:raise ValueError('Knowledge corpus is empty')
+   |                     ^
+84 |     return documents
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/index.py:97:24
+   |
+95 |         for offset in range(0,len(paragraph),520):
+96 |             body=paragraph[offset:offset+600].strip()
+97 |             if not body:continue
+   |                        ^
+98 |             digest=hashlib.sha256(body.encode()).hexdigest()
+99 |             identity=hashlib.sha256(f'{document.source_id}/{document.version}/{len(chunks)}/{digest}'.encode()).hexdigest()[:24]
+   |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/knowledge/index.py:101:42
+    |
+ 99 |             identity=hashlib.sha256(f'{document.source_id}/{document.version}/{len(chunks)}/{digest}'.encode()).hexdigest()[:24]
+100 |             chunks.append({'chunk_id':identity,'heading':heading,'content':body,'content_hash':digest,'search_text':' '.join(tokenize…
+101 |             if offset+600>=len(paragraph):break
+    |                                          ^
+102 |     return chunks
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/knowledge/index.py:146:43
+    |
+144 |                     self.available=True
+145 |                     return False
+146 |                 for row in stored.values():row.current=False
+    |                                           ^
+147 |                 for key,document in expected.items():
+148 |                     row=stored.get(key)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> backend/app/knowledge/index.py:163:29
+    |
+161 |                             await session.flush()
+162 |                             indexed[part['chunk_id']]=chunk
+163 |                         else:chunk.search_text=part['search_text']
+    |                             ^
+164 |                 await session.execute(text('DELETE FROM knowledge_fts'))
+165 |                 for key in sorted(current_keys):
+    |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:26:34
+   |
+24 |             if device_id is not None:
+25 |                 device=await session.get(Device,device_id)
+26 |                 if device is None:raise DomainError('DEVICE_NOT_FOUND','设备不存在',404)
+   |                                  ^
+27 |                 model=device.model
+28 |             if not terms:return {'matches':[]}
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:28:25
+   |
+26 |                 if device is None:raise DomainError('DEVICE_NOT_FOUND','设备不存在',404)
+27 |                 model=device.model
+28 |             if not terms:return {'matches':[]}
+   |                         ^
+29 |             try:
+30 |                 if method=='fts5':
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:42:21
+   |
+40 | …                 FROM knowledge_chunks c JOIN knowledge_documents d ON d.id=c.document_id
+41 | …                 WHERE d.current=1 AND d.applicable_model=:model ORDER BY d.source_id,c.chunk_id'''),{'model':model})).mappings().all…
+42 | …         else:raise ValueError('Unknown retrieval method')
+   |               ^
+43 | …     except SQLAlchemyError as error:
+44 | …         self.index.available=False
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:51:92
+   |
+49 |                 if method=='exact_tags':
+50 |                     normalized=query.casefold()
+51 |                     if not any(tag.casefold() in normalized for tag in row['tags'].split()):continue
+   |                                                                                            ^
+52 |                 else:
+53 |                     available=set(tokenize(label_text+' '+row['content'])) if strong else set(tokenize(label_text))
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:54:62
+   |
+52 | …     else:
+53 | …         available=set(tokenize(label_text+' '+row['content'])) if strong else set(tokenize(label_text))
+54 | …         if not (strong or set(terms)) & available:continue
+   |                                                    ^
+55 | …     matches.append({key:row[key] for key in ('source_id','version','chunk_id','title','content') } | {'hash':row['content_hash']})
+56 | …     if len(matches)==5:break
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:56:35
+   |
+54 | …             if not (strong or set(terms)) & available:continue
+55 | …         matches.append({key:row[key] for key in ('source_id','version','chunk_id','title','content') } | {'hash':row['content_hash']…
+56 | …         if len(matches)==5:break
+   |                             ^
+57 | …     return {'matches':matches}
+   |
+
+E701 Multiple statements on one line (colon)
+  --> backend/app/knowledge/search.py:62:30
+   |
+60 | …     async with self.index.db.sessions() as session:
+61 | …         source=await session.scalar(select(KnowledgeDocument).where(KnowledgeDocument.source_id==source_id,KnowledgeDocument.version…
+62 | …         if source is None:raise DomainError('KNOWLEDGE_NOT_FOUND','来源版本不存在',404)
+   |                            ^
+63 | …         chunks=(await session.scalars(select(KnowledgeChunk).where(KnowledgeChunk.document_id==source.id).order_by(KnowledgeChunk.id…
+64 | …         return {column.name:getattr(source,column.name) for column in source.__table__.columns if column.name!='id'} | {'chunks':[{'…
+   |
+
+Found 29 errors (6 fixed, 23 remaining).

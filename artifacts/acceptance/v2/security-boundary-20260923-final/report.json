@@ -1,0 +1,17 @@
+{
+  "scope": "当前模型密钥值不应出现在源码、文档、测试或v2证据中；仅输出命中文件路径，不输出凭据。Compose端口静态核对。",
+  "files_scanned": 680,
+  "credential_value_present": [],
+  "compose_ports": [
+    "ports: [\"127.0.0.1:${MQTT_PUBLISH_PORT:-1883}:1883\"]",
+    "ports: [\"127.0.0.1:${BACKEND_PUBLISH_PORT:-8000}:8000\"]",
+    "ports: [\"127.0.0.1:${FRONTEND_PUBLISH_PORT:-8080}:80\"]"
+  ],
+  "checks": {
+    "configured_key_available_for_check": true,
+    "no_key_in_public_files": true,
+    "loopback_ports": true
+  },
+  "git_sha": "175eba89f079c34b8c9bb129c1b77a0772d2f8fa",
+  "status": "PASS"
+}

@@ -1,0 +1,28 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+______________ test_default_fixture_patrol_and_invalid_first_tool ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-syzygy/pytest-125/test_default_fixture_patrol_an0')
+
+    async def test_default_fixture_patrol_and_invalid_first_tool(tmp_path):
+        from backend.app.agent.fixture_provider import ScriptedProvider
+        settings = Settings(_env_file=None, app_env='test', mqtt_enabled=False,
+                            database_url=f'sqlite+aiosqlite:///{tmp_path}/fixture.db')
+        app = create_app(settings)
+        async with app.router.lifespan_context(app):
+            accepted = await app.state.scheduler.reserve_patrol(str(uuid4()), 10)
+            await app.state.scheduler.task
+            from backend.app.models import AgentRun, PatrolReport
+            async with app.state.db.sessions() as session:
+                run = await session.get(AgentRun, accepted['run_id'])
+>               assert run.status == 'completed', run.error_code
+E               AssertionError: INVALID_ARGUMENTS
+E               assert 'failed' == 'completed'
+E                 
+E                 - completed
+E                 + failed
+
+tests/integration/test_patrols.py:148: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_patrols.py::test_default_fixture_patrol_and_invalid_first_tool
+1 failed, 2 passed in 1.39s

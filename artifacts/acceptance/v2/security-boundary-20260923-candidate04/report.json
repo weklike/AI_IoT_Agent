@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "executed_at": "2026-09-23T08:33:33.253099+00:00",
+  "git_sha": "c9b44edbfade57e763ed6e62e3122a3cca44276e",
+  "scope": "本地配置中敏感键值仅在内存中与产物逐字节比较，不输出键值；不扫描.env本身或用户业务库。Compose绑定另核对静态配置。",
+  "files_scanned": 2166,
+  "configured_secrets_checked": 1,
+  "matching_paths": [],
+  "owned_test_containers_remaining": [],
+  "running_containers": [
+    "deploy-frontend-1\t127.0.0.1:8080->80/tcp",
+    "deploy-backend-1\t127.0.0.1:8000->8000/tcp",
+    "deploy-simulator-1\t",
+    "deploy-mqtt-1\t127.0.0.1:1883->1883/tcp"
+  ],
+  "port_bindings": [
+    {
+      "service": "backend",
+      "host_ip": "127.0.0.1",
+      "published": "8000"
+    },
+    {
+      "service": "frontend",
+      "host_ip": "127.0.0.1",
+      "published": "8080"
+    },
+    {
+      "service": "mqtt",
+      "host_ip": "127.0.0.1",
+      "published": "1883"
+    }
+  ],
+  "compose_checks": {
+    "all_host_ports_loopback": true,
+    "only_backend_has_model_settings": true,
+    "frontend_has_no_model_build_args": true
+  }
+}

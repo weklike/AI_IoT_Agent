@@ -1,0 +1,68 @@
+ Network charge-smoke-92cf9569ee4c_default Creating 
+ Network charge-smoke-92cf9569ee4c_default Created 
+ Volume charge-smoke-92cf9569ee4c_backend_data Creating 
+ Volume charge-smoke-92cf9569ee4c_backend_data Created 
+ Volume charge-smoke-92cf9569ee4c_simulator_state Creating 
+ Volume charge-smoke-92cf9569ee4c_simulator_state Created 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Creating 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Created 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Creating 
+ Container charge-smoke-92cf9569ee4c-backend-1 Creating 
+ Container charge-smoke-92cf9569ee4c-backend-1 Created 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Creating 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Created 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Created 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Starting 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Started 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Starting 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-backend-1 Starting 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Started 
+ Container charge-smoke-92cf9569ee4c-backend-1 Started 
+ Container charge-smoke-92cf9569ee4c-backend-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-backend-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Starting 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Started 
+ Container charge-smoke-92cf9569ee4c-backend-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Waiting 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-backend-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Healthy 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Healthy 
+
+Running 1 test using 1 worker
+
+(node:1466469) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1466469) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/devices.spec.ts:78:1 › 来回切页十次取消旧轮询，同一查询不重叠 (5.4s)
+
+  1 passed (6.9s)
+ Container charge-smoke-92cf9569ee4c-frontend-1 Stopping 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Stopping 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Stopped 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Removing 
+ Container charge-smoke-92cf9569ee4c-simulator-1 Removed 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Stopped 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Removing 
+ Container charge-smoke-92cf9569ee4c-frontend-1 Removed 
+ Container charge-smoke-92cf9569ee4c-backend-1 Stopping 
+ Container charge-smoke-92cf9569ee4c-backend-1 Stopped 
+ Container charge-smoke-92cf9569ee4c-backend-1 Removing 
+ Container charge-smoke-92cf9569ee4c-backend-1 Removed 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Stopping 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Stopped 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Removing 
+ Container charge-smoke-92cf9569ee4c-mqtt-1 Removed 
+ Network charge-smoke-92cf9569ee4c_default Removing 
+ Volume charge-smoke-92cf9569ee4c_simulator_state Removing 
+ Volume charge-smoke-92cf9569ee4c_backend_data Removing 
+ Volume charge-smoke-92cf9569ee4c_backend_data Removed 
+ Volume charge-smoke-92cf9569ee4c_simulator_state Removed 
+ Network charge-smoke-92cf9569ee4c_default Removed 

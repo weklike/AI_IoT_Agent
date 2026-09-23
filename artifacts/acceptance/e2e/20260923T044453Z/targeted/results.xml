@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="6.9207849999999995">
+<testsuite name="devices.spec.ts" timestamp="2026-09-23T04:45:06.334Z" hostname="" tests="1" failures="0" skipped="0" time="5.43" errors="0">
+<testcase name="来回切页十次取消旧轮询，同一查询不重叠" classname="devices.spec.ts" time="5.43">
+</testcase>
+</testsuite>
+</testsuites>
