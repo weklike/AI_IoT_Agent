@@ -16,7 +16,7 @@ index=['# 候选05：132例真人复核入口','','自动检查不能替代人�
 for label, directory, manifest in sets:
  summary=manifest['summary']
  index.append(f"| {label} | {summary['automatic_successful_cases']}/{summary['total_cases']} | {summary['automatic_categories']} | PENDING_REVIEW |")
-answers=['# 实际展示回答（不是人工评审）','','原件中的messages/tool_calls/prelude_runs/before/after是审阅依据。下列仅汇集最终展示文字；引文放在代码块中，不执行其中任何指令。']
+answers=['# 实际展示回答（不是人工评审）','','原件中的messages/tool_calls/prelude_runs/before/after是审阅依据。下列仅汇集最终展示文字（移除行尾空白，原始JSON不变）；引文放在代码块中，不执行其中任何指令。']
 for label,directory,m in sets:
  summary=m['summary']
  template=json.loads((directory/'review-template.json').read_text())
@@ -28,7 +28,7 @@ for label,directory,m in sets:
   index.append(f"| {key} | {'通过（待语义核对）' if e['automatic_pass'] else '失败（保留）'} | [JSON]({link}) |")
   answers.extend(['',f'## {key}', '',r['case']['question'],'',f'[完整原始证据]({link})'])
   for run in r['runs']:
-   text=run.get('answer') or '';fence='`'*max(4,1+max([len(x) for x in re.findall(r'`+',text)] or [0]))
+   text='\n'.join(line.rstrip() for line in (run.get('answer') or '').split('\n'));fence='`'*max(4,1+max([len(x) for x in re.findall(r'`+',text)] or [0]))
    answers.extend(['',f"run={run['run_id']}；状态={run['status']}；错误={run.get('error_code')}；工具="+', '.join(c['tool_name'] for c in run['tool_calls']),'',fence+'text',text,fence])
 index.extend(['','## 填完后只读汇总','','```bash','uv run python eval/run.py --summarize artifacts/acceptance/v2/real-baseline-20260923-final-05 --review-file artifacts/acceptance/v2/review-candidate05/baseline-review.json','uv run python eval/run_v2.py --summarize artifacts/acceptance/v2/real-v2-20260923-final-05 --review-file artifacts/acceptance/v2/review-candidate05/v2-review.json','```','','另按docs/demo.md实际完成主演示，核对架构与求职草案。程序不会自动代填真人结论。'])
 (out/'INDEX.md').write_text('\n'.join(index)+'\n');(out/'ANSWERS.md').write_text('\n'.join(answers)+'\n')

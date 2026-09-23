@@ -45,12 +45,13 @@
 | 控制/告警20次可见性、20次功率保护 | 各0 | PASS；两类20/20≤4秒，20次功率计划通过 | visibility-20260923-status-style-final/、power-protection-20260923-formal/ |
 | 完整RSS小时及原始窗口相容性重核 | 0 | PASS；5273/5273，入库P95 67.267ms | stability-rss-20260923-formal/、stability-rss-20260923-final05-revalidated/ |
 | 独立完整Git克隆，锁定离线安装/构建/76项定向测试 | 各0 | PASS | clean-reproduction-20260923-candidate05/report.json |
+| 最终证据/源码/链接/配置边界核对 | 0 | PASS；100项唯一、摘要有效、无当前密钥值泄漏、无自有测试容器遗留 | audit-20260923-final05/validation.json；security-boundary-20260923-candidate05/report.json |
 | 四服务旧库升级及空卷启动 | 0 | PASS；原检查错误及更正均保留 | 最终JUnit；cold-start-20260923-final/automatic-recheck.json |
 
 ## 未完成与阻塞
 
 - 132条真实模型回答尚无真人语义/关键错误结论，不能代填reviewer或以自动通过数宣称准确率。文档、本人讲解与演示仍需人工复核。
-- M4为PENDING_REVIEW；T11尚不能DONE。完整状态见[最终索引](../artifacts/acceptance/v2/audit-20260923-final05/results.json)。
+- 最终100项中92项PASS、8项PENDING_REVIEW；M1/M2通过，M3/M4待人工复核；T11尚不能DONE。完整状态见[最终索引](../artifacts/acceptance/v2/audit-20260923-final05/results.json)。
 - 小时资源实测属于b000dee实例；最终提示及详情页样式的相容范围单独记录，不声称其资源字节值完全相同。第一次缺少RSS的小时记录保留。
 - 旧轮次失败、检索语义局限及ECharts构建体积警告保留；用户既有改动与运行中的deploy实例未触碰。
 
