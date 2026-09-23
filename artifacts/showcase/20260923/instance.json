@@ -1,0 +1,11 @@
+{
+  "project": "charge-showcase-20260923",
+  "ports": {
+    "MQTT_PUBLISH_PORT": "45452",
+    "BACKEND_PUBLISH_PORT": "44752",
+    "FRONTEND_PUBLISH_PORT": "44468"
+  },
+  "mode": "fixture",
+  "url": "http://127.0.0.1:44468",
+  "purpose": "用户要求的成果展示，独立持久化卷，保留供浏览；不属于验收测试实例"
+}

@@ -19,10 +19,19 @@ onMounted(() => { stop = poll(async signal => {
 onUnmounted(() => stop())
 </script>
 <template>
-  <div class="page-heading"><div><p class="eyebrow">FLEET MONITOR / 01</p><h1>设备总览</h1><p class="muted">掌握设备连接、温度与数据新鲜度。</p></div><span class="refresh-note">↻ 每 2 秒更新</span></div>
+  <div class="page-heading"><div><p class="eyebrow">CHARGE OPS / FLEET WORKSPACE</p><h1>设备总览</h1><p class="muted">观察设备运行，分配站点功率，让每一次处理都有据可查。</p></div><span class="refresh-note">↻ 每 2 秒更新</span></div>
+  <section class="workflow-guide" aria-label="运维功能导览">
+    <div class="workflow-intro"><span class="eyebrow">OPERATIONS / V2.0</span><h2>从充电现场<br>到运维闭环。</h2><p>三台软件设备，一条可追溯的处理链路。</p></div>
+    <div class="workflow-links">
+      <a href="#fleet-devices"><span>01 / MONITOR</span><strong>设备与会话 <b>↗</b></strong><small>查看样本、充电状态与历史计量</small></a>
+      <a href="#station-power"><span>02 / DISPATCH</span><strong>功率调度 <b>↓</b></strong><small>预览分配，再验证实际设备反馈</small></a>
+      <a href="#station-patrol"><span>03 / INSPECT</span><strong>告警与巡检 <b>↓</b></strong><small>汇总事实，保留告警与恢复记录</small></a>
+      <RouterLink to="/agent"><span>04 / ANALYZE</span><strong>Agent 分析 <b>↗</b></strong><small>查询数据、引用知识、授权建单</small></RouterLink>
+    </div>
+  </section>
   <div v-if="error" role="alert" class="alert">{{ error }}。下次轮询将自动重试；当前显示可能是旧数据。</div>
   <div class="summary-strip"><div><span>设备总数</span><strong>{{ devices.length || '—' }}<small> 台</small></strong></div><div><span>当前在线</span><strong>{{ online }}<small> 台</small></strong></div><div><span>过温告警</span><strong :class="{ orange: hot }">{{ hot }}<small> 台</small></strong></div><div class="summary-note"><span>演示阈值</span><strong>60<small> °C</small></strong><small>仅用于合成过温规则</small></div></div>
-  <div class="section-title"><h2>设备列表</h2><span class="muted">固定设备 CHG-001 — CHG-003</span></div>
+  <div id="fleet-devices" class="section-title"><h2>设备列表</h2><span class="muted">固定设备 CHG-001 — CHG-003</span></div>
   <p v-if="loading" role="status">正在加载设备…</p>
   <p v-else-if="!devices.length && !error" class="empty">暂无设备数据</p>
   <div class="device-grid"><article v-for="(device, index) in devices" :key="device.device_id" class="device-card" data-testid="device-card" :data-message-id="device.message_id" :class="{ hot: device.health_state === 'overheat' }">
@@ -35,6 +44,7 @@ onUnmounted(() => stop())
     <p class="sample-time">样本 {{ stamp(device.sample_ts) }}</p>
     <RouterLink class="card-link" :to="`/devices/${device.device_id}`" :aria-label="`查看 ${device.device_id}`">查看详情与历史 <span>↗</span></RouterLink>
   </article></div>
-  <PowerPlanPanel :station="fleet?.station" /><PatrolPanel /><AlarmList />
+  <div class="workspace-divider"><span>OPERATIONS DESK</span><p>从这里开始调度与巡检；执行结果以设备反馈和服务端记录为准。</p></div>
+  <div id="station-power"><PowerPlanPanel :station="fleet?.station" /></div><div id="station-patrol"><PatrolPanel /><AlarmList /></div>
   <div class="info-band"><span>i</span><div><b>连接状态与数据新鲜度分别判定</b><p>在线不一定代表数据新鲜。超过 10 秒的指标显示为最后记录；最后新鲜接收超过 15 秒才判离线。</p></div><RouterLink to="/agent">向 Agent 提问 →</RouterLink></div>
 </template>
