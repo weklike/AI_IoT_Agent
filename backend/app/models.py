@@ -337,6 +337,7 @@ class KnowledgeDocument(Base):
     source_id: Mapped[str]
     version: Mapped[str]
     title: Mapped[str]
+    tags: Mapped[str] = mapped_column(default="", server_default="")
     category: Mapped[str]
     applicable_model: Mapped[str]
     source_kind: Mapped[str]

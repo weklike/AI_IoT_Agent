@@ -24,10 +24,13 @@ from backend.app.config import Settings
 from backend.app.contracts import ScenarioAck
 from backend.app.db import Database
 from backend.app.errors import DomainError
+from backend.app.knowledge.index import KnowledgeIndex
+from backend.app.knowledge.search import KnowledgeSearch
 from backend.app.mqtt.client import MQTTConnection
 from backend.app.power.service import PowerService
 from backend.app.routes.alarms import router as alarms_router
 from backend.app.routes.charging import router as charging_router
+from backend.app.routes.knowledge import router as knowledge_router
 from backend.app.routes.power import router as power_router
 from backend.app.routes.work_orders import router as work_orders_router
 from backend.app.simulator_control import ScenarioControl
@@ -47,6 +50,8 @@ def create_app(
     db = Database(settings)
     mqtt = MQTTConnection(settings, clock)
     store = TelemetryStore(db, settings, clock)
+    knowledge_index = KnowledgeIndex(db)
+    knowledge = KnowledgeSearch(knowledge_index)
     control = ScenarioControl(db, settings, clock, mqtt)
     charging = ChargingControl(db, settings, clock, mqtt)
     power = PowerService(db, settings, clock, charging)
@@ -111,7 +116,22 @@ def create_app(
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         try:
-            await db.initialize(clock)
+            try:
+                await db.initialize(clock)
+            except SQLAlchemyError as error:
+                if "no such module: fts5" not in str(getattr(error, "orig", error)).lower():
+                    raise
+                # The migration transaction has rolled back. Serve health only; no consumers or business operations.
+                app.state.startup_failure = "FTS5_UNAVAILABLE"
+                logging.getLogger(__name__).error("STARTUP_BLOCKED FTS5_UNAVAILABLE")
+                yield
+                return
+            try:
+                await knowledge_index.refresh()
+            except (ValueError, OSError, SQLAlchemyError) as error:
+                logging.getLogger(__name__).error(
+                    "KNOWLEDGE_UNAVAILABLE type=%s", type(error).__name__
+                )
             app.state.consumer = asyncio.create_task(consume(), name="mqtt-consumer")
             app.state.alarm_timer = asyncio.create_task(
                 store.alarms.run_timer(), name="alarm-timer"
@@ -143,9 +163,12 @@ def create_app(
             await db.close()
 
     app = FastAPI(title="Charge Operations Agent", lifespan=lifespan)
+    app.state.startup_failure = None
     app.state.settings, app.state.clock = settings, clock
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
+    app.state.knowledge = knowledge
+    app.state.knowledge_index = knowledge_index
     app.state.alarms = store.alarms
     app.state.control = control
     app.state.charging = charging
@@ -157,11 +180,24 @@ def create_app(
     app.include_router(power_router)
     app.include_router(alarms_router)
     app.include_router(work_orders_router)
+    app.include_router(knowledge_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):
         request.state.request_id = str(uuid4())
-        response = await call_next(request)
+        if app.state.startup_failure and request.url.path != "/api/health":
+            response = JSONResponse(
+                status_code=503,
+                content={
+                    "error": {
+                        "code": "STARTUP_UNAVAILABLE",
+                        "message": "FTS5 不可用，迁移已回滚，业务未启动",
+                    },
+                    "request_id": request.state.request_id,
+                },
+            )
+        else:
+            response = await call_next(request)
         response.headers["X-Request-ID"] = request.state.request_id
         return response
 
@@ -213,17 +249,26 @@ def create_app(
         try:
             async with db.sessions() as session:
                 await session.execute(text("SELECT 1"))
-            db_status = "ready"
+            db_status = "unavailable" if app.state.startup_failure else "ready"
         except SQLAlchemyError:
             db_status = "unavailable"
         mqtt_status = (
             ("ready" if mqtt.connected else "unavailable") if settings.mqtt_enabled else "disabled"
         )
-        ready = db_status == "ready" and mqtt_status in {"ready", "disabled"}
+        ready = (
+            db_status == "ready"
+            and mqtt_status in {"ready", "disabled"}
+            and knowledge_index.available
+        )
         return JSONResponse(
             status_code=200 if ready else 503,
             content={
-                "data": {"db": db_status, "mqtt": mqtt_status, "llm_mode": settings.llm_mode},
+                "data": {
+                    "db": db_status,
+                    "mqtt": mqtt_status,
+                    "llm_mode": settings.llm_mode,
+                    "knowledge": "ready" if knowledge_index.available else "unavailable",
+                },
                 "request_id": request.state.request_id,
             },
         )

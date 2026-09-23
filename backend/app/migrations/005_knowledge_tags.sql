@@ -1,0 +1,1 @@
+ALTER TABLE knowledge_documents ADD COLUMN tags VARCHAR NOT NULL DEFAULT '';
