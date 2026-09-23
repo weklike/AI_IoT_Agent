@@ -68,6 +68,12 @@ async def test_alarm_ack_is_not_recovery_stale_unknown_and_fresh_clear(
             assert (
                 await client.post(f"/api/alarms/{hot['alarm_id']}/acknowledge", json=body)
             ).json()["data"] == acknowledged.json()["data"]
+            stale_version = await client.post(
+                f"/api/alarms/{hot['alarm_id']}/acknowledge",
+                json={**body, "request_id": str(uuid4())},
+            )
+            assert stale_version.status_code == 409
+            assert stale_version.json()["error"]["code"] == "VERSION_CONFLICT"
             clock.advance(16)
             await app.state.alarms.evaluate_time()
             rows = (await client.get("/api/alarms", params={"device_id": "CHG-002"})).json()[

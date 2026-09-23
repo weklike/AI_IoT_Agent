@@ -1,4 +1,5 @@
 import asyncio
+from datetime import timedelta
 from uuid import uuid4
 
 import pytest
@@ -86,3 +87,91 @@ async def test_unchanged_targets_still_require_fresh_final_feedback(
         with pytest.raises(DomainError) as error:
             await power.preview(str(uuid4()), 60000, "equal", None)
         assert error.value.code == "DEVICE_NOT_READY"
+
+
+async def test_unknown_command_upper_bound_blocks_new_plan(tmp_path, fixed_now):
+    app = create_app(
+        Settings(
+            _env_file=None,
+            app_env="test",
+            mqtt_enabled=False,
+            database_url=f"sqlite+aiosqlite:///{tmp_path}/unknown.db",
+        ),
+        clock=FixedClock(fixed_now),
+    )
+    async with app.router.lifespan_context(app):
+        await load_v2_dataset(app, "POWER-EQUAL", "unknown-upper-bound", 1)
+        async with app.state.db.sessions.begin() as session:
+            session.add(
+                DeviceCommand(
+                    command_id=str(uuid4()),
+                    device_id="CHG-001",
+                    generation=100,
+                    action="set_power_limit",
+                    args_json={"power_limit_w": 20000},
+                    status="timed_out",
+                    verification_status="unconfirmed",
+                    issued_at=fixed_now - timedelta(seconds=10),
+                    expires_at=fixed_now - timedelta(seconds=5),
+                )
+            )
+        with pytest.raises(DomainError) as error:
+            await app.state.power.preview(str(uuid4()), 60000, "equal", None)
+        assert error.value.code == "DEVICE_NOT_READY"
+        assert not app.state.power.tasks
+
+
+async def test_stop_between_phases_prevents_all_later_increases(tmp_path, fixed_now, monkeypatch):
+    app = create_app(
+        Settings(
+            _env_file=None,
+            app_env="test",
+            mqtt_enabled=False,
+            database_url=f"sqlite+aiosqlite:///{tmp_path}/stop.db",
+        ),
+        clock=FixedClock(fixed_now),
+    )
+    async with app.router.lifespan_context(app):
+        await load_v2_dataset(app, "POWER-EQUAL", "stop-between-phases", 1)
+        power = app.state.power
+        plan = await power.preview(
+            str(uuid4()), 45000, "priority", ["CHG-002", "CHG-001", "CHG-003"]
+        )
+        lower_entered, release = asyncio.Event(), asyncio.Event()
+        original = power._phase
+        phase_count = 0
+
+        async def hold_lower(plan_id, targets):
+            nonlocal phase_count
+            phase_count += 1
+            if phase_count == 1:
+                assert targets == {"CHG-003": 5000}
+                lower_entered.set()
+                await release.wait()
+            else:
+                await original(plan_id, targets)
+
+        class Publisher:
+            connected = True
+            calls = []
+
+            def publish(self, topic, payload):
+                self.calls.append(payload)
+                return True
+
+        publisher = Publisher()
+        monkeypatch.setattr(app.state.charging, "mqtt", publisher)
+        monkeypatch.setattr(power, "_phase", hold_lower)
+        await power.execute(str(uuid4()), plan["plan_id"])
+        await asyncio.wait_for(lower_entered.wait(), 2)
+        state = await app.state.store.device_status("CHG-001")
+        await app.state.charging.create(
+            "CHG-001", str(uuid4()), "stop_session", {"session_id": state["session_id"]}
+        )
+        release.set()
+        await asyncio.gather(*list(power.tasks.values()))
+        result = await power.get(plan["plan_id"])
+        assert result["status"] == "PARTIAL"
+        assert len(publisher.calls) == 1
+        assert '"action":"stop_session"' in publisher.calls[0]
+        assert not result["commands"]

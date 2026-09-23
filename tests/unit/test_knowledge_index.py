@@ -30,3 +30,28 @@ def test_rejects_external_symlink_before_reading(tmp_path):
     (root / "escape.md").symlink_to(outside)
     with pytest.raises(ValueError, match="outside"):
         load_documents(root)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "source_id",
+        "version",
+        "title",
+        "category",
+        "applicable_model",
+        "source_kind",
+        "source_url",
+        "license_note",
+    ],
+)
+def test_missing_source_metadata_cannot_enter_index(tmp_path, field):
+    from backend.app.knowledge.index import load_documents
+
+    original = Path("knowledge/kb-power-01.md").read_text()
+    incomplete = "\n".join(
+        line for line in original.splitlines() if not line.startswith(field + ":")
+    )
+    (tmp_path / "missing.md").write_text(incomplete)
+    with pytest.raises(ValueError):
+        load_documents(tmp_path)
