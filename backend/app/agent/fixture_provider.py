@@ -61,6 +61,23 @@ class FixtureProvider:
         results = [
             json.loads(message["content"]) for message in messages if message["role"] == "tool"
         ]
+        if "知识检索" in question or "检索资料" in question:
+            if not executed:
+                return tool_response(
+                    "search_fault_knowledge",
+                    {"query": question[:300], "device_id": device_id if match else None},
+                )
+            result = results[0]
+            matches = result["data"]["matches"]
+            lines = ["【fixture 替身模型演示；不是实际模型推理】"]
+            if not matches:
+                lines.append("本次检索没有适用的知识依据，无法据此提供排查结论。")
+            for source in matches:
+                lines.append(
+                    f"{source['title']}：{source['content']} [KB:{source['source_id']}@{source['version']}#{source['chunk_id']}]"
+                )
+            lines.append(f"[DATA:{result['tool_call_id']}]")
+            return {"role": "assistant", "content": "\n\n".join(lines)}
         if "巡检" in question or "全站" in question:
             if not executed:
                 minutes = re.search(r"(\d+)分钟", question)

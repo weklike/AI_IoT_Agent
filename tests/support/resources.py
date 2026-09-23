@@ -77,7 +77,13 @@ def broker():
 
 
 @contextmanager
-def stack(output: Path | None = None, *, simulator: bool = True, failures: bool = False):
+def stack(
+    output: Path | None = None,
+    *,
+    simulator: bool = True,
+    failures: bool = False,
+    operations: bool = False,
+):
     project = f"charge-smoke-{uuid4().hex[:12]}"
     env = os.environ.copy()
     ports = dict(
@@ -87,6 +93,7 @@ def stack(output: Path | None = None, *, simulator: bool = True, failures: bool 
     )
     env.update(ports)
     env.update(
+        SIMULATOR_MODE="operations" if operations else "legacy",
         LLM_MODE="fixture",
         LLM_BASE_URL="",
         LLM_MODEL="",

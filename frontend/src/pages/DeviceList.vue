@@ -2,13 +2,17 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { api } from '../api'
 import { poll } from '../polling'
-import { connectionLabels, healthLabels, metric, stamp, type Device } from '../types'
+import { connectionLabels, healthLabels, metric, stamp, type Device, type FleetOverview } from '../types'
+import PowerPlanPanel from '../components/PowerPlanPanel.vue'
+import PatrolPanel from '../components/PatrolPanel.vue'
+import AlarmList from '../components/AlarmList.vue'
+const fleet = ref<FleetOverview>()
 const devices = ref<Device[]>([]), error = ref(''), loading = ref(true)
 const online = computed(() => devices.value.filter(d => d.connection_state === 'online').length)
 const hot = computed(() => devices.value.filter(d => d.health_state === 'overheat').length)
 let stop = () => {}
 onMounted(() => { stop = poll(async signal => {
-  try { devices.value = await api<Device[]>('/devices', {}, signal); error.value = '' }
+  try { fleet.value = await api<FleetOverview>('/fleet-overview?window_minutes=30', {}, signal); devices.value = fleet.value.devices.map(row => row.status); error.value = '' }
   catch (e) { if (!signal.aborted) error.value = (e as Error).message }
   finally { loading.value = false }
 }, 2000) })
@@ -31,5 +35,6 @@ onUnmounted(() => stop())
     <p class="sample-time">样本 {{ stamp(device.sample_ts) }}</p>
     <RouterLink class="card-link" :to="`/devices/${device.device_id}`" :aria-label="`查看 ${device.device_id}`">查看详情与历史 <span>↗</span></RouterLink>
   </article></div>
+  <PowerPlanPanel :station="fleet?.station" /><PatrolPanel /><AlarmList />
   <div class="info-band"><span>i</span><div><b>连接状态与数据新鲜度分别判定</b><p>在线不一定代表数据新鲜。超过 10 秒的指标显示为最后记录；最后新鲜接收超过 15 秒才判离线。</p></div><RouterLink to="/agent">向 Agent 提问 →</RouterLink></div>
 </template>

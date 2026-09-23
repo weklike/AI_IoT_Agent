@@ -136,3 +136,25 @@ async def test_readonly_tools_bound_rows_without_truncating_counts(tmp_path, fix
         assert orders["closed_count"] == 25
         assert {row["status"] for row in orders["unclosed"]} == {"IN_PROGRESS", "RESOLVED"}
         assert (await queries.work_orders("CHG-003"))["closed_count"] == 0
+
+
+async def test_fleet_exposes_acknowledgement_without_claiming_recovery(
+    tmp_path, fixed_now, valid_payload
+):
+    settings = Settings(
+        _env_file=None,
+        app_env="test",
+        mqtt_enabled=False,
+        database_url=f"sqlite+aiosqlite:///{tmp_path}/ack-summary.db",
+    )
+    app = create_app(settings, clock=FixedClock(fixed_now))
+    async with app.router.lifespan_context(app):
+        await app.state.store.ingest(TelemetryMessage.model_validate(valid_payload), fixed_now)
+        before = await app.state.read_queries.fleet(30)
+        alarm = before["devices"][1]["active_alarms"][0]
+        await app.state.alarms.acknowledge(alarm["alarm_id"], str(uuid4()), alarm["version"])
+        after = await app.state.read_queries.fleet(30)
+        acknowledged = after["devices"][1]["active_alarms"][0]
+        assert acknowledged["condition"] == "ACTIVE"
+        assert acknowledged["acknowledged_at"] == fixed_now
+        assert acknowledged["cleared_at"] is None

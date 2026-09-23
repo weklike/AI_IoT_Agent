@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Request } from '@playwright/test'
 import { writeFile } from 'node:fs/promises'
 
 test('三设备与真实场景切换、离线恢复', async ({ page }, info) => {
@@ -69,23 +69,33 @@ test('未知设备和服务断开可见', async ({ page }, info) => {
   await page.goto('/devices/CHG-999')
   await expect(page.getByRole('alert')).toContainText('设备不存在')
   await page.screenshot({ path: info.outputPath('unknown-device.png'), fullPage: true })
-  await page.route('**/api/devices', route => route.abort())
+  await page.route('**/api/fleet-overview?*', route => route.abort())
   await page.goto('/devices')
   await expect(page.getByRole('alert')).toContainText('服务连接失败')
   await page.screenshot({ path: info.outputPath('service-disconnected.png'), fullPage: true })
 })
 
-test('来回切页十次取消旧轮询，同一查询不重叠', async ({ page }) => {
+test('来回切页十次取消旧轮询，同一查询不重叠', async ({ page }, info) => {
   const active = new Map<string, number>(), maximum = new Map<string, number>()
-  const key = (url: string) => new URL(url).pathname
+  const pending = new Set<Request>(), overlaps: string[][] = []
+  const key = (url: string) => {
+    const parsed = new URL(url), from = parsed.searchParams.get('from'), to = parsed.searchParams.get('to')
+    // Device/filter/page scope identifies the query; a moving window anchor does not.
+    parsed.searchParams.delete('from'); parsed.searchParams.delete('to')
+    if (from && to) parsed.searchParams.set('window_ms', String(Date.parse(to) - Date.parse(from)))
+    parsed.searchParams.sort()
+    return parsed.pathname + '?' + parsed.searchParams.toString()
+  }
   page.on('request', request => {
-    if (!request.url().includes('/api/devices')) return
+    if (!request.url().includes('/api/')) return
     const path = key(request.url()), value = (active.get(path) || 0) + 1
+    if (value > 1) overlaps.push([...pending].filter(item => key(item.url()) === path).map(item => item.url()).concat(request.url()))
+    pending.add(request)
     active.set(path, value); maximum.set(path, Math.max(maximum.get(path) || 0, value))
   })
-  const finish = (url: string) => { if (url.includes('/api/devices')) { const path = key(url); active.set(path, (active.get(path) || 1) - 1) } }
-  page.on('requestfinished', request => finish(request.url()))
-  page.on('requestfailed', request => finish(request.url()))
+  const finish = (url: string) => { if (url.includes('/api/')) { const path = key(url); active.set(path, (active.get(path) || 1) - 1) } }
+  page.on('requestfinished', request => { pending.delete(request); finish(request.url()) })
+  page.on('requestfailed', request => { pending.delete(request); finish(request.url()) })
   await page.goto('/devices')
   for (let i = 0; i < 10; i++) {
     await page.getByRole('link', { name: '查看 CHG-002' }).click()
@@ -95,10 +105,11 @@ test('来回切页十次取消旧轮询，同一查询不重叠', async ({ page 
   }
   await page.getByRole('link', { name: /Agent 助手/ }).click()
   let oldPolls = 0
-  page.on('request', request => { if (request.url().includes('/api/devices')) oldPolls++ })
+  page.on('request', request => { if (request.url().includes('/api/') && !request.url().includes('/api/agent/') && !request.url().endsWith('/api/health')) oldPolls++ })
   await page.waitForTimeout(2500)
   expect(oldPolls).toBe(0)
-  expect(Math.max(...maximum.values())).toBe(1)
+  await writeFile(info.outputPath('poll-concurrency.json'), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps }, null, 2))
+  expect(Math.max(...maximum.values()), JSON.stringify({ maximum: Object.fromEntries(maximum), overlaps })).toBe(1)
 })
 
 test('离开详情时未完成的场景请求不能重启旧轮询', async ({ page }) => {

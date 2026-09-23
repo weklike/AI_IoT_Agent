@@ -1,10 +1,11 @@
-from typing import Annotated
+from typing import Annotated, Literal
+from uuid import UUID
 
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import JSONResponse
 from pydantic import AwareDatetime
 from pydantic_core import to_jsonable_python
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 
 from backend.app.contracts import DEVICE_IDS, Contract, RunRequest, Scenario
 from backend.app.errors import DomainError
@@ -78,6 +79,53 @@ async def scenario_status(request: Request, command_id: str):
     return success(request, await request.app.state.control.get(command_id))
 
 
+@router.get("/agent/runs")
+async def run_history(
+    request: Request, limit: Annotated[int, Query(ge=1, le=100)] = 20, cursor: UUID | None = None
+):
+    async with request.app.state.db.sessions() as session:
+        query = select(AgentRun)
+        if cursor:
+            previous = await session.get(AgentRun, str(cursor))
+            if previous is None:
+                raise DomainError("INVALID_ARGUMENTS", "任务游标不存在")
+            query = query.where(
+                or_(
+                    AgentRun.created_at < previous.created_at,
+                    and_(
+                        AgentRun.created_at == previous.created_at,
+                        AgentRun.run_id < previous.run_id,
+                    ),
+                )
+            )
+        rows = (
+            await session.scalars(
+                query.order_by(AgentRun.created_at.desc(), AgentRun.run_id.desc()).limit(limit + 1)
+            )
+        ).all()
+        return success(
+            request,
+            {
+                "items": [
+                    {
+                        key: getattr(row, key)
+                        for key in (
+                            "run_id",
+                            "question",
+                            "status",
+                            "kind",
+                            "created_at",
+                            "finished_at",
+                            "error_code",
+                        )
+                    }
+                    for row in rows[:limit]
+                ],
+                "next_cursor": rows[limit - 1].run_id if len(rows) > limit else None,
+            },
+        )
+
+
 @router.post("/agent/runs", status_code=202)
 async def start_run(request: Request, body: RunRequest):
     if request.app.state.scheduler is None:
@@ -139,32 +187,64 @@ async def get_run(request: Request, run_id: str):
 
 
 @router.get("/work-orders")
-async def work_orders(request: Request, device_id: str | None = None):
+async def work_orders(
+    request: Request,
+    device_id: str | None = None,
+    limit: Annotated[int | None, Query(ge=1, le=100)] = None,
+    cursor: UUID | None = None,
+    state: Literal["OPEN", "IN_PROGRESS", "RESOLVED", "CLOSED", "UNCLOSED"] | None = None,
+):
     if device_id is not None and device_id not in DEVICE_IDS:
         raise DomainError("DEVICE_NOT_FOUND", "设备不存在", 404)
     async with request.app.state.db.sessions() as session:
-        query = select(WorkOrder).order_by(WorkOrder.created_at.desc())
+        query = select(WorkOrder).order_by(WorkOrder.created_at.desc(), WorkOrder.order_id.desc())
         if device_id:
             query = query.where(WorkOrder.device_id == device_id)
+        if state:
+            query = query.where(
+                WorkOrder.status.in_(["OPEN", "IN_PROGRESS", "RESOLVED"])
+                if state == "UNCLOSED"
+                else WorkOrder.status == state
+            )
+        if cursor:
+            if limit is None:
+                raise DomainError("INVALID_ARGUMENTS", "分页游标需要limit")
+            previous = await session.get(WorkOrder, str(cursor))
+            if previous is None or device_id and previous.device_id != device_id:
+                raise DomainError("INVALID_ARGUMENTS", "工单游标无效")
+            query = query.where(
+                or_(
+                    WorkOrder.created_at < previous.created_at,
+                    and_(
+                        WorkOrder.created_at == previous.created_at,
+                        WorkOrder.order_id < previous.order_id,
+                    ),
+                )
+            )
+        if limit:
+            query = query.limit(limit + 1)
         rows = (await session.scalars(query)).all()
+        data = [
+            {
+                key: getattr(row, key)
+                for key in (
+                    "order_id",
+                    "device_id",
+                    "reason_code",
+                    "status",
+                    "evidence_json",
+                    "created_from_run_id",
+                    "created_at",
+                    "version",
+                    "closed_at",
+                    "alarm_id",
+                )
+            }
+            for row in (rows[:limit] if limit else rows)
+        ]
         return success(
             request,
-            [
-                {
-                    key: getattr(row, key)
-                    for key in (
-                        "order_id",
-                        "device_id",
-                        "reason_code",
-                        "status",
-                        "evidence_json",
-                        "created_from_run_id",
-                        "created_at",
-                        "version",
-                        "closed_at",
-                        "alarm_id",
-                    )
-                }
-                for row in rows
-            ],
+            {"items": data, "next_cursor": rows[limit - 1].order_id if len(rows) > limit else None}
+            if limit
+            else data,
         )

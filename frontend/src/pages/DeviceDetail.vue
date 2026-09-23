@@ -3,21 +3,28 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { api, post } from '../api'
 import { poll } from '../polling'
-import { connectionLabels, healthLabels, stamp, metric, type Device, type Sample, type Command, type WorkOrder } from '../types'
+import { connectionLabels, healthLabels, stamp, metric, type Device, type Sample, type Command } from '../types'
 import TelemetryChart from '../components/TelemetryChart.vue'
 import WorkOrders from '../components/WorkOrders.vue'
+import ChargingPanel from '../components/ChargingPanel.vue'
+import ChargingSessionList from '../components/ChargingSessionList.vue'
+import EventTimeline from '../components/EventTimeline.vue'
+import AlarmList from '../components/AlarmList.vue'
+import AlarmRuleEditor from '../components/AlarmRuleEditor.vue'
+import ScenarioScriptPanel from '../components/ScenarioScriptPanel.vue'
 const id = String(useRoute().params.id)
-const device = ref<Device>(), samples = ref<Sample[]>([]), orders = ref<WorkOrder[]>([])
+const chartAt = ref<string | null>(null)
+function locate(at: string) { chartAt.value = at; document.getElementById('history-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+const device = ref<Device>(), samples = ref<Sample[]>([])
 const error = ref(''), commandError = ref(''), command = ref<Command>(), windowMinutes = ref(10), sending = ref(false), loading = ref(true)
 let stop = () => {}, stopCommand = () => {}, disposed = false
 const commandAbort = new AbortController()
 onMounted(() => { stop = poll(async signal => {
   try {
-    const end = new Date(), start = new Date(end.getTime() - windowMinutes.value * 60000)
+    const end = chartAt.value ? new Date(new Date(chartAt.value).getTime() + 60000) : new Date(), start = new Date(end.getTime() - windowMinutes.value * 60000)
     const data = await Promise.all([api<Device>(`/devices/${id}`, {}, signal),
-      api<Sample[]>(`/devices/${id}/telemetry?from=${encodeURIComponent(start.toISOString())}&to=${encodeURIComponent(end.toISOString())}`, {}, signal),
-      api<WorkOrder[]>(`/work-orders?device_id=${id}`, {}, signal)])
-    ;[device.value, samples.value, orders.value] = data; error.value = ''
+      api<Sample[]>(`/devices/${id}/telemetry?from=${encodeURIComponent(start.toISOString())}&to=${encodeURIComponent(end.toISOString())}`, {}, signal)])
+    ;[device.value, samples.value] = data; error.value = ''
   } catch (e) { if (!signal.aborted) error.value = (e as Error).message }
   finally { loading.value = false }
 }, 2000) })
@@ -45,9 +52,10 @@ async function changeScenario(scenario: string) {
   <template v-if="device">
     <section class="detail-metrics"><div><small>温度</small><strong>{{ metric(device.temperature_c, '°C') }}</strong></div><div><small>功率</small><strong>{{ metric(device.power_kw, 'kW') }}</strong></div><div><small>电压 / 电流</small><strong class="smaller">{{ metric(device.voltage_v, 'V') }} / {{ metric(device.current_a, 'A') }}</strong></div><div><small>健康状态</small><b data-testid="device-health" :class="device.health_state">{{ healthLabels[device.health_state] }}</b><span>{{ device.data_fresh ? '数据新鲜' : '数据过期 / 未知' }}</span></div></section>
     <p class="sample-time">最后样本 {{ stamp(device.sample_ts) }} · 数据年龄 {{ device.data_age_seconds === null ? '未知' : `${device.data_age_seconds.toFixed(1)} 秒` }}</p>
-    <section class="panel"><div class="section-title"><h2>温度历史</h2><label>时间窗口 <select v-model="windowMinutes" aria-label="历史窗口"><option :value="10">10 分钟</option><option :value="30">30 分钟</option><option :value="60">60 分钟</option></select></label></div><TelemetryChart v-if="samples.length" :samples="samples" /><p v-else class="empty">该窗口暂无历史样本</p></section>
+    <ChargingPanel :device="device" />
+    <section id="history-panel" class="panel"><p v-if="chartAt" class="notice">正在定位历史事件 {{ stamp(chartAt) }} <button @click="chartAt = null">恢复实时曲线</button></p><div class="section-title"><h2>温度历史</h2><label>时间窗口 <select v-model="windowMinutes" aria-label="历史窗口"><option :value="10">10 分钟</option><option :value="30">30 分钟</option><option :value="60">60 分钟</option></select></label></div><TelemetryChart v-if="samples.length" :samples="samples" /><p v-else class="empty">该窗口暂无历史样本</p></section>
     <section class="panel"><div class="section-title"><div><h2>模拟场景</h2><p class="muted">命令收到匹配回执后才确认应用；不是实际电路控制。</p></div><div class="button-group"><button :disabled="sending" @click="changeScenario('normal')">恢复正常</button><button :disabled="sending" @click="changeScenario('overheat')">模拟过温</button><button :disabled="sending" @click="changeScenario('offline')">暂停上报</button></div></div>
       <p v-if="command" data-testid="command-status" :class="{ orange: command.status === 'timed_out' }">{{ { pending: '等待设备回执…', applied: '已应用', rejected: '命令被拒绝', timed_out: '回执超时，执行结果未确认。请查看新鲜遥测或发送新命令。' }[command.status] }}<span v-if="command.status === 'applied' && command.scenario === 'offline'"> · 已暂停上报，等待离线判定</span></p><p v-if="commandError" role="alert" class="alert">{{ commandError }}</p>
-    </section><WorkOrders :orders="orders" />
+    </section><ScenarioScriptPanel :device-id="id" /><ChargingSessionList :device-id="id" /><AlarmList :device-id="id" /><section class="panel"><h2>告警规则</h2><AlarmRuleEditor :device-id="id" reason="OVERHEAT" /><AlarmRuleEditor :device-id="id" reason="OFFLINE" /></section><WorkOrders :device-id="id" /><EventTimeline :device-id="id" @locate="locate" />
   </template>
 </template>

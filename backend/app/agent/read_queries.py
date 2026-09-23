@@ -162,6 +162,11 @@ class ReadQueries:
                                     "condition",
                                     "evaluation_state",
                                     "version",
+                                    "acknowledged_at",
+                                    "started_at",
+                                    "observed_at",
+                                    "cleared_at",
+                                    "peak_temperature_c",
                                 ),
                             )
                             for alarm in alarms

@@ -1,5 +1,5 @@
 export class ApiError extends Error {
-  constructor(public code: string, message: string) { super(message) }
+  constructor(public code: string, message: string, public status?: number) { super(message) }
 }
 export async function api<T>(path: string, options: RequestInit = {}, signal?: AbortSignal): Promise<T> {
   try {
@@ -7,7 +7,8 @@ export async function api<T>(path: string, options: RequestInit = {}, signal?: A
       headers: { 'Content-Type': 'application/json', ...options.headers },
       signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(7000)]) : AbortSignal.timeout(7000) })
     const body = await response.json()
-    if (!response.ok) throw new ApiError(body.error?.code || 'SERVICE_UNAVAILABLE', body.error?.message || '服务未就绪，请稍后重试')
+    if (signal?.aborted) throw signal.reason
+    if (!response.ok) throw new ApiError(body.error?.code || 'SERVICE_UNAVAILABLE', body.error?.message || '服务未就绪，请稍后重试', response.status)
     return body.data as T
   } catch (error) {
     if (signal?.aborted) throw error
