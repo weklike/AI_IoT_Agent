@@ -1,5 +1,7 @@
 from uuid import uuid4
 
+import pytest
+
 from backend.app.config import Settings
 from backend.app.db import Database
 from backend.app.models import AgentRun, ScenarioCommandRow, ToolCall, WorkOrder
@@ -75,7 +77,8 @@ async def test_restart_interrupts_pending_runs_preserves_order_and_history(tmp_p
         await db.close()
 
 
-def test_four_service_dependency_recovery(tmp_path):
+@pytest.mark.parametrize("operations", [False, True], ids=["legacy", "operations"])
+def test_four_service_dependency_recovery(tmp_path, operations):
     import subprocess
     import time
 
@@ -95,7 +98,7 @@ def test_four_service_dependency_recovery(tmp_path):
             time.sleep(0.1)
         raise AssertionError("Recovery deadline exceeded")
 
-    with stack(tmp_path / "logs") as ports:
+    with stack(tmp_path / "logs", operations=operations) as ports:
         project = ports["PROJECT"]
 
         def docker(*args):

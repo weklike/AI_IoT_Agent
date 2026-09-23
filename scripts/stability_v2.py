@@ -123,6 +123,24 @@ def resource_sample(project, client, minute):
         ).stdout
     )
     volumes = {}
+    rss_processes = {}
+    for role in ("backend", "simulator", "mqtt", "frontend"):
+        # Docker top uses host ps; comm omits arguments and avoids logging secrets.
+        # Keep per-process RSS: summing shared pages is not container-unique memory.
+        top = subprocess.run(
+            ["docker", "top", f"{project}-{role}-1", "-eo", "pid,ppid,rss,comm"],
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=10,
+        )
+        processes = []
+        for line in top.stdout.splitlines()[1:]:
+            pid, parent, rss, command = line.split(maxsplit=3)
+            processes.append(
+                {"pid": int(pid), "ppid": int(parent), "rss_kib": int(rss), "command": command}
+            )
+        rss_processes[role] = processes
     for role in ("backend", "simulator"):
         completed = subprocess.run(
             [
@@ -148,6 +166,7 @@ def resource_sample(project, client, minute):
         "at": datetime.now(UTC).isoformat(),
         "host_loadavg": os.getloadavg(),
         "containers": [json.loads(line) for line in stats.stdout.splitlines()],
+        "rss_processes": rss_processes,
         "volumes": volumes,
         "states": [
             {
@@ -198,7 +217,23 @@ def summarize_window(
         and all(op.get("final", {}).get("status") == "VERIFIED" for op in plans),
         "patrol_count_and_success": len(patrols) == (minutes + 4) // 5
         and all(op.get("final", {}).get("status") == "completed" for op in patrols),
-        "resource_samples": len(resources) == minutes,
+        "resource_samples": len(resources) == minutes
+        and all(
+            len(row.get("containers", [])) == 4
+            and all(c.get("CPUPerc") and c.get("MemUsage") for c in row["containers"])
+            and set(row.get("rss_processes", {})) == {"backend", "simulator", "mqtt", "frontend"}
+            and all(
+                processes
+                and all(type(p.get("rss_kib")) is int and p["rss_kib"] > 0 for p in processes)
+                for processes in row["rss_processes"].values()
+            )
+            and set(row.get("volumes", {})) == {"backend", "simulator"}
+            and all(
+                type(v.get("total_bytes")) is int and v["total_bytes"] >= 0
+                for v in row["volumes"].values()
+            )
+            for row in resources
+        ),
         "guardians_do_not_accumulate": all(
             row["runtime"]["guardians"] == {"mqtt-consumer": 1, "alarm-timer": 1, "patrol-timer": 1}
             for row in resources

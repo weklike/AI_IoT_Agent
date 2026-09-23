@@ -69,3 +69,30 @@ async def test_real_search_refs_persist_and_previous_run_evidence_is_rejected(tm
             assert second["error_code"] == "ANSWER_EVIDENCE_ERROR"
             assert second["answer_refs"] == []
             assert "[KB:" not in second["answer"]
+
+
+async def test_search_tool_supplies_complete_copyable_citations_with_source_prefix(tmp_path):
+    from backend.app.contracts import ToolContext
+
+    app = create_app(
+        Settings(
+            _env_file=None,
+            app_env="test",
+            mqtt_enabled=False,
+            database_url=f"sqlite+aiosqlite:///{tmp_path}/citation.db",
+        )
+    )
+    async with app.router.lifespan_context(app):
+        result = await app.state.runner.executor.invoke(
+            "search_fault_knowledge",
+            {"query": "重启 会话中断", "device_id": "CHG-002"},
+            ToolContext(run_id=uuid4(), tool_call_id=uuid4(), allow_work_order=False),
+        )
+        assert result["matches"]
+        for match in result["matches"]:
+            assert (
+                match["citation"]
+                == f"[KB:{match['source_id']}@{match['version']}#{match['chunk_id']}]"
+            )
+        prefixed = [m for m in result["matches"] if m["source_id"].startswith("KB-")]
+        assert prefixed and all(m["citation"].startswith("[KB:KB-") for m in prefixed)

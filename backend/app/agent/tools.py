@@ -137,7 +137,17 @@ class ToolExecutor:
         if name == "get_work_orders":
             return await self.queries.work_orders(**args)
         if name == "search_fault_knowledge":
-            return await self.knowledge.search(**args)
+            result = await self.knowledge.search(**args)
+            return {
+                **result,
+                "matches": [
+                    {
+                        **match,
+                        "citation": f"[KB:{match['source_id']}@{match['version']}#{match['chunk_id']}]",
+                    }
+                    for match in result["matches"]
+                ],
+            }
         if name == "create_work_order":
             return await self.orders.create(**args, context=context)
         raise DomainError("UNKNOWN_TOOL", "工具未注册")
