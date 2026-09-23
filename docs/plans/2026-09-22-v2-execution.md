@@ -17,4 +17,4 @@
 
 T01 首条验证：`uv run pytest tests/integration/test_migrations.py tests/integration/test_operations.py -q`。
 
-- [ ] T11：603d152为当前业务冻结版本；确定性验收、20次批量反馈/功率保护、RSS完整小时、旧库升级及干净复现已完成。剩余候选05完整132例、最终索引与真人复核，详见PROGRESS。
+- [ ] T11：603d152为当前业务冻结版本；确定性验收、20次批量反馈/功率保护、RSS完整小时、旧库升级及干净复现已完成。候选05完整132例自动检查已通过，最终索引已整理；剩余真人语义与演示复核，详见PROGRESS。

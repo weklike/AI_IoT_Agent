@@ -1,10 +1,10 @@
 # 开发进度
 
-- 业务基线：用户已授权的v2.0开发/验收方案；未调整条款继续回归v1.1。
-- 当前任务：V2-T11 综合验收与交付，候选05完整真实评测正在执行，18次范围定向诊断已通过；RSS完整小时已通过。
-- 当前分支/提交：develop，业务与页面冻结版本603d152；历史证据444aa06及样式cdd1ec0已提交，后续只整理文档/验收。未推送。
-- 更新时间：2026-09-23T17:22:53+08:00
-- 历史失败、修正与旧任务状态：[完整历史快照](progress-history/20260923-v2-t11-checkpoints.md)、[设计记录](decisions.md)。
+- 业务基线：用户授权的v2.0开发与验收方案，未调整条款继续回归v1.1。
+- 当前任务：V2-T11，自动验证与证据整理完成，待真实人员复核。
+- 分支：develop；业务冻结提交603d152，后续仅文档与证据，本地提交未推送。
+- 更新时间：2026-09-23T18:40:05.288759+08:00
+- 历史失败及修正：[前一检查点](progress-history/20260923-before-final05.md)、[历史](progress-history/20260923-v2-t11-checkpoints.md)、[设计记录](decisions.md)。
 
 ## 任务状态
 
@@ -23,66 +23,37 @@
 | V2-T08 Agent与巡检 | DONE | bfe05dd；九工具、单槽位、同run引用、只读巡检 |
 | V2-T09 时间线与脚本 | DONE | 5e28303；真实来源、只读复盘、固定60秒场景脚本 |
 | V2-T10 三页面集成 | DONE | 652aaf8；完整30项E2E、双分辨率；新增知识安全3项 |
-| V2-T11 综合验收与交付 | IN_PROGRESS | 候选04自动58/60、68/72但B边界类9/12失败；候选05执行中；XAC逐项审计与真人语义评审未完成 |
+| V2-T11 综合验收与交付 | IN_PROGRESS | 最终自动验收已完成；132例真人语义及文档/演示复核待完成，M4保持PENDING_REVIEW |
 
 ## 本次变更
 
-- b000dee修复验收重算的完整案例集/退出码，增加真实进程RSS采样；知识工具返回可复制的实际来源citation，保留严格引用校验。
-- d230b85明确指标历史与会话电量的工具职责，以及当前充电、工单和故障复盘的必要查询；未改案例、预算或评分阈值。
-- 补验错回执、跨设备/陈旧恢复、停止后的计量、阶段间stop、未知功率上界、重启不重放、提交响应丢失等具体风险。
-- 完善README、架构、演示、来源归属与[人工复核说明](real-model-review.md)。保留现有开发实例与用户原有变更，未推送。
+- 最终提示词明确资料检索与实际设备/会话查询职责，减少重复检索；预算、案例和评分阈值未放宽。
+- 未确认控制回执改用警示外观，只有实际反馈verified才显示成功；已先复现再修复。
+- 汇总AC-01—40与XAC-01—60的实际证据、源码摘要和环境，保留所有旧失败，不拼接不同模型轮次。
+- 生成132例实际回答、原始证据链接及未填写的真人评审模板。
 
 ## 实际验证
 
-以下证据均在 `artifacts/acceptance/v2/`，初轮失败未覆盖。测试集合重叠，不相加为独立总数。
+下列短路径位于artifacts/acceptance/v2/；重叠测试不累加。
 
-| 已完成命令/验证 | 退出码 | 结果 | 证据/范围 |
+| 命令/实际验证 | 退出码 | 结果 | 证据 |
 |---|---:|---|---|
-| `uv run pytest tests/unit tests/integration -q ...` | 0 | PASS | `backend-20260923-rss-reference-final.xml`；368项/638.77秒，b000dee，之后业务仅改提示词 |
-| 最新边界定向pytest | 0 | PASS | `t03-20260923/t11-audit-boundaries-final.xml`；23项 |
-| 最新引用/Schema定向pytest | 0 | PASS | `t03-20260923/t11-final-routing-regression.xml`；25项 |
-| `acceptance_v2.py --suite iot / ai / resilience` | 各0 | PASS | `suite-*-20260923-final/`；120/69/161项，仅各入口自动子断言 |
-| `npm --prefix frontend run typecheck / build / test:e2e` | 各0 | PASS | 完整E2E30项；`t03-20260923/t11-e2e-all.log`；ECharts体积警告保留 |
-| 知识页面定向E2E | 0 | PASS | `knowledge-safety-e2e-20260923-verified.log`；3项，实际无命中/真实来源/HTML安全 |
-| 原/新增查询独立压测 | 各0 | PASS | `query-baseline-20260923-final/`原API P95 414.495ms；`query-v2-20260923-final/`新API443.664ms、fleet492.313ms、检索23.601ms，零错误 |
-| 控制/告警可见性与20次功率保护 | 各0 | PASS | `visibility-20260923-formal/`控制19/20、告警20/20≤4秒；`power-protection-20260923-formal/`20次通过 |
-| 首轮60分钟稳定性 | 0 | PASS（部分） | `stability-20260923-formal/`5267/5267、P95 68.249ms；遗漏RSS，不能判整项XAC-56通过 |
-| 修正后的RSS一分钟诊断 | 0 | PASS（诊断） | `stability-rss-20260923-smoke/`90/90，P95 66.574ms；不替代完整小时 |
-| 干净归档安装/构建/定向验证 | 各0 | PASS | `clean-reproduction-20260923-final/report.json`；新临时目录、锁定离线安装 |
-| 四服务空卷冷启动及知识检索 | 原1/重核0 | PASS（更正） | `cold-start-20260923-final/`；26.744秒观测上界；原检查误读status字段，原件与摘要绑定的重算保留 |
-| 候选01真实A60/B72 | 1/1 | FAIL | `real-*-20260923-final-01/`自动44/60、46/72，含B15-3关键错误，原件保留 |
-| 候选02真实A60/B72 | 3/1 | PENDING_REVIEW / FAIL | `real-*-20260923-final-02/`自动60/60、61/72，关键错误0；均无真人结论 |
-| 候选03定向B08/B11/B12/B17/B18 | 3 | PENDING_REVIEW（诊断） | `real-tool-routing-20260923-diagnostic-03/`5例自动通过，不替代完整132例 |
-| ruff检查及格式检查 | 0 | PASS | 最新165文件格式检查；Git diff无空白错误 |
+| `uv run pytest tests/unit tests/integration -q --junitxml=artifacts/acceptance/v2/backend-candidate05-final.xml` | 0 | PASS，388项，682.16秒 | backend-candidate05-final.xml/log |
+| 最终原A60、新增B72完整真实评测 | 各3 | PENDING_REVIEW；自动60/60、72/72，各类别12/12，自动关键错误0 | real-baseline-20260923-final-05/、real-v2-20260923-final-05/ |
+| typecheck/build、完整E2E及定向复测 | 各0 | PASS；完整30项、知识3项、最终控制2项、布局2项 | frontend-verification-candidate05.json；E2E原件见验收核对 |
+| 原/新增API及知识压测 | 各0 | PASS；P95 414.495/443.664/23.601ms，零错误 | query-baseline-20260923-final/、query-v2-20260923-final/ |
+| 控制/告警20次可见性、20次功率保护 | 各0 | PASS；两类20/20≤4秒，20次功率计划通过 | visibility-20260923-status-style-final/、power-protection-20260923-formal/ |
+| 完整RSS小时及原始窗口相容性重核 | 0 | PASS；5273/5273，入库P95 67.267ms | stability-rss-20260923-formal/、stability-rss-20260923-final05-revalidated/ |
+| 独立完整Git克隆，锁定离线安装/构建/76项定向测试 | 各0 | PASS | clean-reproduction-20260923-candidate05/report.json |
+| 四服务旧库升级及空卷启动 | 0 | PASS；原检查错误及更正均保留 | 最终JUnit；cold-start-20260923-final/automatic-recheck.json |
 
 ## 未完成与阻塞
 
-- 候选04固定业务版本c9b44ed，A60自动58/60（类别12/12/12/12/10），A20两次MODEL_TIMEOUT计失败；B72自动68/72，但边界类9/12未达10/12（B23三次MODEL_TIMEOUT），整体FAIL。不能用旧轮次结果拼接。
-- 真人尚未逐例核对132条语义与关键错误，不能代填reviewer。XAC-43最终注入语义、58/59和60人工演示部分仍未通过；M4未完成。
-- 逐条确定性证据核对见[验收核对](acceptance-v2-audit.md)及 `artifacts/acceptance/v2/audit-20260923/results.json`；原AC索引已合并；已提交源码干净归档安装/构建/76项测试通过。截图发现的未确认绿色提示已修复并复测，需更新最终样式相容记录。
-- 第一个小时遗漏RSS，原PASS更正记录保留。第二个完整小时5273/5273、P95 67.267ms、全部资源与任务检查通过，已按c9b44ed摘要重核；资源实际值属于b000dee测量实例，不能声称最终提示的字节占用完全相同。
-- 检索存在通用词误命中的语义局限，见known-limitations；未改变冻结案例或算法来掩盖。
-
-## 最新补证
-
-- 真实ACK applied但无遥测：页面明确unconfirmed，晚恢复不改写命令，E2E1项通过14.6秒。
-- 实际丢会话应用ACK：重发同ID/内容，数据库一条，1项通过8.10秒。
-- 错generation与设备rejected功率计划：3项通过38.05秒；preview后更换会话：1项通过1.12秒。
-- 规则重新启用用新版本，旧告警保留旧版本；工单版本冲突不增事件，6项通过3.82秒。
-- 当前typecheck/build均通过；ruff检查和168文件格式检查通过。凭据扫描2166文件无当前配置值泄漏，自有测试容器无遗留，Compose三端口全部127.0.0.1，模型配置仅后端。
+- 132条真实模型回答尚无真人语义/关键错误结论，不能代填reviewer或以自动通过数宣称准确率。文档、本人讲解与演示仍需人工复核。
+- M4为PENDING_REVIEW；T11尚不能DONE。完整状态见[最终索引](../artifacts/acceptance/v2/audit-20260923-final05/results.json)。
+- 小时资源实测属于b000dee实例；最终提示及详情页样式的相容范围单独记录，不声称其资源字节值完全相同。第一次缺少RSS的小时记录保留。
+- 旧轮次失败、检索语义局限及ECharts构建体积警告保留；用户既有改动与运行中的deploy实例未触碰。
 
 ## 下一步
 
-1. 等待候选05 A60/B72收尾，核对 `real-final-20260923-round5-exit-codes.json`，生成完整评审材料。
-2. 补齐原AC与XAC索引、完成最终干净归档复现、核对文档链接与证据摘要。
-3. 提交相关代码/文档/证据，保留历史失败及用户原有修改；不推送。实际人员按[人工复核说明](real-model-review.md)完成评审与演示后才能判M4。
-
-### 最新修正（2026-09-23T17:05:05+08:00）
-
-- 候选04失败完整保存。诊断06中B23三次已通过，但B06被资料规则覆盖三次漏会话查询，B08一次重复检索耗尽预算；继续收紧运行查询优先级与同主题最多两次知识检索的提示指导，不改6/8、20/3/90+5硬预算。诊断07执行中。
-- 未确认命令绿色背景先经真实E2E颜色对照复现FAIL，再按pending中性/verified成功/其他终态警示修正；2条E2E通过22.9秒，typecheck/build及25条引用协议测试通过。正在复测20次控制/20次告警可见性。
-- audit-20260923/results.json现为候选04历史FAIL索引：包含53配色缺陷及58类别失败，不作为后续候选最终状态。
-
-- 603d152包含最终资料/运行任务路由；B06/B08/B23各3次及A09/A12/A20各3次均自动通过，不能替代完整轮次。已启动 `real-final-20260923-round5-exit-codes.json` 对应A60/B72。
-- 修正样式后控制20/20、告警20/20均≤4秒，P95 3912ms/2309.588ms；双分辨率2项通过7.0秒。
-- 完整小时按同一原始窗口重新校验PASS，新增源码范围说明覆盖SYSTEM_PROMPT与仅详情挂载的ChargingPanel外观；没有为样式修改机械重跑小时，资源数字仍限定原实例。
+真实人员从[132例复核入口](../artifacts/acceptance/v2/review-candidate05/INDEX.md)核对工具数据与回答，填写真实身份、时间和结论，再按[复核说明](real-model-review.md)执行summarize；完成文档与演示核对后更新最终验收状态。汇总不重新调用模型；若改业务/提示/Schema则需新一轮完整评测。

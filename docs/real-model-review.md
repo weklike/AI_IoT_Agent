@@ -4,7 +4,9 @@
 
 ## 使用哪一轮证据
 
-当前候选为 `603d152` 的第五轮：
+当前候选为 `603d152` 的第五轮，自动检查 A60/60、B72/72，所有类别12/12；两份manifest已完整且源码、提示、Schema和配置摘要一致。真人结论尚未填写。
+
+已整理 [132例复核入口](../artifacts/acceptance/v2/review-candidate05/INDEX.md)、实际回答及空白评审模板。原始证据：
 
 - 原集：`artifacts/acceptance/v2/real-baseline-20260923-final-05/`，预期A01—A20各3次。
 - 新集：`artifacts/acceptance/v2/real-v2-20260923-final-05/`，预期B01—B24各3次。

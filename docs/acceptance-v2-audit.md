@@ -6,8 +6,8 @@
 
 ## 证据定位
 
-- 后端全量：`artifacts/acceptance/v2/backend-20260923-rss-reference-final.xml`，368项通过。之后增加的测试/断言使用 `t03-20260923/t11-*.xml` 的明确通过记录补充，保留此前失败，不累计成不重复的测试总数。
-- 三页完整E2E：`artifacts/acceptance/e2e/20260923T062547Z/`，四组共30项；另有知识安全3项及真实回执未确认1项补测。每个E2E目录保留JUnit、Compose日志和相应截图/附件。
+- 后端全量：`artifacts/acceptance/v2/backend-candidate05-final.xml`，最终全量388项通过（682.16秒）；早期失败和定向测试原件保留。
+- 三页完整E2E：`artifacts/acceptance/e2e/20260923T062547Z/`，四组共30项；另有知识安全3项、最终充电/未确认提示2项及双分辨率2项补测。每个E2E目录保留JUnit、Compose日志和相应截图/附件。
 - 性能、反馈与功率保护：`query-baseline-20260923-final/`、`query-v2-20260923-final/`、`visibility-20260923-status-style-final/`、`power-protection-20260923-formal/`。
 - 完整RSS小时：`stability-rss-20260923-formal/`；`stability-rss-20260923-final05-revalidated/` 从原始日志、历史、资源与操作重新核验。测量实例为b000dee，fixture不读取后续改动的SYSTEM_PROMPT；新增ChargingPanel外观只在详情挂载，完整小时仅访问总览；资源字节数仍属于原测量实例，不能声称不同提示文本占用字节完全相同。
 - 真实评测：`real-baseline-20260923-final-05/` 与 `real-v2-20260923-final-05/`。未完成和未人工复核部分不能PASS，流程见 [人工复核说明](real-model-review.md)。
@@ -88,3 +88,5 @@ AC-35沿用第二次operations完整小时：三客户端2秒上报、以唯一�
 AC-36—38必须使用最终候选原A60与真实人工审阅；此前较高分数不移植。AC-39—40的干净复现和文档已备证，人工阅读/演示按原合同由用户完成，不能由自动测试冒充。
 
 候选04的自动58/60、68/72因B边界类9/12不足而FAIL；绿色未确认提示亦单独保留失败与修复记录。候选05不沿用其模型样本，仅未改变的确定性路径证据可按摘要核对沿用。
+
+最终候选05自动检查 A60/60、B72/72，各类别12/12；没有人工结论。完整100项状态见 [最终索引](../artifacts/acceptance/v2/audit-20260923-final05/results.json)，132例材料见 [复核入口](../artifacts/acceptance/v2/review-candidate05/INDEX.md)。
