@@ -130,20 +130,23 @@ class ChargingControl:
                 perform=reserve,
             )
         if command is not None:
-            command_id = str(command.command_id)
-            self.deadlines[command_id] = (
-                time.monotonic() + self.settings.control_ack_timeout_seconds
-            )
-            if not self.mqtt.publish(
-                f"{self.settings.mqtt_topic_prefix}/devices/{device_id}/control/set",
-                command.model_dump_json(),
-            ):
-                await self._finish(command_id, "interrupted", "MQTT_PUBLISH_FAILED")
-                raise DomainError("MQTT_UNAVAILABLE", "发布失败，原请求可查询；不自动重发", 503)
-            task = asyncio.create_task(self._monitor(command_id), name="charging-" + command_id)
-            self.tasks[command_id] = task
-            task.add_done_callback(lambda completed: self._task_done(command_id, completed))
+            await self.publish_committed(command)
         return result
+
+    async def publish_committed(self, command: ControlCommand) -> None:
+        """Called only by user-operation services after the command transaction commits."""
+        command_id = str(command.command_id)
+        self.deadlines[command_id] = time.monotonic() + self.settings.control_ack_timeout_seconds
+        if not self.mqtt.publish(
+            f"{self.settings.mqtt_topic_prefix}/devices/{command.device_id}/control/set",
+            command.model_dump_json(),
+        ):
+            await self._finish(command_id, "interrupted", "MQTT_PUBLISH_FAILED")
+            self.deadlines.pop(command_id, None)
+            raise DomainError("MQTT_UNAVAILABLE", "发布失败，原请求可查询；不自动重发", 503)
+        task = asyncio.create_task(self._monitor(command_id), name="charging-" + command_id)
+        self.tasks[command_id] = task
+        task.add_done_callback(lambda completed: self._task_done(command_id, completed))
 
     def _task_done(self, command_id: str, task: asyncio.Task) -> None:
         self.tasks.pop(command_id, None)
@@ -159,6 +162,8 @@ class ChargingControl:
     async def _finish(self, command_id: str, status: str, error: str | None) -> None:
         async with self.db.sessions.begin() as session:
             row = await session.get(DeviceCommand, command_id)
+            if row is None:
+                return
             if row.status == "pending":
                 row.status, row.error_code = status, error
             if row.verification_status == "pending":

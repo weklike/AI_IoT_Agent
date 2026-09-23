@@ -25,7 +25,9 @@ from backend.app.contracts import ScenarioAck
 from backend.app.db import Database
 from backend.app.errors import DomainError
 from backend.app.mqtt.client import MQTTConnection
+from backend.app.power.service import PowerService
 from backend.app.routes.charging import router as charging_router
+from backend.app.routes.power import router as power_router
 from backend.app.simulator_control import ScenarioControl
 from backend.app.telemetry.ingest import TelemetryStore
 
@@ -45,6 +47,7 @@ def create_app(
     store = TelemetryStore(db, settings, clock)
     control = ScenarioControl(db, settings, clock, mqtt)
     charging = ChargingControl(db, settings, clock, mqtt)
+    power = PowerService(db, settings, clock, charging)
     if (provider is not None or run_executor is not None) and settings.app_env not in {
         "test",
         "eval",
@@ -126,6 +129,7 @@ def create_app(
                 app.state.consumer.cancel()
                 await asyncio.gather(app.state.consumer, return_exceptions=True)
             await provider.close()
+            await power.close()
             await charging.close()
             await control.close()
             await db.close()
@@ -136,10 +140,12 @@ def create_app(
     app.state.store = store
     app.state.control = control
     app.state.charging = charging
+    app.state.power = power
     app.state.scheduler = scheduler
     app.state.runner = runner
     app.include_router(router)
     app.include_router(charging_router)
+    app.include_router(power_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):

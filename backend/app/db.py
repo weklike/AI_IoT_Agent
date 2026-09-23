@@ -11,7 +11,15 @@ from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import DEVICE_IDS
 from backend.app.migrations import migrate
-from backend.app.models import AgentRun, Device, DeviceCommand, ScenarioCommandRow, ToolCall
+from backend.app.models import (
+    AgentRun,
+    Device,
+    DeviceCommand,
+    PowerPlan,
+    ScenarioCommandRow,
+    StationState,
+    ToolCall,
+)
 
 
 class Database:
@@ -45,6 +53,12 @@ class Database:
                     .on_conflict_do_nothing(index_elements=["device_id"])
                 )
             await session.execute(update(Device).values(last_live_received_at=None))
+            await session.execute(
+                update(PowerPlan)
+                .where(PowerPlan.status == "EXECUTING")
+                .values(status="INTERRUPTED", finished_at=(clock or DataClock()).now())
+            )
+            await session.execute(update(StationState).values(executing_plan_id=None))
             await session.execute(
                 update(DeviceCommand)
                 .where(DeviceCommand.status == "pending")
