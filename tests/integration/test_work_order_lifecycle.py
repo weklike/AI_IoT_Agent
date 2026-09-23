@@ -49,6 +49,11 @@ async def test_work_order_transitions_require_current_recovery_and_cleared_alarm
             processing = await transition(1, "IN_PROGRESS")
             assert processing.status_code == 200, processing.text
             assert processing.json()["data"]["version"] == 2
+            stale = await transition(1, "RESOLVED", "另一请求已修改版本")
+            assert stale.status_code == 409
+            assert stale.json()["error"]["code"] == "VERSION_CONFLICT"
+            unchanged = (await client.get(f"/api/work-orders/{order_id}/events")).json()["data"]
+            assert len(unchanged["items"]) == 1
             assert (await transition(2, "RESOLVED", " ")).status_code == 422
             assert (
                 await transition(2, "RESOLVED", "已核对模拟温度场景并恢复正常")

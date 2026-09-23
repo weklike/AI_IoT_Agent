@@ -219,6 +219,33 @@ async def test_changed_disabled_rule_preserves_active_rule_and_restart_unknown(
                 )
             ).json()["data"]["items"] == []
 
+            restored = await client.put(
+                "/api/alarm-rules/CHG-002/OVERHEAT",
+                json={"request_id": str(uuid4()), "expected_version": 2, "enabled": True},
+            )
+            assert restored.status_code == 200 and restored.json()["data"]["version"] == 3
+            clock.advance(2)
+            payload.update(message_id=str(uuid4()), seq=31, ts=clock.now().isoformat())
+            assert (
+                await restarted.state.store.receive(
+                    json.dumps(payload).encode(),
+                    "charge/v1/devices/CHG-002/telemetry",
+                    clock.now(),
+                    False,
+                )
+                == "accepted"
+            )
+            active = (
+                await client.get(
+                    "/api/alarms", params={"device_id": "CHG-002", "condition": "ACTIVE"}
+                )
+            ).json()["data"]["items"]
+            assert len(active) == 1 and active[0]["alarm_id"] != hot["alarm_id"]
+            async with restarted.state.db.sessions() as session:
+                assert (await session.get(Alarm, active[0]["alarm_id"])).rule_json["version"] == 3
+                original = await session.get(Alarm, hot["alarm_id"])
+                assert original.condition == "CLEARED" and original.rule_json["version"] == 1
+
 
 async def test_persisted_trigger_duration_resets_after_out_of_order_sample(
     tmp_path, fixed_now, valid_payload
