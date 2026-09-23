@@ -4,10 +4,12 @@ import logging
 import time
 from uuid import uuid4
 
+from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 
 from backend.app.agent.prompts import SYSTEM_PROMPT
 from backend.app.agent.provider import Provider, validate_message
+from backend.app.agent.references import validate_references
 from backend.app.agent.tools import ToolExecutor, schemas, validate_call
 from backend.app.api import json_data
 from backend.app.clocks import DataClock
@@ -15,7 +17,8 @@ from backend.app.config import Settings
 from backend.app.contracts import ToolContext
 from backend.app.db import Database
 from backend.app.errors import DomainError
-from backend.app.models import AgentRun, ToolCall
+from backend.app.knowledge.search import KnowledgeSearch
+from backend.app.models import AgentRun, PatrolReport, ToolCall
 from backend.app.telemetry.ingest import TelemetryStore
 
 logger = logging.getLogger(__name__)
@@ -29,15 +32,35 @@ class AgentRunner:
         clock: DataClock,
         provider: Provider,
         store: TelemetryStore,
+        knowledge: KnowledgeSearch,
     ):
         self.db, self.settings, self.clock, self.provider = db, settings, clock, provider
-        self.executor = ToolExecutor(db, settings, clock, store)
+        self.executor = ToolExecutor(db, settings, clock, store, knowledge)
 
     async def _save(self, run_id: str, **fields):
         async with self.db.sessions.begin() as session:
             row = await session.get(AgentRun, run_id)
             for key, value in fields.items():
                 setattr(row, key, value)
+            if row.kind == "patrol":
+                report = await session.scalar(
+                    select(PatrolReport).where(PatrolReport.run_id == run_id)
+                )
+                if report:
+                    report.status = row.status
+                    report.refs_json = row.answer_refs or []
+                    fact = await session.scalar(
+                        select(ToolCall)
+                        .where(
+                            ToolCall.run_id == run_id,
+                            ToolCall.tool_name == "get_fleet_overview",
+                            ToolCall.status == "succeeded",
+                        )
+                        .order_by(ToolCall.ordinal)
+                        .limit(1)
+                    )
+                    if fact and fact.result_json and fact.result_json.get("ok"):
+                        report.snapshot_json = fact.result_json["data"]
 
     async def _interrupted_tool(
         self, task: asyncio.Task, context: ToolContext, code: str, writing: bool
@@ -74,10 +97,20 @@ class AgentRunner:
         metrics: list[dict] = []
         deadline = time.monotonic() + self.settings.agent_total_timeout_seconds
         status, error, answer = "failed", None, None
+        answer_refs = []
         try:
             async with self.db.sessions() as session:
                 row = await session.get(AgentRun, run_id)
                 allowed, question = row.allow_work_order, row.question
+                patrol = row.kind == "patrol"
+                report = (
+                    await session.scalar(select(PatrolReport).where(PatrolReport.run_id == run_id))
+                    if patrol
+                    else None
+                )
+                patrol_window = report.window_minutes if report else None
+                if patrol:
+                    allowed = False
             messages = [
                 {
                     "role": "system",
@@ -87,6 +120,7 @@ class AgentRunner:
             ]
             await self._save(run_id, status="running", messages_json=messages)
             count = 0
+            fleet_seen = False
             seen: set[str] = set()
             for _ in range(self.settings.agent_max_model_requests):
                 remaining = deadline - time.monotonic()
@@ -123,6 +157,26 @@ class AgentRunner:
                     raise DomainError("AGENT_TIMEOUT", "整轮执行超时")
                 calls = response.get("tool_calls") or []
                 if not calls:
+                    if patrol and not fleet_seen:
+                        raise DomainError("ANSWER_EVIDENCE_ERROR", "巡检缺少本次站点观测证据")
+                    async with self.db.sessions() as session:
+                        rows = (
+                            await session.scalars(
+                                select(ToolCall)
+                                .where(ToolCall.run_id == run_id)
+                                .order_by(ToolCall.ordinal)
+                            )
+                        ).all()
+                        records = [
+                            {
+                                key: getattr(row, key)
+                                for key in ("tool_call_id", "tool_name", "status", "result_json")
+                            }
+                            for row in rows
+                        ]
+                    answer_refs = validate_references(response["content"], records)
+                    if time.monotonic() >= deadline:
+                        raise DomainError("AGENT_TIMEOUT", "整轮执行超时")
                     answer, status = response["content"], "completed"
                     break
                 if any(call["id"] in seen for call in calls) or len(
@@ -167,6 +221,21 @@ class AgentRunner:
                                 )
                             )
                         raise
+                if (
+                    patrol
+                    and not fleet_seen
+                    and (
+                        calls[0]["function"]["name"] != "get_fleet_overview"
+                        or parsed[0].get("window_minutes") != patrol_window
+                    )
+                ):
+                    raise DomainError("INVALID_ARGUMENTS", "巡检必须先查询指定窗口的站点汇总")
+                if patrol and any(
+                    call["function"]["name"] == "get_fleet_overview"
+                    and args["window_minutes"] != patrol_window
+                    for call, args in zip(calls, parsed)
+                ):
+                    raise DomainError("INVALID_ARGUMENTS", "巡检站点窗口不能在运行中改变")
                 for call, args in zip(calls, parsed):
                     remaining = deadline - time.monotonic()
                     if remaining <= 0:
@@ -213,6 +282,8 @@ class AgentRunner:
                         }
                     )
                     await self._save(run_id, messages_json=json_data(messages))
+                    if result["ok"] and call["function"]["name"] == "get_fleet_overview":
+                        fleet_seen = True
                     if not result["ok"]:
                         raise DomainError(result["error"]["code"], result["error"]["message"])
             else:
@@ -239,6 +310,7 @@ class AgentRunner:
                 status=status,
                 error_code=error,
                 answer=answer,
+                answer_refs=answer_refs if status == "completed" else [],
                 finished_at=self.clock.now(),
                 messages_json=json_data(messages),
                 model_metrics_json=metrics,

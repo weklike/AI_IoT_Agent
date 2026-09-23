@@ -2,7 +2,7 @@ from collections.abc import AsyncIterator
 from pathlib import Path
 
 from fastapi import Request
-from sqlalchemy import event, text, update
+from sqlalchemy import event, select, text, update
 from sqlalchemy.dialects.sqlite import insert
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -17,6 +17,7 @@ from backend.app.models import (
     AlarmRule,
     Device,
     DeviceCommand,
+    PatrolReport,
     PowerPlan,
     ScenarioCommandRow,
     StationState,
@@ -71,6 +72,25 @@ class Database:
                 .where(Alarm.condition == "ACTIVE")
                 .values(evaluation_state="unknown", observation_json=None)
             )
+            reports = (
+                await session.scalars(
+                    select(PatrolReport).where(PatrolReport.status.in_(["queued", "running"]))
+                )
+            ).all()
+            for report in reports:
+                fact = await session.scalar(
+                    select(ToolCall)
+                    .where(
+                        ToolCall.run_id == report.run_id,
+                        ToolCall.tool_name == "get_fleet_overview",
+                        ToolCall.status == "succeeded",
+                    )
+                    .order_by(ToolCall.ordinal)
+                    .limit(1)
+                )
+                if fact and fact.result_json and fact.result_json.get("ok"):
+                    report.snapshot_json = fact.result_json["data"]
+                report.status = "interrupted"
             await session.execute(update(Device).values(last_live_received_at=None))
             await session.execute(
                 update(PowerPlan)

@@ -110,6 +110,8 @@ async def get_run(request: Request, run_id: str):
                 "allow_work_order",
                 "status",
                 "answer",
+                "answer_refs",
+                "kind",
                 "created_at",
                 "finished_at",
                 "error_code",

@@ -193,7 +193,10 @@ class ChargingControl:
                 return
             if row.status != "pending" or time.monotonic() > self.deadlines.get(command_id, 0):
                 row.late_ack_json = ack.model_dump(mode="json")
+                row.late_ack_observed_at = ack.applied_at
+                row.late_ack_received_at = self.clock.now()
                 return
+            row.ack_observed_at = ack.applied_at
             row.status, row.ack_at, row.ack_json = (
                 ack.status,
                 self.clock.now(),

@@ -1,0 +1,1 @@
+ALTER TABLE patrol_reports ADD COLUMN window_minutes INTEGER NOT NULL DEFAULT 30;

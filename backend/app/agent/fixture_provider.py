@@ -61,6 +61,36 @@ class FixtureProvider:
         results = [
             json.loads(message["content"]) for message in messages if message["role"] == "tool"
         ]
+        if "巡检" in question or "全站" in question:
+            if not executed:
+                minutes = re.search(r"(\d+)分钟", question)
+                return tool_response(
+                    "get_fleet_overview",
+                    {"window_minutes": int(minutes.group(1)) if minutes else 30},
+                )
+            result = results[0]
+            data = result["data"]
+            lines = [
+                "【fixture 替身模型演示；不是实际模型推理】",
+                f"观测窗口：{data['from']} 至 {data['to']}。",
+            ]
+            for device in data["devices"]:
+                state, stats = device["status"], device["statistics"]
+                lines.append(
+                    f"{device['device_id']}：{state['connection_state']}，新鲜={state['data_fresh']}；{stats['sample_count']}条样本。"
+                )
+                if stats["sample_count"]:
+                    lines.append(
+                        f"窗口温度均值{stats['temperature_avg_c']} °C，最高{stats['temperature_max_c']} °C；最后采样{state['sample_ts']}。"
+                    )
+                else:
+                    lines.append("无样本，指标未知。")
+            lines += [
+                f"[DATA:{result['tool_call_id']}]",
+                "可能原因：需要进一步查询证据。",
+                "建议：先核对数据新鲜度与告警记录。",
+            ]
+            return {"role": "assistant", "content": "\n\n".join(lines)}
         if not executed:
             return tool_response("get_device_status", {"device_id": device_id})
         state = results[0].get("data") or {}

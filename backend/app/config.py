@@ -35,6 +35,8 @@ class Settings(BaseSettings):
     agent_cleanup_timeout_seconds: float = Field(default=5, gt=0)
     agent_max_model_requests: int = Field(default=6, ge=1)
     agent_max_tool_calls: int = Field(default=8, ge=1)
+    patrol_interval_seconds: int = Field(default=1800, ge=1)
+    patrol_window_minutes: Literal[10, 30, 60] = 30
     llm_mode: Literal["fixture", "real"] = "fixture"
     llm_base_url: str = ""
     llm_model: str = ""

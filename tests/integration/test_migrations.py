@@ -60,13 +60,13 @@ async def test_upgrade_preserves_v1_business_rows(tmp_path):
             ).scalar() == "保留证据"
             assert (
                 await session.execute(text("SELECT count(*) FROM schema_migrations"))
-            ).scalar() == 5
+            ).scalar() == 7
             assert (await session.execute(text("PRAGMA foreign_key_check"))).all() == []
         await db.initialize()
         async with db.sessions() as session:
             assert (
                 await session.execute(text("SELECT count(*) FROM schema_migrations"))
-            ).scalar() == 5
+            ).scalar() == 7
     finally:
         await db.close()
 
@@ -92,7 +92,7 @@ async def test_failed_migration_rolls_back_ddl_and_version(tmp_path):
     directory.mkdir()
     for source in DIRECTORY.glob("*.sql"):
         (directory / source.name).write_bytes(source.read_bytes())
-    (directory / "006_failure.sql").write_text(
+    (directory / "008_failure.sql").write_text(
         "CREATE TABLE must_rollback(id INTEGER);\nINSERT INTO missing_table VALUES (1);\n"
     )
     db = database(tmp_path / "failure.db")
@@ -263,7 +263,7 @@ def test_migration_cli_offline_backup_restore(tmp_path):
     assert run("--apply", "--database", path, "--backup-dir", tmp_path / "initial").returncode == 0
     result = run("--check", "--database", path)
     assert result.returncode == 0, result.stderr
-    assert json.loads(result.stdout)["version"] == 5
+    assert json.loads(result.stdout)["version"] == 7
     assert run("--apply", "--database", path, "--backup-dir", tmp_path / "backup").returncode == 0
     restored = tmp_path / "restored.db"
     assert (

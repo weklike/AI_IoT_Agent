@@ -27,10 +27,13 @@ from backend.app.errors import DomainError
 from backend.app.knowledge.index import KnowledgeIndex
 from backend.app.knowledge.search import KnowledgeSearch
 from backend.app.mqtt.client import MQTTConnection
+from backend.app.patrols import PatrolService
 from backend.app.power.service import PowerService
 from backend.app.routes.alarms import router as alarms_router
 from backend.app.routes.charging import router as charging_router
+from backend.app.routes.fleet import router as fleet_router
 from backend.app.routes.knowledge import router as knowledge_router
+from backend.app.routes.patrols import router as patrols_router
 from backend.app.routes.power import router as power_router
 from backend.app.routes.work_orders import router as work_orders_router
 from backend.app.simulator_control import ScenarioControl
@@ -63,8 +66,9 @@ def create_app(
     provider = provider or (
         FixtureProvider() if settings.llm_mode == "fixture" else RealProvider(settings)
     )
-    runner = AgentRunner(db, settings, clock, provider, store)
+    runner = AgentRunner(db, settings, clock, provider, store, knowledge)
     scheduler = RunScheduler(db, clock, run_executor or runner.run)
+    patrols = PatrolService(db, settings, clock, scheduler)
 
     async def consume():
         while True:
@@ -132,6 +136,8 @@ def create_app(
                 logging.getLogger(__name__).error(
                     "KNOWLEDGE_UNAVAILABLE type=%s", type(error).__name__
                 )
+            await patrols.initialize()
+            app.state.patrol_timer = asyncio.create_task(patrols.run_timer(), name="patrol-timer")
             app.state.consumer = asyncio.create_task(consume(), name="mqtt-consumer")
             app.state.alarm_timer = asyncio.create_task(
                 store.alarms.run_timer(), name="alarm-timer"
@@ -140,6 +146,9 @@ def create_app(
                 await mqtt.start()
             yield
         finally:
+            if hasattr(app.state, "patrol_timer"):
+                app.state.patrol_timer.cancel()
+                await asyncio.gather(app.state.patrol_timer, return_exceptions=True)
             if hasattr(app.state, "alarm_timer"):
                 app.state.alarm_timer.cancel()
                 await asyncio.gather(app.state.alarm_timer, return_exceptions=True)
@@ -167,6 +176,8 @@ def create_app(
     app.state.settings, app.state.clock = settings, clock
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
+    app.state.patrols = patrols
+    app.state.read_queries = runner.executor.queries
     app.state.knowledge = knowledge
     app.state.knowledge_index = knowledge_index
     app.state.alarms = store.alarms
@@ -181,6 +192,8 @@ def create_app(
     app.include_router(alarms_router)
     app.include_router(work_orders_router)
     app.include_router(knowledge_router)
+    app.include_router(fleet_router)
+    app.include_router(patrols_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):

@@ -104,9 +104,12 @@ class ScenarioControl:
                     row.status = "timed_out"
                     row.error = "SCENARIO_ACK_TIMEOUT"
                     row.late_ack_json = ack.model_dump(mode="json")
+                    row.late_ack_observed_at = ack.applied_at
+                    row.late_ack_received_at = self.clock.now()
                 elif row.status == "pending":
                     row.status = ack.status
                     row.ack_at = ack.applied_at
+                    row.ack_received_at = self.clock.now()
 
     async def get(self, command_id: str | UUID) -> dict:
         async with self.lock, self.db.sessions.begin() as session:

@@ -86,7 +86,10 @@ class ScenarioCommandRow(Base):
     requested_at: Mapped[datetime] = mapped_column(UTCTime)
     ack_at: Mapped[datetime | None] = mapped_column(UTCTime)
     error: Mapped[str | None]
+    ack_received_at: Mapped[datetime | None] = mapped_column(UTCTime)
     late_ack_json: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    late_ack_observed_at: Mapped[datetime | None] = mapped_column(UTCTime)
+    late_ack_received_at: Mapped[datetime | None] = mapped_column(UTCTime)
 
 
 class AgentRun(Base):
@@ -183,8 +186,11 @@ class DeviceCommand(Base):
     issued_at: Mapped[datetime] = mapped_column(UTCTime)
     expires_at: Mapped[datetime] = mapped_column(UTCTime)
     ack_at: Mapped[datetime | None] = mapped_column(UTCTime)
+    ack_observed_at: Mapped[datetime | None] = mapped_column(UTCTime)
     ack_json: Mapped[dict[str, Any] | None] = mapped_column(JSON)
     late_ack_json: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    late_ack_observed_at: Mapped[datetime | None] = mapped_column(UTCTime)
+    late_ack_received_at: Mapped[datetime | None] = mapped_column(UTCTime)
     verification_status: Mapped[str] = mapped_column(default="pending")
     verification_json: Mapped[dict[str, Any] | None] = mapped_column(JSON)
     error_code: Mapped[str | None]
@@ -378,6 +384,7 @@ class PatrolReport(Base):
     request_id: Mapped[str | None] = mapped_column(unique=True)
     run_id: Mapped[str | None] = mapped_column(ForeignKey("agent_runs.run_id"))
     trigger: Mapped[str]
+    window_minutes: Mapped[int] = mapped_column(default=30, server_default="30")
     status: Mapped[str]
     snapshot_json: Mapped[dict | None] = mapped_column(JSON)
     refs_json: Mapped[list | None] = mapped_column(JSON)
