@@ -19,6 +19,7 @@ def main():
         ("normal", {}, ["--grep-invert", "@empty|@failure|@v2"]),
         ("empty", {"simulator": False}, ["--grep", "@empty"]),
         ("failures", {"failures": True}, ["--grep", "@failure"]),
+        ("operations", {"operations": True}, ["--grep", "@v2"]),
     ]
     if args.operations:
         suites = [("operations", {"operations": True}, ["--grep", args.grep or "@v2"])]
@@ -34,7 +35,16 @@ def main():
                 "E2E_COMPOSE_PROJECT": ports["PROJECT"],
             }
             result = subprocess.run(
-                ["npm", "exec", "--", "playwright", "test", *arguments, "--repeat-each", str(args.repeat_each)],
+                [
+                    "npm",
+                    "exec",
+                    "--",
+                    "playwright",
+                    "test",
+                    *arguments,
+                    "--repeat-each",
+                    str(args.repeat_each),
+                ],
                 cwd=ROOT / "frontend",
                 env=env,
             )
