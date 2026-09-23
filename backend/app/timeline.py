@@ -1,8 +1,11 @@
 """Read-only event projection. Paging never changes the clock, live state or source records."""
 
+import base64
+import hashlib
+import json
 from datetime import datetime
 
-from sqlalchemy import JSON, func, literal, or_, select, text, type_coerce, union_all
+from sqlalchemy import JSON, and_, func, literal, or_, select, text, type_coerce, union_all
 
 from backend.app.db import Database
 from backend.app.errors import DomainError
@@ -30,7 +33,16 @@ def event(kind, identity, observed, received, payload):
 
 
 def obj(**values):
-    return func.json_object(*[part for key, value in values.items() for part in (key, value)])
+    return func.json_object(
+        *[
+            part
+            for key, value in values.items()
+            for part in (
+                key,
+                func.json(value) if isinstance(getattr(value, "type", None), JSON) else value,
+            )
+        ]
+    )
 
 
 class TimelineService:
@@ -38,7 +50,13 @@ class TimelineService:
         self.db = db
 
     async def query(
-        self, device_id: str, start: datetime, end: datetime, *, limit: int = 100
+        self,
+        device_id: str,
+        start: datetime,
+        end: datetime,
+        *,
+        limit: int = 100,
+        cursor: str | None = None,
     ) -> dict:
         if (
             start.tzinfo is None
@@ -182,6 +200,38 @@ class TimelineService:
             tools,
         ).subquery()
         filters = [all_events.c.observed_at >= start, all_events.c.observed_at <= end]
+        page_filters = list(filters)
+        scope = hashlib.sha256(
+            f"{device_id}|{start.isoformat()}|{end.isoformat()}".encode()
+        ).hexdigest()
+        if cursor:
+            try:
+                if len(cursor) > 2048:
+                    raise ValueError("Long cursor")
+                anchor = json.loads(base64.b64decode(cursor, altchars=b"-_", validate=True))
+                if set(anchor) != {"scope", "at", "type", "id"} or anchor["scope"] != scope:
+                    raise ValueError("Foreign cursor")
+                at = datetime.fromisoformat(anchor["at"])
+                if at.tzinfo is None or not all(
+                    isinstance(anchor[key], str) and 0 < len(anchor[key]) <= 128
+                    for key in ("type", "id")
+                ):
+                    raise ValueError("Invalid cursor fields")
+            except (ValueError, TypeError, KeyError) as error:
+                raise DomainError(
+                    "INVALID_ARGUMENTS", "时间线游标无效或不属于当前窗口", 422
+                ) from error
+            page_filters.append(
+                or_(
+                    all_events.c.observed_at < at,
+                    and_(all_events.c.observed_at == at, all_events.c.source_type < anchor["type"]),
+                    and_(
+                        all_events.c.observed_at == at,
+                        all_events.c.source_type == anchor["type"],
+                        all_events.c.source_id < anchor["id"],
+                    ),
+                )
+            )
         async with self.db.sessions() as session:
             await session.execute(text("BEGIN"))
             if await session.get(Device, device_id) is None:
@@ -197,18 +247,33 @@ class TimelineService:
                 (
                     await session.execute(
                         select(all_events)
-                        .where(*filters)
+                        .where(*page_filters)
                         .order_by(
                             all_events.c.observed_at.desc(),
                             all_events.c.source_type.desc(),
                             all_events.c.source_id.desc(),
                         )
-                        .limit(limit)
+                        .limit(limit + 1)
                     )
                 )
                 .mappings()
                 .all()
             )
+            more = len(rows) > limit
+            rows = rows[:limit]
+            next_cursor = None
+            if more:
+                last = rows[-1]
+                next_cursor = base64.urlsafe_b64encode(
+                    json.dumps(
+                        {
+                            "scope": scope,
+                            "at": last["observed_at"].isoformat(),
+                            "type": last["source_type"],
+                            "id": last["source_id"],
+                        }
+                    ).encode()
+                ).decode()
             items = []
             for row in reversed(rows):
                 item = dict(row) | {"device_id": device_id}
@@ -224,5 +289,6 @@ class TimelineService:
                 "event_count": count,
                 "counts_by_source": dict(counts),
                 "items": items,
-                "truncated": count > limit,
+                "truncated": count > len(items),
+                "next_cursor": next_cursor,
             }

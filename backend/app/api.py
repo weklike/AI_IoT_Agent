@@ -69,7 +69,7 @@ class ScenarioRequest(Contract):
 @router.post("/simulator/scenarios", status_code=202)
 async def scenario(request: Request, body: ScenarioRequest):
     return success(
-        request, await request.app.state.control.create(body.device_id, body.scenario), 202
+        request, await request.app.state.scripts.manual(body.device_id, body.scenario), 202
     )
 
 

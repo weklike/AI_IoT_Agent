@@ -20,6 +20,7 @@ from backend.app.models import (
     PatrolReport,
     PowerPlan,
     ScenarioCommandRow,
+    ScenarioScript,
     StationState,
     ToolCall,
 )
@@ -91,6 +92,11 @@ class Database:
                 if fact and fact.result_json and fact.result_json.get("ok"):
                     report.snapshot_json = fact.result_json["data"]
                 report.status = "interrupted"
+            await session.execute(
+                update(ScenarioScript)
+                .where(ScenarioScript.status == "running")
+                .values(status="interrupted", cancel_reason="PROCESS_RESTARTED")
+            )
             await session.execute(update(Device).values(last_live_received_at=None))
             await session.execute(
                 update(PowerPlan)

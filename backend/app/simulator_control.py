@@ -1,10 +1,12 @@
 import asyncio
 import logging
 import time
+from collections.abc import Awaitable, Callable
 from typing import Protocol
 from uuid import UUID, uuid4
 
 from sqlalchemy import update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
@@ -27,7 +29,13 @@ class ScenarioControl:
         self.tasks: set[asyncio.Task] = set()
         self.deadlines: dict[str, float] = {}
 
-    async def create(self, device_id: str, scenario: Scenario) -> dict:
+    async def create(
+        self,
+        device_id: str,
+        scenario: Scenario,
+        *,
+        on_created: Callable[[AsyncSession, str], Awaitable[None]] | None = None,
+    ) -> dict:
         if device_id not in DEVICE_IDS:
             raise DomainError("DEVICE_NOT_FOUND", "设备不存在", 404)
         if not self.publisher.connected:
@@ -45,6 +53,8 @@ class ScenarioControl:
                         requested_at=self.clock.now(),
                     )
                 )
+                if on_created is not None:
+                    await on_created(session, key)
             self.deadlines[key] = time.monotonic() + self.settings.scenario_ack_timeout_seconds
             sent = self.publisher.publish(
                 f"{self.settings.mqtt_topic_prefix}/devices/{device_id}/scenario/set",

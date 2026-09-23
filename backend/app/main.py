@@ -35,8 +35,11 @@ from backend.app.routes.fleet import router as fleet_router
 from backend.app.routes.knowledge import router as knowledge_router
 from backend.app.routes.patrols import router as patrols_router
 from backend.app.routes.power import router as power_router
+from backend.app.routes.scripts import router as scripts_router
+from backend.app.routes.timeline import router as timeline_router
 from backend.app.routes.work_orders import router as work_orders_router
 from backend.app.simulator_control import ScenarioControl
+from backend.app.simulator_scripts import ScenarioScripts
 from backend.app.telemetry.ingest import TelemetryStore
 
 
@@ -56,6 +59,7 @@ def create_app(
     knowledge_index = KnowledgeIndex(db)
     knowledge = KnowledgeSearch(knowledge_index)
     control = ScenarioControl(db, settings, clock, mqtt)
+    scripts = ScenarioScripts(db, clock, control)
     charging = ChargingControl(db, settings, clock, mqtt)
     power = PowerService(db, settings, clock, charging)
     if (provider is not None or run_executor is not None) and settings.app_env not in {
@@ -152,6 +156,7 @@ def create_app(
             if hasattr(app.state, "alarm_timer"):
                 app.state.alarm_timer.cancel()
                 await asyncio.gather(app.state.alarm_timer, return_exceptions=True)
+            await scripts.close()
             if scheduler:
                 await scheduler.close()
             if settings.mqtt_enabled:
@@ -176,6 +181,7 @@ def create_app(
     app.state.settings, app.state.clock = settings, clock
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
+    app.state.scripts = scripts
     app.state.patrols = patrols
     app.state.read_queries = runner.executor.queries
     app.state.knowledge = knowledge
@@ -194,6 +200,8 @@ def create_app(
     app.include_router(knowledge_router)
     app.include_router(fleet_router)
     app.include_router(patrols_router)
+    app.include_router(timeline_router)
+    app.include_router(scripts_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):
