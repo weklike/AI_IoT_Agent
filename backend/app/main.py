@@ -16,12 +16,16 @@ from backend.app.agent.provider import RealProvider
 from backend.app.agent.runner import AgentRunner
 from backend.app.agent.scheduler import RunScheduler
 from backend.app.api import router
+from backend.app.charging.contracts import ControlAck, SessionReportMessage
+from backend.app.charging.control import ChargingControl
+from backend.app.charging.reports import store_report
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import ScenarioAck
 from backend.app.db import Database
 from backend.app.errors import DomainError
 from backend.app.mqtt.client import MQTTConnection
+from backend.app.routes.charging import router as charging_router
 from backend.app.simulator_control import ScenarioControl
 from backend.app.telemetry.ingest import TelemetryStore
 
@@ -40,6 +44,7 @@ def create_app(
     mqtt = MQTTConnection(settings, clock)
     store = TelemetryStore(db, settings, clock)
     control = ScenarioControl(db, settings, clock, mqtt)
+    charging = ChargingControl(db, settings, clock, mqtt)
     if (provider is not None or run_executor is not None) and settings.app_env not in {
         "test",
         "eval",
@@ -57,6 +62,33 @@ def create_app(
             try:
                 if topic.endswith("/telemetry"):
                     await store.receive(payload, topic, received_at, retained)
+                elif topic.endswith("/session/report") and not retained and len(payload) <= 8192:
+                    try:
+                        report = SessionReportMessage.model_validate_json(payload)
+                    except ValidationError:
+                        await store.diagnostic(
+                            "rejected_report", None, "Invalid session report", received_at
+                        )
+                    else:
+                        expected = f"{settings.mqtt_topic_prefix}/devices/{report.device_id}/session/report"
+                        if topic == expected:
+                            ack = await store_report(db, report, received_at)
+                            mqtt.publish(
+                                expected.removesuffix("report") + "ack", ack.model_dump_json()
+                            )
+                        else:
+                            await store.diagnostic(
+                                "rejected_report", None, "Session topic mismatch", received_at
+                            )
+                elif topic.endswith("/control/ack") and not retained and len(payload) <= 8192:
+                    try:
+                        ack = ControlAck.model_validate_json(payload)
+                    except ValidationError:
+                        await store.diagnostic(
+                            "rejected_control_ack", None, "Malformed control ACK", received_at
+                        )
+                    else:
+                        await charging.ack(ack, topic)
                 elif topic.endswith("/scenario/ack") and not retained and len(payload) <= 8192:
                     try:
                         ack = ScenarioAck.model_validate_json(payload)
@@ -94,6 +126,7 @@ def create_app(
                 app.state.consumer.cancel()
                 await asyncio.gather(app.state.consumer, return_exceptions=True)
             await provider.close()
+            await charging.close()
             await control.close()
             await db.close()
 
@@ -102,9 +135,11 @@ def create_app(
     app.state.db, app.state.mqtt = db, mqtt
     app.state.store = store
     app.state.control = control
+    app.state.charging = charging
     app.state.scheduler = scheduler
     app.state.runner = runner
     app.include_router(router)
+    app.include_router(charging_router)
 
     @app.middleware("http")
     async def request_identity(request: Request, call_next):

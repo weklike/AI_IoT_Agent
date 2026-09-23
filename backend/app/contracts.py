@@ -2,7 +2,15 @@ from datetime import UTC, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, field_validator
+from pydantic import (
+    AwareDatetime,
+    BaseModel,
+    ConfigDict,
+    Field,
+    TypeAdapter,
+    field_validator,
+    model_validator,
+)
 
 DEVICE_IDS = ("CHG-001", "CHG-002", "CHG-003")
 DeviceID = Literal["CHG-001", "CHG-002", "CHG-003"]
@@ -40,12 +48,51 @@ class TelemetryMessage(Contract):
         return value.astimezone(UTC)
 
 
+class TelemetryV2(TelemetryMessage):
+    schema_version: Annotated[int, Field(strict=True, ge=2, le=2)]
+    session_id: UUID | None
+    session_state: Literal["IDLE", "ACTIVE", "COMPLETED", "INTERRUPTED"]
+    requested_power_w: Annotated[int, Field(strict=True, ge=0, le=20000)]
+    power_limit_w: Annotated[int, Field(strict=True, ge=0, le=20000)]
+    meter_total_wh: Annotated[int, Field(strict=True, ge=0)]
+    session_energy_wh: Annotated[int, Field(strict=True, ge=0)] | None
+    applied_control_generation: Annotated[int, Field(strict=True, ge=0)]
+
+    @model_validator(mode="after")
+    def consistent_session(self) -> "TelemetryV2":
+        if self.session_state == "IDLE":
+            if (
+                self.session_id is not None
+                or self.session_energy_wh is not None
+                or self.requested_power_w
+                or self.power_limit_w
+            ):
+                raise ValueError("Idle telemetry cannot contain an active session or power")
+        elif self.session_id is None or self.session_energy_wh is None:
+            raise ValueError("Session identity and energy are required")
+        actual_w = (
+            min(self.requested_power_w, self.power_limit_w) if self.session_state == "ACTIVE" else 0
+        )
+        if (
+            self.voltage_v != 400
+            or abs(self.power_kw * 1000 - actual_w) > 1e-6
+            or abs(self.current_a * 400 - actual_w) > 1e-6
+        ):
+            raise ValueError("Inconsistent simulated power, voltage or current")
+        if self.session_energy_wh is not None and self.session_energy_wh > self.meter_total_wh:
+            raise ValueError("Session energy exceeds lifetime meter")
+        return self
+
+
+TELEMETRY_ADAPTER = TypeAdapter(TelemetryMessage | TelemetryV2)
+
+
 def parse_telemetry(
     payload: bytes, topic: str, now: datetime, prefix: str = "charge/v1"
-) -> TelemetryMessage:
+) -> TelemetryMessage | TelemetryV2:
     if len(payload) > 8192:
         raise ValueError("PAYLOAD_TOO_LARGE")
-    message = TelemetryMessage.model_validate_json(payload)
+    message = TELEMETRY_ADAPTER.validate_json(payload)
     if topic != f"{prefix}/devices/{message.device_id}/telemetry":
         raise ValueError("TOPIC_MISMATCH")
     age = (now - message.ts).total_seconds()

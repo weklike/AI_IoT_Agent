@@ -5,7 +5,7 @@ from sqlalchemy import and_, or_, select
 
 from backend.app.clocks import DataClock
 from backend.app.config import Settings
-from backend.app.contracts import TelemetryMessage, parse_telemetry
+from backend.app.contracts import TelemetryMessage, TelemetryV2, parse_telemetry
 from backend.app.db import Database
 from backend.app.models import Device, DiagnosticEvent, Telemetry
 from backend.app.telemetry.queries import device_status
@@ -47,7 +47,7 @@ class TelemetryStore:
         return await self.ingest(message, received_at)
 
     async def ingest(
-        self, message: TelemetryMessage, received_at: datetime, retained: bool = False
+        self, message: TelemetryMessage | TelemetryV2, received_at: datetime, retained: bool = False
     ) -> str:
         if retained:
             await self.diagnostic(
@@ -63,6 +63,8 @@ class TelemetryStore:
         )
         fields = message.model_dump(mode="python")
         fields["message_id"], fields["boot_id"] = str(message.message_id), str(message.boot_id)
+        if isinstance(message, TelemetryV2):
+            fields["session_id"] = str(message.session_id) if message.session_id else None
         async with self.db.sessions.begin() as session:
             existing = (
                 await session.scalars(

@@ -13,10 +13,16 @@ class Settings(BaseSettings):
     mqtt_port: int = Field(default=1883, ge=1, le=65535)
     mqtt_enabled: bool = True
     mqtt_topic_prefix: str = "charge/v1"
+    simulator_mode: Literal["legacy", "operations"] = "legacy"
+    simulator_state_dir: str = "./data/simulator"
+    session_report_expiry_seconds: float = Field(default=86400, gt=0)
+    session_report_retry_seconds: tuple[float, float, float, float] = (1, 2, 4, 30)
     telemetry_interval_seconds: float = Field(default=2, gt=0)
     fresh_sample_max_age_seconds: float = Field(default=10, gt=0)
     offline_timeout_seconds: float = Field(default=15, gt=0)
     overheat_threshold_c: float = 60
+    control_ack_timeout_seconds: float = Field(default=5, gt=0)
+    control_verification_timeout_seconds: float = Field(default=4, gt=0)
     scenario_ack_timeout_seconds: float = Field(default=5, gt=0)
     db_busy_timeout_ms: int = Field(default=1000, gt=0)
     agent_model_timeout_seconds: float = Field(default=20, gt=0)

@@ -51,6 +51,19 @@ async def device_status(
         "power_kw": sample.power_kw if sample else None,
         "operating_state": sample.operating_state if sample else None,
         "last_live_received_at": live,
+        **{
+            field: getattr(sample, field) if sample else None
+            for field in (
+                "schema_version",
+                "session_id",
+                "session_state",
+                "requested_power_w",
+                "power_limit_w",
+                "meter_total_wh",
+                "session_energy_wh",
+                "applied_control_generation",
+            )
+        },
     }
 
 

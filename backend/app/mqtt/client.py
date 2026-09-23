@@ -36,7 +36,12 @@ class MQTTConnection:
         if not reason_code.is_failure:
             prefix = self.settings.mqtt_topic_prefix
             client.subscribe(
-                [(f"{prefix}/devices/+/telemetry", 1), (f"{prefix}/devices/+/scenario/ack", 1)]
+                [
+                    (f"{prefix}/devices/+/telemetry", 1),
+                    (f"{prefix}/devices/+/scenario/ack", 1),
+                    (f"{prefix}/devices/+/session/report", 1),
+                    (f"{prefix}/devices/+/control/ack", 1),
+                ]
             )
         if self.loop and not self.loop.is_closed():
             self.loop.call_soon_threadsafe(self._set_connected, not reason_code.is_failure)

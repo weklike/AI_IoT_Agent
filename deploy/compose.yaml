@@ -53,10 +53,13 @@ services:
       dockerfile: deploy/backend.Dockerfile
     command: ["/app/.venv/bin/python", "-m", "simulator.main"]
     environment:
+      SIMULATOR_MODE: ${SIMULATOR_MODE:-legacy}
+      SIMULATOR_STATE_DIR: /simulator-state
       MQTT_HOST: mqtt
       MQTT_PORT: 1883
       TELEMETRY_INTERVAL_SECONDS: ${TELEMETRY_INTERVAL_SECONDS:-2}
       MQTT_TOPIC_PREFIX: ${MQTT_TOPIC_PREFIX:-charge/v1}
+    volumes: ["simulator_state:/simulator-state"]
     depends_on:
       mqtt: {condition: service_healthy}
   frontend:
@@ -70,3 +73,4 @@ services:
       backend: {condition: service_healthy}
 volumes:
   backend_data:
+  simulator_state:

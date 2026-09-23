@@ -11,7 +11,7 @@ from backend.app.clocks import DataClock
 from backend.app.config import Settings
 from backend.app.contracts import DEVICE_IDS
 from backend.app.migrations import migrate
-from backend.app.models import AgentRun, Device, ScenarioCommandRow, ToolCall
+from backend.app.models import AgentRun, Device, DeviceCommand, ScenarioCommandRow, ToolCall
 
 
 class Database:
@@ -45,6 +45,23 @@ class Database:
                     .on_conflict_do_nothing(index_elements=["device_id"])
                 )
             await session.execute(update(Device).values(last_live_received_at=None))
+            await session.execute(
+                update(DeviceCommand)
+                .where(DeviceCommand.status == "pending")
+                .values(
+                    status="interrupted",
+                    verification_status="unconfirmed",
+                    error_code="PROCESS_RESTARTED",
+                )
+            )
+            await session.execute(
+                update(DeviceCommand)
+                .where(
+                    DeviceCommand.status == "applied",
+                    DeviceCommand.verification_status == "pending",
+                )
+                .values(verification_status="unconfirmed")
+            )
             await session.execute(
                 update(ScenarioCommandRow)
                 .where(ScenarioCommandRow.status == "pending")
