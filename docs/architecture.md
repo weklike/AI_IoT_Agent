@@ -1,57 +1,75 @@
-# 实际架构与数据流
+# 实际架构与数据流（v2.0）
 
-本项目是单机、纯软件设备模拟作品。默认 fixture 模式用于工程演示；真实模型配置和效果验收另行进行。只有一个业务 Agent，不包含 MCP 或向量 RAG。
+单机、三台独立软件设备、一个业务Agent、一个Uvicorn worker。设备控制由页面调用受限HTTP接口；Agent的九工具中只有创建工单可写，授权时才暴露。没有MCP、向量数据库或实体硬件控制。
 
 ```mermaid
 flowchart LR
-    Browser[Vue 三页网页] -->|同源 /api| Nginx[frontend / nginx]
-    Nginx --> Backend[backend / FastAPI 单 worker]
-    Simulator[simulator / 三个独立客户端] -->|QoS 1 遥测| MQTT[mqtt / Mosquitto]
-    Backend -->|场景命令| MQTT
-    MQTT -->|控制订阅| Simulator
-    Simulator -->|匹配回执| MQTT
+    Browser[Vue 三页] -->|同源 API| Nginx[frontend / nginx]
+    Nginx --> Backend[backend / FastAPI]
+    Simulator[simulator / 三独立客户端] -->|遥测与会话报告| MQTT[mqtt / Mosquitto]
+    Backend -->|场景与受限控制 / 报告 ACK| MQTT
+    MQTT --> Simulator
     MQTT -->|线程安全交接| Consumer[单消费者]
     Consumer --> SQLite[(SQLite / WAL)]
     Backend --> SQLite
-    Backend --> Runner[单任务调度 + AgentRunner]
-    Runner --> Tools[四个进程内业务工具]
+    Backend --> Runner[单槽位聊天与只读巡检]
+    Runner --> Tools[九工具 / 参数与预算校验]
     Tools --> SQLite
-    Runner --> Provider[fixture 或 real provider]
+    Tools --> FTS[版本化 FTS5 知识]
+    Runner --> Provider[fixture 或 real]
+    Simulator --> State[独立原子检查点卷]
 ```
 
-## 消息与当前状态
+## 生命周期与迁移
 
-1. 三台设备每 2 秒发送合成遥测。message_id、boot_id、seq 由模拟器产生；每台独立 client_id。
-2. paho 的网络线程只交接消息，数据库会话在应用事件循环中创建。单消费者完成解析、去重、诊断及入库。
-3. message_id 和 (device_id, boot_id, seq) 两个唯一约束防止重复；业务字段相同为 duplicate、不同为 conflict。received_at 不参与比较。
-4. 历史允许合法乱序样本；当前快照只接受严格更新的 sample_ts。只有新鲜且成为快照的消息更新本进程新鲜接收时间。
-5. 样本年龄 ≤10 秒才是新鲜数据；最后新鲜接收后 >15 秒才离线。online 与 data_fresh 是独立字段。重启清空在线依据，保留历史。
-6. 事务返回后记录 telemetry_committed，以 message_id 与实际提交后时间关联性能证据。
+启动依次应用编号SQL迁移、初始化三设备、按摘要导入知识、恢复遗留任务状态、启动消费者及告警/巡检定时器。迁移是唯一建表路径；已执行脚本摘要不可变，显式事务保证DDL失败回滚。v1原业务行保留，新增字段为空，不补造会话。
 
-DataClock 只负责 UTC 业务时间。模型、工具、命令确认和总 deadline 使用真实单调时钟；固定评测数据时间不会暂停超时。
+数据库每连接启用外键、WAL、1000ms busy timeout。网络等待不占用数据库事务。paho网络线程只把消息交给事件循环；每个HTTP/工具事务持有独立AsyncSession，单消费者处理遥测入库。关闭先停止产生新工作的定时器/脚本，再受管理地收尾业务任务、队列与MQTT。
 
-## 场景控制
+四个Compose服务仅把端口发布在127.0.0.1。backend独占SQLite卷，simulator独占检查点卷，模型配置只传backend。测试使用自己创建的项目、随机端口、卷和MQTT前缀，不能复用开发数据库。
 
-HTTP POST 返回 pending 与 command_id。Broker 发布成功不表示设备已执行。只有设备/场景/主题/command_id 匹配的回执可以确认 applied；5 秒后转 timed_out，晚到回执单独保存。offline 只暂停遥测，控制订阅仍然保留。重启遗留 pending 命令标记为结果未确认。
+## 遥测、会话和两种时钟
 
-## 请求与工单
+v1与v2分别严格校验。message_id和(device_id, boot_id, seq)双唯一约束区分重复与冲突；重复比较不含后端接收时间。合法旧消息可进历史，但快照只接受严格更新的sample_ts；重复、retained、回放或过期样本不能让设备重新在线。
 
-进程调度锁覆盖“幂等查询→忙碌检查→持久化 run→登记后台任务”。模型等待不持锁。重复 request_id 先于忙碌检查；同内容复用任务，不同内容 409。新任务遇忙 429。
+样本年龄≤10秒且本进程已收到新鲜数据时才data_fresh；最后新鲜接收超过15秒才offline。重启先unknown，旧指标保留时间。会话报告、控制ACK、知识查询均不刷新在线时间。API历史最多24小时/5000行；工具窗口为1—60分钟；统计使用完整窗口，展示分页不改变统计。
 
-工单从本 run、本设备的成功只读调用选证据，并重新检查原始样本及时间。OFFLINE 还会重算当前状态，恢复后的设备不能凭旧离线结论建单。创建/复用工单及当前工具成功结果在同一 SQLite 事务提交；OPEN 部分唯一索引兜底。复用单也保存本次调用选中的证据。
+DataClock只产生带时区的UTC业务时间；deadline、耗时与模拟计量经过时间分别使用真实单调时钟。评测冻结DataClock不暂停20/3/90+5、控制5/4或功率30+5秒预算。
 
-提交边界超时后取消/等待事务结束，仅按当前内部 tool_call_id 恢复已提交结果。不能靠查到旧 OPEN 工单推断本次写入成功；确认失败返回 WRITE_RESULT_UNKNOWN，停止后续工具。
+operations模拟器以整数功率×纳秒累计能量，保留余数后输出整数Wh，避免每次采样舍入丢电量。先持久化检查点再发布；会话报告保存后按1/2/4/30秒限定退避重发，backend提交后才stored ACK。断电重启从最近检查点中断旧会话，未记录区间未知，不按停机时间估算电量。报告不与遥测互相冒充。
 
-## 模型协议
+## 受限控制与站点预算
 
-real 使用配置的 Chat Completions 协议端点，经 HTTP 模拟测试验证结构，本机代理的 deepseek-v4-flash 已完成真实握手及 Docker 页面调用。容器可通过 LLM_DOCKER_BASE_URL 单独配置可达地址；回环服务使用仅绑定 Docker 私有网桥的可选宿主机 TCP 转发进程，原 LLM_BASE_URL 仍供宿主机评测使用。没有隐藏重试或 fixture 回退。
+场景命令仍使用独立command_id和5秒ACK：normal、overheat、offline；offline只暂停遥测，控制订阅保留。60秒脚本在0/20/40秒经同一场景服务发送命令；取消停止未来步骤，手动场景覆盖留原因，重启不补跑。脚本不占用充电控制generation。
 
-先保存完整 assistant 响应，验证整批调用后顺序执行，再以 provider_call_id 回传结果。服务器的 tool_call_id 与 provider ID 分开。调用记录有独立执行序号，冻结 DataClock 时也不会按随机 UUID 排序。
+充电控制只支持start_session、stop_session、set_power_limit。后端先在短事务中保存命令，再发布MQTT；匹配device/action/generation/command_id的ACK才applied。ACK后仍须4秒内新鲜匹配遥测验证，否则unconfirmed。start初始限制0W；设置功率仅通过保存的站点计划执行。未知结果不自动重试或回滚，重启pending标interrupted。
 
-六次模型请求包含最终回答，工具上限八次；单步 20/3 秒、整轮 90 秒、清理最多 5 秒。模型输出、工具数据和故障说明不改变工具白名单或授权。工具参数无法传入 context、内部证据编号或任意文件路径。
+功率预览按100W粒度生成equal或priority分配，保存控制指纹和120秒有效期，不发布MQTT。执行时复核会话、限制、预算版本与新鲜度。阶段内并行，先把所有降低操作verified，再允许提升；每次提升使用max(旧限制,未确认目标)计算保守上界。只有所有目标都verified才更新确认预算，PARTIAL保留逐设备结果与旧确认预算。
 
-## 持久化与部署
+## 告警、工单与幂等
 
-七表为 devices、telemetry、scenario_commands、agent_runs、tool_calls、work_orders、diagnostic_events。AgentRun 保存协议消息和模型耗时；ToolCall 保存服务器结果、provider ID 与执行序号。
+告警把观测条件、确认状态与恢复状态分开。默认≥60°C触发，严格<55°C连续10秒新鲜样本才恢复；连续样本间隔最多3秒。重复、乱序和断档不推进持续计时。告警保存当时规则版本；修改或禁用规则不能抹掉旧事件或伪造恢复。重启保留活动告警且evaluation未知。
 
-四服务仅发布 127.0.0.1 上的端口；SQLite 独立卷只交给 backend。模型配置只传后端。本机开发库 data/ 与容器 /data 不共用。前端轮询使用完成后再调度的定时器，路由离开取消请求与定时器。
+工单OPEN→IN_PROGRESS→RESOLVED→CLOSED，RESOLVED可退回IN_PROGRESS；填写处理说明不等于已恢复。关闭事务重新查询设备新鲜状态及关联告警CLEARED，保存真实样本ID、时间与校验时间。部分唯一索引覆盖全部未关闭状态，同设备同原因最多一单。
+
+新写入的operation_requests在同一事务中记录参数摘要与业务结果。同request_id同路径/动作/参数复用原结果，异内容409；幂等先于忙碌或版本检查。Agent接收锁覆盖“幂等→槽位→run持久化→登记任务”，不包围模型等待。模型建单的上下文由服务器注入，只选本run、本设备的成功只读证据；建单与当前tool_call结果原子提交。
+
+写入超时后停止调度并收尾事务，只按本次内部tool_call_id恢复结果，不能因设备已有旧工单猜测本次成功；无法确认则WRITE_RESULT_UNKNOWN。重启不重放模型或控制。
+
+## 九工具、知识与巡检
+
+八个只读工具：get_device_status、get_device_history、get_fault_guide、get_fleet_overview、search_fault_knowledge、get_charging_sessions、get_device_timeline、get_work_orders。唯一写工具create_work_order需本次显式授权且明确建单意图；Agent没有启停、功率调整、工单迁移、文件、shell或SQL工具。
+
+模型适配器保存完整assistant tool_calls，再按provider_call_id配对回传。内部tool_call_id独立用于数据库和引用；批调用先整体校验再顺序执行。最多6次模型请求（含最终回答）、8次工具调用；单步20/3秒、整轮90秒、清理最多5秒。无隐藏重试或real→fixture回退。成功/失败/超时均留轨迹，usage缺失明确记录。
+
+知识为24篇authored_simulation说明，保留source_id/version/content hash。NFKC与中文单字/双字切分用于FTS5 BM25，查询转义并过滤停用版本和错误型号；top5、每块≤600字、总正文≤3000字。导入/索引事务原子切换，旧版本仍可打开；索引不可用返回明确错误。
+
+最终回答的[KB:source@version#chunk]和[DATA:tool_call_id]仅能指向本run成功工具实际返回的证据；伪造或跨run引用被ANSWER_EVIDENCE_ERROR阻断。引用有效只证明来源关联正确，不替代真人对数值、结论、建议及权限表述的语义复核。
+
+手动巡检强制首个工具为固定窗口的fleet汇总；九工具中写工具始终关闭。fleet在同一UTC锚点和SQLite读取快照内汇总三个设备。巡检与聊天共享唯一运行槽位；默认关闭的周期巡检每30分钟触发，忙时只记skipped_busy，不排队、不补跑。失败报告保留已经成功取得的事实快照，completed不代表回答质量通过。
+
+## 三页面与事件复盘
+
+总览使用fleet聚合接口，详情展示会话、曲线、控制、告警和工单，对话展示run历史、工具轨迹、实际引用及巡检报告。设备查询每2秒、运行状态每1秒，完成一次再调度下一次；离页取消，终态停止。写入前保存request_id及原请求，断网或5xx后显式重试仍复用同一ID。
+
+时间线由真实来源表做只读UNION，按observed_at/type/id稳定排序、带作用域游标，保留晚到received_at。工具事件时间定义为调用开始，不能把单调耗时加到DataClock伪造业务时间。回放只改变查询窗口，不重发命令、不改业务表。来源缺失的历史接收时间保留null。
