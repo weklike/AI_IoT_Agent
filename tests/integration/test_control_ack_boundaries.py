@@ -119,6 +119,25 @@ async def test_mismatched_acks_do_not_apply_and_only_matching_fresh_effect_verif
             seq=active["seq"] + 1,
             ts=clock.now().isoformat(),
             session_id=created["session_id"],
+            applied_control_generation=2,
+        )
+        assert (
+            await store.receive(
+                json.dumps(active).encode(),
+                topic.replace("control/ack", "telemetry"),
+                clock.now(),
+                False,
+            )
+            == "accepted"
+        )
+        await asyncio.sleep(0.15)
+        assert (await control.get(created["command_id"]))["verification_status"] == "pending"
+        clock.advance(1)
+        active.update(
+            message_id=str(uuid4()),
+            seq=active["seq"] + 1,
+            ts=clock.now().isoformat(),
+            applied_control_generation=1,
         )
         assert (
             await store.receive(

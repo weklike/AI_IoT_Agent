@@ -2,6 +2,7 @@ import asyncio
 from uuid import uuid4
 
 import httpx
+import pytest
 from sqlalchemy import func, select
 
 from backend.app.config import Settings
@@ -12,7 +13,8 @@ from tests.support.mqtt import MQTTProbe
 from tests.support.resources import broker
 
 
-async def test_real_three_device_plan_preview_and_decrease_before_increase(tmp_path):
+@pytest.mark.parametrize("failure", ["timed_out", "rejected"])
+async def test_real_three_device_plan_preview_and_decrease_before_increase(tmp_path, failure):
     with broker() as (port, prefix):
         settings = Settings(
             _env_file=None,
@@ -149,6 +151,20 @@ async def test_real_three_device_plan_preview_and_decrease_before_increase(tmp_p
                             topic.endswith("/control/set")
                             and json.loads(payload).get("action") == "set_power_limit"
                         ):
+                            if failure == "rejected":
+                                command = json.loads(payload)
+                                ack = {
+                                    **command,
+                                    "applied_at": app.state.clock.now().isoformat(),
+                                    "status": "rejected",
+                                    "error_code": "INVALID_STATE",
+                                    "actual_state": {},
+                                }
+                                devices[0].client.publish(
+                                    topic.replace("/control/set", "/control/ack"),
+                                    json.dumps(ack),
+                                    qos=1,
+                                )
                             return
                         original_apply(topic, payload)
 
@@ -156,7 +172,7 @@ async def test_real_three_device_plan_preview_and_decrease_before_increase(tmp_p
                     probe.messages.clear()
                     partial = await make_plan("equal")
                     assert partial["status"] == "PARTIAL"
-                    assert partial["commands"]["CHG-001"]["status"] == "timed_out"
+                    assert partial["commands"]["CHG-001"]["status"] == failure
                     assert not any(t.endswith("/CHG-003/control/set") for t, p in probe.messages)
                     assert devices[1].charging.power_limit_w == 15000
                     assert devices[2].charging.power_limit_w == 5000
@@ -266,6 +282,31 @@ async def test_preview_control_fingerprint_and_expiry(tmp_path, fixed_now, valid
                 f"/api/power-plans/{stale}/execute", json={"request_id": str(uuid4())}
             )
             assert rejected.status_code == 409 and rejected.json()["error"]["code"] == "PLAN_STALE"
+            changed_session = await preview(45000)
+            clock.advance(2)
+            replacement = str(uuid4())
+            async with app.state.db.sessions.begin() as session:
+                prior = await session.get(ChargingSession, samples["CHG-001"]["session_id"])
+                prior.status = "COMPLETED"
+                await session.flush()
+                session.add(
+                    ChargingSession(
+                        session_id=replacement,
+                        device_id="CHG-001",
+                        status="ACTIVE",
+                        requested_power_w=20000,
+                    )
+                )
+            samples["CHG-001"].update(
+                message_id=str(uuid4()), seq=20, ts=clock.now().isoformat(), session_id=replacement
+            )
+            assert await receive("CHG-001") == "accepted"
+            rejected = await client.post(
+                f"/api/power-plans/{changed_session}/execute", json={"request_id": str(uuid4())}
+            )
+            assert rejected.status_code == 409 and rejected.json()["error"]["code"] == "PLAN_STALE"
+            async with app.state.db.sessions() as session:
+                assert await session.scalar(select(func.count()).select_from(DeviceCommand)) == 0
             expired = await preview(45000)
             clock.advance(121)
             rejected = await client.post(
