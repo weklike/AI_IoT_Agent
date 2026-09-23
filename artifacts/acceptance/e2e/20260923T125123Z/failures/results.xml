@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="31.036512000000002">
+<testsuite name="failures.spec.ts" timestamp="2026-09-23T12:53:25.024Z" hostname="" tests="3" failures="0" skipped="0" time="29.413" errors="0">
+<testcase name="@failure 工具超时显示终态" classname="failures.spec.ts" time="5.554">
+</testcase>
+<testcase name="@failure 模型超时显示终态" classname="failures.spec.ts" time="21.416">
+</testcase>
+<testcase name="@failure 未授权建单只显示提示" classname="failures.spec.ts" time="2.443">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+**
+!backend
+!simulator
+!knowledge
+!tests/support
+**/__pycache__

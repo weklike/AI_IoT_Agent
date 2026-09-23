@@ -15,3 +15,19 @@ for (const width of [1280, 1920]) {
     expect(errors).toEqual([])
   })
 }
+
+test('@v2 overview guide anchor scrolls on direct load and on click', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 })
+  // Control: without a fragment the power panel starts below the fold.
+  await page.goto('/devices')
+  await expect(page.getByTestId('device-card')).toHaveCount(3)
+  await expect(page.locator('#station-power')).not.toBeInViewport()
+  // Opening a shared link is a full document load, not a same-page fragment change.
+  await page.goto('about:blank')
+  await page.goto('/devices#station-power')
+  await expect(page.getByTestId('device-card')).toHaveCount(3)
+  await expect(page.locator('#station-power')).toBeInViewport()
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.getByRole('link', { name: /告警与巡检/ }).click()
+  await expect(page.locator('#station-patrol')).toBeInViewport()
+})

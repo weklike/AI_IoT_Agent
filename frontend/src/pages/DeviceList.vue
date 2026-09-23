@@ -23,7 +23,7 @@ onUnmounted(() => stop())
   <section class="workflow-guide" aria-label="运维功能导览">
     <div class="workflow-intro"><span class="eyebrow">OPERATIONS / V2.0</span><h2>从充电现场<br>到运维闭环。</h2><p>三台软件设备，一条可追溯的处理链路。</p></div>
     <div class="workflow-links">
-      <a href="#fleet-devices"><span>01 / MONITOR</span><strong>设备与会话 <b>↗</b></strong><small>查看样本、充电状态与历史计量</small></a>
+      <a href="#fleet-devices"><span>01 / MONITOR</span><strong>设备与会话 <b>↓</b></strong><small>查看样本、充电状态与历史计量</small></a>
       <a href="#station-power"><span>02 / DISPATCH</span><strong>功率调度 <b>↓</b></strong><small>预览分配，再验证实际设备反馈</small></a>
       <a href="#station-patrol"><span>03 / INSPECT</span><strong>告警与巡检 <b>↓</b></strong><small>汇总事实，保留告警与恢复记录</small></a>
       <RouterLink to="/agent"><span>04 / ANALYZE</span><strong>Agent 分析 <b>↗</b></strong><small>查询数据、引用知识、授权建单</small></RouterLink>

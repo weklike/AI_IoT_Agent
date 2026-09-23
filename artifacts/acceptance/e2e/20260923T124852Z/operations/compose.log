@@ -1,0 +1,95 @@
+backend-1  | 2026-09-23T12:49:20.985711030Z INFO:     Started server process [1]
+backend-1  | 2026-09-23T12:49:20.985764081Z INFO:     Waiting for application startup.
+backend-1  | 2026-09-23T12:49:21.244829187Z INFO:     Application startup complete.
+backend-1  | 2026-09-23T12:49:21.254816387Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+backend-1  | 2026-09-23T12:49:21.265848347Z 2026-09-23 12:49:21,265 INFO backend.app.mqtt.client MQTT connected=True
+backend-1  | 2026-09-23T12:49:22.547888021Z INFO:     127.0.0.1:60626 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T12:49:23.128868296Z 2026-09-23 12:49:23,128 INFO backend.app.telemetry.ingest telemetry_committed message_id=a322dcc0-73bf-5c31-bfd7-cc15b7db3f2e device_id=CHG-001 committed_at=2026-09-23T12:49:23.128533+00:00
+backend-1  | 2026-09-23T12:49:23.150139768Z 2026-09-23 12:49:23,149 INFO backend.app.telemetry.ingest telemetry_committed message_id=4b5ba774-3bf2-593a-8991-e22faf95f054 device_id=CHG-002 committed_at=2026-09-23T12:49:23.149843+00:00
+backend-1  | 2026-09-23T12:49:23.167348629Z 2026-09-23 12:49:23,167 INFO backend.app.telemetry.ingest telemetry_committed message_id=792bbeb8-e708-5422-bb90-8350b2971328 device_id=CHG-003 committed_at=2026-09-23T12:49:23.167059+00:00
+backend-1  | 2026-09-23T12:49:24.678049303Z INFO:     127.0.0.1:60650 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T12:49:25.161557577Z 2026-09-23 12:49:25,161 INFO backend.app.telemetry.ingest telemetry_committed message_id=690c19c0-0bbb-5d6a-8cf4-3e71bd20653c device_id=CHG-001 committed_at=2026-09-23T12:49:25.161310+00:00
+backend-1  | 2026-09-23T12:49:25.193128189Z 2026-09-23 12:49:25,192 INFO backend.app.telemetry.ingest telemetry_committed message_id=0520c103-a32f-59d1-8538-5c843c0d977c device_id=CHG-002 committed_at=2026-09-23T12:49:25.192863+00:00
+backend-1  | 2026-09-23T12:49:25.212068291Z 2026-09-23 12:49:25,211 INFO backend.app.telemetry.ingest telemetry_committed message_id=8387b143-9311-5280-acc6-c0b1b947bc71 device_id=CHG-003 committed_at=2026-09-23T12:49:25.211770+00:00
+backend-1  | 2026-09-23T12:49:26.830149912Z INFO:     127.0.0.1:60696 - "GET /api/health HTTP/1.1" 200 OK
+backend-1  | 2026-09-23T12:49:27.204752373Z INFO:     172.22.0.5:36148 - "GET /api/health HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T12:49:27.220074143Z 2026-09-23 12:49:27,219 INFO backend.app.telemetry.ingest telemetry_committed message_id=0256d27d-ed4a-5175-9c27-bac08ae2fa02 device_id=CHG-001 committed_at=2026-09-23T12:49:27.219796+00:00
+backend-1  | 2026-09-23T12:49:27.224372117Z INFO:     172.22.0.5:36166 - "GET /api/patrol-schedule HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T12:49:27.236289558Z INFO:     172.22.0.5:36158 - "GET /api/patrols?limit=5 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T12:49:27.241996917Z INFO:     172.22.0.5:36176 - "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T12:49:27.262030296Z 2026-09-23 12:49:27,261 INFO backend.app.telemetry.ingest telemetry_committed message_id=2dce3380-a4ab-53e8-acc9-e52eb135c980 device_id=CHG-002 committed_at=2026-09-23T12:49:27.261792+00:00
+backend-1  | 2026-09-23T12:49:27.292654700Z INFO:     172.22.0.5:36186 - "GET /api/fleet-overview?window_minutes=30 HTTP/1.0" 200 OK
+backend-1  | 2026-09-23T12:49:27.303110798Z 2026-09-23 12:49:27,302 INFO backend.app.telemetry.ingest telemetry_committed message_id=4572290c-4c59-58fe-bf96-175d67c32960 device_id=CHG-003 committed_at=2026-09-23T12:49:27.302841+00:00
+simulator-1  | 2026-09-23T12:49:19.041878693Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=55b5962b-f572-5e3a-a1a8-baa8a66495de
+simulator-1  | 2026-09-23T12:49:19.041917406Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=be3b42d6-6fa1-5732-957e-eec1318d0abf
+simulator-1  | 2026-09-23T12:49:21.105221850Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=7d310174-8944-5913-8b62-34b68eb2e3e5
+simulator-1  | 2026-09-23T12:49:21.105248040Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=54f528fd-12a4-5717-8f8e-ad90cb8b1c4b
+simulator-1  | 2026-09-23T12:49:21.105736105Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=f03527a2-927d-5f4c-b8b5-f26c9377b18b
+simulator-1  | 2026-09-23T12:49:23.092949731Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=a322dcc0-73bf-5c31-bfd7-cc15b7db3f2e
+simulator-1  | 2026-09-23T12:49:23.111102602Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=4b5ba774-3bf2-593a-8991-e22faf95f054
+simulator-1  | 2026-09-23T12:49:23.143129287Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=792bbeb8-e708-5422-bb90-8350b2971328
+simulator-1  | 2026-09-23T12:49:25.168789763Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=690c19c0-0bbb-5d6a-8cf4-3e71bd20653c
+simulator-1  | 2026-09-23T12:49:25.185328341Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=0520c103-a32f-59d1-8538-5c843c0d977c
+simulator-1  | 2026-09-23T12:49:25.185551601Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=8387b143-9311-5280-acc6-c0b1b947bc71
+simulator-1  | 2026-09-23T12:49:27.206034405Z INFO:__main__:telemetry_puback device_id=CHG-001 message_id=0256d27d-ed4a-5175-9c27-bac08ae2fa02
+simulator-1  | 2026-09-23T12:49:27.234548902Z INFO:__main__:telemetry_puback device_id=CHG-002 message_id=2dce3380-a4ab-53e8-acc9-e52eb135c980
+simulator-1  | 2026-09-23T12:49:27.235209526Z INFO:__main__:telemetry_puback device_id=CHG-003 message_id=4572290c-4c59-58fe-bf96-175d67c32960
+frontend-1   | 2026-09-23T12:49:23.594184017Z /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-1   | 2026-09-23T12:49:23.594219173Z /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-1   | 2026-09-23T12:49:23.596113378Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-1   | 2026-09-23T12:49:23.611288429Z 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+frontend-1   | 2026-09-23T12:49:23.623300700Z 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+frontend-1   | 2026-09-23T12:49:23.623569110Z /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-1   | 2026-09-23T12:49:23.623639623Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-1   | 2026-09-23T12:49:23.627167047Z /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+frontend-1   | 2026-09-23T12:49:23.629166586Z /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-1   | 2026-09-23T12:49:23.644001066Z 2026/09/23 12:49:23 [notice] 1#1: using the "epoll" event method
+frontend-1   | 2026-09-23T12:49:23.644025252Z 2026/09/23 12:49:23 [notice] 1#1: nginx/1.28.0
+frontend-1   | 2026-09-23T12:49:23.644028568Z 2026/09/23 12:49:23 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) 
+frontend-1   | 2026-09-23T12:49:23.644031163Z 2026/09/23 12:49:23 [notice] 1#1: OS: Linux 6.6.87.2-microsoft-standard-WSL2
+frontend-1   | 2026-09-23T12:49:23.644033638Z 2026/09/23 12:49:23 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+frontend-1   | 2026-09-23T12:49:23.644841249Z 2026/09/23 12:49:23 [notice] 1#1: start worker processes
+frontend-1   | 2026-09-23T12:49:23.645094620Z 2026/09/23 12:49:23 [notice] 1#1: start worker process 29
+frontend-1   | 2026-09-23T12:49:23.645278239Z 2026/09/23 12:49:23 [notice] 1#1: start worker process 30
+frontend-1   | 2026-09-23T12:49:23.645640586Z 2026/09/23 12:49:23 [notice] 1#1: start worker process 31
+frontend-1   | 2026-09-23T12:49:23.646369960Z 2026/09/23 12:49:23 [notice] 1#1: start worker process 32
+frontend-1   | 2026-09-23T12:49:27.093510675Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /devices HTTP/1.1" 200 360 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.103779304Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /assets/index-BWBUwKuP.js HTTP/1.1" 200 760271 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.103939992Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /assets/index-Bbb0ONlR.css HTTP/1.1" 200 21398 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.205235068Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /api/health HTTP/1.1" 200 131 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.225841425Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /api/patrol-schedule HTTP/1.1" 200 160 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.237253047Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /api/patrols?limit=5 HTTP/1.1" 200 92 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.242037003Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /api/alarms?limit=20&condition=ACTIVE HTTP/1.1" 200 92 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+frontend-1   | 2026-09-23T12:49:27.294720479Z 172.22.0.1 - - [23/Sep/2026:12:49:27 +0000] "GET /api/fleet-overview?window_minutes=30 HTTP/1.1" 200 3508 "http://127.0.0.1:46180/devices" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36" "-"
+mqtt-1       | 2026-09-23T12:49:14.538529587Z chown: /mosquitto/config/mosquitto.conf: Read-only file system
+mqtt-1       | 2026-09-23T12:49:14.543590034Z 1790167754: mosquitto version 2.0.22 starting
+mqtt-1       | 2026-09-23T12:49:14.543609641Z 1790167754: Config loaded from /mosquitto/config/mosquitto.conf.
+mqtt-1       | 2026-09-23T12:49:14.543802029Z 1790167754: Opening ipv4 listen socket on port 1883.
+mqtt-1       | 2026-09-23T12:49:14.544923908Z 1790167754: Opening ipv6 listen socket on port 1883.
+mqtt-1       | 2026-09-23T12:49:14.555376797Z 1790167754: mosquitto version 2.0.22 running
+mqtt-1       | 2026-09-23T12:49:16.619710583Z 1790167756: New connection from 127.0.0.1:37638 on port 1883.
+mqtt-1       | 2026-09-23T12:49:16.620783509Z 1790167756: New client connected from 127.0.0.1:37638 as auto-BA6ACE3C-E944-F3B2-A84E-3E62BDB1813E (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:16.620963631Z 1790167756: Client auto-BA6ACE3C-E944-F3B2-A84E-3E62BDB1813E disconnected.
+mqtt-1       | 2026-09-23T12:49:18.686022924Z 1790167758: New connection from 127.0.0.1:42890 on port 1883.
+mqtt-1       | 2026-09-23T12:49:18.686126891Z 1790167758: New client connected from 127.0.0.1:42890 as auto-1DE7338D-D8DE-E00B-A18C-90AFEF813BD8 (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:18.686133563Z 1790167758: Client auto-1DE7338D-D8DE-E00B-A18C-90AFEF813BD8 disconnected.
+mqtt-1       | 2026-09-23T12:49:19.013935555Z 1790167759: New connection from 172.22.0.3:42907 on port 1883.
+mqtt-1       | 2026-09-23T12:49:19.014079660Z 1790167759: New client connected from 172.22.0.3:42907 as sim-CHG-001-f4e94f2d-b025-46ae-b4be-9079461c5abf (p2, c1, k15).
+mqtt-1       | 2026-09-23T12:49:19.034716482Z 1790167759: New connection from 172.22.0.3:60037 on port 1883.
+mqtt-1       | 2026-09-23T12:49:19.034886376Z 1790167759: New client connected from 172.22.0.3:60037 as sim-CHG-002-4997c50d-7cb2-4bfd-957b-4e4b2cad9c4b (p2, c1, k15).
+mqtt-1       | 2026-09-23T12:49:19.045328948Z 1790167759: New connection from 172.22.0.3:36679 on port 1883.
+mqtt-1       | 2026-09-23T12:49:19.045473087Z 1790167759: New client connected from 172.22.0.3:36679 as sim-CHG-003-198d2dc2-260b-4b49-a495-719a28aa5a10 (p2, c1, k15).
+mqtt-1       | 2026-09-23T12:49:20.741200700Z 1790167760: New connection from 127.0.0.1:42926 on port 1883.
+mqtt-1       | 2026-09-23T12:49:20.741404116Z 1790167760: New client connected from 127.0.0.1:42926 as auto-2611A8B8-30ED-43F5-4F89-AF1E4DE13859 (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:20.742206637Z 1790167760: Client auto-2611A8B8-30ED-43F5-4F89-AF1E4DE13859 disconnected.
+mqtt-1       | 2026-09-23T12:49:21.265220145Z 1790167761: New connection from 172.22.0.4:43043 on port 1883.
+mqtt-1       | 2026-09-23T12:49:21.265353408Z 1790167761: New client connected from 172.22.0.4:43043 as backend-f013db68-d988-4d66-bbe7-ea711876acae (p2, c1, k15).
+mqtt-1       | 2026-09-23T12:49:22.799265030Z 1790167762: New connection from 127.0.0.1:42954 on port 1883.
+mqtt-1       | 2026-09-23T12:49:22.799292172Z 1790167762: New client connected from 127.0.0.1:42954 as auto-7E52F0F7-EF92-6EAF-69CE-27F02BDD9FCB (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:22.799496420Z 1790167762: Client auto-7E52F0F7-EF92-6EAF-69CE-27F02BDD9FCB disconnected.
+mqtt-1       | 2026-09-23T12:49:24.867473848Z 1790167764: New connection from 127.0.0.1:42978 on port 1883.
+mqtt-1       | 2026-09-23T12:49:24.867512812Z 1790167764: New client connected from 127.0.0.1:42978 as auto-92723B2F-1486-482F-D6F1-FFC60165D771 (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:24.868391931Z 1790167764: Client auto-92723B2F-1486-482F-D6F1-FFC60165D771 disconnected.
+mqtt-1       | 2026-09-23T12:49:26.931480978Z 1790167766: New connection from 127.0.0.1:43012 on port 1883.
+mqtt-1       | 2026-09-23T12:49:26.931525612Z 1790167766: New client connected from 127.0.0.1:43012 as auto-7D16FE51-E854-8271-F39C-FEE8424976F1 (p2, c1, k60).
+mqtt-1       | 2026-09-23T12:49:26.931599241Z 1790167766: Client auto-7D16FE51-E854-8271-F39C-FEE8424976F1 disconnected.

@@ -13,7 +13,7 @@
 
 ## 已实际操作的结果
 
-三台各请求20000W并开始会话；45000W站点计划已VERIFIED，各分配15000W。CHG-002保持模拟过温，其余正常；通过实际工具读取状态/历史/说明，明确授权后生成真实数据库工单；完成一份只读站点巡检。当前保留活动会话、过温场景和OPEN工单供展示，读数会随软件模拟继续变化。
+三台各请求20000W并开始会话（启动反馈verified记录在[第一次尝试](../artifacts/showcase/20260923/demonstration-attempt1.json)，该次随后在Agent发送按钮处超时判FAIL；第二次PASS记录沿用这些会话，读回三台均ACTIVE、requested_power_w=20000）；45000W站点计划已VERIFIED，各分配15000W。CHG-002保持模拟过温，其余正常；通过实际工具读取状态/历史/说明，明确授权后生成真实数据库工单；完成一份只读站点巡检。当前保留活动会话、过温场景和OPEN工单供展示，读数会随软件模拟继续变化。
 
 模型为 **fixture替身**，页面有明确标识；这是工程流程演示，不称为真实推理。MQTT、控制反馈、计量、数据库、工单和轨迹均为实际业务链路。此前132例真实模型自动检查及待人工状态保持原记录。
 
@@ -25,12 +25,14 @@
 - [设备详情与会话/告警/工单](../artifacts/showcase/20260923/03-device-detail.png)
 - [Agent结果和工具轨迹](../artifacts/showcase/20260923/04-agent.png)
 - [巡检报告](../artifacts/showcase/20260923/05-patrol.png)
-- [实际演示记录](../artifacts/showcase/20260923/demonstration.json)
+- [实际演示记录](../artifacts/showcase/20260923/demonstration.json)（PASS）；[第一次尝试](../artifacts/showcase/20260923/demonstration-attempt1.json)（FAIL，含三台启动）
 - [验证与证据相容范围](../artifacts/showcase/20260923/verification.json)
 
 ## 验证与限制
 
 前端typecheck/build通过；隔离E2E 7项通过（52.3秒）：两种分辨率布局、充电与功率、响应丢失重试、未确认命令、部分功率计划。演示脚本另验证页内导航、实际建单/巡检及三页无横向溢出，无浏览器脚本错误。实际查看总览及Agent截图。构建保留ECharts包体积提示；Docker Hub元数据请求失败后复用锁文件相同的本地镜像，首次截图定位错误与修正日志均保留。
+
+**2026-09-23 审查更正**：原 `build-local.py` 并未执行 typecheck/build，只复制已有 `frontend/dist`，却在 `local-build.json` 固定写入 PASS 与构建命令；它还给镜像打上测试入口专用的 `test-{digest}` 标签，使 `tests/support/resources.py` 跳过自行构建，且 COPY 覆盖旧镜像不会删除已移除文件。按文件时间，当时 dist（19:18:53）晚于三个前端源文件（19:18:43），7项E2E大概率用的是当前产物，但流程本身不能保证。脚本已改为：自行执行并记录 typecheck/build 退出码、COPY 前删除旧源码与旧静态资源、只打 `showcase-*` 标签、每次写入新的 `build-<UTC时间>/` 目录；原 `local-build.json` 保留作历史。复跑记录见 [build-20260923T125048Z](../artifacts/showcase/20260923/build-20260923T125048Z/local-build.json)。运行中的展示实例未重启，仍是原镜像；下次按下方命令 `up` 会使用新镜像。
 
 ## 停止或再次启动
 

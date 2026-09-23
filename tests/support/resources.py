@@ -19,6 +19,40 @@ def free_port() -> int:
         return sock.getsockname()[1]
 
 
+def source_digest() -> str:
+    """Fingerprint every input baked into the test images, including the frontend sources."""
+    sources = sorted(
+        [
+            p
+            for directory in (
+                "backend",
+                "simulator",
+                "knowledge",
+                "tests/support",
+                "deploy",
+                "frontend/src",
+            )
+            for p in (ROOT / directory).rglob("*")
+            if p.is_file() and "__pycache__" not in p.parts
+        ]
+        + [
+            ROOT / p
+            for p in (
+                "pyproject.toml",
+                "uv.lock",
+                "frontend/package.json",
+                "frontend/package-lock.json",
+                "frontend/vite.config.ts",
+                "frontend/tsconfig.json",
+                "frontend/index.html",
+            )
+        ]
+    )
+    return hashlib.sha256(
+        b"".join(str(p.relative_to(ROOT)).encode() + p.read_bytes() for p in sources)
+    ).hexdigest()[:16]
+
+
 @contextmanager
 def broker():
     project = f"charge-test-{uuid4().hex[:12]}"
@@ -101,36 +135,7 @@ def stack(
         LLM_API_KEY="",
         MQTT_TOPIC_PREFIX=f"charge-test/{project}/v1",
     )
-    sources = sorted(
-        [
-            p
-            for directory in (
-                "backend",
-                "simulator",
-                "knowledge",
-                "tests/support",
-                "deploy",
-                "frontend/src",
-            )
-            for p in (ROOT / directory).rglob("*")
-            if p.is_file() and "__pycache__" not in p.parts
-        ]
-        + [
-            ROOT / p
-            for p in (
-                "pyproject.toml",
-                "uv.lock",
-                "frontend/package.json",
-                "frontend/package-lock.json",
-                "frontend/vite.config.ts",
-                "frontend/tsconfig.json",
-                "frontend/index.html",
-            )
-        ]
-    )
-    digest = hashlib.sha256(
-        b"".join(str(p.relative_to(ROOT)).encode() + p.read_bytes() for p in sources)
-    ).hexdigest()[:16]
+    digest = source_digest()
     env.update(
         BACKEND_IMAGE=f"charge-ops-backend:test-{digest}",
         FRONTEND_IMAGE=f"charge-ops-frontend:test-{digest}",
@@ -200,6 +205,8 @@ def stack(
                 with tempfile.NamedTemporaryFile(mode="w", suffix=".Dockerfile") as dockerfile:
                     dockerfile.write(
                         "FROM " + dependency_image + "\n"
+                        # COPY never deletes: drop the cached sources first so removed files do not survive.
+                        "RUN rm -rf backend simulator knowledge tests/support\n"
                         "COPY backend backend\nCOPY simulator simulator\nCOPY knowledge knowledge\n"
                         "COPY tests/support tests/support\n"
                         "RUN uv sync --offline --locked --no-dev\n"

@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：用户授权的v2.0开发与验收方案，未调整条款继续回归v1.1。
-- 当前任务：成果展示调整已完成；V2-T11仍待真实人员复核。
+- 当前任务：成果展示提交的审查意见已复核修正；V2-T11仍待真实人员复核。
 - 分支：develop；业务冻结提交603d152；本轮新增模板/样式与页内导航，不改模型/业务路径，本地提交未推送。
-- 更新时间：2026-09-23T18:40:05.288759+08:00
+- 更新时间：2026-09-23T20:55:58+08:00
 - 历史失败及修正：[前一检查点](progress-history/20260923-before-final05.md)、[历史](progress-history/20260923-v2-t11-checkpoints.md)、[设计记录](decisions.md)。
 
 ## 任务状态
@@ -65,3 +65,15 @@
 - 前端typecheck/build退出0；定向E2E 7项通过52.3秒，1280×720和1920×1080无横向溢出；实际完成三台充电、45kW计划、过温建单和巡检。
 - 采用fixture明确演示工程流程，保留活动会话与过温场景供查看；不是新增真实模型成绩。旧132例待人工状态不变，受影响源码仅3个前端文件。
 - [成果入口、截图与停止命令](showcase.md)，原始失败、修正及PASS证据位于artifacts/showcase/20260923/。
+
+## 审查复核与修正（2026-09-23）
+
+- 十条审查意见逐条复核，结论与取舍见[decisions](decisions.md)末节：构建脚本三项、results.json说明、样式覆盖、更新时间、E2E范围成立并修正；G3事后放宽不成立（用户已于09-22裁决）；启动证据部分成立，改为双链接；直接打开锚点在Chromium不能复现，仅加回归测试。
+- 展示构建脚本自行执行typecheck/build、COPY前清除旧文件、不再占用`test-{digest}`标签；复跑PASS见artifacts/showcase/20260923/build-20260923T125048Z/。运行中的44468展示实例未重启。
+- 顶层results.json同步当前gemini结论并与此前未入库的证据目录一并提交；v2最终索引不受影响。
+
+| 命令 | 退出码 | 结果 | 证据 |
+|---|---:|---|---|
+| `uv run python artifacts/showcase/20260923/build-local.py` | 0 | PASS；typecheck/build/两镜像构建均0 | artifacts/showcase/20260923/build-20260923T125048Z/local-build.json |
+| `npm --prefix frontend run test:e2e -- --operations --grep anchor`（修改页面前） | 0 | PASS；锚点问题未复现，含反向对照 | artifacts/acceptance/e2e/20260923T124954Z/ |
+| `npm --prefix frontend run test:e2e`（四组完整） | 0 | PASS；normal 15、empty 1、failures 3、operations 15，共34项 | artifacts/acceptance/e2e/20260923T125123Z/ |

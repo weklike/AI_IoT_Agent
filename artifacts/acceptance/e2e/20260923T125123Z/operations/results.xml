@@ -1,0 +1,52 @@
+<testsuites id="" name="" tests="15" failures="0" skipped="0" errors="0" time="79.840965">
+<testsuite name="knowledge.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="3" failures="0" skipped="0" time="7.301" errors="0">
+<testcase name="@v2 knowledge displays actual searched source version and original chunk" classname="knowledge.spec.ts" time="2.555">
+</testcase>
+<testcase name="@v2 knowledge with no matching document states the lack of evidence" classname="knowledge.spec.ts" time="2.284">
+</testcase>
+<testcase name="@v2 knowledge source HTML is displayed as text and never executed" classname="knowledge.spec.ts" time="2.462">
+</testcase>
+</testsuite>
+<testsuite name="layout_v2.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="3" failures="0" skipped="0" time="6.335" errors="0">
+<testcase name="@v2 three-page layout 1280" classname="layout_v2.spec.ts" time="2.789">
+</testcase>
+<testcase name="@v2 three-page layout 1920" classname="layout_v2.spec.ts" time="2.945">
+</testcase>
+<testcase name="@v2 overview guide anchor scrolls on direct load and on click" classname="layout_v2.spec.ts" time="0.601">
+</testcase>
+</testsuite>
+<testsuite name="lifecycle.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="18.424" errors="0">
+<testcase name="@v2 alarm acknowledgement does not clear the fault and work order closes only after recovery" classname="lifecycle.spec.ts" time="18.424">
+</testcase>
+</testsuite>
+<testsuite name="operations.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="9.908" errors="0">
+<testcase name="@v2 charging begins at zero then receives a verified power allocation" classname="operations.spec.ts" time="9.908">
+</testcase>
+</testsuite>
+<testsuite name="patrols.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="2.646" errors="0">
+<testcase name="@v2 patrol uses real fleet facts and refresh restores the same report" classname="patrols.spec.ts" time="2.646">
+</testcase>
+</testsuite>
+<testsuite name="retry.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="2" failures="0" skipped="0" time="7.21" errors="0">
+<testcase name="@v2 lost charging response disconnect survives refresh and retries the original request" classname="retry.spec.ts" time="3.138">
+</testcase>
+<testcase name="@v2 lost charging response server-error survives refresh and retries the original request" classname="retry.spec.ts" time="4.072">
+</testcase>
+</testsuite>
+<testsuite name="rules.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="0.913" errors="0">
+<testcase name="@v2 rules use server versions and keep fixed offline threshold" classname="rules.spec.ts" time="0.913">
+</testcase>
+</testsuite>
+<testsuite name="scripts.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="0.981" errors="0">
+<testcase name="@v2 script refresh restores its record and explicit cancellation stops it" classname="scripts.spec.ts" time="0.981">
+</testcase>
+</testsuite>
+<testsuite name="unconfirmed.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="13.024" errors="0">
+<testcase name="@v2 applied ACK without telemetry remains unconfirmed after late recovery" classname="unconfirmed.spec.ts" time="13.024">
+</testcase>
+</testsuite>
+<testsuite name="zz_partial.spec.ts" timestamp="2026-09-23T12:54:12.430Z" hostname="" tests="1" failures="0" skipped="0" time="11.447" errors="0">
+<testcase name="@v2 lost device ACK leaves the power plan partial and budget unconfirmed" classname="zz_partial.spec.ts" time="11.447">
+</testcase>
+</testsuite>
+</testsuites>
