@@ -4,12 +4,12 @@
 
 ## 使用哪一轮证据
 
-当前候选为 `c9b44ed` 的第四轮：
+当前候选为 `603d152` 的第五轮：
 
-- 原集：`artifacts/acceptance/v2/real-baseline-20260923-final-04/`，预期A01—A20各3次。
-- 新集：`artifacts/acceptance/v2/real-v2-20260923-final-04/`，预期B01—B24各3次。
+- 原集：`artifacts/acceptance/v2/real-baseline-20260923-final-05/`，预期A01—A20各3次。
+- 新集：`artifacts/acceptance/v2/real-v2-20260923-final-05/`，预期B01—B24各3次。
 
-开始前确认两份manifest都已完成写入且分别有60/72条results，prompt、Schema、知识内容、模型与预算配置属于同一候选版本。B集未完成时不能宣布132例已就绪。第一轮44/60、46/72、第二轮60/60、61/72、第三轮59/60、62/72及诊断目录保留为失败/修正证据，不与第四轮拼接，不挑选较好的单次结果替换。
+开始前确认两份manifest都已完成写入且分别有60/72条results，prompt、Schema、知识内容、模型与预算配置属于同一候选版本。B集未完成时不能宣布132例已就绪。第一轮44/60、46/72、第二轮60/60、61/72、第三轮59/60、62/72、第四轮58/60、68/72（B边界类9/12不足）及诊断目录保留为失败/修正证据，不与第五轮拼接，不挑选较好的单次结果替换。
 
 ## 逐例查看
 
@@ -45,8 +45,8 @@
 假设人工文件分别保存为 `eval/manual-review.json` 与 `eval/manual-review-v2.json`：
 
 ```bash
-uv run python eval/run.py --summarize artifacts/acceptance/v2/real-baseline-20260923-final-04 --review-file eval/manual-review.json
-uv run python eval/run_v2.py --summarize artifacts/acceptance/v2/real-v2-20260923-final-04 --review-file eval/manual-review-v2.json
+uv run python eval/run.py --summarize artifacts/acceptance/v2/real-baseline-20260923-final-05 --review-file eval/manual-review.json
+uv run python eval/run_v2.py --summarize artifacts/acceptance/v2/real-v2-20260923-final-05 --review-file eval/manual-review-v2.json
 ```
 
 退出码0为完整通过，1为失败，2为环境阻塞，3为待真人评审。原集需至少54/60且每类至少9/12；新集需至少65/72且每类至少10/12，两集关键错误均为0。人工与自动检查都通过的案例才计入最终成功数。

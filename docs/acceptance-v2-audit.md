@@ -2,15 +2,15 @@
 
 业务实现与测试已分阶段提交；本页说明怎样将证据对应到合同，不能以测试总数替代整项验收。真实模型的语义评审必须由真实人员完成；本页的代码与证据核对不是该项人工评审。
 
-当前完整真实评测候选为 `c9b44ed`。后续仅增加的测试、文档和证据不改变业务版本。原始失败、早期检查点和完整轮次均保留；初次稳定性缺少RSS的旧结论已撤回，采用第二次完整小时及源码相容核验。
+当前完整真实评测候选为 `603d152`。后续仅增加的测试、文档和证据不改变业务版本。原始失败、早期检查点和完整轮次均保留；初次稳定性缺少RSS的旧结论已撤回，采用第二次完整小时及源码相容核验。
 
 ## 证据定位
 
 - 后端全量：`artifacts/acceptance/v2/backend-20260923-rss-reference-final.xml`，368项通过。之后增加的测试/断言使用 `t03-20260923/t11-*.xml` 的明确通过记录补充，保留此前失败，不累计成不重复的测试总数。
 - 三页完整E2E：`artifacts/acceptance/e2e/20260923T062547Z/`，四组共30项；另有知识安全3项及真实回执未确认1项补测。每个E2E目录保留JUnit、Compose日志和相应截图/附件。
-- 性能、反馈与功率保护：`query-baseline-20260923-final/`、`query-v2-20260923-final/`、`visibility-20260923-formal/`、`power-protection-20260923-formal/`。
-- 完整RSS小时：`stability-rss-20260923-formal/`；`stability-rss-20260923-c9b44ed-revalidated/` 从原始日志、历史、资源与操作重新核验。测量实例为b000dee，fixture不读取后续改动的SYSTEM_PROMPT；资源字节数仍属于原测量实例，不能声称不同提示文本占用字节完全相同。
-- 真实评测：`real-baseline-20260923-final-04/` 与 `real-v2-20260923-final-04/`。未完成和未人工复核部分不能PASS，流程见 [人工复核说明](real-model-review.md)。
+- 性能、反馈与功率保护：`query-baseline-20260923-final/`、`query-v2-20260923-final/`、`visibility-20260923-status-style-final/`、`power-protection-20260923-formal/`。
+- 完整RSS小时：`stability-rss-20260923-formal/`；`stability-rss-20260923-final05-revalidated/` 从原始日志、历史、资源与操作重新核验。测量实例为b000dee，fixture不读取后续改动的SYSTEM_PROMPT；新增ChargingPanel外观只在详情挂载，完整小时仅访问总览；资源字节数仍属于原测量实例，不能声称不同提示文本占用字节完全相同。
+- 真实评测：`real-baseline-20260923-final-05/` 与 `real-v2-20260923-final-05/`。未完成和未人工复核部分不能PASS，流程见 [人工复核说明](real-model-review.md)。
 
 以上短目录除E2E外均位于 `artifacts/acceptance/v2/`。JUnit记录测试执行，测试源代码中的断言解释测量范围；不能只看函数名称。
 
@@ -86,3 +86,5 @@
 AC-35沿用第二次operations完整小时：三客户端2秒上报、以唯一成功PUBACK为分母、同窗口唯一入库匹配为分子、原P95与≥99%阈值不变。operations计量/控制增加负载，未削减原遥测与日志断言；legacy固定20kW仍有独立60秒测试。
 
 AC-36—38必须使用最终候选原A60与真实人工审阅；此前较高分数不移植。AC-39—40的干净复现和文档已备证，人工阅读/演示按原合同由用户完成，不能由自动测试冒充。
+
+候选04的自动58/60、68/72因B边界类9/12不足而FAIL；绿色未确认提示亦单独保留失败与修复记录。候选05不沿用其模型样本，仅未改变的确定性路径证据可按摘要核对沿用。

@@ -18,6 +18,7 @@
 | Vue | 3.5.43 | MIT |
 | Vue Router | 4.6.4 | MIT |
 | ECharts | 6.1.0 | Apache-2.0 |
+| markdown-it | 15.0.2 | MIT |
 | Vite | 6.4.3 | MIT |
 | TypeScript | 5.7.3 | Apache-2.0 |
 | Playwright Test | 1.58.2 | Apache-2.0 |
