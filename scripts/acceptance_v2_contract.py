@@ -6,6 +6,7 @@ GROUPS = {
         "tests/unit/test_telemetry_v2.py",
         "tests/integration/test_session_reporting.py",
         "tests/unit/test_report_delivery.py",
+        "tests/integration/test_mqtt_ingestion.py",
         "tests/unit/test_simulator_charging.py",
     ),
     "control": (
@@ -82,11 +83,16 @@ ASSERTIONS = {
     ),
     5: ("合法v1/v2 JSON", ["test_dual_json_versions"]),
     6: (
-        "v2字段与跨字段拒绝",
-        ["test_v2_rejects_invalid_fields", "test_v2_cross_field_consistency"],
+        "每个v2数字字段严格类型及真实Broker拒绝后恢复",
+        [
+            "test_v2_rejects_invalid_fields",
+            "test_v2_cross_field_consistency",
+            "test_each_v2_numeric_field_is_strict_and_nonnegative",
+            "test_real_retained_invalid_inputs_then_valid_sample",
+        ],
     ),
     7: (
-        "真实MQTT重复/冲突/retained不刷新",
+        "接收服务重复/冲突/retained不刷新",
         ["test_v2_ingestion_duplicates_conflicts_and_retained_do_not_refresh"],
     ),
     8: (
@@ -110,6 +116,7 @@ ASSERTIONS = {
         [
             "test_operations_simulator_real_mqtt_control_and_reports",
             "test_rejected_high_generation_fences_later_lower_command",
+            "test_ten_duplicate_controls_conflict_old_generation_and_expiry",
         ],
     ),
     13: (

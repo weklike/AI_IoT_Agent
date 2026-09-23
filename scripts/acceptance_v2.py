@@ -1,14 +1,15 @@
 """Execute v2 automatic subassertions without promoting them to complete XAC/M gates."""
 
 import argparse
+import hashlib
 import json
 import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from eval.run_v2 import source_hashes
 from scripts.acceptance import environment
 from scripts.acceptance_v2_contract import ASSERTIONS, GROUPS, SUITES
+from scripts.evidence import source_hashes
 from tests.support.resources import ROOT
 
 
@@ -88,7 +89,7 @@ def execute(command, output, name):
     return {"status": status, "exit_code": code, "command": command, "log": str(log)}
 
 
-def verify_runtime_compatibility(directory):
+def verify_runtime_compatibility(directory, compatibility_file=None):
     env = json.loads((directory / "environment.json").read_text())
     paths = [
         "backend",
@@ -104,27 +105,66 @@ def verify_runtime_compatibility(directory):
     ]
     # Compare both committed and pending changes to the exact source used for the run.
     diff = subprocess.run(
-        ["git", "diff", env["git_sha"], "--", *paths],
+        ["git", "diff", "--name-only", env["git_sha"], "--", *paths],
         cwd=ROOT,
         capture_output=True,
         text=True,
         check=True,
     )
     current = environment()
-    return not diff.stdout and env["locks"] == current["locks"]
+    if env["locks"] != current["locks"]:
+        return False
+    if not diff.stdout:
+        return True
+    if compatibility_file is None:
+        return False
+    note = json.loads(compatibility_file.read_text())
+    changed = set(diff.stdout.splitlines())
+    allowed = {
+        "backend/app/agent/prompts.py",
+        "backend/app/agent/read_queries.py",
+        "backend/app/power/service.py",
+    }
+    if (
+        note.get("kind") != "fixture-stability-source-comparison"
+        or note.get("source_commit") != env["git_sha"]
+    ):
+        return False
+    if changed != set(note.get("files", {})) or not changed <= allowed:
+        return False
+    patrols = [
+        op
+        for op in json.loads((directory / "operations.json").read_text())
+        if op["kind"] == "patrol"
+    ]
+    if not patrols or any(op.get("run", {}).get("llm_mode") != "fixture" for op in patrols):
+        return False
+    for path in changed:
+        before = subprocess.check_output(["git", "show", env["git_sha"] + ":" + path], cwd=ROOT)
+        proof = note["files"][path]
+        if (
+            hashlib.sha256(before).hexdigest() != proof["before_sha256"]
+            or hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != proof["after_sha256"]
+        ):
+            return False
+        if not proof.get("unchanged_behavior_reason"):
+            return False
+    return True
 
 
-def reuse_stability(directory, output):
+def reuse_stability(directory, output, compatibility_file=None):
     import shutil
     from datetime import datetime
 
     from scripts.stability_v2 import summarize_window
 
-    if not verify_runtime_compatibility(directory):
+    if not verify_runtime_compatibility(directory, compatibility_file):
         return {"status": "NOT_RUN", "message": "运行代码/依赖不同，拒绝沿用稳定性证据"}
     original = json.loads((directory / "report.json").read_text())
     if original.get("kind") != "acceptance" or original.get("window_seconds") != 3600:
         return {"status": "NOT_RUN", "message": "必须是完整60分钟operations报告，短时诊断不能沿用"}
+    if compatibility_file:
+        shutil.copyfile(compatibility_file, output / "stability-source-comparison.json")
     destination = output / "stability-revalidated"
     destination.mkdir()
     shutil.copyfile(directory / "browser-observed.json", destination / "browser-observed.json")
@@ -143,7 +183,7 @@ def reuse_stability(directory, output):
         "status": report["status"],
         "source": str(directory),
         "evidence": str(destination / "report.json"),
-        "compatibility": "backend/simulator/knowledge/frontend/deploy/runtime probes and locks unchanged",
+        "compatibility": "Exact source comparison; any allowed additive metadata/prompt changes are bound to before/after hashes in the attached note",
     }
 
 
@@ -157,6 +197,11 @@ def main():
         "--reuse-stability",
         type=Path,
         help="Validate existing full-hour evidence; never overwrite it",
+    )
+    parser.add_argument(
+        "--compatibility-file",
+        type=Path,
+        help="Hash-bound explanation of additive metadata/fixture-ignored prompt changes only",
     )
     args = parser.parse_args()
     output = args.output.resolve()
@@ -228,7 +273,7 @@ def main():
         if args.reuse_stability:
             try:
                 report["steps"]["stability"] = reuse_stability(
-                    args.reuse_stability.resolve(), output
+                    args.reuse_stability.resolve(), output, args.compatibility_file
                 )
             except (OSError, KeyError, ValueError, subprocess.SubprocessError) as error:
                 report["steps"]["stability"] = {

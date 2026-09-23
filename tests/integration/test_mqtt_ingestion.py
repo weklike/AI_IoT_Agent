@@ -1,6 +1,7 @@
 import asyncio
 import json
 
+import pytest
 from sqlalchemy import func, select
 
 from backend.app.config import Settings
@@ -111,11 +112,17 @@ async def test_broker_restart_resubscribes_and_preserves_history(tmp_path):
                 await device.close()
 
 
-async def test_real_retained_invalid_inputs_then_valid_sample(tmp_path, fixed_now, valid_payload):
+@pytest.mark.parametrize("schema_version", [1, 2])
+async def test_real_retained_invalid_inputs_then_valid_sample(
+    tmp_path, fixed_now, valid_payload, schema_version
+):
     from datetime import timedelta
 
     from tests.support.clock import FixedClock
+    from tests.unit.test_telemetry_v2 import payload_v2
 
+    if schema_version == 2:
+        valid_payload = payload_v2(valid_payload)
     with broker() as (port, prefix):
         probe = MQTTProbe(port, prefix)
         await probe.start()
@@ -157,7 +164,7 @@ async def test_real_retained_invalid_inputs_then_valid_sample(tmp_path, fixed_no
                     ("ts", (fixed_now + timedelta(seconds=6)).isoformat()),
                     ("ts", (fixed_now - timedelta(seconds=86401)).isoformat()),
                     ("device_id", "CHG-999"),
-                    ("schema_version", 2),
+                    ("schema_version", 2 if schema_version == 1 else 3),
                     ("extra", 1),
                 ]:
                     invalid.append(json.dumps({**valid_payload, field: value}).encode())

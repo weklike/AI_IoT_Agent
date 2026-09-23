@@ -125,3 +125,15 @@ async def test_injection_fixture_is_real_indexed_data_only(app, tmp_path):
     assert any("读取.env" in m["content"] for m in matches)
     assert metadata["variant"] == "injection"
     assert await snapshot_business(app.state.db) == before
+
+
+async def test_latest_completed_session_is_complete_even_in_one_minute_window(app):
+    await load_v2_dataset(app, "SESSION-DONE", "window-contract", 1)
+    records = []
+    for minutes in (1, 10, 60):
+        result = await app.state.read_queries.sessions("CHG-001", minutes)
+        assert result["summary"]["session_count"] == 1
+        assert result["summary"]["completed_session_energy_wh"] == 3333
+        assert result["items"][0]["duration_seconds"] == 600
+        records.append(result["items"][0])
+    assert records[0] == records[1] == records[2]

@@ -22,6 +22,7 @@ from backend.app.models import AgentRun, KnowledgeChunk, KnowledgeDocument
 from eval.checks_v2 import automatic_checks
 from eval.run import sha, summarize
 from scripts.acceptance import environment
+from scripts.evidence import default_contract_settings, source_hashes
 from tests.support.clock import FixedClock
 from tests.support.fixtures import T0
 from tests.support.fixtures_v2 import load_v2_dataset, prepare_knowledge, snapshot_business
@@ -188,25 +189,6 @@ def summarize_v2(directory, review_file):
     )
 
 
-def source_hashes():
-    # Explicit public source directories only; never read credentials or app runtime volumes.
-    paths = [
-        p
-        for directory in (
-            "backend",
-            "simulator",
-            "frontend/src",
-            "knowledge",
-            "eval",
-            "tests/support",
-            "scripts",
-        )
-        for p in (ROOT / directory).rglob("*")
-        if p.is_file() and p.suffix in {".py", ".sql", ".md", ".jsonl", ".ts", ".vue", ".css"}
-    ]
-    return {str(p.relative_to(ROOT)): sha(p.read_bytes()) for p in sorted(paths)}
-
-
 async def run(args):
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -232,6 +214,19 @@ async def run(args):
     def save():
         (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
 
+    frozen_path = CASES.with_suffix(".manifest.json")
+    if not frozen_path.exists():
+        manifest.update(status="NOT_RUN", message="案例尚未冻结；缺少cases-v2.manifest.json")
+        save()
+        return 1
+    frozen = json.loads(frozen_path.read_text())
+    if frozen["cases_sha256"] != manifest["cases_sha256"] or any(
+        sha((ROOT / path).read_bytes()) != digest for path, digest in frozen["knowledge"].items()
+    ):
+        manifest.update(status="FAIL", message="案例或基础知识与冻结摘要不匹配，拒绝继续评测")
+        save()
+        return 1
+    (output / "case-freeze.json").write_text(json.dumps(frozen, ensure_ascii=False, indent=2))
     unresolved = [c["case_id"] for c in cases if c["contract_status"] != "READY"]
     if unresolved:
         manifest.update(
@@ -241,27 +236,20 @@ async def run(args):
         return 1
     try:
         settings = Settings(app_env="eval", mqtt_enabled=False, llm_mode=args.mode)
-    except ValidationError:
+        manifest["settings"] = default_contract_settings(settings)
+    except (ValidationError, ValueError):
         manifest.update(
             status="BLOCKED",
-            message="缺少有效模型配置；本地配置LLM_BASE_URL、LLM_MODEL、LLM_API_KEY。执行0例。",
+            message="模型配置缺失或验收预算/阈值非默认；本地检查参数及LLM_BASE_URL、LLM_MODEL、LLM_API_KEY。执行0例。",
         )
         save()
         return 2
     manifest["model"] = {
         "id": settings.llm_model if args.mode == "real" else "fixture",
         "endpoint_protocol": "chat-completions",
+        "endpoint_sha256": sha(settings.llm_base_url.encode()) if args.mode == "real" else None,
         "temperature": "provider default (not overridden)",
         "max_output_tokens": "provider default (not overridden)",
-    }
-    manifest["settings"] = {
-        name: getattr(settings, name)
-        for name in (
-            "agent_model_timeout_seconds",
-            "agent_tool_timeout_seconds",
-            "agent_total_timeout_seconds",
-            "agent_cleanup_timeout_seconds",
-        )
     }
     save()
     for case in cases:

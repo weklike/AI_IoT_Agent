@@ -99,3 +99,42 @@ def test_control_timestamps_require_iso_text(fixed_now):
                 }
             )
         )
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "requested_power_w",
+        "power_limit_w",
+        "meter_total_wh",
+        "session_energy_wh",
+        "applied_control_generation",
+    ],
+)
+@pytest.mark.parametrize("value", ["1", True, 1.5, float("nan"), float("inf"), -1])
+def test_each_v2_numeric_field_is_strict_and_nonnegative(valid_payload, fixed_now, field, value):
+    value = {**payload_v2(valid_payload), field: value}
+    with pytest.raises(ValueError):
+        parse_telemetry(
+            json.dumps(value).encode(), "charge/v1/devices/CHG-002/telemetry", fixed_now
+        )
+
+
+def test_v2_rejects_wrong_topic_unknown_device_then_accepts_good_json(valid_payload, fixed_now):
+    value = payload_v2(valid_payload)
+    with pytest.raises(ValueError):
+        parse_telemetry(
+            json.dumps(value).encode(), "charge/v1/devices/CHG-001/telemetry", fixed_now
+        )
+    with pytest.raises(ValueError):
+        parse_telemetry(
+            json.dumps({**value, "device_id": "CHG-999"}).encode(),
+            "charge/v1/devices/CHG-999/telemetry",
+            fixed_now,
+        )
+    assert (
+        parse_telemetry(
+            json.dumps(value).encode(), "charge/v1/devices/CHG-002/telemetry", fixed_now
+        ).device_id
+        == "CHG-002"
+    )

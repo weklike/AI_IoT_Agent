@@ -23,6 +23,7 @@ from backend.app.config import Settings
 from backend.app.main import create_app
 from backend.app.models import AgentRun
 from scripts.acceptance import environment, percentile
+from scripts.evidence import default_contract_settings, source_hashes
 from tests.support.clock import FixedClock
 from tests.support.fixtures import T0, load_dataset
 from tests.support.resources import ROOT
@@ -204,7 +205,7 @@ async def evaluate(case, repeat, settings, output):
             "case": case,
             "repeat": repeat,
             "mode": settings.llm_mode,
-            "status": "PENDING_REVIEW",
+            "status": "PENDING_REVIEW" if all(checks.values()) else "FAIL",
             "automatic_checks": checks,
             "automatic_pass": all(checks.values()),
             "runs": runs,
@@ -322,22 +323,25 @@ async def run(args):
         "repeat": args.repeat,
         "executed_at": datetime.now(UTC).isoformat(),
         "environment": environment(),
+        "source_hashes": source_hashes(),
         "prompt_sha256": sha(SYSTEM_PROMPT.encode()),
         "schema_sha256": sha(json.dumps(schemas(True), sort_keys=True).encode()),
         "results": [],
     }
     try:
         settings = Settings(app_env="eval", mqtt_enabled=False, llm_mode=args.mode)
-    except ValidationError:
+        manifest["settings"] = default_contract_settings(settings)
+    except (ValidationError, ValueError):
         manifest.update(
             status="BLOCKED",
-            message="配置缺失或无效；请在本地 .env 设置 LLM_BASE_URL、LLM_MODEL、LLM_API_KEY。没有执行任何模型案例。",
+            message="配置缺失或不符合默认验收参数；请在本地 .env 检查预算/阈值并设置 LLM_BASE_URL、LLM_MODEL、LLM_API_KEY。没有执行任何模型案例。",
         )
         (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
         return 2
     manifest["model"] = {
         "id": settings.llm_model if args.mode == "real" else "fixture",
         "endpoint_protocol": "chat-completions",
+        "endpoint_sha256": sha(settings.llm_base_url.encode()) if args.mode == "real" else None,
         "temperature": "provider default (not overridden)",
         "max_output_tokens": "provider default (not overridden)",
     }
