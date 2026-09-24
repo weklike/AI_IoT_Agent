@@ -1,9 +1,9 @@
 # 开发进度
 
 - 业务基线：用户授权的v2.0开发与验收方案，未调整条款继续回归v1.1。
-- 当前任务：成果展示提交的审查意见已复核修正；V2-T11仍待真实人员复核。
-- 分支：develop；业务冻结提交603d152；本轮新增模板/样式与页内导航，不改模型/业务路径，本地提交未推送。
-- 更新时间：2026-09-23T20:55:58+08:00
+- 当前任务：V2-T11仍待真实人员复核；当前准备仓库内容的PR。
+- 分支：pr/v2-current-content；业务冻结提交603d152；PR准备基线6271aad，未推送。
+- 更新时间：2026-09-24T15:13:32+08:00
 - 历史失败及修正：[前一检查点](progress-history/20260923-before-final05.md)、[历史](progress-history/20260923-v2-t11-checkpoints.md)、[设计记录](decisions.md)。
 
 ## 任务状态
@@ -77,3 +77,20 @@
 | `uv run python artifacts/showcase/20260923/build-local.py` | 0 | PASS；typecheck/build/两镜像构建均0 | artifacts/showcase/20260923/build-20260923T125048Z/local-build.json |
 | `npm --prefix frontend run test:e2e -- --operations --grep anchor`（修改页面前） | 0 | PASS；锚点问题未复现，含反向对照 | artifacts/acceptance/e2e/20260923T124954Z/ |
 | `npm --prefix frontend run test:e2e`（四组完整） | 0 | PASS；normal 15、empty 1、failures 3、operations 15，共34项 | artifacts/acceptance/e2e/20260923T125123Z/ |
+
+## PR准备（2026-09-24）
+
+- 从`develop@6271aad`创建`pr/v2-current-content`，仅整理本轮PR验证证据和进度；未改业务代码、模型配置、验收门槛或历史失败。
+- 本轮E2E证据位于`artifacts/acceptance/e2e/20260924T070749Z/`；四份JUnit纳入本轮提交，原始Compose日志与截图在本地保留。原有未跟踪的Task 2 MQTT样本与planning记录原样保留，不纳入本轮提交；后端测试另生成一份MQTT样本，同样不纳入。
+- 仓库尚无Git remote或远端基分支，且当前环境无`gh`命令和GitHub令牌；推送与线上PR等待目标仓库地址、基分支及可用认证。PR尚未创建。
+
+| 命令 | 退出码 | 结果 | 证据 |
+|---|---:|---|---|
+| `uv run pytest tests/unit tests/integration -q --junitxml=/tmp/ai-iot-pr-backend.xml` | 0 | PASS；388项，688.11秒 | `/tmp/ai-iot-pr-backend.xml` |
+| `uv run ruff check backend simulator tests scripts eval` | 0 | PASS | 本轮终端输出 |
+| `npm --prefix frontend run typecheck` | 0 | PASS | 本轮终端输出 |
+| `npm --prefix frontend run build` | 0 | PASS；保留原有大包体提示 | 本轮终端输出 |
+| `npm --prefix frontend run test:e2e` | 0 | PASS；四组34项，隔离Compose资源已清理 | `artifacts/acceptance/e2e/20260924T070749Z/` |
+| `git diff --check` | 0 | PASS | 本轮终端输出 |
+
+下一步：取得目标remote与基分支，获取远端状态并核对实际PR差异；确认认证后只推送本分支并创建PR。M4/G3仍保持PENDING_REVIEW。
