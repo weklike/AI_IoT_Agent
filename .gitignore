@@ -13,3 +13,4 @@ dist/
 frontend/test-results/
 frontend/playwright-report/
 .worktrees/
+/artifacts/

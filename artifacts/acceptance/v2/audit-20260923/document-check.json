@@ -1,5 +1,0 @@
-{
-  "status": "PASS",
-  "scope": "README与docs顶层Markdown的本地链接/图片目标；远程上游链接未重新联网验证；历史缺失附件如实标记，不伪造内容。",
-  "missing_local_targets": []
-}

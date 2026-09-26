@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="2.42206">
-<testsuite name="layout_v2.spec.ts" timestamp="2026-09-23T12:50:08.061Z" hostname="" tests="1" failures="0" skipped="0" time="0.813" errors="0">
-<testcase name="@v2 overview guide anchor scrolls on direct load and on click" classname="layout_v2.spec.ts" time="0.813">
-</testcase>
-</testsuite>
-</testsuites>

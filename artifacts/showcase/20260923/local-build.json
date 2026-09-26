@@ -1,9 +1,0 @@
-{
-  "status": "PASS",
-  "source_digest": "0504580f22877fb1",
-  "dependency_image": "charge-ops-backend:test-94f8cb9ab56df832",
-  "frontend_base": "charge-ops-frontend:test-94f8cb9ab56df832",
-  "uv_lock_and_pyproject": "exact byte match",
-  "frontend_build": "npm run typecheck && npm run build, existing locked node_modules",
-  "network": "none for Docker builds"
-}

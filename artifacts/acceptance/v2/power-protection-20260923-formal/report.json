@@ -1,8 +1,0 @@
-{
-  "status": "PASS",
-  "kind": "acceptance",
-  "requested_plans": 20,
-  "executed_plans": 20,
-  "passed_plans": 20,
-  "evidence": "plans.json"
-}

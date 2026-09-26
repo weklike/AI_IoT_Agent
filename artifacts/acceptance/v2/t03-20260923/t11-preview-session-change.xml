@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="1.117" timestamp="2026-09-23T16:27:52.306409+08:00" hostname="Syzygy"><testcase classname="tests.integration.test_power_plans" name="test_preview_control_fingerprint_and_expiry" time="0.487" /></testsuite></testsuites>

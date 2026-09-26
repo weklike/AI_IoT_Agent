@@ -1,6 +1,0 @@
-{
-  "status": "PASS",
-  "source": "artifacts/acceptance/v2/stability-rss-20260923-formal",
-  "evidence": "artifacts/acceptance/v2/stability-rss-20260923-d230-revalidated/stability-revalidated/report.json",
-  "compatibility": "Exact source comparison; any allowed additive metadata/prompt changes are bound to before/after hashes in the attached note"
-}

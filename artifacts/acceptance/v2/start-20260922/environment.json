@@ -1,9 +1,0 @@
-{
-  "python": "Python 3.12.13",
-  "node": "v24.13.0",
-  "sqlite": "3.50.4",
-  "fts5": true,
-  "compose": "Docker Compose version v5.1.1",
-  "test_overrides": {},
-  "developer_services": "deploy: not modified; ports bound to 127.0.0.1"
-}

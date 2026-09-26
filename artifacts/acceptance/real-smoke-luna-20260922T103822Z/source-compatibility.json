@@ -1,7 +1,0 @@
-{
-  "checked_at": "2026-09-22T10:45:36.276284+00:00",
-  "source_commit": "50017cd3356594fdc164057706f7b68fb155cdb5",
-  "reference_source_manifest": "../real-connection-source.json",
-  "mismatched_files": [],
-  "note": "Application, prompt, schemas, evaluation code and dependency locks match prior implementation. Only local runtime model credentials/endpoint/model were changed; prior model quality results are not reused."
-}

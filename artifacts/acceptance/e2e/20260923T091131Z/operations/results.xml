@@ -1,8 +1,0 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="7.016057999999999">
-<testsuite name="layout_v2.spec.ts" timestamp="2026-09-23T09:11:49.118Z" hostname="" tests="2" failures="0" skipped="0" time="5.585" errors="0">
-<testcase name="@v2 three-page layout 1280" classname="layout_v2.spec.ts" time="2.807">
-</testcase>
-<testcase name="@v2 three-page layout 1920" classname="layout_v2.spec.ts" time="2.778">
-</testcase>
-</testsuite>
-</testsuites>

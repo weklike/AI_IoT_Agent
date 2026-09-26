@@ -1,7 +1,0 @@
-{
-  "id": "XAC-56",
-  "status": "NOT_RUN",
-  "supersedes": "本目录results.json中的XAC-56整项PASS",
-  "reason": "Docker MemUsage不是进程RSS，原资源校验只检查样本数，未覆盖合同的RSS采样要求。首轮遥测/计划/巡检子断言测量仍保留。",
-  "next": "增加真实进程RSS采样、失败测试及完整60分钟新运行"
-}

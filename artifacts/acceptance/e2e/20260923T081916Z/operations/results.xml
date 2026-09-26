@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="14.596758">
-<testsuite name="unconfirmed.spec.ts" timestamp="2026-09-23T08:19:49.221Z" hostname="" tests="1" failures="0" skipped="0" time="12.981" errors="0">
-<testcase name="@v2 applied ACK without telemetry remains unconfirmed after late recovery" classname="unconfirmed.spec.ts" time="12.981">
-</testcase>
-</testsuite>
-</testsuites>

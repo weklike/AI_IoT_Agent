@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="20.755266">
-<testsuite name="lifecycle.spec.ts" timestamp="2026-09-23T04:22:58.880Z" hostname="" tests="1" failures="0" skipped="0" time="19.356" errors="0">
-<testcase name="@v2 alarm acknowledgement does not clear the fault and work order closes only after recovery" classname="lifecycle.spec.ts" time="19.356">
-</testcase>
-</testsuite>
-</testsuites>

@@ -1,6 +1,0 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.8591170000000004">
-<testsuite name="empty.spec.ts" timestamp="2026-09-22T08:44:50.975Z" hostname="" tests="1" failures="0" skipped="0" time="2.552" errors="0">
-<testcase name="@empty 空库显示未知状态与空历史" classname="empty.spec.ts" time="2.552">
-</testcase>
-</testsuite>
-</testsuites>
