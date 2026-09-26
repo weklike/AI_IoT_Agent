@@ -1,10 +1,18 @@
 # 开发进度
 
 - 业务基线：用户授权的v2.0开发与验收方案，未调整条款继续回归v1.1。
-- 当前任务：V2-T11仍待真实人员复核；当前准备仓库内容的PR。
-- 分支：pr/v2-current-content；业务冻结提交603d152；PR准备基线6271aad，未推送。
-- 更新时间：2026-09-24T15:13:32+08:00
+- 当前任务：V2-T11仍待真实人员复核；本轮重写仓库README。
+- 分支：main；已推送基线73dc9f8，本轮文档改动未提交。业务冻结提交603d152。
+- 更新时间：2026-09-26T09:25:37+08:00
 - 历史失败及修正：[前一检查点](progress-history/20260923-before-final05.md)、[历史](progress-history/20260923-v2-t11-checkpoints.md)、[设计记录](decisions.md)。
+
+自73dc9f8起，`artifacts/`已从当前Git树移除并被忽略；下文历史验收路径指本地留存原件，新克隆的仓库不含这些产物。以下PR准备段落保留其当时状态，不代表当前仍无远端。
+
+## 2026-09-26 README更新
+
+- README改为面向新读者的快速启动、业务演示、架构、开发验证、模型模式及边界说明；移除已失效的`artifacts/`截图与报告链接。
+- 沿用既有T11验收结论，未重新执行模型评测、性能或E2E；原始证据仍须在本地保存并由真人复核。M4继续PENDING_REVIEW。
+- 本轮检查：`git diff --check`退出0；README的17个相对/外部Markdown链接经内联Python检查，本地目标缺失0，指向`artifacts/`的链接0；`docker compose --env-file .env.example -f deploy/compose.yaml config --quiet`退出0。纯文档改动未运行后端或页面测试。
 
 ## 任务状态
 
